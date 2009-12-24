@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- docb_transform</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/docbuilder/users_guide.html">User's Guide</a><br>
+<a href="../apps/docbuilder/index.html">Reference Manual</a><br>
+<a href="../apps/docbuilder/release_notes.html">Release Notes</a><br>
+<a href="../apps/docbuilder/docbuilder.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>DocBuilder</strong><br><strong>Reference Manual</strong><br><small>Version 0.9.8.6</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="docbuilder (App)">
+<a href="docbuilder_app.html">docbuilder (App)
+                </a></li>
+<li title="docb_gen " expanded="false">docb_gen<ul>
+<li>
+<a href="docb_gen.html">
+                  Top of manual page
+                </a></li>
+<li title="module-1">
+<a href="docb_gen.html#module-1">module/1</a></li>
+<li title="module-2">
+<a href="docb_gen.html#module-2">module/2</a></li>
+<li title="users_guide-1">
+<a href="docb_gen.html#users_guide-1">users_guide/1</a></li>
+<li title="users_guide-2">
+<a href="docb_gen.html#users_guide-2">users_guide/2</a></li>
+</ul>
+</li>
+<li title="docb_transform " expanded="true">docb_transform<ul>
+<li>
+<a href="docb_transform.html">
+                  Top of manual page
+                </a></li>
+<li title="file-1">
+<a href="docb_transform.html#file-1">file/1</a></li>
+<li title="file-2">
+<a href="docb_transform.html#file-2">file/2</a></li>
+<li title="Module:head-0">
+<a href="docb_transform.html#Module:head-0">Module:head/0</a></li>
+<li title="Module:top-0">
+<a href="docb_transform.html#Module:top-0">Module:top/0</a></li>
+<li title="Module:bottom-0">
+<a href="docb_transform.html#Module:bottom-0">Module:bottom/0</a></li>
+<li title="Module:seealso-1">
+<a href="docb_transform.html#Module:seealso-1">Module:seealso/1</a></li>
+</ul>
+</li>
+<li title="docb_xml_check " expanded="false">docb_xml_check<ul>
+<li>
+<a href="docb_xml_check.html">
+                  Top of manual page
+                </a></li>
+<li title="validate-1">
+<a href="docb_xml_check.html#validate-1">validate/1</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>docb_transform</h1></center>
+  
+  <h3>MODULE</h3>
+<div class="REFBODY">docb_transform</div>
+  <h3>MODULE SUMMARY</h3>
+<div class="REFBODY">Transform XML to HTML</div>
+  <h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+    <p><span class="code">docb_transform</span> contains functions for transforming XML
+      documentation source code to HTML.</p>
+  </p></div>
+  <h3>EXPORTS</h3>
+    <p><a name="file-1"><span class="bold_code">file(File) -&gt; ok | {error, Reason}</span></a><br><a name="file-2"><span class="bold_code">file(File, Options) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">File = string()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Options = [Opt]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Opt -- see below</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Transforms XML documentation source code to HTML.</p>
+        <p><span class="code">File</span> is a documentation source file, given with or
+	  without the <span class="code">.xml</span> extension as <span class="code">Name.xml</span> or
+	  <span class="code">Name</span>.</p>
+	<p>If <span class="code">File</span> contains XML code according to a basic DTD
+	  (<span class="code">chapter</span>, <span class="code">erlref</span>, ...), the resulting HTML
+	  file is named <span class="code">Name.html</span>.</p>
+        <p>If <span class="code">File</span> contains XML code according to a compound DTD
+	  (<span class="code">application</span> or <span class="code">part</span>), several files are
+	  created:</p>
+	<ul>
+	  <li>A cover page for the application with two frames,
+	    <span class="code">Name_frame.html</span>.</li>
+	  <li>The contents of the left frame and a front page,
+	    <span class="code">Name.html</span> and <span class="code">Name_first.html</span>.</li>
+	  <li>A bibliography and a glossary, <span class="code">Name_cite.html</span>
+	    and <span class="code">Name_term.html</span>.</li>
+	  <li>In the case of an <span class="code">application</span> DTD an index
+	    is created, <span class="code">Name.kwc</span> and <span class="code">Name_index.html</span>.
+	  </li>
+	  <li>One HTML file for each file included from <span class="code">File</span>.
+	  </li>
+	  <li>Also, if there exists a <span class="code">fascicules.xml</span> file where
+	    the value of the <span class="code">entry</span> attribute for <span class="code">File</span> is
+	    <span class="code">"yes"</span>, the cover page is copied to <span class="code">index.html</span>.
+	  </li>
+	</ul>
+      </p></div>
+  
+  <h3><a name="id2257410">Options</a></h3>
+<div class="REFBODY">
+    
+    <dl>
+      <dt><strong><span class="code">{html_mod, Module}, Module=atom()</span></strong></dt>
+      <dd>
+	<p>A callback module can be used for specifying HTML snippets
+	  that should be included in the generated HTML files, see
+	  below.</p>
+      </dd>
+      <dt><strong><span class="code">{outdir, Dir}, Dir=string()</span></strong></dt>
+      <dd>
+        <p>Destination for generated files. Default is current working
+	  directory.</p>
+      </dd>
+      <dt><strong><span class="code">{number, Number}, Number=int()</span></strong></dt>
+      <dd>
+        <p>First chapter number when transforming a <span class="code">chapter</span>
+	  file. Default is 1.</p>
+      </dd>
+      <dt><strong><span class="code">{ptype, unix|windows}</span></strong></dt>
+      <dd>
+        <p>For <span class="code">path</span> elements, the specified file path should be
+	  presented.</p>
+      </dd>
+      <dt><strong><span class="code">silent</span></strong></dt>
+      <dd>
+        <p>Silent - no warnings, only error information is printed.</p>
+      </dd>
+      <dt><strong><span class="code">{top, Index}, Index=string()</span></strong></dt>
+      <dd>
+	<p>Specifies the value of "Top" in the left frame of a front
+	  page, which normally should be some kind of top index file
+	  for the documentation.</p>
+      </dd>
+      <dt><strong><span class="code">{vsn, Vsn}, Vsn=string()</span></strong></dt>
+      <dd>
+	<p>Application version number. Overrides a version number
+	  defined in the XML document. Visible in the left frame and
+	  on the front page.</p>
+      </dd>
+      <dt><strong><span class="code">{term_defs, File}, File=string()</span></strong></dt>
+      <dd>
+        <p>Use the global glossary definitions in <span class="code">File</span>, which
+	  should contain a list of tuples <span class="code">{Id, Name, Definition,
+	    Owner}</span>. See the section
+	  <span class="bold_code">
+<a href="../apps/docbuilder/inline_tags.html#termTAG">&lt;term&gt;,
+	    &lt;termdef&gt; - Glossary</a></span> in the User's Guide.
+	</p>
+      </dd>
+      <dt><strong><span class="code">{cite_defs, File}, File=string()</span></strong></dt>
+      <dd>
+        <p>Use the global bibliography definitions in <span class="code">File</span>, which
+	  should contain a list of tuples <span class="code">{Id, Title, Info,
+	    Owner}</span>. See the section
+	  <span class="bold_code">
+<a href="../apps/docbuilder/inline_tags.html#citeTAG">&lt;cite&gt;,
+	    &lt;citedef&gt; - Bibliography</a></span> in the User's
+	  Guide.</p>
+      </dd>
+    </dl>
+  </div>
+  <h3><a name="id2258826">Callback Module</a></h3>
+<div class="REFBODY">
+    
+    <p>A <span class="code">html_mod</span> callback module can include the functions
+      specified below. Note that there is no check that the resulting
+      HTML code is valid. All functions are optional.</p>
+  </div>
+  <h3>EXPORTS</h3>
+    <p><a name="Module:head-0"><span class="bold_code">Module:head() -&gt; string()</span></a><br></p>
+<div class="REFBODY"><p>
+	<p>Defines a HTML snippet to be included in the head of
+	  a document, after the <span class="code">&lt;HEAD&gt;</span> start tag and
+	  <span class="code">&lt;TITLE&gt;</span> tag:</p>
+	<div class="example"><pre>
+&lt;HTML&gt;
+&lt;HEAD&gt;
+  &lt;TITLE&gt;...&lt;/TITLE&gt;
+  - snippet is included here -
+  ...
+&lt;/HEAD&gt;
+...
+&lt;/HTML&gt;
+	</pre></div>
+      </p></div>
+    <p><a name="Module:top-0"><span class="bold_code">Module:top() -&gt; string()</span></a><br></p>
+<div class="REFBODY"><p>
+	<p>Defines a HTML snippet to be included at the top of a
+	  document, after the <span class="code">&lt;BODY&gt;</span> start tag.</p>
+      </p></div>
+    <p><a name="Module:bottom-0"><span class="bold_code">Module:bottom() -&gt; string()</span></a><br></p>
+<div class="REFBODY"><p>
+	<p>Defines a HTML snippet to be included at the bottom of a
+	  document, before the <span class="code">&lt;/BODY&gt;</span> end tag.</p>
+      </p></div>
+    <p><a name="Module:seealso-1"><span class="bold_code">Module:seealso(SeeAlso) -&gt; Href</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">SeeAlso = Href = string()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>When referring to another part of the document, or another
+	  document, the XML tag <span class="code">&lt;seealso&gt;</span> is used:
+	  <span class="code">&lt;seealso marker="File#Marker"&gt;...text...&lt;/seealso&gt;</span>.
+	  By default, this is translated to
+	  <span class="code">&lt;A HREF="File.html#Marker&gt;...text...&lt;/A&gt;</span>.</p>
+	<p>This function makes it possible to specify an alternative
+	  translation <span class="code">Href</span> of the <span class="code">marker</span> attribute value
+	  <span class="code">SeeAlso</span>. For example, in OTP this is used to resolve
+	  cross references between applications.</p>
+      </p></div>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1997-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

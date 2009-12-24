@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Mnesia Release Notes</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="mnesia.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Mnesia</strong><br><strong>Release Notes</strong><br><small>Version 4.4.12</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu"><li title="Mnesia Release Notes" expanded="true">Mnesia Release Notes<ul>
+<li>
+<a href="notes.html">
+              Top of chapter
+            </a></li>
+<li title="Mnesia 4.4.12">
+<a href="notes.html#id2253815">Mnesia 4.4.12</a></li>
+<li title="Mnesia 4.4.11">
+<a href="notes.html#id2253846">Mnesia 4.4.11</a></li>
+<li title="Mnesia 4.4.10">
+<a href="notes.html#id2253888">Mnesia 4.4.10</a></li>
+<li title="Mnesia 4.4.9">
+<a href="notes.html#id2261101">Mnesia 4.4.9</a></li>
+<li title="Mnesia 4.4.8">
+<a href="notes.html#id2261136">Mnesia 4.4.8</a></li>
+<li title="Mnesia 4.4.7">
+<a href="notes.html#id2261187">Mnesia 4.4.7</a></li>
+<li title="Mnesia 4.4.6">
+<a href="notes.html#id2259351">Mnesia 4.4.6</a></li>
+<li title="Mnesia 4.4.5">
+<a href="notes.html#id2259390">Mnesia 4.4.5</a></li>
+<li title="Mnesia 4.4.4">
+<a href="notes.html#id2259422">Mnesia 4.4.4</a></li>
+<li title="Mnesia 4.4.3">
+<a href="notes.html#id2259455">Mnesia 4.4.3</a></li>
+<li title="Mnesia 4.4.2">
+<a href="notes.html#id2259528">Mnesia 4.4.2</a></li>
+<li title="Mnesia 4.4.1">
+<a href="notes.html#id2254288">Mnesia 4.4.1</a></li>
+<li title="Mnesia 4.4">
+<a href="notes.html#id2254348">Mnesia 4.4</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Mnesia Release Notes</h1>
+  
+  <p>This document describes the changes made to the Mnesia system
+    from version to version.  The intention of this document is to
+    list all incompatibilities as well as all enhancements and
+    bugfixes for every release of Mnesia. Each release of Mnesia
+    thus constitutes one section in this document. The title of each
+    section is the version number of Mnesia.</p>
+  
+  <h3><a name="id2253815">1.1 
+        Mnesia 4.4.12</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            The documentation is now built with open source tools
+            (xsltproc and fop) that exists on most platforms. One
+            visible change is that the frames are removed.</p>
+          <p>
+            Own Id: OTP-8250</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2253846">1.2 
+        Mnesia 4.4.11</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            Fixed duplicate results with mnesia:index_read() on
+            ordered_set tables. Reported by Sam Bobroff. </p>
+	  <p>
+	    Fixed locking in mnesia:index_read() which now grabs a read
+            table lock to ensure correctness, this may slow down the
+            operation or block other processes trying to reach the
+            same table. </p>
+	  <p>
+	    Calling mnesia:dump_log() could crash mnesia,
+            Reported by Igor Ribeiro Sucupira.</p>
+          <p> Own Id: OTP-8074</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2253888">1.3 
+        Mnesia 4.4.10</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Mnesia crashed if a qlc query was running inside a
+            transaction when mnesia stopped at another node. Thanks
+            Teemu Antti-Poika.</p>
+          <p>
+            Own Id: OTP-7968</p>
+        </li>
+        <li>
+          <p>
+            Mnesia could crash when loading local_content tables.</p>
+          <p>
+            Own Id: OTP-8002 Aux Id: seq11277 </p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            Minor (smp) optimizations.</p>
+          <p>
+            Own Id: OTP-7928</p>
+        </li>
+      </ul>
+    
+    
+  
+  <h3><a name="id2261101">1.4 
+        Mnesia 4.4.9</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            mnesia:clear_table/1 crashed instead of returning
+            <span class="code">{aborted,..}</span> if it was called inside a
+            transaction.</p>
+          <p>
+            Own Id: OTP-7911</p>
+        </li>
+      </ul>
+    
+    
+  
+  <h3><a name="id2261136">1.5 
+        Mnesia 4.4.8</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            With bad timing several api functions could return or
+            exit with a bad error message when mnesia was shutting
+            down.</p>
+          <p>
+            Own Id: OTP-7753 Aux Id: seq11179 </p>
+        </li>
+        <li>
+          <p>
+            <span class="code">mnesia:clear_table/1</span> cleared all nodes table
+            content even if the table was <span class="code">local_content</span> only
+            type.</p>
+          <p>
+            Own Id: OTP-7835</p>
+        </li>
+      </ul>
+    
+    
+  
+ <h3><a name="id2261187">1.6 
+        Mnesia 4.4.7</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Disallowed match patterns ('_', and '$n') as argument to
+            <span class="code">mnesia:delete_object/1</span> and friends.</p>
+          <p>
+            Own Id: OTP-7524</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            Introduced a few new functions in Mnesia: <span class="code">mnesia:read/2</span>,
+            <span class="code">mnesia:first/3</span>, <span class="code">mnesia:last/3</span>, <span class="code">mnesia:prev/4</span>,
+            <span class="code">mnesia:next/4</span>, <span class="code">mnesia_frag:first/1</span>, <span class="code">mnesia_frag:last/1</span>,
+            <span class="code">mnesia_frag:prev/2</span>, <span class="code">mnesia_frag:next/2</span>.</p>
+          <p>
+            Own Id: OTP-7625</p>
+        </li>
+      </ul>
+    
+ <h3><a name="id2259351">1.7 
+        Mnesia 4.4.6</a></h3>    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            <span class="code">mnesia:restore/2</span> aborted if a <span class="code">EXIT</span> message
+            appeared in the client message queue.</p>
+          <p>
+            Own Id: OTP-7585 Aux Id: seq11046 </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2259390">1.8 
+        Mnesia 4.4.5</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    mnesia:clear_table/1 does not require that all
+            replicas of the table are available anymore.</p>
+          <p>
+            Own Id: OTP-7466 Aux Id: seq11015</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2259422">1.9 
+        Mnesia 4.4.4</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Mnesia did not garbage collect transaction decisions on
+            disk based nodes if no transactions where made on the
+            local node.</p>
+          <p>
+            Own Id: OTP-7419</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2259455">1.10 
+        Mnesia 4.4.3</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Table referred to by foreign key did not have node_pool
+            properly cleaned up when a node was removed from the
+            schema. Thanks Paul Mineiro.</p>
+          <p>
+            Own Id: OTP-7340</p>
+        </li>
+        <li>
+          <p>
+            Mnesia crashed and generated a core dump if a
+            schema_transaction was running when mnesia stopped.</p>
+          <p>
+            Own Id: OTP-7378 Aux Id: seq10964 </p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            It is now possible to delete a db node even when other
+            disk resident nodes are down. Thanks Paul Mineiro.</p>
+          <p>
+            Own Id: OTP-7383</p>
+        </li>
+      </ul>
+    
+  <h3><a name="id2259528">1.11 
+        Mnesia 4.4.2</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Sticky locks could lead to hanging transactions.</p>
+          <p>
+            Own Id: OTP-7205 Aux Id: seq10793 </p>
+        </li>
+        <li>
+          <p>
+            <span class="code">mnesia:snmp_get_next_index/2</span> didn't work with
+            partial index keys. Argument checking is now done
+            according to documentation, in functions
+            <span class="code">mnesia:snmp_get_row/2</span>,
+            <span class="code">mnesia:snmp_get_mnesia_key/2</span> and
+            <span class="code">mnesia:snmp_get_next_index/2</span>. These functions now
+            require that <span class="code">RowIndex</span> is a list.</p>
+          <p>
+            *** POTENTIAL INCOMPATIBILITY ***</p>
+          <p>
+            Own Id: OTP-7208</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2254288">1.12 
+        Mnesia 4.4.1</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Snmp index tables was not initialized correctly in
+            <span class="code">mnesia-4.4</span>.</p>
+          <p>
+            Own Id: OTP-7170 Aux Id: seq10870 </p>
+        </li>
+      </ul>
+    
+    <h4>Known Bugs and Problems</h4>
+      <ul>
+        <li>
+          <p>
+            Rearranging fragmented tables is an O(N^2) operation.</p>
+          <p>
+            Own Id: OTP-6300</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2254348">1.13 
+        Mnesia 4.4</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Mnesia ignored the module argument to
+            <span class="code">mnesia:restore/2</span>. Thanks Paul Minerio.</p>
+          <p>
+            Own Id: OTP-6981</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            Mnesia's snmp operations <span class="code">snmp_get_row/2</span>,
+            <span class="code">snmp_get_next_index/2</span> and
+            <span class="code">snmp_get_mnesia_key/2</span> have been made context
+            aware, i.e. inside a transaction they will compensate for
+            table updates made in earlier in the same transaction.
+            This might cause a performance drop if a lot of updates
+            have been made before the invocation of these functions.</p>
+          <p>
+            *** POTENTIAL INCOMPATIBILITY ***</p>
+          <p>
+            Own Id: OTP-6856 Aux Id: seq10671 </p>
+        </li>
+        <li>
+          <p>
+            Introduced erlang:phash/2 as new default for fragmented
+            tables. Already existing tables will continue to use
+            whatever hash function they where using.</p>
+          <p>
+            Own Id: OTP-6923</p>
+        </li>
+        <li>
+          <p>
+            Introduced <span class="code">mnesia:is_transaction/0</span>.</p>
+          <p>
+            Own Id: OTP-6995 Aux Id: seq10812 </p>
+        </li>
+      </ul>
+    
+    <h4>Known Bugs and Problems</h4>
+      <ul>
+        <li>
+          <p>
+            Rearranging fragmented tables is an O(N^2) operation.</p>
+          <p>
+            Own Id: OTP-6300</p>
+        </li>
+      </ul>
+    
+  
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1997-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

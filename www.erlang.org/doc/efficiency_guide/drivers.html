@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- Drivers</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="../pdf/otp-system-documentation.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Efficiency Guide</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../js/flipmenu">
+<li title="Introduction" expanded="false">Introduction<ul>
+<li>
+<a href="introduction.html">
+              Top of chapter
+            </a></li>
+<li title="Purpose">
+<a href="introduction.html#id2259534">Purpose</a></li>
+<li title="Prerequisites">
+<a href="introduction.html#id2258051">Prerequisites</a></li>
+</ul>
+</li>
+<li title="The Eight Myths of Erlang Performance" expanded="false">The Eight Myths of Erlang Performance<ul>
+<li>
+<a href="myths.html">
+              Top of chapter
+            </a></li>
+<li title="Myth: Funs are slow">
+<a href="myths.html#id2263963">Myth: Funs are slow</a></li>
+<li title="Myth: List comprehensions are slow">
+<a href="myths.html#id2252420">Myth: List comprehensions are slow</a></li>
+<li title="Myth: Tail-recursive functions are MUCH faster
+    than recursive functions">
+<a href="myths.html#id2256447">Myth: Tail-recursive functions are MUCH faster
+    than recursive functions</a></li>
+<li title="Myth: '++' is always bad">
+<a href="myths.html#id2259251">Myth: '++' is always bad</a></li>
+<li title="Myth: Strings are slow">
+<a href="myths.html#id2258139">Myth: Strings are slow</a></li>
+<li title="Myth: Repairing a Dets file is very slow">
+<a href="myths.html#id2256452">Myth: Repairing a Dets file is very slow</a></li>
+<li title="Myth: BEAM is a stack-based byte-code virtual machine (and therefore slow)">
+<a href="myths.html#id2256466">Myth: BEAM is a stack-based byte-code virtual machine (and therefore slow)</a></li>
+<li title="Myth: Use '_' to speed up your program when a variable is not used">
+<a href="myths.html#id2259957">Myth: Use '_' to speed up your program when a variable is not used</a></li>
+</ul>
+</li>
+<li title="Common Caveats" expanded="false">Common Caveats<ul>
+<li>
+<a href="commoncaveats.html">
+              Top of chapter
+            </a></li>
+<li title="The regexp module">
+<a href="commoncaveats.html#id2256371">The regexp module</a></li>
+<li title="The timer module">
+<a href="commoncaveats.html#id2259574">The timer module</a></li>
+<li title="list_to_atom/1">
+<a href="commoncaveats.html#id2251593">list_to_atom/1</a></li>
+<li title="length/1">
+<a href="commoncaveats.html#id2251487">length/1</a></li>
+<li title="setelement/3">
+<a href="commoncaveats.html#id2258633">setelement/3</a></li>
+<li title="size/1">
+<a href="commoncaveats.html#id2252188">size/1</a></li>
+<li title="split_binary/2">
+<a href="commoncaveats.html#id2256516">split_binary/2</a></li>
+<li title="The '--' operator">
+<a href="commoncaveats.html#id2251635">The '--' operator</a></li>
+</ul>
+</li>
+<li title="Constructing and matching binaries" expanded="false">Constructing and matching binaries<ul>
+<li>
+<a href="binaryhandling.html">
+              Top of chapter
+            </a></li>
+<li title="How binaries are implemented">
+<a href="binaryhandling.html#id2252289">How binaries are implemented</a></li>
+<li title="Constructing binaries">
+<a href="binaryhandling.html#id2259474">Constructing binaries</a></li>
+<li title="Matching binaries">
+<a href="binaryhandling.html#id2263824">Matching binaries</a></li>
+</ul>
+</li>
+<li title="List handling" expanded="false">List handling<ul>
+<li>
+<a href="listHandling.html">
+              Top of chapter
+            </a></li>
+<li title="Creating a list">
+<a href="listHandling.html#id2260830">Creating a list</a></li>
+<li title="List comprehensions">
+<a href="listHandling.html#id2262072">List comprehensions</a></li>
+<li title="Deep and flat lists">
+<a href="listHandling.html#id2262150">Deep and flat lists</a></li>
+<li title="Why you should not worry about recursive lists functions">
+<a href="listHandling.html#id2262303">Why you should not worry about recursive lists functions</a></li>
+</ul>
+</li>
+<li title="Functions" expanded="false">Functions<ul>
+<li>
+<a href="functions.html">
+              Top of chapter
+            </a></li>
+<li title="Pattern matching">
+<a href="functions.html#id2262443">Pattern matching</a></li>
+<li title="Function Calls ">
+<a href="functions.html#id2262691">Function Calls </a></li>
+<li title="Memory usage in recursion">
+<a href="functions.html#id2262842">Memory usage in recursion</a></li>
+</ul>
+</li>
+<li title="Tables and databases" expanded="false">Tables and databases<ul>
+<li>
+<a href="tablesDatabases.html">
+              Top of chapter
+            </a></li>
+<li title="Ets, Dets and Mnesia">
+<a href="tablesDatabases.html#id2262942">Ets, Dets and Mnesia</a></li>
+<li title="Ets specific">
+<a href="tablesDatabases.html#id2264413">Ets specific</a></li>
+<li title="Mnesia specific">
+<a href="tablesDatabases.html#id2264530">Mnesia specific</a></li>
+</ul>
+</li>
+<li title="Processes" expanded="false">Processes<ul>
+<li>
+<a href="processes.html">
+              Top of chapter
+            </a></li>
+<li title="Creation of an Erlang process">
+<a href="processes.html#id2264653">Creation of an Erlang process</a></li>
+<li title="Process messages">
+<a href="processes.html#id2264827">Process messages</a></li>
+<li title="The SMP emulator">
+<a href="processes.html#id2265045">The SMP emulator</a></li>
+</ul>
+</li>
+<li title="Drivers" expanded="true">Drivers<ul>
+<li>
+<a href="drivers.html">
+              Top of chapter
+            </a></li>
+<li title="Drivers and concurrency">
+<a href="drivers.html#id2265164">Drivers and concurrency</a></li>
+<li title="Avoiding copying of binaries when calling a driver">
+<a href="drivers.html#id2265214">Avoiding copying of binaries when calling a driver</a></li>
+<li title="Returning small binaries from a driver">
+<a href="drivers.html#id2265291">Returning small binaries from a driver</a></li>
+<li title="Returning big binaries without copying from a driver">
+<a href="drivers.html#id2265332">Returning big binaries without copying from a driver</a></li>
+</ul>
+</li>
+<li title="Advanced" expanded="false">Advanced<ul>
+<li>
+<a href="advanced.html">
+              Top of chapter
+            </a></li>
+<li title="Memory">
+<a href="advanced.html#id2265486">Memory</a></li>
+<li title="System limits">
+<a href="advanced.html#id2265856">System limits</a></li>
+</ul>
+</li>
+<li title="Profiling" expanded="false">Profiling<ul>
+<li>
+<a href="profiling.html">
+              Top of chapter
+            </a></li>
+<li title="Do not guess about performance - profile">
+<a href="profiling.html#id2266192">Do not guess about performance - profile</a></li>
+<li title="Big systems">
+<a href="profiling.html#id2266274">Big systems</a></li>
+<li title="What to look for">
+<a href="profiling.html#id2266300">What to look for</a></li>
+<li title="Tools">
+<a href="profiling.html#id2266367">Tools</a></li>
+<li title="Benchmarking">
+<a href="profiling.html#id2266861">Benchmarking</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>9 Drivers</h1>
+  
+  <p>This chapter provides a (very) brief overview on how to write efficient
+  drivers. It is assumed that you already have a good understanding of
+  drivers.</p>
+  <h3><a name="id2265164">9.1 
+        Drivers and concurrency</a></h3>
+    
+    <p>The run-time system will always take a lock before running
+    any code in a driver.</p>
+    <p>By default, that lock will be at the driver level, meaning that
+    if several ports has been opened to the same driver, only code for
+    one port at the same time can be running.</p>
+    <p>A driver can be configured to instead have one lock for each port.</p>
+    <p>If a driver is used in a functional way (i.e. it holds no state,
+    but only does some heavy calculation and returns a result), several
+    ports with registered names can be opened beforehand and the port to
+    be used can be chosen based on the scheduler ID like this:</p>
+    <div class="example"><pre>
+-define(PORT_NAMES(),
+	{some_driver_01, some_driver_02, some_driver_03, some_driver_04,
+	 some_driver_05, some_driver_06, some_driver_07, some_driver_08,
+	 some_driver_09, some_driver_10, some_driver_11, some_driver_12,
+	 some_driver_13, some_driver_14, some_driver_15, some_driver_16}).
+client_port() -&gt;
+    element(erlang:system_info(scheduler_id) rem tuple_size(?PORT_NAMES()) + 1,
+	    ?PORT_NAMES()).</pre></div>
+    <p>As long as there are no more than 16 schedulers, there will never
+    be any lock contention on the port lock for the driver.</p>	    
+  
+  <h3><a name="id2265214">9.2 
+        Avoiding copying of binaries when calling a driver</a></h3>
+    
+    <p>There are basically two ways to avoid copying a binary that is
+    sent to a driver.</p>
+    <p>If the <span class="code">Data</span> argument for
+    <span class="bold_code">
+<a href="../man/erlang.html#port_control-3">port_control/3</a></span>
+    is a binary, the driver will be passed a pointer to the contents of
+    the binary and the binary will not be copied.
+    If the <span class="code">Data</span> argument is an iolist (list of binaries and lists),
+    all binaries in the iolist will be copied.</p>
+    <p>Therefore, if you want to send both a pre-existing binary and some
+    additional data to a driver without copying the binary, you must call
+    <span class="code">port_control/3</span> twice; once with the binary and once with the
+    additional data. However, that will only work if there is only one
+    process communicating with the port (because otherwise another process
+    could call the driver in-between the calls).</p>
+    <p>Another way to avoid copying binaries is to implement an <span class="code">outputv</span>
+    callback (instead of an <span class="code">output</span> callback) in the driver.
+    If a driver has an <span class="code">outputv</span> callback, refc binaries passed
+    in an iolist in the <span class="code">Data</span> argument for
+    <span class="bold_code">
+<a href="../man/erlang.html#port_command-2">port_command/2</a></span>
+    will be passed as references to the driver.</p>
+  
+  <h3><a name="id2265291">9.3 
+        Returning small binaries from a driver</a></h3>
+    
+    <p>The run-time system can represent binaries up to 64 bytes as
+    heap binaries. They will always be copied when sent in a messages,
+    but they will require less memory if they are not sent to another
+    process and garbage collection is cheaper.</p>
+    <p>If you know that the binaries you return are always small,
+    you should use driver API calls that do not require a pre-allocated
+    binary, for instance
+    <span class="bold_code">
+<a href="../man/erl_driver.html#int%20driver_output-3">driver_output()</a></span>
+    or 
+    <span class="bold_code">
+<a href="../man/erl_driver.html#int%20driver_output_term-3">driver_output_term()</a></span>
+    using the <span class="code">ERL_DRV_BUF2BINARY</span> format,
+    to allow the run-time to construct a heap binary.</p>
+  
+  <h3><a name="id2265332">9.4 
+        Returning big binaries without copying from a driver</a></h3>
+    
+    <p>To avoid copying data when a big binary is sent or returned from
+    the driver to an Erlang process, the driver must first allocate the
+    binary and then send it to an Erlang process in some way.</p>
+    
+    <p>Use <span class="bold_code">
+<a href="../man/erl_driver.html#ErlDrvBinary*%20driver_alloc_binary-1">driver_alloc_binary()</a></span> to allocate a binary.</p>
+    <p>There are several ways to send a binary created with
+    <span class="code">driver_alloc_binary()</span>.</p>
+    <ul>
+    <li>
+<p>From the <span class="code">control</span> callback, a binary can be returned provided
+        that
+	<span class="bold_code">
+<a href="../man/erl_driver.html#void%20set_port_control_flags-2">set_port_control()</a></span>
+	 has been called with the flag value <span class="code">PORT_CONTROL_FLAG_BINARY</span>.</p>
+    </li>
+    <li><p>A single binary can be sent with
+    <span class="bold_code">
+<a href="../man/erl_driver.html#int%20driver_output_binary-6">driver_output_binary()</a></span>.</p></li>
+    <li>
+<p>Using
+    <span class="bold_code">
+<a href="../man/erl_driver.html#int%20driver_output_term-3">driver_output_term()</a></span>
+    or
+    <span class="bold_code">
+<a href="../man/erl_driver.html#int%20driver_send_term-4">driver_send_term()</a></span>,
+    a binary can be included in an Erlang term.</p>
+    </li>
+    </ul>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2001-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

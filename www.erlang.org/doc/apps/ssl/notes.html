@@ -1,0 +1,1148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- SSL Release Notes</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="ssl.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Secure Socket Layer </strong><br><strong>Release Notes</strong><br><small>Version 3.10.7</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu"><li title="SSL Release Notes" expanded="true">SSL Release Notes<ul>
+<li>
+<a href="notes.html">
+              Top of chapter
+            </a></li>
+<li title="SSL 3.10.7">
+<a href="notes.html#id2256793">SSL 3.10.7</a></li>
+<li title="SSL 3.10.6">
+<a href="notes.html#id2256867">SSL 3.10.6</a></li>
+<li title="SSL 3.10.5">
+<a href="notes.html#id2256897">SSL 3.10.5</a></li>
+<li title="SSL 3.10.4">
+<a href="notes.html#id2262674">SSL 3.10.4</a></li>
+<li title="SSL 3.10.3">
+<a href="notes.html#id2262705">SSL 3.10.3</a></li>
+<li title="SSL 3.10.2">
+<a href="notes.html#id2262752">SSL 3.10.2</a></li>
+<li title="SSL 3.10.1">
+<a href="notes.html#id2262784">SSL 3.10.1</a></li>
+<li title="SSL 3.10">
+<a href="notes.html#id2253479">SSL 3.10</a></li>
+<li title="SSL 3.9">
+<a href="notes.html#id2253601">SSL 3.9</a></li>
+<li title="SSL 3.1.1.1">
+<a href="notes.html#id2263316">SSL 3.1.1.1</a></li>
+<li title="SSL 3.1.1">
+<a href="notes.html#id2263352">SSL 3.1.1</a></li>
+<li title="SSL 3.1">
+<a href="notes.html#id2263391">SSL 3.1</a></li>
+<li title="SSL 3.0.12">
+<a href="notes.html#id2263433">SSL 3.0.12</a></li>
+<li title="SSL 3.0.11">
+<a href="notes.html#id2263483">SSL 3.0.11</a></li>
+<li title="SSL 3.0.10">
+<a href="notes.html#id2251736">SSL 3.0.10</a></li>
+<li title="SSL 3.0.9">
+<a href="notes.html#id2251769">SSL 3.0.9</a></li>
+<li title="SSL 3.0.8">
+<a href="notes.html#id2251806">SSL 3.0.8</a></li>
+<li title="Ssl 3.0.7">
+<a href="notes.html#id2251902">Ssl 3.0.7</a></li>
+<li title="Ssl 3.0.6">
+<a href="notes.html#id2251936">Ssl 3.0.6</a></li>
+<li title="Ssl 3.0.5">
+<a href="notes.html#id2251981">Ssl 3.0.5</a></li>
+<li title="Ssl 3.0.4">
+<a href="notes.html#id2252033">Ssl 3.0.4</a></li>
+<li title="Ssl 3.0.3">
+<a href="notes.html#id2252069">Ssl 3.0.3</a></li>
+<li title="SSL 3.0.2">
+<a href="notes.html#id2252145">SSL 3.0.2</a></li>
+<li title="SSL 3.0.1">
+<a href="notes.html#id2252194">SSL 3.0.1</a></li>
+<li title="SSL 3.0">
+<a href="notes.html#id2252243">SSL 3.0</a></li>
+<li title="SSL 2.3.6">
+<a href="notes.html#id2260969">SSL 2.3.6</a></li>
+<li title="SSL 2.3.5">
+<a href="notes.html#id2261019">SSL 2.3.5</a></li>
+<li title="SSL 2.3.4">
+<a href="notes.html#id2261102">SSL 2.3.4</a></li>
+<li title="SSL 2.3.3">
+<a href="notes.html#id2261149">SSL 2.3.3</a></li>
+<li title="SSL 2.3.2">
+<a href="notes.html#id2266536">SSL 2.3.2</a></li>
+<li title="SSL 2.3.1">
+<a href="notes.html#id2266587">SSL 2.3.1</a></li>
+<li title="SSL 2.3">
+<a href="notes.html#id2266622">SSL 2.3</a></li>
+<li title="SSL 2.2.1">
+<a href="notes.html#id2266635">SSL 2.2.1</a></li>
+<li title="SSL 2.2">
+<a href="notes.html#id2266648">SSL 2.2</a></li>
+<li title="SSL 2.1">
+<a href="notes.html#id2266790">SSL 2.1</a></li>
+<li title="SSL 2.0">
+<a href="notes.html#id2267036">SSL 2.0</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 SSL Release Notes</h1>
+  
+  <p>This document describes the changes made to the SSL application.
+    </p>
+<h3><a name="id2256793">1.1 
+        SSL 3.10.7</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            A ticker process could potentially be blocked
+            indefinitely trying to send a tick to a node not
+            responding. If this happened, the connection would not be
+            brought down as it should.</p>
+	  <p> This requires erts-5.7.4 and kernel-2.13.4 or later 
+	    to be able to get the erlang distribution over ssl to work.</p>
+          <p>
+            Own Id: OTP-8218</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            The documentation is now built with open source tools
+            (xsltproc and fop) that exists on most platforms. One
+            visible change is that the frames are removed.</p>
+          <p>
+            Own Id: OTP-8250</p>
+        </li>
+        <li>
+          <p>
+            Code cleanup from Kostis.</p>
+          <p>
+            Own Id: OTP-8260</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2256867">1.2 
+        SSL 3.10.6</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            The ssl:ssl_accept/3 issue was not properly fixed in the
+            previous patch, see OTP-8244.</p>
+          <p>
+            Own Id: OTP-8275 Aux Id: seq11451 </p>
+        </li>
+      </ul>
+    
+<h3><a name="id2256897">1.3 
+        SSL 3.10.5</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Allow clients to not send certificates if option
+            <span class="code">fail_if_no_peer_cert</span> was not set.</p>
+          <p>
+            Own Id: OTP-8224</p>
+        </li>
+        <li>
+            <p>A ssl:ssl_accept/3 could crash a connection if the
+            timing was wrong.</p> <p>Removed info message if the
+            socket closed without a proper disconnect from the ssl
+            layer. </p> <p>ssl:send/2 is now blocking until the
+            message is sent.</p>
+          <p>
+            Own Id: OTP-8244 Aux Id: seq11420 </p>
+        </li>
+      </ul>
+    
+<h3><a name="id2262674">1.4 
+        SSL 3.10.4</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            A client could avoid a certificate check if the client
+            code didn't send the requested certificate.</p>
+          <p>
+            Own Id: OTP-8137</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2262705">1.5 
+        SSL 3.10.3</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+            <p>Packet handling was not implemented correctly.</p>
+            <p>Inet option handling support have been improved.</p>
+            <p>The <span class="code">verify_fun</span> is now invoked even if
+            verify_peer is used, that implies that by default
+            {bad_cert,unknown_ca} is an accepted fault during the
+            client connection phase. The check can still be done by
+            suppling another verify_fun.</p>
+          <p>
+            Own Id: OTP-8011 Aux Id: seq11287 </p>
+        </li>
+      </ul>
+    
+<h3><a name="id2262752">1.6 
+        SSL 3.10.2</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            A "new_ssl" socket was not closed if the controlling
+            process died without calling ssl:close/1.</p>
+          <p>
+            Own Id: OTP-7963 Aux Id: seq11276 </p>
+        </li>
+      </ul>
+    
+<h3><a name="id2262784">1.7 
+        SSL 3.10.1</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Fixed bug that caused the ssl handshake finished message
+            to be calculated wrongly under the circumstances that the
+            server did not send the trusted cert and that the
+            previous cert did not have the extension telling us the
+            trusted certs name. This manifested it self as
+            bad_record_mac alert from the server.</p>
+          <p>
+            Own Id: OTP-7878</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            The cacertsfile option is now optional for ssl servers.</p>
+          <p>
+            Own Id: OTP-7656</p>
+        </li>
+        <li>
+          <p>
+            For the ssl client the options cacertfile, certfile and
+            keyfile are now optional as they are not always needed
+            depending on configuration of the client itself and the
+            configuration of the server. Also as PEM-files may
+            contain more than one entry the keyfile option will
+            default to the same file as given by the certfile option.</p>
+          <p>
+            Own Id: OTP-7870</p>
+        </li>
+        <li>
+          <p>
+            Added new ssl client option verify_fun.</p>
+          <p>
+            Own Id: OTP-7871</p>
+        </li>
+      </ul>
+    
+    
+  <h3><a name="id2253479">1.8 
+        SSL 3.10</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Error log entries are now formatted correctly.</p>
+          <p>
+            Own Id: OTP-7258</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            All handling of X509-certificates and public keys have
+            been moved to the new application public_key.</p>
+          <p>
+            Own Id: OTP-6894</p>
+        </li>
+        <li>
+          <p>
+            New ssl now supports SSL-3.0 and TLS-1.0</p>
+          <p>
+            Own Id: OTP-7037</p>
+        </li>
+        <li>
+          <p>
+            New ssl now supports all inet-packet types.</p>
+          <p>
+            Own Id: OTP-7039</p>
+        </li>
+        <li>
+          <p>
+            The new ssl-server is now able to send a certificate
+            request to the client. However new options may be
+            introduced later to fully support all features regarding
+            certificate requests.</p>
+          <p>
+            Own Id: OTP-7150</p>
+        </li>
+      </ul>
+    
+    <h4>Known Bugs and Problems</h4>
+      <ul>
+        <li>
+          <p>
+            Running erlang distribution over ssl don't work as
+            described in the documentation.</p>
+          <p>
+            Own Id: OTP-7536</p>
+        </li>
+      </ul>
+    
+    
+  
+    
+  <h3><a name="id2253601">1.9 
+        SSL 3.9</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            ssl_prim.erl was passing an FD rather than an #sslsocket
+            to ssl_broker:ssl_accept_prim. This could cause problems
+            in the deprecated accept function, this will not cause
+            any more problems however this function is deprecated!</p>
+          <p>
+            Own Id: OTP-6926</p>
+        </li>
+        <li>
+          <p>
+            Erlang distribution over ssl was broken after R11B-0,
+            this has now been fixed.</p>
+          <p>
+            Own Id: OTP-7004</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            All inet options are available in the new ssl
+            implementation that is released as a alfa in ssl-3.9 and
+            will replace the old implementation in ssl-4.0. This will
+            not be fixed in the old implementation.</p>
+          <p>
+            Own Id: OTP-4677</p>
+        </li>
+        <li>
+          <p>
+            The new ssl implementation released as a alfa in this
+            version supports upgrading of a tcp connection to a ssl
+            connection so that http client and servers may implement
+            RFC 2817.</p>
+          <p>
+            Own Id: OTP-5510</p>
+        </li>
+        <li>
+            <p>A new implementation of ssl is released as a alfa
+            version in ssl-3.9 it will later replace the old
+            implementation in ssl-4.0. The new implementation can be
+            accessed by providing the option {ssl_imp, new} to the
+            ssl:connect and ssl:listen functions.</p>
+            <p>The new implementation is Erlang based and all logic
+            is in Erlang and only payload encryption calculations are
+            done in C via the crypto application. The main reason for
+            making a new implementation is that the old solution was
+            very crippled as the control of the ssl-socket was deep
+            down in openssl making it hard if not impossible to
+            support all inet options, ipv6 and upgrade of a tcp
+            connection to a ssl connection. The alfa version has a
+            few limitations that will be removed before the ssl-4.0
+            release. Main differences and limitations in the alfa are
+            listed below.</p>
+          
+            <ul> <li>New ssl requires the crypto
+            application.</li> <li>The option reuseaddr is
+            supported and the default value is false as in gen_tcp.
+            Old ssl is patched to accept that the option is set to
+            true to provide a smoother migration between the
+            versions. In old ssl the option is hard coded to
+            true.</li> <li>ssl:version/0 is replaced by
+            ssl:versions/0</li> <li>ssl:ciphers/0 is replaced by
+            ssl:cipher_suites/0</li> <li>ssl:pid/1 is a
+            meaningless function in new ssl and will be deprecated in
+            ssl-4.0 until it is removed it will return a valid but
+            meaningless pid.</li> <li>New API functions are
+            ssl:shutdown/2, ssl:cipher_suites/[0,1] and
+            ssl:versions/0</li> <li>Diffie-Hellman keyexchange is
+            not supported.</li> <li>Not all inet packet types are
+            supported.</li> <li>CRL and policy certificate
+            extensions are not supported.</li> <li>In this alfa
+            only sslv3 is enabled, although tlsv1 and tlsv1.1
+            versions are implemented and will be supported in future
+            versions.</li> <li>For security reasons sslv2 is not
+            supported.</li> </ul> 
+          <p>
+            Own Id: OTP-6619</p>
+        </li>
+        <li>
+          <p>
+            New ssl implementation, released as alfa in ssl-3.9,
+            supports ipv6. It will not be supported in the old
+            implementation.</p>
+          <p>
+            Own Id: OTP-6637 Aux Id: OTP-6636 </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2263316">1.10 
+        SSL 3.1.1.1</a></h3>
+    
+    <h4>Minor Makefile changes</h4>
+      
+      <ul>
+        <li>
+          <p>Removed use of <span class="code">erl_flags</span> from Makefile.</p>
+          <p>Own Id: OTP-6689</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2263352">1.11 
+        SSL 3.1.1</a></h3>
+    
+    <h4>Crash on error in ssl_accept</h4>
+      
+      <ul>
+        <li>
+          <p>A bug in ssl_accept could cause all ssl
+            connections to hang when a connection
+            attempt was closed by the client while
+            the server was in <span class="code">ssl_accept</span>.</p>
+          <p>Own Id: OTP-6612 Aux Id: seq10599</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2263391">1.12 
+        SSL 3.1</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>SSL now uses a two-phase accept, with a separate accept
+            calls for the socket and the ssl protocol. This avoids
+            timeouts when a client doesn't initiate ssl handshake.</p>
+          <p>With the old implementation of accept, the server
+            was locked by a client, if the client didn't do
+            proper ssl handshake.</p>
+          <p>Own Id: OTP-6418 Aux Id: seq10105</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2263433">1.13 
+        SSL 3.0.12</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>An integer array pointing to a struct pollfd array, is
+            now reset before file descriptors are collected to be
+            included in a call to poll(). This is to prevent file
+            descriptors to be mixed up.</p>
+          <p>Own Id: OTP-6084</p>
+        </li>
+        <li>
+          <p>The generation of the module ssl_pkix_oid contained
+            multiple identifiers, which made the mapping between
+            atoms and identifiers not one-to-one.</p>
+          <p>Own Id: OTP-6085</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2263483">1.14 
+        SSL 3.0.11</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The state of a connection in active mode could be in a
+            restrictive state, so that an internal tcp_closed message
+            was incorrectly considered illegal, resulting in a
+            premature termination of the connection process.</p>
+          <p>Own Id: OTP-5972 Aux Id: seq10188 </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251736">1.15 
+        SSL 3.0.10</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Erlang distribution over SSL was broken. Corrected.
+            (Thanks to Fredrik Thulin.)</p>
+          <p>Own Id: OTP-5863</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251769">1.16 
+        SSL 3.0.9</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The port program for the ssl application could waste huge
+            amounts of CPU time if a write could not be completed
+            directly and was put in the write queue. (Only on platforms
+            where poll() is used, such as Solaris and Linux.)</p>
+          <p>Own Id: OTP-5784</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251806">1.17 
+        SSL 3.0.8</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>A process reading only a portion of a sufficiently large
+            amount of data from an accepted socket, and then quering
+            the ssl library (e.g. ssl:getpeername()), would cause a
+            global deadlock in the esock port program.</p>
+          <p>Own Id: OTP-5702</p>
+        </li>
+        <li>
+          <p>A spelling error in the module <span class="code">ssl_pkix</span> caused the
+            call to <span class="code">ssl:peercert/2</span> to fail when the option
+            <span class="code">subject</span> was used.</p>
+          <p>Own Id: OTP-5708</p>
+        </li>
+        <li>
+          <p>Because fopen() on Solaris 8 can't handle file
+            descriptor numbers above 255, reading of certificate
+            files would fail if all file descriptors below 256 were
+            in use (typically, if many connections were open). This
+            problem has been worked around.</p>
+          <p>The ssl application's port program used to use
+            select(), which meant that it could not handle more than
+            FD_SETSIZE file descriptors (usually 1024). To eliminate
+            that limitation, poll() is now used on all platforms that
+            support it.</p>
+          <p>Solaris/Sparc, 64-bit emulator: The SO_REUSEADDR
+            option was not set for listen sockets, which essentially
+            made the ssl application unusable. Corrected.</p>
+          <p>The default listen queue size for ssl port program was
+            changed to 128 (from 5).</p>
+          <p>Own Id: OTP-5755 Aux Id: seq10068 </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251902">1.18 
+        Ssl 3.0.7</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The R/W buffer length i esock.c was too small. It has
+            been increased from 4k to 32k.</p>
+          <p>Own Id: OTP-5620</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251936">1.19 
+        Ssl 3.0.6</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>A configuration option for choosing protocol versions has
+            been added (<span class="code">sslv2</span>, <span class="code">sslv3</span>, and
+            <span class="code">tlsv1</span>).</p>
+          <p>Own Id: OTP-5429 Aux Id: seq9755 </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251981">1.20 
+        Ssl 3.0.5</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Linked in drivers in the crypto, and asn1 applications
+            are now compiled with the -D_THREAD_SAFE and -D_REENTRANT
+            switches on unix when the emulator has thread support
+            enabled.</p>
+          <p>Linked in drivers on MacOSX are not compiled with the
+            undocumented -lbundle1.o switch anymore. Thanks to Sean
+            Hinde who sent us a patch.</p>
+          <p>Linked in driver in crypto, and port programs in ssl, now
+            compiles on OSF1.</p>
+          <p>Minor makefile improvements in runtime_tools.</p>
+          <p>Own Id: OTP-5346</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2252033">1.21 
+        Ssl 3.0.4</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p><span class="code">ssl:recv/3</span> with finite timeout value, closed the
+            connection at timeout.</p>
+          <p>Own Id: OTP-4882</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2252069">1.22 
+        Ssl 3.0.3</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>When a file descriptor was marked for closing, and and
+            end-of-file condition had already been detected, the file
+            descriptor was never closed.</p>
+          <p>Own Id: OTP-5093 Aux Id: seq8806 </p>
+        </li>
+        <li>
+          <p>When the number of open file descriptors reached
+            FD_SETSIZE, the SSL port program entered a busy loop.</p>
+          <p>Own Id: OTP-5094 Aux Id: seq8806 </p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>The SSL application now supports SSL sessions for
+            servers, which typically speeds up HTTP requests from
+            browsers.</p>
+          <p>Own Id: OTP-5095</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2252145">1.23 
+        SSL 3.0.2</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The UTF8String type is now defined in asn1-1.4.4.2 and
+            later.  Therefore the definitions of UTF8String has been
+            removed from the ASN.1 modules PKIX1Explicit88.asn1 and
+            PKIXAttributeCertificate.asn1. The SSL application can now
+            only be built using asn-1.4.4.2 or later.</p>
+          <p>OwnId: OTP-4971.</p>
+        </li>
+      </ul>
+    
+    <h4>Known Bugs and Problems</h4>
+      
+      <p>See SSL-3.0.
+        </p>
+    
+  
+  <h3><a name="id2252194">1.24 
+        SSL 3.0.1</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>An unexpected object identifier would crash <span class="code">ssl:peercert</span>. </p>
+          <p>OwnId: OTP-4771.</p>
+        </li>
+      </ul>
+    
+    <h4>Known Bugs and Problems</h4>
+      
+      <p>See SSL-3.0.
+        </p>
+    
+  
+  <h3><a name="id2252243">1.25 
+        SSL 3.0</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>The <span class="code">cache_timout</span> option was silently ignored. It had 
+            to do with SSL sessions, where multiple connections can occur.
+            Since the Erlang SSL application does not support sessions the
+            option is still ignored, and consequently  the documentation 
+            about it has been removed.</p>
+          <p>OwnId: OTP-3146</p>
+        </li>
+        <li>
+          <p>The Erlang SSL application is now based on OpenSSL version
+            0.9.7a. OpenSSL 0.9.6 should also work.</p>
+          <p>OwnId: OTP-4002</p>
+        </li>
+        <li>
+          <p>When connecting it is now possible to bind to a local address
+            and local port. </p>
+          <p>OwnId: OTP-4675</p>
+        </li>
+        <li>
+          <p>The <span class="code">ssl_esock</span> port program is now part of the
+            distribution and thus does not have to be created
+            explicitly.  It is dynamically linked to OpenSSL
+            libraries in a "standard" location (typically
+            <span class="code">/usr/local/lib</span> on UNIX; in the path on Win32).</p>
+          <p>OwnId:
+            OTP-4676</p>
+        </li>
+        <li>
+          <p>The new functions <span class="code">ssl:peercert/1/2</span> provide information
+            from the certificate of a peer of a connection.</p>
+          <p>OwnId: OTP-4680 
+                        <br>
+Aux Id: seq7688</p>
+        </li>
+        <li>
+          <p>The function <span class="code">ssl:port/1</span> has been removed from the 
+            documentation, but not from the <span class="code">ssl</span> interface module. 
+            The recommendation is to use <span class="code">ssl:peername/1</span>
+            instead, which provides both address and port of the peer.</p>
+          <p>OwnId: OTP-4681 </p>
+        </li>
+        <li>
+          <p>New User's Guide documentation has been added.</p>
+          <p>OwnId: OTP-4682 </p>
+        </li>
+        <li>
+          <p>The old <span class="code">ssl_socket</span> interface has been removed and also
+            the documentation of it. </p>
+          <p>OwnId: OTP-4683 </p>
+        </li>
+        <li>
+          <p>The use of ephemeral RSA keys is now supported. It is
+            a global configuration option (see the ssl(6) manual page).</p>
+          <p>OwnId: OTP-4691.</p>
+        </li>
+      </ul>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The option <span class="code">cacertfile</span> is now in effect, and can
+            therefore no longer be set with the OS environment
+            variable SSL_CERT_FILE (which did set the same value for
+            all connections).  </p>
+          <p>OwnId: OTP-3146</p>
+        </li>
+        <li>
+          <p>There was a synchronization error at closing of an SSL 
+            connection. </p>
+          <p>OwnId: OTP-4435
+                        <br>
+Aux Id: seq7534</p>
+        </li>
+        <li>
+          <p>C macros in <span class="code">debuglog.c</span> were not ANSI C compliant.</p>
+          <p>OwnId: OTP-4674</p>
+        </li>
+        <li>
+          <p>The <span class="code">binary</span> option was not properly handled.</p>
+          <p>OwnId: OTP-4678</p>
+        </li>
+        <li>
+          <p>The <span class="code">ssl:format_error/1</span> did not consider <span class="code">inet</span>
+            error codes, nor did it have a catch all for unknown error
+            codes.</p>
+          <p>OwnId: OTP-4679</p>
+        </li>
+      </ul>
+    
+    <h4>Known Bugs and Problems</h4>
+      
+      <ul>
+        <li>
+          <p>Change of controlling process in not OTP compliant. </p>
+          <p>OwnId; OTP-4712</p>
+        </li>
+        <li>
+          <p>There is still no way to restrict the cipher sizes. </p>
+          <p>OwnId: OTP-4712</p>
+        </li>
+        <li>
+          <p>The <span class="code">keep_alive</span> and <span class="code">reuse_addr</span> options will be
+            added in a future release.  </p>
+          <p>OwnId: OTP-4677</p>
+        </li>
+        <li>
+          <p>There is currently no way to restrict the SSL/TLS
+            protocol versions to use. In a future release this will be
+            supported as a configuration option, and as an option for
+            each connection as well.  </p>
+          <p>OwnId: OTP-4711.</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2260969">1.26 
+        SSL 2.3.6</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>There was a synchronization error at closing, which could 
+            result in that an SSL socket was removed prematurely, resulting
+            in that a user process referring to it received an unexpected
+            exit.</p>
+          <p>OwnId: OTP-4435
+                        <br>
+Aux Id: seq7600</p>
+        </li>
+      </ul>
+    
+    <h4>Known Bugs and Problems</h4>
+      
+      <p>See SSL 2.2 .  </p>
+    
+  
+  <h3><a name="id2261019">1.27 
+        SSL 2.3.5</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Setting of the option `nodelay' caused the SSL port program
+            to dump core.</p>
+          <p>OwnId: OTP-4380
+                        <br>
+Aux Id: -</p>
+        </li>
+        <li>
+          <p>Setting of the option '{active, once}' in <span class="code">setopts</span> was 
+            wrong, causing a correct socket message to be regarded as
+            erroneous. </p>
+          <p>OwnId: OTP-4380 
+                        <br>
+Aux Id: -</p>
+        </li>
+        <li>
+          <p>A self-signed peer certificate was always rejected with the
+            error `eselfsignedcert', irrespective of the `depth' value. </p>
+          <p>OwnId: OTP-4374
+                        <br>
+Aux Id: seq7417</p>
+        </li>
+      </ul>
+    
+    <h4>Known Bugs and Problems</h4>
+      
+      <p>See SSL 2.2 .  </p>
+    
+  
+  <h3><a name="id2261102">1.28 
+        SSL 2.3.4</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>All TCP options allowed in gen_tcp, are now also allowed in
+            SSL, except the option <span class="code">{reuseaddr, Boolean}</span>. A new
+            function <span class="code">getopts</span> has been added to the SSL interface
+            module <span class="code">ssl</span>. </p>
+          <p>OwnId: OTP-4305, OTP-4159</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2261149">1.29 
+        SSL 2.3.3</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The roles of the SSLeay and OpenSSL packages has been
+            clarified in the ssl(6) application manual page. Also
+            the URLs from which to download SSLeay has been updated.</p>
+          <p>OwnId: OTP-4002
+                        <br>
+Aux Id: seq5269</p>
+        </li>
+        <li>
+          <p>A call to <span class="code">ssl:listen(Port, Options)</span> with
+            <span class="code">Options = []</span> resulted in the cryptic <span class="code">{error, ebadf}</span> return value. The return value has been changed
+            to <span class="code">{error, enooptions}</span>, and the behaviour has been
+            documented in the <span class="code">listen/2</span> function.</p>
+          <p>OwnId: OTP-4016 
+                        <br>
+Aux Id: seq7006</p>
+        </li>
+        <li>
+          <p>Use of the option <span class="code">{nodelay, boolean()}</span> crashed
+            the <span class="code">ssl_server</span>.</p>
+          <p>OwnId: OTP-4070
+                        <br>
+Aux Id:</p>
+        </li>
+        <li>
+          <p>A bug caused the Erlang distribution over ssl to fail.
+            This bug has now been fixed.</p>
+          <p>OwnId: OTP-4072
+                        <br>
+Aux Id:</p>
+        </li>
+        <li>
+          <p>On Windows when the SSL port program encountered an
+            error code not anticipated it crashed.  </p>
+          <p>OwnId: OTP-4132
+                        <br>
+Aux Id:</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2266536">1.30 
+        SSL 2.3.2</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The <span class="code">ssl:accept/1-2</span> function sometimes returned
+            <span class="code">{error, {What, Where}}</span> instead of <span class="code">{error, What}</span>, where <span class="code">What</span> is an atom.  </p>
+          <p>OwnId: OTP-3775
+                        <br>
+Aux Id: seq4991</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2266587">1.31 
+        SSL 2.3.1</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Sometimes the SSL portprogram would loop in an accept
+            loop, without terminating even when the SSL application
+            was stopped..  </p>
+          <p>OwnId: OTP-3691</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2266622">1.32 
+        SSL 2.3</a></h3>
+    
+    <p>Functions have been added to SSL to experimentally support 
+      Erlang distribution.
+      </p>
+  
+  <h3><a name="id2266635">1.33 
+        SSL 2.2.1</a></h3>
+    
+    <p>The 2.2.1 version of SSL provides code replacement in runtime
+      by upgrading from, or downgrading to, versions 2.1 and 2.2.
+      </p>
+  
+  <h3><a name="id2266648">1.34 
+        SSL 2.2</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>The restriction that only the creator of an SSL socket can
+            read from and write to the socket has been lifted.</p>
+          <p>OwnId: OTP-3301</p>
+        </li>
+        <li>
+          <p>The option <span class="code">{packet, cdr}</span> for SSL sockets has been added,
+            which means that SSL sockets also supports CDR encoded packets.</p>
+          <p>OwnId: OTP-3302</p>
+        </li>
+      </ul>
+    
+    <h4>Known Bugs and Problems</h4>
+      
+      <ul>
+        <li>
+          <p>Setting of a CA certificate file with the <span class="code">cacertfile</span>
+            option (in calls to <span class="code">ssl:accept/1/2</span> or 
+            <span class="code">ssl:connect/3/4</span>) does not work due to weaknesses
+            in the SSLeay package. </p>
+          <p>A work-around is to set the OS environment variable
+            <span class="code">SSL_CERT_FILE</span> before SSL is started. However, then
+            the CA certificate file will be global for all connections.</p>
+          <p>OwnId: OTP-3146</p>
+        </li>
+        <li>
+          <p>When changing controlling process of an SSL socket, a 
+            temporary process is started, which is not gen_server
+            compliant.</p>
+          <p>OwnId: OTP-3146</p>
+        </li>
+        <li>
+          <p>Although there is a <span class="code">cache</span> timeout option, it is
+            silently ignored.</p>
+          <p>OwnId: OTP-3146</p>
+        </li>
+        <li>
+          <p>There is currently no way to restrict the cipher sizes.</p>
+          <p>OwnId: OTP-3146</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2266790">1.35 
+        SSL 2.1</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>The set of possible error reasons has been extended to
+            contain diagnostics on erroneous certificates and failures
+            to verify certificates.</p>
+          <p>OwnId: OTP-3145</p>
+        </li>
+        <li>
+          <p>The maximum number of simultaneous SSL connections on
+            Windows has been increased from 31 to 127.</p>
+          <p>OwnId: OTP-3145</p>
+        </li>
+      </ul>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>A dead-lock occurring when write queues are not empty has 
+            been removed.  </p>
+          <p>OwnId: OTP-3145</p>
+        </li>
+        <li>
+          <p>Error reasons have been unified and changed.</p>
+          <p>(** POTENTIAL INCOMPATIBILITY **)</p>
+          <p>OwnId: OTP-3145</p>
+        </li>
+        <li>
+          <p>On Windows a check of the existence of the environment
+            variable <span class="code">ERLSRV_SERVICE_NAME</span> has been added. If
+            that variable is defined, the port program of the SSL
+            application will not terminated when a user logs off.</p>
+          <p>OwnId: OTP-3145</p>
+        </li>
+        <li>
+          <p>An error in the setting of the <span class="code">nodelay</span> option 
+            has been corrected.</p>
+          <p>OwnId: OTP-3145</p>
+        </li>
+        <li>
+          <p>The confounded notions of verify mode and verify depth has
+            been corrected. The option <span class="code">verifydepth</span> has been 
+            removed, and the two separate options <span class="code">verify</span> and
+            <span class="code">depth</span> has been added.</p>
+          <p>(** POTENTIAL INCOMPATIBILITY **)</p>
+          <p>OwnId: OTP-3145</p>
+        </li>
+      </ul>
+    
+    <h4>Known Bugs and Problems</h4>
+      
+      <ul>
+        <li>
+          <p>Setting of a CA certificate file with the <span class="code">cacertfile</span>
+            option (in calls to <span class="code">ssl:accept/1/2</span> or 
+            <span class="code">ssl:connect/3/4</span>) does not work due to weaknesses
+            in the SSLeay package. </p>
+          <p>A work-around is to set the OS environment variable
+            <span class="code">SSL_CERT_FILE</span> before SSL is started. However, then
+            the CA certificate file will be global for all connections.</p>
+          <p>OwnId: OTP-3146</p>
+        </li>
+        <li>
+          <p>When changing controlling process of an SSL socket, a 
+            temporary process is started, which is not gen_server
+            compliant.</p>
+          <p>OwnId: OTP-3146</p>
+        </li>
+        <li>
+          <p>Although there is a <span class="code">cache</span> timeout option, it is
+            silently ignored.</p>
+          <p>OwnId: OTP-3146</p>
+        </li>
+        <li>
+          <p>There is currently no way to restrict the cipher sizes.</p>
+          <p>OwnId: OTP-3146</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2267036">1.36 
+        SSL 2.0</a></h3>
+    
+    <p>A complete new version of SSL with separate I/O channels
+      for all connections with non-blocking I/O multiplexing.</p>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

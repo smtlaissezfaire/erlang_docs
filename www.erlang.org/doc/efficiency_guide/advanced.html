@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- Advanced</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="../pdf/otp-system-documentation.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Efficiency Guide</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../js/flipmenu">
+<li title="Introduction" expanded="false">Introduction<ul>
+<li>
+<a href="introduction.html">
+              Top of chapter
+            </a></li>
+<li title="Purpose">
+<a href="introduction.html#id2259534">Purpose</a></li>
+<li title="Prerequisites">
+<a href="introduction.html#id2258051">Prerequisites</a></li>
+</ul>
+</li>
+<li title="The Eight Myths of Erlang Performance" expanded="false">The Eight Myths of Erlang Performance<ul>
+<li>
+<a href="myths.html">
+              Top of chapter
+            </a></li>
+<li title="Myth: Funs are slow">
+<a href="myths.html#id2263963">Myth: Funs are slow</a></li>
+<li title="Myth: List comprehensions are slow">
+<a href="myths.html#id2252420">Myth: List comprehensions are slow</a></li>
+<li title="Myth: Tail-recursive functions are MUCH faster
+    than recursive functions">
+<a href="myths.html#id2256447">Myth: Tail-recursive functions are MUCH faster
+    than recursive functions</a></li>
+<li title="Myth: '++' is always bad">
+<a href="myths.html#id2259251">Myth: '++' is always bad</a></li>
+<li title="Myth: Strings are slow">
+<a href="myths.html#id2258139">Myth: Strings are slow</a></li>
+<li title="Myth: Repairing a Dets file is very slow">
+<a href="myths.html#id2256452">Myth: Repairing a Dets file is very slow</a></li>
+<li title="Myth: BEAM is a stack-based byte-code virtual machine (and therefore slow)">
+<a href="myths.html#id2256466">Myth: BEAM is a stack-based byte-code virtual machine (and therefore slow)</a></li>
+<li title="Myth: Use '_' to speed up your program when a variable is not used">
+<a href="myths.html#id2259957">Myth: Use '_' to speed up your program when a variable is not used</a></li>
+</ul>
+</li>
+<li title="Common Caveats" expanded="false">Common Caveats<ul>
+<li>
+<a href="commoncaveats.html">
+              Top of chapter
+            </a></li>
+<li title="The regexp module">
+<a href="commoncaveats.html#id2256371">The regexp module</a></li>
+<li title="The timer module">
+<a href="commoncaveats.html#id2259574">The timer module</a></li>
+<li title="list_to_atom/1">
+<a href="commoncaveats.html#id2251593">list_to_atom/1</a></li>
+<li title="length/1">
+<a href="commoncaveats.html#id2251487">length/1</a></li>
+<li title="setelement/3">
+<a href="commoncaveats.html#id2258633">setelement/3</a></li>
+<li title="size/1">
+<a href="commoncaveats.html#id2252188">size/1</a></li>
+<li title="split_binary/2">
+<a href="commoncaveats.html#id2256516">split_binary/2</a></li>
+<li title="The '--' operator">
+<a href="commoncaveats.html#id2251635">The '--' operator</a></li>
+</ul>
+</li>
+<li title="Constructing and matching binaries" expanded="false">Constructing and matching binaries<ul>
+<li>
+<a href="binaryhandling.html">
+              Top of chapter
+            </a></li>
+<li title="How binaries are implemented">
+<a href="binaryhandling.html#id2252289">How binaries are implemented</a></li>
+<li title="Constructing binaries">
+<a href="binaryhandling.html#id2259474">Constructing binaries</a></li>
+<li title="Matching binaries">
+<a href="binaryhandling.html#id2263824">Matching binaries</a></li>
+</ul>
+</li>
+<li title="List handling" expanded="false">List handling<ul>
+<li>
+<a href="listHandling.html">
+              Top of chapter
+            </a></li>
+<li title="Creating a list">
+<a href="listHandling.html#id2260830">Creating a list</a></li>
+<li title="List comprehensions">
+<a href="listHandling.html#id2262072">List comprehensions</a></li>
+<li title="Deep and flat lists">
+<a href="listHandling.html#id2262150">Deep and flat lists</a></li>
+<li title="Why you should not worry about recursive lists functions">
+<a href="listHandling.html#id2262303">Why you should not worry about recursive lists functions</a></li>
+</ul>
+</li>
+<li title="Functions" expanded="false">Functions<ul>
+<li>
+<a href="functions.html">
+              Top of chapter
+            </a></li>
+<li title="Pattern matching">
+<a href="functions.html#id2262443">Pattern matching</a></li>
+<li title="Function Calls ">
+<a href="functions.html#id2262691">Function Calls </a></li>
+<li title="Memory usage in recursion">
+<a href="functions.html#id2262842">Memory usage in recursion</a></li>
+</ul>
+</li>
+<li title="Tables and databases" expanded="false">Tables and databases<ul>
+<li>
+<a href="tablesDatabases.html">
+              Top of chapter
+            </a></li>
+<li title="Ets, Dets and Mnesia">
+<a href="tablesDatabases.html#id2262942">Ets, Dets and Mnesia</a></li>
+<li title="Ets specific">
+<a href="tablesDatabases.html#id2264413">Ets specific</a></li>
+<li title="Mnesia specific">
+<a href="tablesDatabases.html#id2264530">Mnesia specific</a></li>
+</ul>
+</li>
+<li title="Processes" expanded="false">Processes<ul>
+<li>
+<a href="processes.html">
+              Top of chapter
+            </a></li>
+<li title="Creation of an Erlang process">
+<a href="processes.html#id2264653">Creation of an Erlang process</a></li>
+<li title="Process messages">
+<a href="processes.html#id2264827">Process messages</a></li>
+<li title="The SMP emulator">
+<a href="processes.html#id2265045">The SMP emulator</a></li>
+</ul>
+</li>
+<li title="Drivers" expanded="false">Drivers<ul>
+<li>
+<a href="drivers.html">
+              Top of chapter
+            </a></li>
+<li title="Drivers and concurrency">
+<a href="drivers.html#id2265164">Drivers and concurrency</a></li>
+<li title="Avoiding copying of binaries when calling a driver">
+<a href="drivers.html#id2265214">Avoiding copying of binaries when calling a driver</a></li>
+<li title="Returning small binaries from a driver">
+<a href="drivers.html#id2265291">Returning small binaries from a driver</a></li>
+<li title="Returning big binaries without copying from a driver">
+<a href="drivers.html#id2265332">Returning big binaries without copying from a driver</a></li>
+</ul>
+</li>
+<li title="Advanced" expanded="true">Advanced<ul>
+<li>
+<a href="advanced.html">
+              Top of chapter
+            </a></li>
+<li title="Memory">
+<a href="advanced.html#id2265486">Memory</a></li>
+<li title="System limits">
+<a href="advanced.html#id2265856">System limits</a></li>
+</ul>
+</li>
+<li title="Profiling" expanded="false">Profiling<ul>
+<li>
+<a href="profiling.html">
+              Top of chapter
+            </a></li>
+<li title="Do not guess about performance - profile">
+<a href="profiling.html#id2266192">Do not guess about performance - profile</a></li>
+<li title="Big systems">
+<a href="profiling.html#id2266274">Big systems</a></li>
+<li title="What to look for">
+<a href="profiling.html#id2266300">What to look for</a></li>
+<li title="Tools">
+<a href="profiling.html#id2266367">Tools</a></li>
+<li title="Benchmarking">
+<a href="profiling.html#id2266861">Benchmarking</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>10 Advanced</h1>
+  
+  <h3><a name="id2265486">10.1 
+        Memory</a></h3>
+    
+    <p>A good start when programming efficiently is to have knowledge about
+      how much memory different data types and operations require. It is
+      implementation-dependent how much memory the Erlang data types and
+      other items consume, but here are some figures for
+      erts-5.2 system (OTP release R9B). (There have been no significant
+      changes in R13.)</p>
+      <p>The unit of measurement is memory words. There exists both a 32-bit
+      and a 64-bit implementation, and a word is therefore, 4 bytes or
+      8 bytes, respectively.</p>
+    <table border="1" cellpadding="2" cellspacing="0">
+<tr>
+        <td align="left" valign="middle">Data type</td>
+        <td align="left" valign="middle">Memory size</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Integer (-16#7FFFFFF &lt; i &lt;16#7FFFFFF)</td>
+        <td align="left" valign="middle">1 word</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Integer (big numbers)</td>
+        <td align="left" valign="middle">3..N words</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Atom</td>
+        <td align="left" valign="middle">1 word. Note: an atom refers into
+	an atom table which also consumes memory.
+	The atom text is stored once for each unique atom in this table.
+	The atom table is <strong>not</strong> garbage-collected.</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Float</td>
+        <td align="left" valign="middle">On 32-bit architectures: 4 words        <br>
+On 64-bit architectures: 3 words</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Binary</td>
+        <td align="left" valign="middle">3..6 + data (can be shared)</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">List</td>
+        <td align="left" valign="middle">1 word per element + the size of each element</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">String (is the same as a list of integers)</td>
+        <td align="left" valign="middle">2 words per character</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Tuple</td>
+        <td align="left" valign="middle">2 words + the size of each element</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Pid</td>
+        <td align="left" valign="middle">1 word for a process identifier from the current local node, and 5 words for a process identifier from another node. Note: a process identifier refers into a process table and a node table which also consumes memory.</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Port</td>
+        <td align="left" valign="middle">1 word for a port identifier from the current local node, and 5 words for a port identifier from another node. Note: a port identifier refers into a port table and a node table which also consumes memory.</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Reference</td>
+        <td align="left" valign="middle">On 32-bit architectures: 5 words for a reference from the current local node, and 7 words for a reference from another node.        <br>
+On 64-bit architectures: 4 words for a reference from the current local node, and 6 words for a reference from another node. Note: a reference refers into a node table which also consumes memory.</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Fun</td>
+        <td align="left" valign="middle">9..13 words + size of environment. Note: a fun refers into a fun table which also consumes memory.</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Ets table</td>
+        <td align="left" valign="middle">Initially 768 words + the size of each element (6 words + size of Erlang data). The table will grow when necessary.</td>
+      </tr>
+<tr>
+        <td align="left" valign="middle">Erlang process</td>
+        <td align="left" valign="middle">327 words when spawned including a heap of 233 words.</td>
+      </tr>
+</table>
+<em>Table
+        10.1:
+         
+        Memory size of different data types</em>
+  
+  <h3><a name="id2265856">10.2 
+        System limits</a></h3>
+    
+    <p>The Erlang language specification puts no limits on number of processes,
+     length of atoms etc., but for performance and memory saving reasons,
+      there will always be limits in a practical implementation of the Erlang
+      language and execution environment.</p>
+    <dl>
+      <dt><strong><strong>Processes</strong></strong></dt>
+      <dd>
+        <p>The maximum number of simultaneously alive Erlang processes is
+          by default 32768. This limit can be raised up to at most 268435456
+          processes at startup (see documentation of the system flag
+          <span class="bold_code">
+<a href="../man/erl.html#max_processes">+P</a></span> in the
+          <span class="bold_code">
+<a href="../man/erl.html">erl(1)</a></span> documentation).
+          The maximum limit of 268435456 processes will at least on a 32-bit
+          architecture be impossible to reach due to memory shortage.</p>
+      </dd>
+      <dt><strong><strong>Distributed nodes</strong></strong></dt>
+      <dd>
+        <dl>
+          <dt><strong>Known nodes</strong></dt>
+          <dd>
+            <p>A remote node Y has to be known to node X if there exist
+              any pids, ports, references, or funs (Erlang data types) from Y
+              on X, or if X and Y are connected. The maximum number of remote
+              nodes simultaneously/ever known to a node is limited by the
+              <span class="bold_code">
+<a href="#atoms">maximum number of atoms</a></span>
+              available for node names. All data concerning remote nodes,
+              except for the node name atom, are garbage-collected.</p>
+          </dd>
+          <dt><strong>Connected nodes</strong></dt>
+          <dd>The maximum number of simultaneously connected nodes is limited by
+           either the maximum number of simultaneously known remote nodes,
+          <span class="bold_code">
+<a href="#ports">the maximum number of (Erlang) ports</a></span>
+           available, or
+          <span class="bold_code">
+<a href="#files_sockets">the maximum number of sockets</a></span>
+           available.</dd>
+        </dl>
+      </dd>
+      <dt><strong><strong>Characters in an atom</strong></strong></dt>
+      <dd>255</dd>
+      <dt><strong><strong>Atoms </strong></strong></dt>
+      <dd>      <a name="atoms"></a>
+The maximum number of atoms is 1048576. </dd>
+      <dt><strong><strong>Ets-tables</strong></strong></dt>
+      <dd>The default is 1400, can be changed with the environment variable <span class="code">ERL_MAX_ETS_TABLES</span>.</dd>
+      <dt><strong><strong>Elements in a tuple</strong></strong></dt>
+      <dd>The maximum number of elements in a tuple is 67108863 (26 bit unsigned integer). Other factors
+       such as the available memory can of course make it hard to create a tuple of that size. </dd>
+      <dt><strong><strong>Size of binary</strong></strong></dt>
+      <dd>In the 32-bit implementation of Erlang, 536870911 bytes is the
+       largest binary that can be constructed or matched using the bit syntax.
+       (In the 64-bit implementation, the maximum size is 2305843009213693951 bytes.)
+       If the limit is exceeded, bit syntax construction will fail with a
+      <span class="code">system_limit</span> exception, while any attempt to match a binary that is
+       too large will fail.
+       This limit is enforced starting with the R11B-4 release; in earlier releases,
+       operations on too large binaries would in general either fail or give incorrect
+       results.
+       In future releases of Erlang/OTP, other operations that create binaries (such as
+      <span class="code">list_to_binary/1</span>) will probably also enforce the same limit.</dd>
+      <dt><strong><strong>Total amount of data allocated by an Erlang node</strong></strong></dt>
+      <dd>The Erlang runtime system can use the complete 32 (or 64) bit address space,
+       but the operating system often limits a single process to use less than that.</dd>
+      <dt><strong><strong>length of a node name</strong></strong></dt>
+      <dd>An Erlang node name has the form host@shortname or host@longname. The node name is 
+       used as an atom within the system so the maximum size of 255 holds for the node name too.</dd>
+      <dt><strong><strong>Open ports</strong></strong></dt>
+      <dd>
+        <a name="ports"></a>
+        <p>The maximum number of simultaneously open Erlang ports is
+          by default 1024. This limit can be raised up to at most 268435456
+          at startup (see environment variable
+          <span class="bold_code">
+<a href="../man/erlang.html#ERL_MAX_PORTS">ERL_MAX_PORTS</a></span>
+          in <span class="bold_code">
+<a href="../man/erlang.html">erlang(3)</a></span>)
+          The maximum limit of 268435456 open ports will at least on a 32-bit
+          architecture be impossible to reach due to memory shortage.</p>
+      </dd>
+      <dt><strong><strong>Open files, and sockets</strong></strong></dt>
+      <dd>      <a name="files_sockets"></a>
+       The maximum number of simultaneously open files and sockets
+       depend on
+      <span class="bold_code">
+<a href="#ports">the maximum number of Erlang ports</a></span>
+       available, and operating system specific settings and limits.</dd>
+      <dt><strong><strong>Number of arguments to a function or fun</strong></strong></dt>
+      <dd>256</dd>
+    </dl>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2001-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

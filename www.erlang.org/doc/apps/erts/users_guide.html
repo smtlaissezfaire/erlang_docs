@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- ERTS User's Guide</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="erts.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Erlang Run-Time System Application (ERTS)</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../doc/js/flipmenu">
+<li title="Match specifications in Erlang" expanded="false">Match specifications in Erlang<ul>
+<li>
+<a href="match_spec.html">
+              Top of chapter
+            </a></li>
+<li title="Grammar">
+<a href="match_spec.html#id2253962">Grammar</a></li>
+<li title="Function descriptions">
+<a href="match_spec.html#id2265303">Function descriptions</a></li>
+<li title="Variables and literals">
+<a href="match_spec.html#id2267258">Variables and literals</a></li>
+<li title="Execution of the match">
+<a href="match_spec.html#id2268001">Execution of the match</a></li>
+<li title="Differences between match specifications in ETS and tracing">
+<a href="match_spec.html#id2258008">Differences between match specifications in ETS and tracing</a></li>
+<li title="Examples">
+<a href="match_spec.html#id2263289">Examples</a></li>
+</ul>
+</li>
+<li title="How to interpret the Erlang crash dumps" expanded="false">How to interpret the Erlang crash dumps<ul>
+<li>
+<a href="crash_dump.html">
+              Top of chapter
+            </a></li>
+<li title="General information">
+<a href="crash_dump.html#id2263156">General information</a></li>
+<li title="Memory information">
+<a href="crash_dump.html#id2270033">Memory information</a></li>
+<li title="Internal table information">
+<a href="crash_dump.html#id2258873">Internal table information</a></li>
+<li title="Allocated areas">
+<a href="crash_dump.html#id2258898">Allocated areas</a></li>
+<li title="Allocator">
+<a href="crash_dump.html#id2258927">Allocator</a></li>
+<li title="Process information">
+<a href="crash_dump.html#id2261748">Process information</a></li>
+<li title="Port information">
+<a href="crash_dump.html#id2258255">Port information</a></li>
+<li title="ETS tables">
+<a href="crash_dump.html#id2258273">ETS tables</a></li>
+<li title="Timers">
+<a href="crash_dump.html#id2269756">Timers</a></li>
+<li title="Distribution information">
+<a href="crash_dump.html#id2269077">Distribution information</a></li>
+<li title="Loaded module information">
+<a href="crash_dump.html#id2269837">Loaded module information</a></li>
+<li title="Fun information">
+<a href="crash_dump.html#id2269938">Fun information</a></li>
+<li title="Process Data">
+<a href="crash_dump.html#id2274401">Process Data</a></li>
+<li title="Atoms">
+<a href="crash_dump.html#id2274491">Atoms</a></li>
+<li title="Disclaimer">
+<a href="crash_dump.html#id2274509">Disclaimer</a></li>
+</ul>
+</li>
+<li title="How to implement an alternative carrier for  the Erlang distribution" expanded="false">How to implement an alternative carrier for  the Erlang distribution<ul>
+<li>
+<a href="alt_dist.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="alt_dist.html#id2274648">Introduction</a></li>
+<li title="The driver">
+<a href="alt_dist.html#id2274765">The driver</a></li>
+<li title="Putting it all together">
+<a href="alt_dist.html#id2276383">Putting it all together</a></li>
+</ul>
+</li>
+<li title="The Abstract Format" expanded="false">The Abstract Format<ul>
+<li>
+<a href="absform.html">
+              Top of chapter
+            </a></li>
+<li title="Module declarations and forms">
+<a href="absform.html#id2276696">Module declarations and forms</a></li>
+<li title="Atomic literals">
+<a href="absform.html#id2276920">Atomic literals</a></li>
+<li title="Patterns">
+<a href="absform.html#id2276987">Patterns</a></li>
+<li title="Expressions">
+<a href="absform.html#id2277219">Expressions</a></li>
+<li title="Clauses">
+<a href="absform.html#id2277971">Clauses</a></li>
+<li title="Guards">
+<a href="absform.html#id2278205">Guards</a></li>
+<li title="The abstract format after preprocessing">
+<a href="absform.html#id2278499">The abstract format after preprocessing</a></li>
+</ul>
+</li>
+<li title="tty - A command line interface" expanded="false">tty - A command line interface<ul>
+<li>
+<a href="tty.html">
+              Top of chapter
+            </a></li>
+<li title="Normal Mode">
+<a href="tty.html#id2278687">Normal Mode</a></li>
+<li title="Shell Break Mode">
+<a href="tty.html#id2279075">Shell Break Mode</a></li>
+</ul>
+</li>
+<li title="How to implement a driver" expanded="false">How to implement a driver<ul>
+<li>
+<a href="driver.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="driver.html#id2279210">Introduction</a></li>
+<li title="Sample driver">
+<a href="driver.html#id2279250">Sample driver</a></li>
+<li title="Compiling and linking the sample driver">
+<a href="driver.html#id2279725">Compiling and linking the sample driver</a></li>
+<li title="Calling a driver as a port in Erlang">
+<a href="driver.html#id2279766">Calling a driver as a port in Erlang</a></li>
+<li title="Sample asynchronous driver">
+<a href="driver.html#id2279892">Sample asynchronous driver</a></li>
+<li title="An asynchronous driver using driver_async">
+<a href="driver.html#id2280227">An asynchronous driver using driver_async</a></li>
+</ul>
+</li>
+<li title="Inet configuration" expanded="false">Inet configuration<ul>
+<li>
+<a href="inet_cfg.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="inet_cfg.html#id2280544">Introduction</a></li>
+<li title="Configuration Data">
+<a href="inet_cfg.html#id2280668">Configuration Data</a></li>
+<li title="User Configuration Example">
+<a href="inet_cfg.html#id2281570">User Configuration Example</a></li>
+</ul>
+</li>
+<li title="External Term Format" expanded="false">External Term Format<ul>
+<li>
+<a href="erl_ext_dist.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="erl_ext_dist.html#id2281688">Introduction</a></li>
+<li title="Distribution header">
+<a href="erl_ext_dist.html#id2281981">Distribution header</a></li>
+<li title="ATOM_CACHE_REF">
+<a href="erl_ext_dist.html#id2282591">ATOM_CACHE_REF</a></li>
+<li title="SMALL_INTEGER_EXT">
+<a href="erl_ext_dist.html#id2282668">SMALL_INTEGER_EXT</a></li>
+<li title="INTEGER_EXT">
+<a href="erl_ext_dist.html#id2282732">INTEGER_EXT</a></li>
+<li title="FLOAT_EXT">
+<a href="erl_ext_dist.html#id2282796">FLOAT_EXT</a></li>
+<li title="ATOM_EXT">
+<a href="erl_ext_dist.html#id2282875">ATOM_EXT</a></li>
+<li title="REFERENCE_EXT">
+<a href="erl_ext_dist.html#id2282972">REFERENCE_EXT</a></li>
+<li title="PORT_EXT">
+<a href="erl_ext_dist.html#id2283134">PORT_EXT</a></li>
+<li title="PID_EXT">
+<a href="erl_ext_dist.html#id2283255">PID_EXT</a></li>
+<li title="SMALL_TUPLE_EXT">
+<a href="erl_ext_dist.html#id2283402">SMALL_TUPLE_EXT</a></li>
+<li title="LARGE_TUPLE_EXT">
+<a href="erl_ext_dist.html#id2283495">LARGE_TUPLE_EXT</a></li>
+<li title="NIL_EXT">
+<a href="erl_ext_dist.html#id2283586">NIL_EXT</a></li>
+<li title="STRING_EXT">
+<a href="erl_ext_dist.html#id2283638">STRING_EXT</a></li>
+<li title="LIST_EXT">
+<a href="erl_ext_dist.html#id2283733">LIST_EXT</a></li>
+<li title="BINARY_EXT">
+<a href="erl_ext_dist.html#id2283853">BINARY_EXT</a></li>
+<li title="SMALL_BIG_EXT">
+<a href="erl_ext_dist.html#id2283953">SMALL_BIG_EXT</a></li>
+<li title="LARGE_BIG_EXT">
+<a href="erl_ext_dist.html#id2284063">LARGE_BIG_EXT</a></li>
+<li title="NEW_REFERENCE_EXT">
+<a href="erl_ext_dist.html#id2284167">NEW_REFERENCE_EXT</a></li>
+<li title="SMALL_ATOM_EXT">
+<a href="erl_ext_dist.html#id2284344">SMALL_ATOM_EXT</a></li>
+<li title="FUN_EXT">
+<a href="erl_ext_dist.html#id2284453">FUN_EXT</a></li>
+<li title="NEW_FUN_EXT">
+<a href="erl_ext_dist.html#id2284705">NEW_FUN_EXT</a></li>
+<li title="EXPORT_EXT">
+<a href="erl_ext_dist.html#id2285091">EXPORT_EXT</a></li>
+<li title="BIT_BINARY_EXT">
+<a href="erl_ext_dist.html#id2285236">BIT_BINARY_EXT</a></li>
+<li title="NEW_FLOAT_EXT">
+<a href="erl_ext_dist.html#id2285346">NEW_FLOAT_EXT</a></li>
+</ul>
+</li>
+<li title="Distribution Protocol" expanded="false">Distribution Protocol<ul>
+<li>
+<a href="erl_dist_protocol.html">
+              Top of chapter
+            </a></li>
+<li title="EPMD Protocol">
+<a href="erl_dist_protocol.html#id2285540">EPMD Protocol</a></li>
+<li title="Handshake">
+<a href="erl_dist_protocol.html#id2286881">Handshake</a></li>
+<li title="Protocol between connected nodes">
+<a href="erl_dist_protocol.html#id2286898">Protocol between connected nodes</a></li>
+<li title="New Ctrlmessages for distrvsn = 1 (OTP R4)">
+<a href="erl_dist_protocol.html#id2287353">New Ctrlmessages for distrvsn = 1 (OTP R4)</a></li>
+<li title="New Ctrlmessages for distrvsn = 2">
+<a href="erl_dist_protocol.html#id2287453">New Ctrlmessages for distrvsn = 2</a></li>
+<li title="New Ctrlmessages for distrvsn = 3 (OTP R5C)">
+<a href="erl_dist_protocol.html#id2287465">New Ctrlmessages for distrvsn = 3 (OTP R5C)</a></li>
+<li title="New Ctrlmessages for distrvsn = 4 (OTP R6)">
+<a href="erl_dist_protocol.html#id2287478">New Ctrlmessages for distrvsn = 4 (OTP R6)</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<div class="frontpage"></div>
+<center><h1>Erlang Run-Time System Application (ERTS) User's Guide</h1></center>
+<center><h4>Version 5.7.4</h4></center>
+<center><h4>November 23 2009</h4></center>
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1997-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

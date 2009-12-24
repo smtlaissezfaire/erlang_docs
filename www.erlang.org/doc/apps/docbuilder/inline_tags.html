@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Inline Tags</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="docbuilder.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>DocBuilder</strong><br><strong>User's Guide</strong><br><small>Version 0.9.8.6</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="Overview" expanded="false">Overview<ul>
+<li>
+<a href="overview.html">
+              Top of chapter
+            </a></li>
+<li title="Background">
+<a href="overview.html#id2257231">Background</a></li>
+<li title="DTD Suite">
+<a href="overview.html#id2254003">DTD Suite</a></li>
+<li title="Structure of Generated HTML">
+<a href="overview.html#id2252445">Structure of Generated HTML</a></li>
+<li title="Basic Tags">
+<a href="overview.html#id2259160">Basic Tags</a></li>
+<li title="About This Document">
+<a href="overview.html#id2258687">About This Document</a></li>
+<li title="Usage">
+<a href="overview.html#id2257257">Usage</a></li>
+</ul>
+</li>
+<li title="User's Guide DTDs" expanded="false">User's Guide DTDs<ul>
+<li>
+<a href="user_guide_dtds.html">
+              Top of chapter
+            </a></li>
+<li title="The part DTD">
+<a href="user_guide_dtds.html#id2251706">The part DTD</a></li>
+<li title="&lt;part&gt;">
+<a href="user_guide_dtds.html#id2258298">&lt;part&gt;</a></li>
+<li title="&lt;description&gt;">
+<a href="user_guide_dtds.html#id2252489">&lt;description&gt;</a></li>
+<li title="&lt;include&gt;">
+<a href="user_guide_dtds.html#id2259405">&lt;include&gt;</a></li>
+<li title="The chapter DTD">
+<a href="user_guide_dtds.html#id2261326">The chapter DTD</a></li>
+<li title="&lt;chapter&gt;">
+<a href="user_guide_dtds.html#id2259343">&lt;chapter&gt;</a></li>
+<li title="&lt;section&gt;">
+<a href="user_guide_dtds.html#id2257322">&lt;section&gt;</a></li>
+<li title="&lt;title&gt;">
+<a href="user_guide_dtds.html#id2252044">&lt;title&gt;</a></li>
+</ul>
+</li>
+<li title="Reference Manual DTDs" expanded="false">Reference Manual DTDs<ul>
+<li>
+<a href="refman_dtds.html">
+              Top of chapter
+            </a></li>
+<li title="The application DTD">
+<a href="refman_dtds.html#id2257284">The application DTD</a></li>
+<li title="&lt;application&gt;">
+<a href="refman_dtds.html#id2265187">&lt;application&gt;</a></li>
+<li title="The appref DTD">
+<a href="refman_dtds.html#id2253974">The appref DTD</a></li>
+<li title="The comref DTD">
+<a href="refman_dtds.html#id2261237">The comref DTD</a></li>
+<li title="The cref DTD">
+<a href="refman_dtds.html#id2254771">The cref DTD</a></li>
+<li title="The erlref DTD">
+<a href="refman_dtds.html#id2259586">The erlref DTD</a></li>
+<li title="The fileref DTD">
+<a href="refman_dtds.html#id2260797">The fileref DTD</a></li>
+<li title="&lt;description&gt;">
+<a href="refman_dtds.html#id2261002">&lt;description&gt;</a></li>
+<li title="&lt;section&gt;">
+<a href="refman_dtds.html#id2261038">&lt;section&gt;</a></li>
+<li title="&lt;funcs&gt;">
+<a href="refman_dtds.html#id2258975">&lt;funcs&gt;</a></li>
+<li title="&lt;func&gt;">
+<a href="refman_dtds.html#id2259001">&lt;func&gt;</a></li>
+<li title="&lt;name&gt;">
+<a href="refman_dtds.html#id2259046">&lt;name&gt;</a></li>
+<li title="&lt;fsummary&gt;">
+<a href="refman_dtds.html#id2264751">&lt;fsummary&gt;</a></li>
+<li title="&lt;type&gt;">
+<a href="refman_dtds.html#id2264780">&lt;type&gt;</a></li>
+<li title="&lt;v&gt;">
+<a href="refman_dtds.html#id2264813">&lt;v&gt;</a></li>
+<li title="&lt;d&gt;">
+<a href="refman_dtds.html#id2264830">&lt;d&gt;</a></li>
+<li title="&lt;desc&gt;">
+<a href="refman_dtds.html#id2264859">&lt;desc&gt;</a></li>
+<li title="&lt;authors&gt;">
+<a href="refman_dtds.html#id2264890">&lt;authors&gt;</a></li>
+<li title="&lt;aname&gt;">
+<a href="refman_dtds.html#id2264926">&lt;aname&gt;</a></li>
+<li title="&lt;email&gt;">
+<a href="refman_dtds.html#id2264942">&lt;email&gt;</a></li>
+</ul>
+</li>
+<li title="Fascicules DTDs" expanded="false">Fascicules DTDs<ul>
+<li>
+<a href="fasc_dtds.html">
+              Top of chapter
+            </a></li>
+<li title="The fascicules DTD">
+<a href="fasc_dtds.html#id2265011">The fascicules DTD</a></li>
+<li title="&lt;fascicules&gt;">
+<a href="fasc_dtds.html#id2265118">&lt;fascicules&gt;</a></li>
+<li title="&lt;fascicule&gt;">
+<a href="fasc_dtds.html#id2265148">&lt;fascicule&gt;</a></li>
+</ul>
+</li>
+<li title="Header Tags" expanded="false">Header Tags<ul>
+<li>
+<a href="header_tags.html">
+              Top of chapter
+            </a></li>
+<li title="&lt;header&gt;">
+<a href="header_tags.html#id2262900">&lt;header&gt;</a></li>
+<li title="&lt;copyright&gt;">
+<a href="header_tags.html#id2262916">&lt;copyright&gt;</a></li>
+<li title="&lt;legalnotice&gt;">
+<a href="header_tags.html#id2262965">&lt;legalnotice&gt;</a></li>
+<li title="&lt;title&gt;">
+<a href="header_tags.html#id2262995">&lt;title&gt;</a></li>
+<li title="&lt;shorttitle&gt;">
+<a href="header_tags.html#id2263028">&lt;shorttitle&gt;</a></li>
+<li title="&lt;prepared&gt;">
+<a href="header_tags.html#id2263045">&lt;prepared&gt;</a></li>
+<li title="&lt;responsible&gt;">
+<a href="header_tags.html#id2263062">&lt;responsible&gt;</a></li>
+<li title="&lt;docno&gt;">
+<a href="header_tags.html#id2263080">&lt;docno&gt;</a></li>
+<li title="&lt;approved&gt;">
+<a href="header_tags.html#id2263112">&lt;approved&gt;</a></li>
+<li title="&lt;checked&gt;">
+<a href="header_tags.html#id2263130">&lt;checked&gt;</a></li>
+<li title="&lt;date&gt;">
+<a href="header_tags.html#id2263147">&lt;date&gt;</a></li>
+<li title="&lt;rev&gt;">
+<a href="header_tags.html#id2263164">&lt;rev&gt;</a></li>
+<li title="&lt;file&gt;">
+<a href="header_tags.html#id2263197">&lt;file&gt;</a></li>
+</ul>
+</li>
+<li title="Block Tags" expanded="false">Block Tags<ul>
+<li>
+<a href="block_tags.html">
+              Top of chapter
+            </a></li>
+<li title="&lt;br&gt; - Line Break">
+<a href="block_tags.html#id2263328">&lt;br&gt; - Line Break</a></li>
+<li title="&lt;code&gt; - Code Example">
+<a href="block_tags.html#id2263367">&lt;code&gt; - Code Example</a></li>
+<li title="&lt;codeinclude&gt; - Code Inclusion">
+<a href="block_tags.html#id2263425">&lt;codeinclude&gt; - Code Inclusion</a></li>
+<li title="&lt;erleval&gt; - Erlang Evaluation">
+<a href="block_tags.html#id2263505">&lt;erleval&gt; - Erlang Evaluation</a></li>
+<li title="&lt;list&gt; - List">
+<a href="block_tags.html#id2263542">&lt;list&gt; - List</a></li>
+<li title="&lt;marker&gt; - Marker">
+<a href="block_tags.html#id2263629">&lt;marker&gt; - Marker</a></li>
+<li title="&lt;p&gt; - Paragraph">
+<a href="block_tags.html#id2263657">&lt;p&gt; - Paragraph</a></li>
+<li title="&lt;note&gt; - Note">
+<a href="block_tags.html#id2263702">&lt;note&gt; - Note</a></li>
+<li title="&lt;pre&gt; - Pre-formatted Text">
+<a href="block_tags.html#id2263750">&lt;pre&gt; - Pre-formatted Text</a></li>
+<li title="&lt;quote&gt; - Quotation">
+<a href="block_tags.html#id2263830">&lt;quote&gt; - Quotation</a></li>
+<li title="&lt;taglist&gt; - Definition List">
+<a href="block_tags.html#id2263884">&lt;taglist&gt; - Definition List</a></li>
+<li title="&lt;warning&gt; - Warning">
+<a href="block_tags.html#id2263990">&lt;warning&gt; - Warning</a></li>
+<li title="&lt;image&gt; - Image">
+<a href="block_tags.html#id2264044">&lt;image&gt; - Image</a></li>
+<li title="&lt;table&gt; - Table">
+<a href="block_tags.html#id2264110">&lt;table&gt; - Table</a></li>
+</ul>
+</li>
+<li title="Inline Tags" expanded="true">Inline Tags<ul>
+<li>
+<a href="inline_tags.html">
+              Top of chapter
+            </a></li>
+<li title="&lt;br&gt; - Line Break">
+<a href="inline_tags.html#id2264322">&lt;br&gt; - Line Break</a></li>
+<li title="&lt;c&gt; - Code">
+<a href="inline_tags.html#id2264349">&lt;c&gt; - Code</a></li>
+<li title="&lt;em&gt; - Emphasis">
+<a href="inline_tags.html#id2264400">&lt;em&gt; - Emphasis</a></li>
+<li title="&lt;marker&gt; - Marker">
+<a href="inline_tags.html#id2264444">&lt;marker&gt; - Marker</a></li>
+<li title="&lt;path&gt; - Path">
+<a href="inline_tags.html#id2264492">&lt;path&gt; - Path</a></li>
+<li title="&lt;seealso&gt; - Local Cross Reference">
+<a href="inline_tags.html#id2264578">&lt;seealso&gt; - Local Cross Reference</a></li>
+<li title="&lt;url&gt; - Non-Local Cross Reference">
+<a href="inline_tags.html#id2264684">&lt;url&gt; - Non-Local Cross Reference</a></li>
+<li title="&lt;term&gt;, &lt;termdef&gt; - Glossary">
+<a href="inline_tags.html#id2266167">&lt;term&gt;, &lt;termdef&gt; - Glossary</a></li>
+<li title="&lt;cite&gt;, &lt;citedef&gt; - Bibliography">
+<a href="inline_tags.html#id2266283">&lt;cite&gt;, &lt;citedef&gt; - Bibliography</a></li>
+</ul>
+</li>
+<li title="Character Entities" expanded="false">Character Entities<ul>
+<li>
+<a href="character_entities.html">
+              Top of chapter
+            </a></li>
+<li title="Added Latin 1">
+<a href="character_entities.html#id2266394">Added Latin 1</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>7 Inline Tags</h1>
+  
+  <p>Inline tags are typically used within block tags, for example to
+    highlight a word within a paragraph.</p>
+  <h3><a name="id2264322">7.1 
+        &lt;br&gt; - Line Break</a></h3>
+    <a name="brTAG"></a>
+    
+    <p>Forces a newline. The <span class="code">&lt;br&gt;</span> tag is both a
+      block- and an inline tag and is described in
+      the <span class="bold_code">
+<a href="block_tags.html#brTAG">Block Tags</a></span>
+      section.</p>
+  
+  <h3><a name="id2264349">7.2 
+        &lt;c&gt; - Code</a></h3>
+    <a name="cTAG"></a>
+    
+    <p>Highlights things like variables and file names in a text flow.
+      Can contain plain text only. Newlines and tabs are ignored as
+      opposed to the <span class="bold_code">
+<a href="block_tags.html#codeTAG">code</a></span>
+      tag. All <span class="bold_code">
+<a href="character_entities.html">character
+	entities</a></span> are expanded. Example:</p>
+    <div class="example"><pre>
+&lt;p&gt;Returns &lt;c&gt;true&lt;/c&gt; if &lt;c&gt;Term&lt;/c&gt; is an integer.&lt;/p&gt;
+    </pre></div>
+    <p>results in:</p>
+    <p>Returns <span class="code">true</span> if <span class="code">Term</span> is an integer.</p>
+  
+  <h3><a name="id2264400">7.3 
+        &lt;em&gt; - Emphasis</a></h3>
+    <a name="emTAG"></a>
+    
+    <p>Highlights words which are important within a text flow. Example:
+    </p>
+    <div class="example"><pre>
+&lt;p&gt;The application &lt;em&gt;must&lt;/em&gt; be up and running.&lt;/p&gt;
+    </pre></div>
+    <p>results in:</p>
+    <p>The application <strong>must</strong> be up and running.</p>
+    <p>Contains plain text or a
+      <span class="bold_code">
+<a href="#cTAG">&lt;c&gt;</a></span> tag.</p>
+  
+  <h3><a name="id2264444">7.4 
+        &lt;marker&gt; - Marker</a></h3>
+    <a name="markerTAG"></a>
+    
+    <p>Used as an anchor for hypertext references. The <span class="code">id</span>
+      attribute defines the name of the marker. Example:</p>
+    <a name="marker_example"></a>
+    <div class="example"><pre>
+&lt;marker id="marker_example"/&gt;
+    </pre></div>
+  
+    <p>The <span class="bold_code">
+<a href="#seealsoTAG">&lt;seealso&gt;</a></span> tag
+      is used to refer to the marker.</p>
+    <p>The <span class="code">&lt;marker&gt;</span> tag is both a block- and an
+      inline tag.</p>
+  
+  <h3><a name="id2264492">7.5 
+        &lt;path&gt; - Path</a></h3>
+    <a name="pathTAG"></a>
+    
+    <p>Highlights file paths. The attributes <span class="code">unix</span> and
+      <span class="code">windows</span> makes it possible to specify different paths for
+      different file path notations. Default for both are "".
+      Example:</p>
+    <div class="example"><pre>
+&lt;p&gt;Look at the &lt;path unix=".profile" windows="win.ini"&gt;start-up file&lt;/path&gt;
+  if you intend to alter the initial behavior.&lt;/p&gt;
+    </pre></div>
+    <p>If no <span class="code">ptype</span> option is specified when calling
+      <span class="bold_code">
+<a href="../../man/docb_transform.html#file-1">docb_transform:file/1,2</a></span>,
+      this simply results in:</p>
+    <p>"Look at the start-up file
+      if you intend to alter the initial behavior."</p>
+    <p>If both the options <span class="code">{ptype,unix}</span> and
+      <span class="code">{ptype,windows}</span> are specified, the example instead results
+      in:</p>
+    <p>"Look at the start-up file
+      if you intend to alter the initial behavior."</p>
+  
+  <h3><a name="id2264578">7.6 
+        &lt;seealso&gt; - Local Cross Reference</a></h3>
+    <a name="seealsoTAG"></a>
+    
+    <p>A cross reference (hypertext link) to a marker in the same file,
+      a marker in another file, or (the top of) another file, given by
+      the <span class="code">marker</span> attribute. Must contain plain text. Examples:
+      </p>
+    <div class="example"><pre>
+      &lt;seealso marker="#marker_example"&gt;marker example&lt;/seealso&gt;
+    </pre></div>
+    <p>results in:
+      <span class="bold_code">
+<a href="#marker_example">marker example</a></span>
+      (a hypertext link to the marker example above).</p>
+    <div class="example"><pre>
+      &lt;seealso marker="block_tags#markerTAG"&gt;marker tag&lt;/seealso&gt;
+    </pre></div>
+    <p>results in:
+      <span class="bold_code">
+<a href="block_tags.html#markerTAG">marker tag</a></span>
+      (a hypertext link to the marker section in the Block Tags
+      chapter).</p>
+    
+    <div class="example"><pre>
+      &lt;seealso marker="overview"&gt;Overview&lt;/seealso&gt;
+    </pre></div>
+    <p>results in:
+      <span class="bold_code">
+<a href="overview.html">Overview</a></span>
+      (a hypertext link to the Overview chapter).</p>
+    <p>Note the use of "#" before the name of the marker. Note also
+      that the filename extension <span class="code">.html</span> is omitted. This is
+      because the default behavior of DocBuilder is to translate
+      <span class="code">&lt;seealso marker="File#Marker"&gt;text&lt;/seealso&gt;</span>
+      to <span class="code">&lt;A href="File.html#Marker"&gt;text&lt;/A&gt;</span>.</p>
+    <p>The default behaviour can be modified by using the callback
+      module option to <span class="code">docb_transform:file/1,2</span> and defining a
+      callback function
+      <span class="bold_code">
+<a href="../../man/docb_transform.html#Module:seealso-1">Module:seealso/1</a></span>.
+      This possibility is for example used in OTP to resolve cross
+      references between applications.</p>
+  
+    
+  <h3><a name="id2264684">7.7 
+        &lt;url&gt; - Non-Local Cross Reference</a></h3>
+    <a name="urlTAG"></a>
+    
+    <p>A reference to a file outside the documentation, a web address or
+      similar, given by the <span class="code">href</span> attribute. Must contain plain
+      text. Example:</p>
+    <div class="example"><pre>
+&lt;url href="http://www.erlang.org"&gt;erlang.org&lt;/url&gt;
+    </pre></div>
+    <p>results in: <span class="bold_code">
+<a href="http://www.erlang.org">erlang.org</a></span>
+    </p>
+  
+  <h3><a name="id2266167">7.8 
+        &lt;term&gt;, &lt;termdef&gt; - Glossary</a></h3>
+    <a name="termTAG"></a>
+    <a name="termdefTAG"></a>
+    
+    <p>Used to highlight a term with a local (for this document only) or
+      global definition. The identity of the term is given by
+      the <span class="code">id</span> attribute.</p>
+    <p>For a locally defined term, the tag contains a
+      <span class="code">&lt;termdef&gt;</span>, which in turn contains an explanation of
+      the term as plain text. Example:</p>
+    <div class="example"><pre>
+&lt;term id="HTML"&gt;&lt;termdef&gt;Hyper-Text Markup Language&lt;/termdef&gt;&lt;/term&gt;
+      </pre></div>
+    <p>For a globally defined term, the tag is empty. Example:</p>
+    <div class="example"><pre>
+&lt;term id="HTML"/&gt;
+      </pre></div>
+    <p>Global definitions are given to DocBuilder in a file, using the
+      <span class="bold_code">
+<a href="../../man/docb_transform.html#file-1">docb_transform:file/1,2</a></span>
+      option <span class="code">term_defs</span>. The file should contain a list of tuples,
+      one for each term definition, on the format
+      <span class="code">{Id,Name,Definition,Owner}</span>. The <span class="code">Owner</span> part is just
+      for administration, if there are several people contributing to a
+      term definition file. Example:</p>
+    <div class="example"><pre>
+[...,
+ {"HTML", "HTML", "Hyper-Text Markup Language", "Gunilla"},
+ ...].
+    </pre></div>
+    <p>DocBuilder will collect both local and global definitions in a
+      glossary, which can be reached from a link in the left frame of
+      the HTML documentation.</p>
+    <p>In the generated HTML, it is the term name which will be visible.
+      For locally defined terms, the id and the name are the same.
+      The name has a hypertext link to the definition in the glossary.
+      Example:</p>
+    <div class="example"><pre>
+&lt;term id="HTML"&gt;&lt;termdef&gt;Hyper-Text Markup Language&lt;/termdef&gt;&lt;/term&gt;
+      </pre></div>
+    <p>results in: HTML
+    </p>
+    <p>If a term is defined both locally and globally, the global
+      definition takes precedence.</p>
+  
+  <h3><a name="id2266283">7.9 
+        &lt;cite&gt;, &lt;citedef&gt; - Bibliography</a></h3>
+    <a name="citeTAG"></a>
+    <a name="citedefTAG"></a>
+    
+    <p>Works the same way as <span class="code">&lt;term&gt;</span> and
+      <span class="code">&lt;termdef&gt;</span>, but for a bibliography list rather than
+      a glossary.</p>
+    <p>A global bibliography list is given to DocBuilder in a file,
+      using the <span class="bold_code">
+<a href="../../man/docb_transform.html#file-1">docb_transform:file/1,2</a></span>
+      option <span class="code">cite_defs</span>. The file should contain a list of tuples,
+      one for each cite, on the format
+      <span class="code">{Id,Title,Info,Owner}</span>. The <span class="code">Owner</span> part is just
+      for administration, if there are several people contributing to a
+      bibliography file. Example:</p>
+    <div class="example"><pre>
+[...,
+ {"erlbook","Concurrent Programming in ERLANG","J. Armstrong, R. Virding, C. Wikström, M. Williams, Concurrent Programming in ERLANG, Prentice Hall, 1996, ISBN 0-13-508301-X","jocke"},
+ ...].
+    </pre></div>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1997-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

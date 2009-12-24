@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- dialyzer</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/dialyzer/users_guide.html">User's Guide</a><br>
+<a href="../apps/dialyzer/index.html">Reference Manual</a><br>
+<a href="../apps/dialyzer/release_notes.html">Release Notes</a><br>
+<a href="../apps/dialyzer/dialyzer.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Dialyzer</strong><br><strong>Reference Manual</strong><br><small>Version 2.1.0</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu"><li title="dialyzer " expanded="true">dialyzer<ul>
+<li>
+<a href="dialyzer.html">
+                  Top of manual page
+                </a></li>
+<li title="gui-0">
+<a href="dialyzer.html#gui-0">gui/0</a></li>
+<li title="gui-1">
+<a href="dialyzer.html#gui-1">gui/1</a></li>
+<li title="run-1">
+<a href="dialyzer.html#run-1">run/1</a></li>
+<li title="format_warning-1">
+<a href="dialyzer.html#format_warning-1">format_warning/1</a></li>
+<li title="plt_info-1">
+<a href="dialyzer.html#plt_info-1">plt_info/1</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>dialyzer</h1></center>
+  
+  <h3>MODULE</h3>
+<div class="REFBODY">dialyzer</div>
+  <h3>MODULE SUMMARY</h3>
+<div class="REFBODY">The Dialyzer, a DIscrepancy AnalYZer for ERlang programs</div>
+  <h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+    <p>The Dialyzer is a static analysis tool that identifies software
+    discrepancies such as definite type errors, code which has become
+    dead or unreachable due to some programming error, unnecessary
+    tests, etc. in single Erlang modules or entire (sets of)
+    applications. Dialyzer starts its analysis from either
+    debug-compiled BEAM bytecode or from Erlang source code. The file
+    and line number of a discrepancy is reported along with an
+    indication of what the discrepancy is about. Dialyzer bases its
+    analysis on the concept of success typings which allows for sound
+    warnings (no false positives).</p>
+    <p>Read more about Dialyzer and about how to use it from the GUI
+    in <span class="bold_code">
+<a href="../apps/dialyzer/dialyzer_chapter.html">Dialyzer User's
+    Guide</a></span>.</p>
+  </p></div>
+  <h3><a name="id2251957">Using the Dialyzer from the command line</a></h3>
+<div class="REFBODY">
+    
+    <p>Dialyzer also has a command line version for automated use. Below is a
+      brief description of the list of its options. The same information can
+      be obtained by writing</p>
+    <div class="example"><pre>
+      dialyzer --help
+    </pre></div>
+    <p>in a shell. Please refer to the GUI description for more details on
+      the operation of Dialyzer.</p>
+    <p>The exit status of the command line version is:</p>
+    <div class="example"><pre>
+      0 - No problems were encountered during the analysis and no
+          warnings were emitted.
+      1 - Problems were encountered during the analysis.
+      2 - No problems were encountered, but warnings were emitted.
+    </pre></div>
+    <p>Usage:</p>
+    <div class="example"><pre>
+   dialyzer [--help] [--version] [--shell] [--quiet] [--verbose]
+		[-pa dir]* [--plt plt] [-Ddefine]* [-I include_dir]* 
+		[--output_plt file] [-Wwarn]* [--src] 
+		[-c applications] [-r applications] [-o outfile]
+		[--build_plt] [--add_to_plt] [--remove_from_plt]
+		[--check_plt] [--no_check_plt] [--plt_info] [--get_warnings]
+    </pre></div>
+    <p>Options:</p>
+    <dl>
+      <dt><strong><span class="code">-c applications</span>(or <span class="code">--command-line applications</span>)</strong></dt>
+      <dd>use Dialyzer from the command line (no GUI) to detect defects in the
+       specified applications (directories or <span class="code">.erl</span> or <span class="code">.beam</span> files)</dd>
+      <dt><strong><span class="code">-r applications</span></strong></dt>
+      <dd>same as <span class="code">-c</span> only that directories are searched recursively for 
+       subdirectories containing <span class="code">.erl</span> or <span class="code">.beam</span> files (depending on the 
+       type of analysis)</dd>
+      <dt><strong><span class="code">-o outfile</span>(or <span class="code">--output outfile</span>)</strong></dt>
+      <dd>when using Dialyzer from the command line, send the analysis
+       results in the specified <span class="code">outfile</span> rather than in stdout</dd>
+      <dt><strong><span class="code">--src</span></strong></dt>
+      <dd>override the default, which is to analyze debug compiled BEAM 
+       bytecode, and analyze starting from Erlang source code instead</dd>
+      <dt><strong><span class="code">--raw</span></strong></dt>
+      <dd>When using Dialyzer from the command line, output the raw analysis
+       results (Erlang terms) instead of the formatted result.
+       The raw format is easier to post-process (for instance, to filter
+       warnings or to output HTML pages).</dd>
+      <dt><strong><span class="code">-Dname</span>(or <span class="code">-Dname=value</span>)</strong></dt>
+      <dd>when analyzing from source, pass the define to Dialyzer (**)</dd>
+      <dt><strong><span class="code">-I include_dir</span></strong></dt>
+      <dd>when analyzing from source, pass the <span class="code">include_dir</span> to Dialyzer (**)</dd>
+      <dt><strong><span class="code">-pa dir</span></strong></dt>
+      <dd>Include <span class="code">dir</span> in the path for Erlang. Useful when analyzing files
+       that have <span class="code">-include_lib()</span> directives.</dd>
+      <dt><strong><span class="code">--output_plt file</span></strong></dt>
+      <dd>Store the PLT at the specified location after building it.</dd>
+      <dt><strong><span class="code">--plt plt</span></strong></dt>
+      <dd>Use the specified plt as the initial persistent lookup table.</dd>
+      <dt><strong><span class="code">-Wwarn</span></strong></dt>
+      <dd>a family of option which selectively turn on/off warnings.
+       (for help on the names of warnings use <span class="code">dialyzer -Whelp</span>)</dd>
+      <dt><strong><span class="code">--shell</span></strong></dt>
+      <dd>do not disable the Erlang shell while running the GUI</dd>
+      <dt><strong><span class="code">--version (or -v)</span></strong></dt>
+      <dd>prints the Dialyzer version and some more information and exits</dd>
+      <dt><strong><span class="code">--help (or -h)</span></strong></dt>
+      <dd>prints this message and exits</dd>
+      <dt><strong><span class="code">--quiet (or -q)</span></strong></dt>
+      <dd>makes Dialyzer a bit more quiet</dd>
+      <dt><strong><span class="code">--verbose</span></strong></dt>
+      <dd>makes Dialyzer a bit more verbose</dd>
+      <dt><strong><span class="code">--check_plt</span></strong></dt>
+      <dd>Only checks if the initial PLT is up to date and rebuilds it if this is not the case</dd>
+      <dt><strong><span class="code">--no_check_plt (or -n)</span></strong></dt>
+      <dd>Skip the PLT integrity check when running Dialyzer.
+       Useful when working with installed PLTs that never change.</dd>
+      <dt><strong><span class="code">--build_plt</span></strong></dt>
+      <dd>The analysis starts from an empty PLT and creates a new one from
+       the files specified with -c and -r. Only works for beam files.
+       Use --plt or --output_plt to override the default PLT location.</dd>
+      <dt><strong><span class="code">--add_to_plt</span></strong></dt>   
+      <dd> The PLT is extended to also include the files specified with 
+       -c and -r. Use --plt to specify which PLT to start from, and --output_plt 
+       to specify where to put the PLT. Note that the analysis might include 
+       files from the PLT if they depend on the new files. 
+       This option only works with beam files.</dd>
+       <dt><strong><span class="code">--remove_from_plt</span></strong></dt>
+       <dd>The information from the files specified with -c and -r is removed
+       from the PLT. Note that this may cause a re-analysis of the remaining
+       dependent files.</dd>
+       <dt><strong><span class="code">--get_warnings</span></strong></dt>
+       <dd>Makes Dialyzer emit warnings even when manipulating the PLT. Only 
+       emits warnings for files that are actually analyzed. The default is to
+       not emit any warnings when manipulating the PLT. This option has no 
+       effect when performing a normal analysis.</dd>
+    </dl>
+    <div class="note">
+<div class="label">Note</div>
+<div class="content"><p>
+      <p>* denotes that multiple occurrences of these options are possible.</p>
+      <p>** options <span class="code">-D</span> and <span class="code">-I</span> work both from command-line and in the Dialyzer GUI;
+        the syntax of defines and includes is the same as that used by <span class="code">erlc</span>.</p>
+    </p></div>
+</div>
+    <p>Warning options:</p>
+    <dl>
+      <dt><strong><span class="code">-Wno_return</span></strong></dt>
+      <dd>Suppress warnings for functions of no return.</dd>
+      <dt><strong><span class="code">-Wno_unused</span></strong></dt>
+      <dd>Suppress warnings for unused functions.</dd>
+      <dt><strong><span class="code">-Wno_improper_lists</span></strong></dt>
+      <dd>Suppress warnings for construction of improper lists.</dd>
+      <dt><strong><span class="code">-Wno_fun_app</span></strong></dt>
+      <dd>Suppress warnings for fun applications that will fail.</dd>
+      <dt><strong><span class="code">-Wno_match</span></strong></dt>
+      <dd>Suppress warnings for patterns that are unused or cannot
+       match.</dd>
+      <dt><strong><span class="code">-Werror_handling</span>***</strong></dt>
+      <dd>Include warnings for functions that only return by means of an
+       exception.</dd>
+      <dt><strong><span class="code">-Wunmatched_returns</span>***</strong></dt>
+      <dd>Include warnings for function calls which ignore a structured return
+       value or do not match against one of many possible return value(s).</dd>
+      <dt><strong><span class="code">-Wunderspecs</span>***</strong></dt>
+      <dd>Warn about underspecified functions 
+      (the -spec is strictly more allowing than the success typing)</dd>
+      <dt><strong><span class="code">-Woverspecs</span>***</strong></dt>
+      <dd>Warn about overspecified functions 
+      (the -spec is strictly less allowing than the success typing)</dd>
+      <dt><strong><span class="code">-Wspecdiffs</span>***</strong></dt>
+      <dd>Warn when the -spec is different than the success typing</dd>
+    </dl>
+    <div class="note">
+<div class="label">Note</div>
+<div class="content"><p>
+      <p>*** These are options that turn on warnings rather than
+      turning them off.</p>
+    </p></div>
+</div>
+  </div>
+  <h3><a name="id2257037">Using the Dialyzer from Erlang</a></h3>
+<div class="REFBODY">
+    
+    <p>You can also use Dialyzer directly from Erlang. Both the GUI and the
+      command line versions are available. The options are similar to the ones
+      given from the command line, so please refer to the sections above for
+      a description of these.</p>
+  </div>
+  <h3>EXPORTS</h3>
+    <p><a name="gui-0"><span class="bold_code">gui() -&gt; ok | {error, Msg}</span></a><br><a name="gui-1"><span class="bold_code">gui(OptList) -&gt; ok | {error, Msg}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">OptList -- see below</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Dialyzer GUI version.</p>
+        <div class="example"><pre>
+OptList  : [Option]
+Option   : {files,          [Filename : string()]}
+         | {files_rec,      [DirName : string()]}
+         | {defines,        [{Macro: atom(), Value : term()}]}
+         | {from,           src_code | byte_code} %% Defaults to byte_code
+         | {init_plt,       FileName : string()}  %% If changed from default
+         | {include_dirs,   [DirName : string()]} 
+         | {output_file,    FileName : string()}
+         | {output_plt,     FileName :: string()}
+         | {analysis_type,  'success_typings' | 'plt_add' | 'plt_build' | 'plt_check' | 'plt_remove'}
+         | {warnings,       [WarnOpts]}
+         | {get_warnings,   bool()}
+WarnOpts : no_return
+         | no_unused
+         | no_improper_lists
+         | no_fun_app
+         | no_match
+         | no_fail_call
+         | error_handling
+         | unmatched_returns
+         | overspecs
+         | underspecs
+         | specdiffs
+        </pre></div>
+      </p></div>
+    <p><a name="run-1"><span class="bold_code">run(OptList) -&gt; Warnings</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">OptList -- see gui/0,1</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Warnings -- see below </span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Dialyzer command line version.</p>
+        <div class="example"><pre>
+Warnings :: [{Tag, Id, Msg}]
+Tag : 'warn_return_no_exit' | 'warn_return_only_exit'
+    | 'warn_not_called' | 'warn_non_proper_list'
+    | 'warn_fun_app' | 'warn_matching'
+    | 'warn_failing_call' | 'warn_contract_types'
+    | 'warn_contract_syntax' | 'warn_contract_not_equal'
+    | 'warn_contract_subtype' | 'warn_contract_supertype'
+Id = {File :: string(), Line :: integer()}
+Msg = msg() -- Undefined
+</pre></div>
+      </p></div>
+    <p><a name="format_warning-1"><span class="bold_code">format_warning(Msg) -&gt; string()</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Msg = {Tag, Id, msg()} -- See run/1</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Get a string from warnings as returned by dialyzer:run/1.</p>
+      </p></div>
+    <p><a name="plt_info-1"><span class="bold_code">plt_info(string()) -&gt; {'ok', [{atom(), any()}]} | {'error', atom()}</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Returns information about the specified plt.</p>
+      </p></div>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2006-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

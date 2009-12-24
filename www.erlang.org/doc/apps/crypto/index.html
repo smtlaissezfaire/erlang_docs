@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Crypto Reference Manual</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="crypto.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>crypto</strong><br><strong>Reference Manual</strong><br><small>Version 1.6.3</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="crypto (App)">
+<a href="../../man/crypto_app.html">crypto (App)
+                </a></li>
+<li title="crypto " expanded="false">crypto<ul>
+<li>
+<a href="../../man/crypto.html">
+                  Top of manual page
+                </a></li>
+<li title="start-0">
+<a href="../../man/crypto.html#start-0">start/0</a></li>
+<li title="stop-0">
+<a href="../../man/crypto.html#stop-0">stop/0</a></li>
+<li title="info-0">
+<a href="../../man/crypto.html#info-0">info/0</a></li>
+<li title="info_lib-0">
+<a href="../../man/crypto.html#info_lib-0">info_lib/0</a></li>
+<li title="md5-1">
+<a href="../../man/crypto.html#md5-1">md5/1</a></li>
+<li title="md5_init-0">
+<a href="../../man/crypto.html#md5_init-0">md5_init/0</a></li>
+<li title="md5_update-2">
+<a href="../../man/crypto.html#md5_update-2">md5_update/2</a></li>
+<li title="md5_final-1">
+<a href="../../man/crypto.html#md5_final-1">md5_final/1</a></li>
+<li title="sha-1">
+<a href="../../man/crypto.html#sha-1">sha/1</a></li>
+<li title="sha_init-0">
+<a href="../../man/crypto.html#sha_init-0">sha_init/0</a></li>
+<li title="sha_update-2">
+<a href="../../man/crypto.html#sha_update-2">sha_update/2</a></li>
+<li title="sha_final-1">
+<a href="../../man/crypto.html#sha_final-1">sha_final/1</a></li>
+<li title="md5_mac-2">
+<a href="../../man/crypto.html#md5_mac-2">md5_mac/2</a></li>
+<li title="md5_mac_96-2">
+<a href="../../man/crypto.html#md5_mac_96-2">md5_mac_96/2</a></li>
+<li title="sha_mac-2">
+<a href="../../man/crypto.html#sha_mac-2">sha_mac/2</a></li>
+<li title="sha_mac_96-2">
+<a href="../../man/crypto.html#sha_mac_96-2">sha_mac_96/2</a></li>
+<li title="des_cbc_encrypt-3">
+<a href="../../man/crypto.html#des_cbc_encrypt-3">des_cbc_encrypt/3</a></li>
+<li title="des_cbc_decrypt-3">
+<a href="../../man/crypto.html#des_cbc_decrypt-3">des_cbc_decrypt/3</a></li>
+<li title="des_cbc_ivec-1">
+<a href="../../man/crypto.html#des_cbc_ivec-1">des_cbc_ivec/1</a></li>
+<li title="des3_cbc_encrypt-5">
+<a href="../../man/crypto.html#des3_cbc_encrypt-5">des3_cbc_encrypt/5</a></li>
+<li title="des3_cbc_decrypt-5">
+<a href="../../man/crypto.html#des3_cbc_decrypt-5">des3_cbc_decrypt/5</a></li>
+<li title="blowfish_cfb64_encrypt-3">
+<a href="../../man/crypto.html#blowfish_cfb64_encrypt-3">blowfish_cfb64_encrypt/3</a></li>
+<li title="blowfish_cfb64_decrypt-3">
+<a href="../../man/crypto.html#blowfish_cfb64_decrypt-3">blowfish_cfb64_decrypt/3</a></li>
+<li title="aes_cfb_128_encrypt-3">
+<a href="../../man/crypto.html#aes_cfb_128_encrypt-3">aes_cfb_128_encrypt/3</a></li>
+<li title="aes_cbc_128_encrypt-3">
+<a href="../../man/crypto.html#aes_cbc_128_encrypt-3">aes_cbc_128_encrypt/3</a></li>
+<li title="aes_cfb_128_decrypt-3">
+<a href="../../man/crypto.html#aes_cfb_128_decrypt-3">aes_cfb_128_decrypt/3</a></li>
+<li title="aes_cbc_128_decrypt-3">
+<a href="../../man/crypto.html#aes_cbc_128_decrypt-3">aes_cbc_128_decrypt/3</a></li>
+<li title="aes_cbc_ivec-1">
+<a href="../../man/crypto.html#aes_cbc_ivec-1">aes_cbc_ivec/1</a></li>
+<li title="erlint-1">
+<a href="../../man/crypto.html#erlint-1">erlint/1</a></li>
+<li title="mpint-1">
+<a href="../../man/crypto.html#mpint-1">mpint/1</a></li>
+<li title="rand_bytes-1">
+<a href="../../man/crypto.html#rand_bytes-1">rand_bytes/1</a></li>
+<li title="rand_uniform-2">
+<a href="../../man/crypto.html#rand_uniform-2">rand_uniform/2</a></li>
+<li title="mod_exp-3">
+<a href="../../man/crypto.html#mod_exp-3">mod_exp/3</a></li>
+<li title="rsa_sign-2">
+<a href="../../man/crypto.html#rsa_sign-2">rsa_sign/2</a></li>
+<li title="rsa_sign-3">
+<a href="../../man/crypto.html#rsa_sign-3">rsa_sign/3</a></li>
+<li title="rsa_verify-3">
+<a href="../../man/crypto.html#rsa_verify-3">rsa_verify/3</a></li>
+<li title="rsa_verify-4">
+<a href="../../man/crypto.html#rsa_verify-4">rsa_verify/4</a></li>
+<li title="rsa_public_encrypt-3">
+<a href="../../man/crypto.html#rsa_public_encrypt-3">rsa_public_encrypt/3</a></li>
+<li title="rsa_private_decrypt-3">
+<a href="../../man/crypto.html#rsa_private_decrypt-3">rsa_private_decrypt/3</a></li>
+<li title="rsa_private_encrypt-3">
+<a href="../../man/crypto.html#rsa_private_encrypt-3">rsa_private_encrypt/3</a></li>
+<li title="rsa_public_decrypt-3">
+<a href="../../man/crypto.html#rsa_public_decrypt-3">rsa_public_decrypt/3</a></li>
+<li title="dss_sign-2">
+<a href="../../man/crypto.html#dss_sign-2">dss_sign/2</a></li>
+<li title="dss_verify-3">
+<a href="../../man/crypto.html#dss_verify-3">dss_verify/3</a></li>
+<li title="rc4_encrypt-2">
+<a href="../../man/crypto.html#rc4_encrypt-2">rc4_encrypt/2</a></li>
+<li title="dh_generate_key-1">
+<a href="../../man/crypto.html#dh_generate_key-1">dh_generate_key/1</a></li>
+<li title="dh_generate_key-2">
+<a href="../../man/crypto.html#dh_generate_key-2">dh_generate_key/2</a></li>
+<li title="dh_compute_key-3">
+<a href="../../man/crypto.html#dh_compute_key-3">dh_compute_key/3</a></li>
+<li title="exor-2">
+<a href="../../man/crypto.html#exor-2">exor/2</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<div class="frontpage"></div>
+<center><h1>crypto Reference Manual</h1></center>
+<center><h4>Version 1.6.3</h4></center>
+<center><h4>November 23 2009</h4></center>
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

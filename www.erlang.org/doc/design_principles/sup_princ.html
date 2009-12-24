@@ -1,0 +1,618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- Supervisor Behaviour</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="../pdf/otp-system-documentation.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>OTP Design Principles</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../js/flipmenu">
+<li title="Overview" expanded="false">Overview<ul>
+<li>
+<a href="des_princ.html">
+              Top of chapter
+            </a></li>
+<li title="Supervision Trees">
+<a href="des_princ.html#id2252268">Supervision Trees</a></li>
+<li title="Behaviours">
+<a href="des_princ.html#id2258984">Behaviours</a></li>
+<li title="Applications">
+<a href="des_princ.html#id2252297">Applications</a></li>
+<li title="Releases">
+<a href="des_princ.html#id2252171">Releases</a></li>
+<li title="Release Handling">
+<a href="des_princ.html#id2254710">Release Handling</a></li>
+</ul>
+</li>
+<li title="Gen_Server Behaviour" expanded="false">Gen_Server Behaviour<ul>
+<li>
+<a href="gen_server_concepts.html">
+              Top of chapter
+            </a></li>
+<li title="Client-Server Principles">
+<a href="gen_server_concepts.html#id2252090">Client-Server Principles</a></li>
+<li title="Example">
+<a href="gen_server_concepts.html#id2252110">Example</a></li>
+<li title="Starting a Gen_Server">
+<a href="gen_server_concepts.html#id2258596">Starting a Gen_Server</a></li>
+<li title="Synchronous Requests - Call">
+<a href="gen_server_concepts.html#id2267098">Synchronous Requests - Call</a></li>
+<li title="Asynchronous Requests - Cast">
+<a href="gen_server_concepts.html#id2262742">Asynchronous Requests - Cast</a></li>
+<li title="Stopping">
+<a href="gen_server_concepts.html#id2264124">Stopping</a></li>
+<li title="Handling Other Messages">
+<a href="gen_server_concepts.html#id2264230">Handling Other Messages</a></li>
+</ul>
+</li>
+<li title="Gen_Fsm Behaviour" expanded="false">Gen_Fsm Behaviour<ul>
+<li>
+<a href="fsm.html">
+              Top of chapter
+            </a></li>
+<li title="Finite State Machines">
+<a href="fsm.html#id2251340">Finite State Machines</a></li>
+<li title="Example">
+<a href="fsm.html#id2256726">Example</a></li>
+<li title="Starting a Gen_Fsm">
+<a href="fsm.html#id2261953">Starting a Gen_Fsm</a></li>
+<li title="Notifying About Events">
+<a href="fsm.html#id2258488">Notifying About Events</a></li>
+<li title="Timeouts">
+<a href="fsm.html#id2258580">Timeouts</a></li>
+<li title="All State Events">
+<a href="fsm.html#id2264981">All State Events</a></li>
+<li title="Stopping">
+<a href="fsm.html#id2265017">Stopping</a></li>
+<li title="Handling Other Messages">
+<a href="fsm.html#id2266792">Handling Other Messages</a></li>
+</ul>
+</li>
+<li title="Gen_Event Behaviour" expanded="false">Gen_Event Behaviour<ul>
+<li>
+<a href="events.html">
+              Top of chapter
+            </a></li>
+<li title="Event Handling Principles">
+<a href="events.html#id2267995">Event Handling Principles</a></li>
+<li title="Example">
+<a href="events.html#id2268056">Example</a></li>
+<li title="Starting an Event Manager">
+<a href="events.html#id2268104">Starting an Event Manager</a></li>
+<li title="Adding an Event Handler">
+<a href="events.html#id2268171">Adding an Event Handler</a></li>
+<li title="Notifying About Events">
+<a href="events.html#id2268262">Notifying About Events</a></li>
+<li title="Deleting an Event Handler">
+<a href="events.html#id2268339">Deleting an Event Handler</a></li>
+<li title="Stopping">
+<a href="events.html#id2268420">Stopping</a></li>
+</ul>
+</li>
+<li title="Supervisor Behaviour" expanded="true">Supervisor Behaviour<ul>
+<li>
+<a href="sup_princ.html">
+              Top of chapter
+            </a></li>
+<li title="Supervision Principles">
+<a href="sup_princ.html#id2268545">Supervision Principles</a></li>
+<li title="Example">
+<a href="sup_princ.html#id2268573">Example</a></li>
+<li title="Restart Strategy">
+<a href="sup_princ.html#id2268648">Restart Strategy</a></li>
+<li title="Maximum Restart Frequency">
+<a href="sup_princ.html#id2266142">Maximum Restart Frequency</a></li>
+<li title="Child Specification">
+<a href="sup_princ.html#id2266207">Child Specification</a></li>
+<li title="Starting a Supervisor">
+<a href="sup_princ.html#id2266525">Starting a Supervisor</a></li>
+<li title="Adding a Child Process">
+<a href="sup_princ.html#id2266650">Adding a Child Process</a></li>
+<li title="Stopping a Child Process">
+<a href="sup_princ.html#id2266699">Stopping a Child Process</a></li>
+<li title="Simple-One-For-One Supervisors">
+<a href="sup_princ.html#id2268750">Simple-One-For-One Supervisors</a></li>
+<li title="Stopping">
+<a href="sup_princ.html#id2268847">Stopping</a></li>
+</ul>
+</li>
+<li title="Sys and Proc_Lib" expanded="false">Sys and Proc_Lib<ul>
+<li>
+<a href="spec_proc.html">
+              Top of chapter
+            </a></li>
+<li title="Simple Debugging">
+<a href="spec_proc.html#id2268956">Simple Debugging</a></li>
+<li title="Special Processes">
+<a href="spec_proc.html#id2269055">Special Processes</a></li>
+<li title="User-Defined Behaviours">
+<a href="spec_proc.html#id2269737">User-Defined Behaviours</a></li>
+</ul>
+</li>
+<li title="Applications" expanded="false">Applications<ul>
+<li>
+<a href="applications.html">
+              Top of chapter
+            </a></li>
+<li title="Application Concept">
+<a href="applications.html#id2269898">Application Concept</a></li>
+<li title="Application Callback Module">
+<a href="applications.html#id2269972">Application Callback Module</a></li>
+<li title="Application Resource File">
+<a href="applications.html#id2270097">Application Resource File</a></li>
+<li title="Directory Structure">
+<a href="applications.html#id2270364">Directory Structure</a></li>
+<li title="Application Controller">
+<a href="applications.html#id2270499">Application Controller</a></li>
+<li title="Loading and Unloading Applications">
+<a href="applications.html#id2270536">Loading and Unloading Applications</a></li>
+<li title="Starting and Stopping Applications">
+<a href="applications.html#id2270605">Starting and Stopping Applications</a></li>
+<li title="Configuring an Application">
+<a href="applications.html#id2270704">Configuring an Application</a></li>
+<li title="Application Start Types">
+<a href="applications.html#id2270920">Application Start Types</a></li>
+</ul>
+</li>
+<li title="Included Applications" expanded="false">Included Applications<ul>
+<li>
+<a href="included_applications.html">
+              Top of chapter
+            </a></li>
+<li title="Definition">
+<a href="included_applications.html#id2271074">Definition</a></li>
+<li title="Specifying Included Applications">
+<a href="included_applications.html#id2271148">Specifying Included Applications</a></li>
+<li title="Synchronizing Processes During Startup">
+<a href="included_applications.html#id2271177">Synchronizing Processes During Startup</a></li>
+</ul>
+</li>
+<li title="Distributed Applications" expanded="false">Distributed Applications<ul>
+<li>
+<a href="distributed_applications.html">
+              Top of chapter
+            </a></li>
+<li title="Definition">
+<a href="distributed_applications.html#id2271422">Definition</a></li>
+<li title="Specifying Distributed Applications">
+<a href="distributed_applications.html#id2271465">Specifying Distributed Applications</a></li>
+<li title="Starting and Stopping Distributed Applications">
+<a href="distributed_applications.html#id2271692">Starting and Stopping Distributed Applications</a></li>
+<li title="Failover">
+<a href="distributed_applications.html#id2271804">Failover</a></li>
+<li title="Takeover">
+<a href="distributed_applications.html#id2271956">Takeover</a></li>
+</ul>
+</li>
+<li title="Releases" expanded="false">Releases<ul>
+<li>
+<a href="release_structure.html">
+              Top of chapter
+            </a></li>
+<li title="Release Concept">
+<a href="release_structure.html#id2272165">Release Concept</a></li>
+<li title="Release Resource File">
+<a href="release_structure.html#id2272223">Release Resource File</a></li>
+<li title="Generating Boot Scripts">
+<a href="release_structure.html#id2272372">Generating Boot Scripts</a></li>
+<li title="Creating a Release Package">
+<a href="release_structure.html#id2272480">Creating a Release Package</a></li>
+<li title="Directory Structure">
+<a href="release_structure.html#id2272613">Directory Structure</a></li>
+</ul>
+</li>
+<li title="Release Handling" expanded="false">Release Handling<ul>
+<li>
+<a href="release_handling.html">
+              Top of chapter
+            </a></li>
+<li title="Release Handling Principles">
+<a href="release_handling.html#id2272899">Release Handling Principles</a></li>
+<li title="Requirements">
+<a href="release_handling.html#id2273174">Requirements</a></li>
+<li title="Distributed Systems">
+<a href="release_handling.html#id2273276">Distributed Systems</a></li>
+<li title="Release Handling Instructions">
+<a href="release_handling.html#id2273306">Release Handling Instructions</a></li>
+<li title="Application Upgrade File">
+<a href="release_handling.html#id2273789">Application Upgrade File</a></li>
+<li title="Release Upgrade File">
+<a href="release_handling.html#id2273992">Release Upgrade File</a></li>
+<li title="Installing a Release">
+<a href="release_handling.html#id2274164">Installing a Release</a></li>
+<li title="Updating Application Specifications">
+<a href="release_handling.html#id2274681">Updating Application Specifications</a></li>
+</ul>
+</li>
+<li title="Appup Cookbook" expanded="false">Appup Cookbook<ul>
+<li>
+<a href="appup_cookbook.html">
+              Top of chapter
+            </a></li>
+<li title="Changing a Functional Module">
+<a href="appup_cookbook.html#id2274885">Changing a Functional Module</a></li>
+<li title="Changing a Residence Module">
+<a href="appup_cookbook.html#id2274910">Changing a Residence Module</a></li>
+<li title="Changing a Callback Module">
+<a href="appup_cookbook.html#id2274952">Changing a Callback Module</a></li>
+<li title="Changing Internal State">
+<a href="appup_cookbook.html#id2275007">Changing Internal State</a></li>
+<li title="Module Dependencies">
+<a href="appup_cookbook.html#id2275158">Module Dependencies</a></li>
+<li title="Changing Code For a Special Process">
+<a href="appup_cookbook.html#id2275341">Changing Code For a Special Process</a></li>
+<li title="Changing a Supervisor">
+<a href="appup_cookbook.html#id2275527">Changing a Supervisor</a></li>
+<li title="Adding or Deleting a Module">
+<a href="appup_cookbook.html#id2275808">Adding or Deleting a Module</a></li>
+<li title="Starting or Terminating a Process">
+<a href="appup_cookbook.html#id2275834">Starting or Terminating a Process</a></li>
+<li title="Adding or Removing an Application">
+<a href="appup_cookbook.html#id2275854">Adding or Removing an Application</a></li>
+<li title="Restarting an Application">
+<a href="appup_cookbook.html#id2275887">Restarting an Application</a></li>
+<li title="Changing an Application Specification">
+<a href="appup_cookbook.html#id2275933">Changing an Application Specification</a></li>
+<li title="Changing Application Configuration">
+<a href="appup_cookbook.html#id2275959">Changing Application Configuration</a></li>
+<li title="Changing Included Applications">
+<a href="appup_cookbook.html#id2275995">Changing Included Applications</a></li>
+<li title="Changing Non-Erlang Code">
+<a href="appup_cookbook.html#id2276275">Changing Non-Erlang Code</a></li>
+<li title="Emulator Restart">
+<a href="appup_cookbook.html#id2276372">Emulator Restart</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>5 Supervisor Behaviour</h1>
+  
+  <p>This section should be read in conjunction with
+    <span class="code">supervisor(3)</span>, where all details about the supervisor
+    behaviour is given.</p>
+  <h3><a name="id2268545">5.1 
+        Supervision Principles</a></h3>
+    
+    <p>A supervisor is responsible for starting, stopping and
+      monitoring its child processes. The basic idea of a supervisor is
+      that it should keep its child processes alive by restarting them
+      when necessary.</p>
+    <p>Which child processes to start and monitor is specified by a
+      list of <span class="bold_code">
+<a href="#spec">child specifications</a></span>.
+      The child processes are started in the order specified by this
+      list, and terminated in the reversed order.</p>
+  
+  <h3><a name="id2268573">5.2 
+        Example</a></h3>
+    
+    <p>The callback module for a supervisor starting the server from
+      the <span class="bold_code">
+<a href="gen_server_concepts.html#ex">gen_server chapter</a></span>
+      could look like this:</p>
+    <a name="ex"></a>
+    <div class="example"><pre>
+-module(ch_sup).
+-behaviour(supervisor).
+-export([start_link/0]).
+-export([init/1]).
+start_link() -&gt;
+    supervisor:start_link(ch_sup, []).
+init(_Args) -&gt;
+    {ok, {{one_for_one, 1, 60},
+          [{ch3, {ch3, start_link, []},
+            permanent, brutal_kill, worker, [ch3]}]}}.</pre></div>
+    <p><span class="code">one_for_one</span> is the <span class="bold_code">
+<a href="#strategy">restart strategy</a></span>.</p>
+    <p>1 and 60 defines the <span class="bold_code">
+<a href="#frequency">maximum restart frequency</a></span>.</p>
+    <p>The tuple <span class="code">{ch3, ...}</span> is a <span class="bold_code">
+<a href="#spec">child specification</a></span>.</p>
+  
+  <h3><a name="id2268648">5.3 
+        Restart Strategy</a></h3>
+    <a name="strategy"></a>
+    
+    <h4>one_for_one</h4>
+      
+      <p>If a child process terminates, only that process is restarted.</p>
+      <a name="sup4"></a>
+      <img alt="IMAGE MISSING" src="../design_principles/sup4.gif"><br>
+        <em>Figure
+        5.1:
+         
+        One_For_One Supervision</em>
+      
+    
+    <h4>one_for_all</h4>
+      
+      <p>If a child process terminates, all other child processes are
+        terminated and then all child processes, including
+        the terminated one, are restarted.</p>
+      <a name="sup5"></a>
+      <img alt="IMAGE MISSING" src="../design_principles/sup5.gif"><br>
+        <em>Figure
+        5.2:
+         
+        One_For_All Supervision</em>
+      
+    
+    <h4>rest_for_one</h4>
+      
+      <p>If a child process terminates, the 'rest' of the child
+        processes -- i.e. the child processes after the terminated
+        process in start order -- are terminated. Then the terminated
+        child process and the rest of the child processes are restarted.</p>
+    
+  
+  <h3><a name="id2266142">5.4 
+        Maximum Restart Frequency</a></h3>
+    <a name="frequency"></a>
+    
+    <p>The supervisors have a built-in mechanism to limit the number of
+      restarts which can occur in a given time interval. This is
+      determined by the values of the two parameters <span class="code">MaxR</span> and
+      <span class="code">MaxT</span> in the start specification returned by the callback
+      function <span class="code">init</span>:</p>
+    <div class="example"><pre>
+init(...) -&gt;
+    {ok, {{RestartStrategy, MaxR, MaxT},
+          [ChildSpec, ...]}}.</pre></div>
+    <p>If more than <span class="code">MaxR</span> number of restarts occur in the last
+      <span class="code">MaxT</span> seconds, then the supervisor terminates all the child
+      processes and then itself.</p>
+    <p>When the supervisor terminates, then the next higher level
+      supervisor takes some action. It either restarts the terminated
+      supervisor, or terminates itself.</p>
+    <p>The intention of the restart mechanism is to prevent a situation
+      where a process repeatedly dies for the same reason, only to be
+      restarted again.</p>
+  
+  <h3><a name="id2266207">5.5 
+        Child Specification</a></h3>
+    <a name="spec"></a>
+    
+    <p>This is the type definition for a child specification:</p>
+    <div class="example"><pre>
+{Id, StartFunc, Restart, Shutdown, Type, Modules}
+    Id = term()
+    StartFunc = {M, F, A}
+        M = F = atom()
+        A = [term()]
+    Restart = permanent | transient | temporary
+    Shutdown = brutal_kill | integer() &amp;gt;=0 | infinity
+    Type = worker | supervisor
+    Modules = [Module] | dynamic
+        Module = atom()</pre></div>
+    <ul>
+      <li>
+        <p><span class="code">Id</span> is a name that is used to identify the child
+          specification internally by the supervisor.</p>
+      </li>
+      <li>
+        <p><span class="code">StartFunc</span> defines the function call used to start
+          the child process. It is a module-function-arguments tuple
+          used as <span class="code">apply(M, F, A)</span>.</p>
+        <p>It should be (or result in) a call to
+          <span class="code">supervisor:start_link</span>, <span class="code">gen_server:start_link</span>,
+          <span class="code">gen_fsm:start_link</span> or <span class="code">gen_event:start_link</span>.
+          (Or a function compliant with these functions, see
+          <span class="code">supervisor(3)</span> for details.</p>
+      </li>
+      <li>
+        <p><span class="code">Restart</span> defines when a terminated child process should
+          be restarted.</p>
+        <ul>
+          <li>A <span class="code">permanent</span> child process is always restarted.</li>
+          <li>A <span class="code">temporary</span> child process is never restarted.</li>
+          <li>A <span class="code">transient</span> child process is restarted only if it
+           terminates abnormally, i.e. with another exit reason than
+          <span class="code">normal</span>.</li>
+        </ul>
+      </li>
+      <li>
+        <a name="shutdown"></a>
+        <p><span class="code">Shutdown</span> defines how a child process should be
+          terminated.</p>
+        <ul>
+          <li>
+<span class="code">brutal_kill</span> means the child process is
+           unconditionally terminated using <span class="code">exit(Child, kill)</span>.</li>
+          <li>An integer timeout value means that the supervisor tells
+           the child process to terminate by calling
+          <span class="code">exit(Child, shutdown)</span> and then waits for an exit
+           signal back. If no exit signal is received within
+           the specified time, the child process is unconditionally
+           terminated using <span class="code">exit(Child, kill)</span>.</li>
+          <li>If the child process is another supervisor, it should be
+           set to <span class="code">infinity</span> to give the subtree enough time to
+           shutdown.</li>
+        </ul>
+      </li>
+      <li>
+        <p><span class="code">Type</span> specifies if the child process is a supervisor or
+          a worker.</p>
+      </li>
+      <li>
+        <p><span class="code">Modules</span> should be a list with one element
+          <span class="code">[Module]</span>, where <span class="code">Module</span> is the name of
+          the callback module, if the child process is a supervisor,
+          gen_server or gen_fsm. If the child process is a gen_event,
+          <span class="code">Modules</span> should be <span class="code">dynamic</span>.</p>
+        <p>This information is used by the release handler during
+          upgrades and downgrades, see
+          <span class="bold_code">
+<a href="release_handling.html">Release Handling</a></span>.</p>
+      </li>
+    </ul>
+    <p>Example: The child specification to start the server <span class="code">ch3</span>
+      in the example above looks like:</p>
+    <div class="example"><pre>
+{ch3,
+ {ch3, start_link, []},
+ permanent, brutal_kill, worker, [ch3]}</pre></div>
+    <p>Example: A child specification to start the event manager from
+      the chapter about
+      <span class="bold_code">
+<a href="events.html#mgr">gen_event</a></span>:</p>
+    <div class="example"><pre>
+{error_man,
+ {gen_event, start_link, [{local, error_man}]},
+ permanent, 5000, worker, dynamic}</pre></div>
+    <p>Both the server and event manager are registered processes which
+      can be expected to be accessible at all times, thus they are
+      specified to be <span class="code">permanent</span>.</p>
+    <p><span class="code">ch3</span> does not need to do any cleaning up before
+      termination, thus no shutdown time is needed but
+      <span class="code">brutal_kill</span> should be sufficient. <span class="code">error_man</span> may
+      need some time for the event handlers to clean up, thus
+      <span class="code">Shutdown</span> is set to 5000 ms.</p>
+    <p>Example: A child specification to start another supervisor:</p>
+    <div class="example"><pre>
+{sup,
+ {sup, start_link, []},
+ transient, infinity, supervisor, [sup]}</pre></div>
+  
+  <h3><a name="id2266525">5.6 
+        Starting a Supervisor</a></h3>
+    <a name="super_tree"></a>
+    
+    <p>In the example above, the supervisor is started by calling
+      <span class="code">ch_sup:start_link()</span>:</p>
+    <div class="example"><pre>
+start_link() -&gt;
+    supervisor:start_link(ch_sup, []).</pre></div>
+    <p><span class="code">ch_sup:start_link</span> calls the function
+      <span class="code">supervisor:start_link/2</span>. This function spawns and links to
+      a new process, a supervisor.</p>
+    <ul>
+      <li>The first argument, <span class="code">ch_sup</span>, is the name of
+       the callback module, that is the module where the <span class="code">init</span>
+       callback function is located.</li>
+      <li>The second argument, [], is a term which is passed as-is to
+       the callback function <span class="code">init</span>. Here, <span class="code">init</span> does not
+       need any indata and ignores the argument.</li>
+    </ul>
+    <p>In this case, the supervisor is not registered. Instead its pid
+      must be used. A name can be specified by calling
+      <span class="code">supervisor:start_link({local, Name}, Module, Args)</span> or
+      <span class="code">supervisor:start_link({global, Name}, Module, Args)</span>.</p>
+    <p>The new supervisor process calls the callback function
+      <span class="code">ch_sup:init([])</span>. <span class="code">init</span> is expected to return
+      <span class="code">{ok, StartSpec}</span>:</p>
+    <div class="example"><pre>
+init(_Args) -&gt;
+    {ok, {{one_for_one, 1, 60},
+          [{ch3, {ch3, start_link, []},
+            permanent, brutal_kill, worker, [ch3]}]}}.</pre></div>
+    <p>The supervisor then starts all its child processes according to
+      the child specifications in the start specification. In this case
+      there is one child process, <span class="code">ch3</span>.</p>
+    <p>Note that <span class="code">supervisor:start_link</span> is synchronous. It does
+      not return until all child processes have been started.</p>
+  
+  <h3><a name="id2266650">5.7 
+        Adding a Child Process</a></h3>
+    
+    <p>In addition to the static supervision tree, we can also add
+      dynamic child processes to an existing supervisor with
+      the following call:</p>
+    <div class="example"><pre>
+supervisor:start_child(Sup, ChildSpec)</pre></div>
+    <p><span class="code">Sup</span> is the pid, or name, of the supervisor.
+      <span class="code">ChildSpec</span> is a <span class="bold_code">
+<a href="#spec">child specification</a></span>.</p>
+    <p>Child processes added using <span class="code">start_child/2</span> behave in
+      the same manner as the other child processes, with the following
+      important exception: If a supervisor dies and is re-created, then
+      all child processes which were dynamically added to the supervisor
+      will be lost.</p>
+  
+  <h3><a name="id2266699">5.8 
+        Stopping a Child Process</a></h3>
+    
+    <p>Any child process, static or dynamic, can be stopped in
+      accordance with the shutdown specification:</p>
+    <div class="example"><pre>
+supervisor:terminate_child(Sup, Id)</pre></div>
+    <p>The child specification for a stopped child process is deleted
+      with the following call:</p>
+    <div class="example"><pre>
+supervisor:delete_child(Sup, Id)</pre></div>
+    <p><span class="code">Sup</span> is the pid, or name, of the supervisor.
+      <span class="code">Id</span> is the id specified in the <span class="bold_code">
+<a href="#spec">child specification</a></span>.</p>
+    <p>As with dynamically added child processes, the effects of
+      deleting a static child process is lost if the supervisor itself
+      restarts.</p>
+  
+  <h3><a name="id2268750">5.9 
+        Simple-One-For-One Supervisors</a></h3>
+    
+    <p>A supervisor with restart strategy <span class="code">simple_one_for_one</span> is
+      a simplified one_for_one supervisor, where all child processes are
+      dynamically added instances of the same process.</p>
+    <p>Example of a callback module for a simple_one_for_one supervisor:</p>
+    <div class="example"><pre>
+-module(simple_sup).
+-behaviour(supervisor).
+-export([start_link/0]).
+-export([init/1]).
+start_link() -&gt;
+    supervisor:start_link(simple_sup, []).
+init(_Args) -&gt;
+    {ok, {{simple_one_for_one, 0, 1},
+          [{call, {call, start_link, []},
+            temporary, brutal_kill, worker, [call]}]}}.</pre></div>
+    <p>When started, the supervisor will not start any child processes.
+      Instead, all child processes are added dynamically by calling:</p>
+    <div class="example"><pre>
+supervisor:start_child(Sup, List)</pre></div>
+    <p><span class="code">Sup</span> is the pid, or name, of the supervisor.
+      <span class="code">List</span> is an arbitrary list of terms which will be added to
+      the list of arguments specified in the child specification. If
+      the start function is specified as <span class="code">{M, F, A}</span>, then
+      the child process is started by calling
+      <span class="code">apply(M, F, A++List)</span>.</p>
+    <p>For example, adding a child to <span class="code">simple_sup</span> above:</p>
+    <div class="example"><pre>
+supervisor:start_child(Pid, [id1])</pre></div>
+    <p>results in the child process being started by calling
+      <span class="code">apply(call, start_link, []++[id1])</span>, or actually:</p>
+    <div class="example"><pre>
+call:start_link(id1)</pre></div>
+  
+  <h3><a name="id2268847">5.10 
+        Stopping</a></h3>
+    
+    <p>Since the supervisor is part of a supervision tree, it will
+      automatically be terminated by its supervisor. When asked to
+      shutdown, it will terminate all child processes in reversed start
+      order according to the respective shutdown specifications, and
+      then terminate itself.</p>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1997-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

@@ -1,0 +1,853 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- ssl</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/ssl/users_guide.html">User's Guide</a><br>
+<a href="../apps/ssl/index.html">Reference Manual</a><br>
+<a href="../apps/ssl/release_notes.html">Release Notes</a><br>
+<a href="../apps/ssl/ssl.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Secure Socket Layer </strong><br><strong>Reference Manual</strong><br><small>Version 3.10.7</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="ssl (App)">
+<a href="ssl_app.html">ssl (App)
+                </a></li>
+<li title="ssl " expanded="false">ssl<ul>
+<li>
+<a href="ssl.html">
+                  Top of manual page
+                </a></li>
+<li title="ciphers-0">
+<a href="ssl.html#ciphers-0">ciphers/0</a></li>
+<li title="close-1">
+<a href="ssl.html#close-1">close/1</a></li>
+<li title="connect-3">
+<a href="ssl.html#connect-3">connect/3</a></li>
+<li title="connect-4">
+<a href="ssl.html#connect-4">connect/4</a></li>
+<li title="connection_info-1">
+<a href="ssl.html#connection_info-1">connection_info/1</a></li>
+<li title="controlling_process-2">
+<a href="ssl.html#controlling_process-2">controlling_process/2</a></li>
+<li title="format_error-1">
+<a href="ssl.html#format_error-1">format_error/1</a></li>
+<li title="getopts-2">
+<a href="ssl.html#getopts-2">getopts/2</a></li>
+<li title="listen-2">
+<a href="ssl.html#listen-2">listen/2</a></li>
+<li title="peercert-1">
+<a href="ssl.html#peercert-1">peercert/1</a></li>
+<li title="peercert-2">
+<a href="ssl.html#peercert-2">peercert/2</a></li>
+<li title="peername-1">
+<a href="ssl.html#peername-1">peername/1</a></li>
+<li title="pid-1">
+<a href="ssl.html#pid-1">pid/1</a></li>
+<li title="recv-2">
+<a href="ssl.html#recv-2">recv/2</a></li>
+<li title="recv-3">
+<a href="ssl.html#recv-3">recv/3</a></li>
+<li title="seed-1">
+<a href="ssl.html#seed-1">seed/1</a></li>
+<li title="send-2">
+<a href="ssl.html#send-2">send/2</a></li>
+<li title="setopts-2">
+<a href="ssl.html#setopts-2">setopts/2</a></li>
+<li title="ssl_accept-1">
+<a href="ssl.html#ssl_accept-1">ssl_accept/1</a></li>
+<li title="ssl_accept-2">
+<a href="ssl.html#ssl_accept-2">ssl_accept/2</a></li>
+<li title="sockname-1">
+<a href="ssl.html#sockname-1">sockname/1</a></li>
+<li title="transport_accept-1">
+<a href="ssl.html#transport_accept-1">transport_accept/1</a></li>
+<li title="transport_accept-2">
+<a href="ssl.html#transport_accept-2">transport_accept/2</a></li>
+<li title="version-0">
+<a href="ssl.html#version-0">version/0</a></li>
+</ul>
+</li>
+<li title="new_ssl " expanded="true">new_ssl<ul>
+<li>
+<a href="new_ssl.html">
+                  Top of manual page
+                </a></li>
+<li title="cipher_suites-0">
+<a href="new_ssl.html#cipher_suites-0">cipher_suites/0</a></li>
+<li title="cipher_suites-1">
+<a href="new_ssl.html#cipher_suites-1">cipher_suites/1</a></li>
+<li title="connect-2">
+<a href="new_ssl.html#connect-2">connect/2</a></li>
+<li title="connect-3">
+<a href="new_ssl.html#connect-3">connect/3</a></li>
+<li title="connect-3">
+<a href="new_ssl.html#connect-3">connect/3</a></li>
+<li title="connect-4">
+<a href="new_ssl.html#connect-4">connect/4</a></li>
+<li title="close-1">
+<a href="new_ssl.html#close-1">close/1</a></li>
+<li title="controlling_process-2">
+<a href="new_ssl.html#controlling_process-2">controlling_process/2</a></li>
+<li title="connection_info-1">
+<a href="new_ssl.html#connection_info-1">connection_info/1</a></li>
+<li title="getopts-1">
+<a href="new_ssl.html#getopts-1">getopts/1</a></li>
+<li title="getopts-2">
+<a href="new_ssl.html#getopts-2">getopts/2</a></li>
+<li title="listen-2">
+<a href="new_ssl.html#listen-2">listen/2</a></li>
+<li title="peercert-1">
+<a href="new_ssl.html#peercert-1">peercert/1</a></li>
+<li title="peercert-2">
+<a href="new_ssl.html#peercert-2">peercert/2</a></li>
+<li title="peername-1">
+<a href="new_ssl.html#peername-1">peername/1</a></li>
+<li title="recv-2">
+<a href="new_ssl.html#recv-2">recv/2</a></li>
+<li title="recv-3">
+<a href="new_ssl.html#recv-3">recv/3</a></li>
+<li title="send-2">
+<a href="new_ssl.html#send-2">send/2</a></li>
+<li title="setopts-2">
+<a href="new_ssl.html#setopts-2">setopts/2</a></li>
+<li title="shutdown-2">
+<a href="new_ssl.html#shutdown-2">shutdown/2</a></li>
+<li title="ssl_accept-1">
+<a href="new_ssl.html#ssl_accept-1">ssl_accept/1</a></li>
+<li title="ssl_accept-2">
+<a href="new_ssl.html#ssl_accept-2">ssl_accept/2</a></li>
+<li title="ssl_accept-2">
+<a href="new_ssl.html#ssl_accept-2">ssl_accept/2</a></li>
+<li title="ssl_accept-3">
+<a href="new_ssl.html#ssl_accept-3">ssl_accept/3</a></li>
+<li title="sockname-1">
+<a href="new_ssl.html#sockname-1">sockname/1</a></li>
+<li title="start-0">
+<a href="new_ssl.html#start-0">start/0</a></li>
+<li title="start-1">
+<a href="new_ssl.html#start-1">start/1</a></li>
+<li title="stop-0">
+<a href="new_ssl.html#stop-0">stop/0</a></li>
+<li title="transport_accept-1">
+<a href="new_ssl.html#transport_accept-1">transport_accept/1</a></li>
+<li title="transport_accept-2">
+<a href="new_ssl.html#transport_accept-2">transport_accept/2</a></li>
+<li title="versions-0">
+<a href="new_ssl.html#versions-0">versions/0</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>new_ssl</h1></center>
+  
+  <h3>MODULE</h3>
+<div class="REFBODY">new_ssl</div>
+  <h3>MODULE SUMMARY</h3>
+<div class="REFBODY">Interface Functions for Secure Socket Layer</div>
+  <h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+    <p>This module contains interface functions to the Secure Socket
+      Layer. 
+    </p>
+  </p></div>
+  
+  <h3><a name="id2263622">NEW SSL</a></h3>
+<div class="REFBODY">
+    
+    <p>This manual page describes functions that are defined
+      in the ssl module and represents the new ssl implementation
+      that coexists with the old one, as the new implementation
+      is not yet complete enough to replace the old one.</p>
+       
+    <p>The new implementation can be
+      accessed by providing the option {ssl_imp, new} to the
+      ssl:connect and ssl:listen functions.</p>
+    
+    <p>The new implementation is Erlang based and all logic
+      is in Erlang and only payload encryption calculations are
+      done in C via the crypto application. The main reason for
+      making a new implementation is that the old solution was
+      very crippled as the control of the ssl-socket was deep
+      down in openssl making it hard if not impossible to
+      support all inet options, ipv6 and upgrade of a tcp
+      connection to a ssl connection. The alfa version has a
+      few limitations that will be removed before the ssl-4.0
+      release. Main differences and limitations in the alfa are
+      listed below.</p>
+    <ul>
+      <li>New ssl requires the crypto
+	application.</li>
+      <li>The option reuseaddr is
+	supported and the default value is false as in gen_tcp.
+	Old ssl is patched to accept that the option is set to
+	true to provide a smoother migration between the
+	versions. In old ssl the option is hard coded to
+	true.</li>
+      <li>ssl:version/0 is replaced by
+            ssl:versions/0</li>
+      <li>ssl:ciphers/0 is replaced by
+            ssl:cipher_suites/0</li>
+      <li>ssl:pid/1 is a
+            meaningless function in new ssl and will be deprecated in
+            ssl-4.0 until it is removed it will return a valid but
+            meaningless pid.</li>
+      <li>New API functions are
+            ssl:shutdown/2, ssl:cipher_suites/[0,1] and
+            ssl:versions/0</li>
+      <li>Diffie-Hellman keyexchange is
+            not supported yet.</li>
+      <li>CRL and policy certificate
+            extensions are not supported yet. </li>
+      <li>Supported SSL/TLS-versions are SSL-3.0 and TLS-1.0 </li>
+      <li>For security reasons sslv2 is not supported.</li>
+    </ul>
+ 
+  </div>
+  
+  <h3><a name="id2263715">COMMON DATA TYPES</a></h3>
+<div class="REFBODY">
+    
+    <p>The following data types are used in the functions below:
+    </p>
+    <p><span class="code">boolean() = true | false</span></p> 
+    
+    <p><span class="code">property() = atom()</span></p>
+    
+    <p><span class="code">option() = socketoption() | ssloption() | transportoption()</span></p>
+     <p><span class="code">socketoption() = [{property(), term()}] - defaults to
+      [{mode,list},{packet, 0},{header, 0},{active, true}].
+    </span></p>
+    <p>For valid options
+      see <span class="bold_code">
+<a href="inet.html">inet(3) </a></span> and
+      <span class="bold_code">
+<a href="gen_tcp.html">gen_tcp(3) </a></span>.
+    </p>
+    
+    <p> <span class="code">ssloption() = {verify, verify_type()} |
+      {fail_if_no_peer_cert, boolean()}
+      {depth, integer()} |
+      {certfile, path()} | {keyfile, path()} | {password, string()} |
+      {cacertfile, path()} | {ciphers, ciphers()} | {ssl_imp, ssl_imp()}
+      | {reuse_sessions, boolean()} | {reuse_session, fun()}
+    </span></p>
+    <p><span class="code">transportoption() = {CallbackModule, DataTag, ClosedTag}
+	- defaults to {gen_tcp, tcp, tcp_closed}. Ssl may be
+	run over any reliable transport protocol that has
+	an equivalent API to gen_tcp's.</span></p>
+    
+    <p><span class="code">      CallbackModule =
+	atom()</span>
+    </p> <p><span class="code">      DataTag =
+	atom() - tag used in socket data message.</span></p>
+    <p><span class="code">      ClosedTag = atom() - tag used in
+    socket close message.</span></p>
+    <p><span class="code">verify_type() = verify_none | verify_peer</span></p>
+    
+    <p><span class="code">path() = string() - representing a file path.</span></p>
+    
+    <p><span class="code">host() = hostname() | ipaddress()</span></p>
+        
+    <p><span class="code">hostname() = string()</span></p>
+    
+    <p><span class="code">
+      ip_address() = {N1,N2,N3,N4}  % IPv4
+      | {K1,K2,K3,K4,K5,K6,K7,K8}  % IPv6    </span></p>
+    <p><span class="code">sslsocket() - opaque to the user. </span></p>
+    
+    <p><span class="code">protocol() = sslv3 | tlsv1 </span></p>
+    
+    <p><span class="code">ciphers() = [ciphersuite()] | sting() (according to old API)</span></p>
+    
+    <p><span class="code">ciphersuite() =
+      {key_exchange(), cipher(), hash(), exportable()}</span></p>
+    
+    <p><span class="code">key_exchange() =  rsa | dh_dss | dh_rsa | dh_anon | dhe_dss
+      | dhe_rsa | krb5 | KeyExchange_export
+    </span></p>
+   <p><span class="code">cipher() = rc4_128 | idea_cbc | des_cbc | '3des_ede_cbc'
+      des40_cbc | dh_dss | aes_128_cbc | aes_256_cbc |
+      rc2_cbc_40 | rc4_40  </span></p>
+   <p> <span class="code">hash() = md5 | sha
+    </span></p>
+   <p> <span class="code">exportable() = export | no_export | ignore
+    </span></p>
+    <p><span class="code">ssl_imp() = new | old - default is old.</span></p>
+    
+  </div>
+  
+<h3><a name="id2263884">SSL OPTION DESCRIPTIONS</a></h3>
+<div class="REFBODY">
+    
+    
+    <dl>
+      <dt><strong>{verify, verify_type()}</strong></dt>
+      <dd> If <span class="code">verify_none</span> is specified x509-certificate
+      path validation errors at the client side
+      will not  automatically cause the connection to fail, as
+      it will if the verify type is <span class="code">verify_peer</span>. See also
+      the option verify_fun.
+      Servers only do the path validation if <span class="code">verify_peer</span> is set to
+      true, as it then will 
+      send a certificate request to
+      the client (this message is not sent if the verify option is
+      <span class="code">verify_none</span>) and you may then also want to specify
+      the option <span class="code">fail_if_no_peer_cert</span>.
+      </dd>
+      <dt><strong>{fail_if_no_peer_cert, boolean()}</strong></dt>
+      <dd>Used together with {verify, verify_peer} by a ssl server.
+      If set to true,
+      the server will fail if the client does not have a certificate
+      to send, e.i sends a empty certificate, if set to false it will
+      only fail if the client sends a invalid certificate (an empty
+      certificate is considered valid).
+      </dd>
+      
+      <dt><strong>{verify_fun, fun(ErrorList) -&gt; boolean()}</strong></dt>
+      <dd>Used by the ssl client to determine if 
+	x509-certificate path validations errors are acceptable or
+	if the connection should fail. Defaults to:
+       
+<div class="example"><pre>
+fun(ErrorList) -&gt;
+	case lists:foldl(fun({bad_cert,unknown_ca}, Acc) -&gt;
+						  Acc;
+			    (Other, Acc) -&gt;
+				 [Other | Acc]
+			 end, [], ErrorList) of
+	    [] -&gt;
+		true;
+	    [_|_] -&gt;
+		false
+	end
+end
+</pre></div>
+       I.e. by default if the only error found was that the CA-certificate
+       holder was unknown this will be accepted.
+       Possible errors in the error list are: 
+       {bad_cert, cert_expired}, {bad_cert, invalid_issuer},
+       {bad_cert, invalid_signature}, {bad_cert, name_not_permitted},
+       {bad_cert, unknown_ca},
+       {bad_cert, cert_expired}, {bad_cert, invalid_issuer},
+       {bad_cert, invalid_signature}, {bad_cert, name_not_permitted},
+       {bad_cert, cert_revoked} (not implemented yet),
+       {bad_cert, unknown_critical_extension} or {bad_cert, term()} (Will
+								    be relevant later when an option is added for the user to be able to verify application specific extensions.) 
+      </dd>
+      
+      <dt><strong>{depth, integer()}</strong></dt>
+      <dd>Specifies the maximum
+      verification depth, i.e. how far in a chain of certificates the
+      verification process can proceed before the verification is
+      considered to fail. Peer certificate = 0, CA certificate = 1,
+      higher level CA certificate = 2, etc.  The value 2 thus means
+      that a chain can at most contain peer cert, CA cert, next CA
+      cert, and an additional CA cert. The default value is 1.
+      </dd>
+      <dt><strong>{certfile, path()}</strong></dt>
+      <dd>Path to a file containing the
+          user's certificate. Optional for clients but note
+      that some servers requires that the client can certify
+      itself. </dd>
+      <dt><strong>{keyfile, path()}</strong></dt>
+      <dd>Path to file containing user's
+      private PEM encoded key. As PEM-files may contain several
+      entries this option defaults to the same file as given by
+      certfile option.</dd>
+      <dt><strong>{password, string()}</strong></dt>
+      <dd>String containing the user's password.
+	Only used if the private keyfile is password protected.
+      </dd>
+      <dt><strong>{cacertfile, path()}</strong></dt>
+      <dd>Path to file containing PEM encoded
+      CA certificates (trusted certificates used for verifying a peer
+      certificate). May be omitted if you do not want to verify
+      the peer.</dd>
+      
+      <dt><strong>{ciphers, ciphers()}</strong></dt>
+      <dd>The function <span class="code">ciphers_suites/0</span> can
+	be used to find all available ciphers.
+      </dd>
+      <dt><strong>{ssl_imp, ssl_imp()}</strong></dt>
+      <dd>Specify which ssl implementation you want to use.
+      </dd>
+      <dt><strong>{reuse_sessions, boolean()}</strong></dt>
+      <dd>Specifies if ssl sessions should be reused
+	when possible.
+      </dd>
+       <dt><strong>{reuse_session, fun(SuggestedSessionId,
+       PeerCert, Compression, CipherSuite) -&gt; boolean()}</strong></dt>
+      <dd>Enables the ssl server to have a local policy
+      for deciding if a session should be reused or not,
+      only meaning full if <span class="code">reuse_sessions</span> is set to true.
+      SuggestedSessionId is a binary(),  PeerCert is a DER encoded
+      certificate, Compression is an enumeration integer
+      and CipherSuite of type ciphersuite().      
+      </dd>
+    </dl>
+  </div>
+  
+  <h3><a name="id2264078">General</a></h3>
+<div class="REFBODY">
+    
+      
+    <p>When a ssl socket is in active mode (the default), data from the
+      socket is delivered to the owner of the socket in the form of
+      messages:
+    </p>
+    <ul>
+      <li>{ssl, Socket, Data}
+      </li>
+      <li>{ssl_closed, Socket}
+      </li>
+      <li>
+        {ssl_error, Socket, Reason}
+      </li>
+    </ul>
+    
+    <p>A <span class="code">Timeout</span> argument specifies a timeout in milliseconds. The 
+      default value for a <span class="code">Timeout</span> argument is <span class="code">infinity</span>.
+    </p>
+  </div>
+  
+  <h3>EXPORTS</h3>
+    <p><a name="cipher_suites-0"><span class="bold_code">cipher_suites() -&gt;</span></a><br><a name="cipher_suites-1"><span class="bold_code">cipher_suites(Type) -&gt; ciphers()</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Type = erlang | openssl</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p><p>Returns a list of supported cipher suites.
+	cipher_suites() is equivalent to cipher_suites(erlang).
+	Type openssl is provided for backwards compatibility with
+	old ssl that used openssl.
+	</p>
+    </p></div>
+    
+    <p><a name="connect-2"><span class="bold_code">connect(Socket, SslOptions) -&gt; </span></a><br><a name="connect-3"><span class="bold_code">connect(Socket, SslOptions, Timeout) -&gt; {ok, SslSocket}
+	| {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Socket = socket()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">SslOptions = [ssloption()]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Timeout = integer() | infinity</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">SslSocket = sslsocket()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p> <p>Upgrades a gen_tcp, or equivalent,
+	  connected socket to a ssl socket e.i performs the
+	  client-side ssl handshake.</p>
+    </p></div>
+    <p><a name="connect-3"><span class="bold_code">connect(Host, Port, Options) -&gt;</span></a><br><a name="connect-4"><span class="bold_code">connect(Host, Port, Options, Timeout) -&gt;
+	  {ok, SslSocket} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	  <div class="REFTYPES">
+<span class="bold_code">Host = host()</span><br>
+</div>
+	  <div class="REFTYPES">
+<span class="bold_code">Port = integer()</span><br>
+</div>
+	  <div class="REFTYPES">
+<span class="bold_code">Options = [option()]</span><br>
+</div>
+	  <div class="REFTYPES">
+<span class="bold_code">Timeout = integer() | infinity</span><br>
+</div>
+	  <div class="REFTYPES">
+<span class="bold_code">SslSocket = sslsocket()</span><br>
+</div>
+	  <div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p> <p>Opens an ssl connection to Host, Port.</p> </p></div>
+    <p><a name="close-1"><span class="bold_code">close(SslSocket) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	  <div class="REFTYPES">
+<span class="bold_code">SslSocket = sslsocket()</span><br>
+</div>
+	  <div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p><p>Close a ssl connection.</p>
+      </p></div>
+    <p><a name="controlling_process-2"><span class="bold_code">controlling_process(SslSocket, NewOwner) -&gt;
+	ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	  <div class="REFTYPES">
+<span class="bold_code">SslSocket = sslsocket()</span><br>
+</div>
+	  <div class="REFTYPES">
+<span class="bold_code">NewOwner = pid()</span><br>
+</div>
+	  <div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+	</div>
+<div class="REFBODY"><p><p>Assigns a new controlling process to the ssl-socket. A
+      controlling process is the owner of a ssl-socket, and receives
+      all messages from the socket.</p>
+      </p></div>
+    <p><a name="connection_info-1"><span class="bold_code">connection_info(SslSocket) -&gt;
+	  {ok, {ProtocolVersion, CipherSuite}} |  {error, Reason} </span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">CipherSuite = ciphersuite()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">ProtocolVersion = protocol()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p><p>Returns the negotiated protocol version and cipher suite.</p> 
+      </p></div>
+    <p><a name="getopts-1"><span class="bold_code">getopts(Socket) -&gt; </span></a><br><a name="getopts-2"><span class="bold_code">getopts(Socket, OptionNames) -&gt;
+	{ok, [socketoption()]} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">Socket = sslsocket()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">OptionNames = [property()]</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>Get the value of the specified socket options, if no
+	  options are specified all options are returned.
+	</p>
+      </p></div>
+    <p><a name="listen-2"><span class="bold_code">listen(Port, Options) -&gt;
+	{ok, ListenSocket} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">Port = integer()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Options = options()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">ListenSocket = sslsocket()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>Creates a ssl listen socket.</p>
+      </p></div>
+    <p><a name="peercert-1"><span class="bold_code">peercert(Socket) -&gt; </span></a><br><a name="peercert-2"><span class="bold_code">peercert(Socket, Opts) -&gt; {ok, Cert} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Socket = sslsocket()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Opts = [] | [otp] | [plain] </span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Cert = term()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Subject = term()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p><span class="code">peercert(Cert)</span> is equivalent to <span class="code">peercert(Cert, [])</span>.
+          </p>
+        <p>The form of the returned certificate depends on the
+          options.
+          </p>
+        <p>If the options list is empty the certificate is returned as
+          a DER encoded binary.
+          </p>
+        <p>The option <span class="code">otp</span> or <span class="code">plain</span> implies that the
+          certificate will be returned  as a parsed ASN.1 structure in the
+          form of an Erlang term. For detail see the public_key application.
+	  Currently only plain is officially supported see the public_key users
+	  guide.
+	</p>
+      </p></div>
+    <p><a name="peername-1"><span class="bold_code">peername(Socket) -&gt; {ok, {Address, Port}} |
+	{error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Socket = sslsocket()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Address = ipaddress()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Port = integer()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Returns the address and port number of the peer.</p>
+      </p></div>
+    
+    <p><a name="recv-2"><span class="bold_code">recv(Socket, Length) -&gt; </span></a><br><a name="recv-3"><span class="bold_code">recv(Socket, Length, Timeout) -&gt; {ok, Data} | {error,
+	Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Socket = sslsocket()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Length = integer()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Timeout = integer()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Data = [char()] | binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function receives a packet from a socket in passive
+          mode. A closed socket is indicated by a return value
+          <span class="code">{error, closed}</span>.</p>
+        <p>The <span class="code">Length</span> argument is only meaningful when
+          the socket is in <span class="code">raw</span> mode and denotes the number of
+          bytes to read. If <span class="code">Length</span> = 0, all available bytes are
+          returned. If <span class="code">Length</span> &gt; 0, exactly <span class="code">Length</span>
+          bytes are returned, or an error; possibly discarding less
+          than <span class="code">Length</span> bytes of data when the socket gets closed
+          from the other side.</p>
+        <p>The optional <span class="code">Timeout</span> parameter specifies a timeout in
+          milliseconds. The default value is <span class="code">infinity</span>.</p>
+      </p></div>
+    
+    <p><a name="send-2"><span class="bold_code">send(Socket, Data) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Socket = sslsocket()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Data = iolist() | binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Writes <span class="code">Data</span> to <span class="code">Socket</span>. </p>
+        <p>A notable return value is <span class="code">{error, closed}</span> indicating that
+          the socket is closed.</p>
+      </p></div>
+    <p><a name="setopts-2"><span class="bold_code">setopts(Socket, Options) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Socket = sslsocket()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Options = [socketoption]()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Sets options according to <span class="code">Options</span> for the socket 
+          <span class="code">Socket</span>. </p>
+      </p></div>
+    <p><a name="shutdown-2"><span class="bold_code">shutdown(Socket, How) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Socket = sslsocket()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">How = read | write | read_write</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Reason = reason()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Immediately close a socket in one or two directions.</p>
+        <p><span class="code">How == write</span> means closing the socket for writing,
+          reading from it is still possible.</p>
+        <p>To be able to handle that the peer has done a shutdown on
+          the write side, the <span class="code">{exit_on_close, false}</span> option
+          is useful.</p>
+      </p></div>
+    
+    <p><a name="ssl_accept-1"><span class="bold_code">ssl_accept(ListenSocket) -&gt; </span></a><br><a name="ssl_accept-2"><span class="bold_code">ssl_accept(ListenSocket, Timeout) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">ListenSocket = sslsocket()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Timeout = integer()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>The <span class="code">ssl_accept</span> function establish the SSL connection
+          on the server side. It should be called directly after
+          <span class="code">transport_accept</span>, in the spawned server-loop.</p>
+      </p></div>
+    <p><a name="ssl_accept-2"><span class="bold_code">ssl_accept(ListenSocket, SslOptions) -&gt; </span></a><br><a name="ssl_accept-3"><span class="bold_code">ssl_accept(ListenSocket, SslOptions, Timeout) -&gt; {ok, Socket} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">ListenSocket = socket()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">SslOptions = ssloptions()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Timeout = integer()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p> Upgrades a gen_tcp, or
+	  equivalent, socket to a ssl socket e.i performs the
+	ssl server-side handshake.</p>
+      </p></div>
+    
+    <p><a name="sockname-1"><span class="bold_code">sockname(Socket) -&gt; {ok, {Address, Port}} |
+	{error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Socket = sslsocket()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Address = ipaddress()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Port = integer()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Returns the local address and port number of the socket
+          <span class="code">Socket</span>.</p>
+      </p></div>
+    
+    <p><a name="start-0"><span class="bold_code">start() -&gt; </span></a><br><a name="start-1"><span class="bold_code">start(Type) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Type =  permanent | transient | temporary</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Starts the Ssl application. Default type
+          is temporary.
+          <span class="bold_code">
+<a href="../apps/kernel/application.html">application(3)</a></span></p>
+      </p></div>
+    <p><a name="stop-0"><span class="bold_code">stop() -&gt; ok </span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Stops the Ssl application.
+          <span class="bold_code">
+<a href="../apps/kernel/application.html">application(3)</a></span></p>
+      </p></div>
+    <p><a name="transport_accept-1"><span class="bold_code">transport_accept(Socket) -&gt;</span></a><br><a name="transport_accept-2"><span class="bold_code">transport_accept(Socket, Timeout) -&gt;
+	{ok, NewSocket} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Socket = NewSocket = sslsocket()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Timeout = integer()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Reason = reason()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Accepts an incoming connection request on a listen socket.
+          <span class="code">ListenSocket</span> must be a socket returned from
+          <span class="code">listen/2</span>.  The socket returned should be passed to
+          <span class="code">ssl_accept</span> to complete ssl handshaking and
+          establishing the connection.</p>
+        <div class="warning">
+<div class="label">Warning</div>
+<div class="content"><p>
+          <p>The socket returned can only be used with <span class="code">ssl_accept</span>,
+            no traffic can be sent or received before that call.</p>
+        </p></div>
+</div>
+        <p>The accepted socket inherits the options set for
+          <span class="code">ListenSocket</span> in <span class="code">listen/2</span>.</p>
+	<p>The default
+          value for <span class="code">Timeout</span> is <span class="code">infinity</span>. If
+          <span class="code">Timeout</span> is specified, and no connection is accepted
+          within the given time, <span class="code">{error, timeout}</span> is
+          returned.</p>
+      </p></div>
+    
+    <p><a name="versions-0"><span class="bold_code">versions() -&gt;
+	[{SslAppVer, SupportedSslVer, AvailableSslVsn}]</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">SslAppVer = string()</span><br>
+</div>
+      	<div class="REFTYPES">
+<span class="bold_code">SupportedSslVer = [protocol()]</span><br>
+</div>
+      	<div class="REFTYPES">
+<span class="bold_code">AvailableSslVsn = [protocol()]</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>
+	  Returns version information relevant for the
+	  ssl application.</p>
+      </p></div>
+   
+      
+  <h3><a name="id2266221">SEE ALSO</a></h3>
+<div class="REFBODY">
+    
+    <p><span class="bold_code">
+<a href="inet.html">inet(3) </a></span> and 
+      <span class="bold_code">
+<a href="gen_tcp.html">gen_tcp(3) </a></span>
+    </p>
+  </div>
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

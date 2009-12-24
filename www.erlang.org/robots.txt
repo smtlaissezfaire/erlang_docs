@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /ml-archive/ # Old archives, copies exist in other directories
+Allow: /cgi-bin/ezmlm-cgi/
+Disallow: /cgi-bin/ezmlm-cgi?

@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- PKIX Certificates</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="ssl.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Secure Socket Layer </strong><br><strong>User's Guide</strong><br><small>Version 3.10.7</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="The SSL Protocol" expanded="false">The SSL Protocol<ul>
+<li>
+<a href="ssl_protocol.html">
+              Top of chapter
+            </a></li>
+<li title="SSL Connections">
+<a href="ssl_protocol.html#id2258671">SSL Connections</a></li>
+<li title="Certificates">
+<a href="ssl_protocol.html#id2258845">Certificates</a></li>
+<li title="Encryption Algorithms">
+<a href="ssl_protocol.html#id2257256">Encryption Algorithms</a></li>
+<li title="SSL Handshake">
+<a href="ssl_protocol.html#id2256606">SSL Handshake</a></li>
+<li title="Authentication">
+<a href="ssl_protocol.html#id2257112">Authentication</a></li>
+</ul>
+</li>
+<li title="Using the SSL application" expanded="false">Using the SSL application<ul>
+<li>
+<a href="using_ssl.html">
+              Top of chapter
+            </a></li>
+<li title="The ssl Module">
+<a href="using_ssl.html#id2257330">The ssl Module</a></li>
+<li title="A Client-Server Example">
+<a href="using_ssl.html#id2259690">A Client-Server Example</a></li>
+</ul>
+</li>
+<li title="PKIX Certificates" expanded="true">PKIX Certificates<ul>
+<li>
+<a href="pkix_certs.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction to Certificates">
+<a href="pkix_certs.html#id2259122">Introduction to Certificates</a></li>
+<li title="PKIX Certificates">
+<a href="pkix_certs.html#id2259172">PKIX Certificates</a></li>
+</ul>
+</li>
+<li title="Creating Certificates" expanded="false">Creating Certificates<ul>
+<li>
+<a href="create_certs.html">
+              Top of chapter
+            </a></li>
+<li title="The openssl Command">
+<a href="create_certs.html#id2254410">The openssl Command</a></li>
+<li title="An Example">
+<a href="create_certs.html#id2254772">An Example</a></li>
+</ul>
+</li>
+<li title="Using SSL for Erlang Distribution" expanded="false">Using SSL for Erlang Distribution<ul>
+<li>
+<a href="ssl_distribution.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ssl_distribution.html#id2259944">Introduction</a></li>
+<li title="Building boot scripts including the SSL application">
+<a href="ssl_distribution.html#id2260020">Building boot scripts including the SSL application</a></li>
+<li title="Specifying distribution module for net_kernel">
+<a href="ssl_distribution.html#id2260150">Specifying distribution module for net_kernel</a></li>
+<li title="Specifying security options and other SSL options">
+<a href="ssl_distribution.html#id2260252">Specifying security options and other SSL options</a></li>
+<li title="Setting up environment to always use SSL">
+<a href="ssl_distribution.html#id2260349">Setting up environment to always use SSL</a></li>
+</ul>
+</li>
+<li title="Licenses" expanded="false">Licenses<ul>
+<li>
+<a href="licenses.html">
+              Top of chapter
+            </a></li>
+<li title="OpenSSL License">
+<a href="licenses.html#id2260534">OpenSSL License</a></li>
+<li title="SSLeay License">
+<a href="licenses.html#id2260592">SSLeay License</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>3 PKIX Certificates</h1>
+  
+  <h3><a name="id2259122">3.1 
+        Introduction to Certificates</a></h3>
+    
+    <p>Certificates were originally defined by ITU (CCITT) and the latest 
+      definitions are described in X.509, but those definitions
+      are (as always) not working. 
+      </p>
+    <p>Working certificate definitions for the Internet Community are found
+      in the the PKIX RFCs rfc3279and rfc3280. 
+      The parsing of certificates in the Erlang/OTP SSL application is
+      based on those RFCS. 
+      </p>
+    <p>Certificates are defined in terms of ASN.1 (X.680).
+      For an introduction to ASN.1 see <span class="bold_code">
+<a href="http://asn1.elibel.tm.fr/">ASN.1 Information Site</a></span>.
+      </p>
+  
+  <h3><a name="id2259172">3.2 
+        PKIX Certificates</a></h3>
+    
+    <p>Here we base the PKIX certificate definitions in RFCs rfc3279and rfc3280. We however present the
+      definitions according to <span class="code">SSL-PKIX.asn1</span> module, 
+      which is an amelioration of the <span class="code">PKIX1Explicit88.asn1</span>, 
+      <span class="code">PKIX1Implicit88.asn1</span>, and <span class="code">PKIX1Algorithms88.asn1</span>
+      modules. You find all these modules in the <span class="code">pkix</span> subdirectory
+      of SSL. 
+      </p>
+    <p>The Erlang terms that are returned by the functions
+      <span class="code">ssl:peercert/1/2</span>, <span class="code">ssl_pkix:decode_cert/1/2</span>, and
+      <span class="code">ssl_pkix:decode_cert_file/1/2</span> when the option <span class="code">ssl</span>
+      is used in those functions, correspond the ASN.1 structures
+      described in the sequel. 
+      </p>
+    <h4>Certificate and TBSCertificate</h4>
+      
+      <div class="example"><pre>
+Certificate  ::=  SEQUENCE  {
+     tbsCertificate       TBSCertificate,
+     signatureAlgorithm   SignatureAlgorithm,
+     signature            BIT STRING }
+TBSCertificate  ::=  SEQUENCE  {
+     version         [0]  Version DEFAULT v1,
+     serialNumber         CertificateSerialNumber,
+     signature            SignatureAlgorithm,
+     issuer               Name,
+     validity             Validity,
+     subject              Name,
+     subjectPublicKeyInfo SubjectPublicKeyInfo,
+     issuerUniqueID  [1]  IMPLICIT UniqueIdentifier OPTIONAL,
+                          -- If present, version MUST be v2 or v3
+     subjectUniqueID [2]  IMPLICIT UniqueIdentifier OPTIONAL,
+                          -- If present, version MUST be v2 or v3
+     extensions      [3]  Extensions OPTIONAL
+                          -- If present, version MUST be v3 --  }
+Version  ::=  INTEGER  {  v1(0), v2(1), v3(2)  }
+CertificateSerialNumber  ::=  INTEGER
+Validity ::= SEQUENCE {
+     notBefore      Time,
+     notAfter       Time  }
+Time ::= CHOICE {
+     utcTime        UTCTime,
+     generalTime    GeneralizedTime }
+      </pre></div>
+      <p>The meaning of the fields <span class="code">version</span>, <span class="code">serialNumber</span>,
+        and <span class="code">validity</span> are quite obvious given the type definitions
+        above, so we do not go further into their details. 
+        </p>
+      <p>The <span class="code">signatureAlgorithm</span> field of <span class="code">Certificate</span> and
+        the <span class="code">signature</span> field of <span class="code">TBSCertificate</span> contain
+        the name and parameters of the algorithm used for signing the
+        certificate. The values of these two fields must be equal.
+        </p>
+      <p>The <span class="code">signature</span> field of <span class="code">Certificate</span> contains the
+        value of the signature that the issuer computed by using the 
+        prescribed algorithm.
+        </p>
+      <p>The <span class="code">issuer&lt;c&gt; and &lt;c&gt;subject</span> fields can contain many 
+        different types av data, and is therefore considered in a 
+        separate section. The same holds for the <span class="code">extensions</span>
+        field. 
+        The <span class="code">issuerUniqueID</span> and the <span class="code">subjectUniqueID</span> fields 
+        are not considered further.</p>
+    
+    <h4>TBSCertificate issuer and subject</h4>
+      
+      <p></p>
+      <div class="example"><pre>
+Name ::= CHOICE { -- only one possibility for now --
+      rdnSequence  RDNSequence }
+RDNSequence ::= SEQUENCE OF RelativeDistinguishedName
+DistinguishedName ::=   RDNSequence
+RelativeDistinguishedName  ::=
+                    SET SIZE (1 .. MAX) OF AttributeTypeAndValue
+AttributeTypeAndValue ::=  SEQUENCE {
+        type    ATTRIBUTE-TYPE-AND-VALUE-CLASS.&amp;id
+\011\011({SupportedAttributeTypeAndValues}),
+        value   ATTRIBUTE-TYPE-AND-VALUE-CLASS.&amp;Type
+\011\011({SupportedAttributeTypeAndValues}{@type}) }
+SupportedAttributeTypeAndValues ATTRIBUTE-TYPE-AND-VALUE-CLASS ::= 
+\011{ name | surname | givenName | initials | generationQualifier |
+\011  commonName | localityName | stateOrProvinceName | organizationName |
+\011  organizationalUnitName | title | dnQualifier | countryName |
+\011  serialNumber | pseudonym | domainComponent | emailAddress }      </pre></div>
+    
+    <h4>TBSCertificate extensions</h4>
+      
+      <p>The <span class="code">extensions</span> field of a <span class="code">TBScertificate</span> is a 
+        sequence of type <span class="code">Extension</span>, defined as follows,</p>
+      <div class="example"><pre>
+Extension  ::=  SEQUENCE  {
+     extnID      OBJECT IDENTIFIER,
+     critical    BOOLEAN DEFAULT FALSE,
+     extnValue   ANY }      </pre></div>
+      <p>Each extension has a unique object identifier. An extension
+        with a <span class="code">critical</span> value set to <span class="code">TRUE</span><strong>must</strong>
+        be recognised by the reader of a certificate, or else the
+        certificate must be rejected.
+        </p>
+      <p>Extensions are divided into two groups: standard extensions
+        and internet certificate extensions. All extensions listed in
+        the table that follows are standard extensions, except for
+        <span class="code">authorityInfoAccess</span> and <span class="code">subjectInfoAccess</span>, which
+        are internet extensions.
+        </p>
+      <p>Depending on the object identifier the <span class="code">extnValue</span> is
+        parsed into an appropriate welldefined structure. 
+        </p>
+      <p>The following table shows the purpose of each extension, but
+        does not specify the structure. To see the structure consult
+        the <span class="code">PKIX1Implicit88.asn1</span> module.
+        </p>
+      <table border="1" cellpadding="2" cellspacing="0">
+<tr>
+          <td align="left" valign="middle">authorityKeyIdentifier</td>
+          <td align="left" valign="middle">Used by to identify a certificate signed that has multiple signing keys. </td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">subjectKeyIdentifier</td>
+          <td align="left" valign="middle">Used to identify certificates that contain a public key.  Must appear i CA certificates.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">keyUsage </td>
+          <td align="left" valign="middle">Defines the purpose of the certificate. Can be one or several of<span class="code">digitalSignature</span>, <span class="code">nonRepudiation</span>,<span class="code">keyEncipherment</span>, <span class="code">dataEncipherment</span>,<span class="code">keyAgreement</span>, <span class="code">keyCertSign</span>, <span class="code">cRLSign</span>,<span class="code">encipherOnly</span>, <span class="code">decipherOnly</span>.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">privateKeyUsagePeriod </td>
+          <td align="left" valign="middle">Allows certificate issuer to provide a private key usage period to be short than the certificate usage period.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">certificatePolicies</td>
+          <td align="left" valign="middle">Contains one or more policy information terms indicating the policies under which the certificate has been issued.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">policyMappings</td>
+          <td align="left" valign="middle">Used i CA certificates. </td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">subjectAltName</td>
+          <td align="left" valign="middle">Allows additional identities to be bound the the subject. </td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">issuerAltName</td>
+          <td align="left" valign="middle">Allows additional identities to be bound the the issuer.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">subjectDirectoryAttributes</td>
+          <td align="left" valign="middle">Conveys identity attributes of the subject.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">basicConstraints</td>
+          <td align="left" valign="middle">Tells if the certificate holder is a CA or not.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">nameConstraints</td>
+          <td align="left" valign="middle">Used in CA certificates.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">policyConstraints</td>
+          <td align="left" valign="middle">Used in CA certificates.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">extKeyUsage</td>
+          <td align="left" valign="middle">Indicates for which purposed the public key may be used. </td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">cRLDistributionPoints</td>
+          <td align="left" valign="middle">Indicates how CRL (Certificate Revokation List) information is obtained.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">inhibitAnyPolicy</td>
+          <td align="left" valign="middle">Used i CA certificates.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">freshestCRL</td>
+          <td align="left" valign="middle">For CRLs.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">authorityInfoAccess</td>
+          <td align="left" valign="middle">How to access CA information of the issuer of the certificate.</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">subjectInfoAccess</td>
+          <td align="left" valign="middle">How to access CA information of the subject of the certificate.</td>
+        </tr>
+</table>
+<em>Table
+        3.1:
+         
+        PKIX Extensions</em>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

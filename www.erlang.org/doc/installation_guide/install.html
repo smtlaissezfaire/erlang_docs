@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- Installation</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="../pdf/otp-system-documentation.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Installation Guide</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../js/flipmenu">
+<li title="Installation" expanded="true">Installation<ul>
+<li>
+<a href="install.html">
+              Top of chapter
+            </a></li>
+<li title="UNIX">
+<a href="install.html#id2259588">UNIX</a></li>
+<li title="Windows">
+<a href="install.html#id2258316">Windows</a></li>
+</ul>
+</li>
+<li title="Installation Verification" expanded="false">Installation Verification<ul>
+<li>
+<a href="verification.html">
+              Top of chapter
+            </a></li>
+<li title="UNIX">
+<a href="verification.html#id2259768">UNIX</a></li>
+<li title="Windows">
+<a href="verification.html#id2259710">Windows</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Installation</h1>
+  
+  <h3><a name="id2259588">1.1 
+        UNIX</a></h3>
+    
+    <h4>Introduction</h4>
+      
+      <p>The system is delivered as a single compressed tar file.</p>
+      <p>To browse the on-line HTML documentation, Netscape or an equivalent
+        browser supporting frames is needed.</p>
+    
+    <h4>Installation Procedure</h4>
+      
+      <p>When installed, the entire system, except for a small start-up
+        script, resides in a single directory tree. The location of this
+        directory tree can be chosen arbitrarily by the installer, and it
+        does not need to be in the user's <span class="code">$PATH</span>. The only requirements
+        are that the file system where it is placed has enough free space,
+        and that the users who run Erlang/OTP have read access to it. In the
+        example below, the directory tree is assumed to be located at
+        <span class="code">/usr/local/erlang</span>, which is here called the <strong>top-level directory</strong>.</p>
+      <p>It is assumed that you have the compressed tar file, the name of
+        which is <span class="code">&lt;PREFIX&gt;.tar.gz</span>, where <span class="code">&lt;PREFIX&gt;</span> is a string
+        denoting the particular Erlang/OTP release, e.g.
+        <span class="code">otp_LXA_11930_sunos5_R9B</span>.</p>
+      <p>Wherever the string <span class="code">&lt;PREFIX&gt;</span> is used below, it should 
+        be replaced by the actual name prefix of the compressed tar file.</p>
+      <p>The tape archive file does not have one single directory in which
+        all other files are rooted. Therefore the tape archive file must be
+        extracted into an empty (newly created) directory.</p>
+      <ul>
+        <li>
+          <p>If the <strong>top-level directory</strong> does not already exist,
+            create it:</p>
+          <div class="example"><pre>
+mkdir /usr/local/erlang</pre></div>
+        </li>
+        <li>
+          <p>Change the current directory to the <strong>top level directory</strong>:</p>
+          <div class="example"><pre>
+cd /usr/local/erlang</pre></div>
+        </li>
+        <li>
+          <p>Create the <strong>installation directory</strong> with an appropriate
+            name. For example:</p>
+          <div class="example"><pre>
+mkdir otp_r7b</pre></div>
+        </li>
+        <li>
+          <p>Change to the <strong>installation directory</strong>, e.g.</p>
+          <div class="example"><pre>
+cd otp_r7b</pre></div>
+        </li>
+        <li>
+          <p>Assuming the compressed tar file resides in the directory
+            <span class="code">&lt;SOME-DIR&gt;</span>,. extract the compressed tar file into the
+            current directory:</p>
+          <div class="example"><pre>
+gunzip -c &lt;SOME-DIR&gt;/&lt;PREFIX&gt;.tar.gz | tar xfp -</pre></div>
+        </li>
+        <li>
+          <p>Read the <span class="code">README</span> file in the installation directory for
+            last minute updates, before proceeding.</p>
+        </li>
+        <li>
+          <p>Run the <span class="code">Install</span> script in the installation directory,
+            with the absolute path of the installation directory as argument,</p>
+          <div class="example"><pre>
+./Install /usr/local/erlang/otp_r7b</pre></div>
+          <p>and supply answers to the prompts.</p>
+          <p>In most cases, there is a default answer in square brackets
+            (<span class="code">[]</span>). If the default is satisfactory, just press
+            <span class="code">&lt;Return&gt;</span>. In general you are only prompted for one thing:</p>
+          <ul>
+            <li>
+              <p>"Do you want to use a minimal system startup instead of the
+                SASL startup?"                <br>
+                In a minimal system, only the Kernel and STDLIB applications
+                are loaded and started. If the SASL startup is used, the SASL
+                application is included as well. Normally, the minimal system
+                is enough.</p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>Make Erlang/OTP available for users, either by putting the path
+            <span class="code">/usr/local/erlang/otp_r7b/bin</span> in users <span class="code">$PATH</span>
+            variable, or link the executable
+            <span class="code">/usr/local/erlang/otp_r7b/bin/erl</span> accordingly, e.g.:</p>
+          <div class="example"><pre>
+ln -s /usr/local/erlang/otp_r7b/bin/erl /usr/local/bin/erl </pre></div>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2258316">1.2 
+        Windows</a></h3>
+    
+    <h4>Introduction</h4>
+      
+      <p>The system is delivered as a single <span class="code">.exe</span> file.</p>
+      <p>To browse the on-line HTML documentation, Netscape or an equivalent
+        browser supporting frames is needed.</p>
+    
+    <h4>Installation Procedure</h4>
+      
+      <p>The installation procedure is is automated. Double-click the
+        <span class="code">.exe</span> file icon and follow the instructions.</p>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1997-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

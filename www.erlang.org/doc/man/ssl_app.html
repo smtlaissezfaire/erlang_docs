@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- ssl</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/ssl/users_guide.html">User's Guide</a><br>
+<a href="../apps/ssl/index.html">Reference Manual</a><br>
+<a href="../apps/ssl/release_notes.html">Release Notes</a><br>
+<a href="../apps/ssl/ssl.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Secure Socket Layer </strong><br><strong>Reference Manual</strong><br><small>Version 3.10.7</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="ssl (App)">
+<a href="ssl_app.html">ssl (App)
+                </a></li>
+<li title="ssl " expanded="true">ssl<ul>
+<li>
+<a href="ssl.html">
+                  Top of manual page
+                </a></li>
+<li title="ciphers-0">
+<a href="ssl.html#ciphers-0">ciphers/0</a></li>
+<li title="close-1">
+<a href="ssl.html#close-1">close/1</a></li>
+<li title="connect-3">
+<a href="ssl.html#connect-3">connect/3</a></li>
+<li title="connect-4">
+<a href="ssl.html#connect-4">connect/4</a></li>
+<li title="connection_info-1">
+<a href="ssl.html#connection_info-1">connection_info/1</a></li>
+<li title="controlling_process-2">
+<a href="ssl.html#controlling_process-2">controlling_process/2</a></li>
+<li title="format_error-1">
+<a href="ssl.html#format_error-1">format_error/1</a></li>
+<li title="getopts-2">
+<a href="ssl.html#getopts-2">getopts/2</a></li>
+<li title="listen-2">
+<a href="ssl.html#listen-2">listen/2</a></li>
+<li title="peercert-1">
+<a href="ssl.html#peercert-1">peercert/1</a></li>
+<li title="peercert-2">
+<a href="ssl.html#peercert-2">peercert/2</a></li>
+<li title="peername-1">
+<a href="ssl.html#peername-1">peername/1</a></li>
+<li title="pid-1">
+<a href="ssl.html#pid-1">pid/1</a></li>
+<li title="recv-2">
+<a href="ssl.html#recv-2">recv/2</a></li>
+<li title="recv-3">
+<a href="ssl.html#recv-3">recv/3</a></li>
+<li title="seed-1">
+<a href="ssl.html#seed-1">seed/1</a></li>
+<li title="send-2">
+<a href="ssl.html#send-2">send/2</a></li>
+<li title="setopts-2">
+<a href="ssl.html#setopts-2">setopts/2</a></li>
+<li title="ssl_accept-1">
+<a href="ssl.html#ssl_accept-1">ssl_accept/1</a></li>
+<li title="ssl_accept-2">
+<a href="ssl.html#ssl_accept-2">ssl_accept/2</a></li>
+<li title="sockname-1">
+<a href="ssl.html#sockname-1">sockname/1</a></li>
+<li title="transport_accept-1">
+<a href="ssl.html#transport_accept-1">transport_accept/1</a></li>
+<li title="transport_accept-2">
+<a href="ssl.html#transport_accept-2">transport_accept/2</a></li>
+<li title="version-0">
+<a href="ssl.html#version-0">version/0</a></li>
+</ul>
+</li>
+<li title="new_ssl " expanded="false">new_ssl<ul>
+<li>
+<a href="new_ssl.html">
+                  Top of manual page
+                </a></li>
+<li title="cipher_suites-0">
+<a href="new_ssl.html#cipher_suites-0">cipher_suites/0</a></li>
+<li title="cipher_suites-1">
+<a href="new_ssl.html#cipher_suites-1">cipher_suites/1</a></li>
+<li title="connect-2">
+<a href="new_ssl.html#connect-2">connect/2</a></li>
+<li title="connect-3">
+<a href="new_ssl.html#connect-3">connect/3</a></li>
+<li title="connect-3">
+<a href="new_ssl.html#connect-3">connect/3</a></li>
+<li title="connect-4">
+<a href="new_ssl.html#connect-4">connect/4</a></li>
+<li title="close-1">
+<a href="new_ssl.html#close-1">close/1</a></li>
+<li title="controlling_process-2">
+<a href="new_ssl.html#controlling_process-2">controlling_process/2</a></li>
+<li title="connection_info-1">
+<a href="new_ssl.html#connection_info-1">connection_info/1</a></li>
+<li title="getopts-1">
+<a href="new_ssl.html#getopts-1">getopts/1</a></li>
+<li title="getopts-2">
+<a href="new_ssl.html#getopts-2">getopts/2</a></li>
+<li title="listen-2">
+<a href="new_ssl.html#listen-2">listen/2</a></li>
+<li title="peercert-1">
+<a href="new_ssl.html#peercert-1">peercert/1</a></li>
+<li title="peercert-2">
+<a href="new_ssl.html#peercert-2">peercert/2</a></li>
+<li title="peername-1">
+<a href="new_ssl.html#peername-1">peername/1</a></li>
+<li title="recv-2">
+<a href="new_ssl.html#recv-2">recv/2</a></li>
+<li title="recv-3">
+<a href="new_ssl.html#recv-3">recv/3</a></li>
+<li title="send-2">
+<a href="new_ssl.html#send-2">send/2</a></li>
+<li title="setopts-2">
+<a href="new_ssl.html#setopts-2">setopts/2</a></li>
+<li title="shutdown-2">
+<a href="new_ssl.html#shutdown-2">shutdown/2</a></li>
+<li title="ssl_accept-1">
+<a href="new_ssl.html#ssl_accept-1">ssl_accept/1</a></li>
+<li title="ssl_accept-2">
+<a href="new_ssl.html#ssl_accept-2">ssl_accept/2</a></li>
+<li title="ssl_accept-2">
+<a href="new_ssl.html#ssl_accept-2">ssl_accept/2</a></li>
+<li title="ssl_accept-3">
+<a href="new_ssl.html#ssl_accept-3">ssl_accept/3</a></li>
+<li title="sockname-1">
+<a href="new_ssl.html#sockname-1">sockname/1</a></li>
+<li title="start-0">
+<a href="new_ssl.html#start-0">start/0</a></li>
+<li title="start-1">
+<a href="new_ssl.html#start-1">start/1</a></li>
+<li title="stop-0">
+<a href="new_ssl.html#stop-0">stop/0</a></li>
+<li title="transport_accept-1">
+<a href="new_ssl.html#transport_accept-1">transport_accept/1</a></li>
+<li title="transport_accept-2">
+<a href="new_ssl.html#transport_accept-2">transport_accept/2</a></li>
+<li title="versions-0">
+<a href="new_ssl.html#versions-0">versions/0</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>ssl</h1></center>
+  
+  <h3>APPLICATION</h3>
+<div class="REFBODY">ssl</div>
+  <h3>APPLICATION SUMMARY</h3>
+<div class="REFBODY">The SSL Application</div>
+  <h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+    <p>The Secure Socket Layer (SSL) application provides secure
+      socket communication over TCP/IP.
+      </p>
+  </p></div>
+  <h3><a name="id2253080">Warning</a></h3>
+<div class="REFBODY">
+    
+    <p>In previous versions of Erlang/OTP SSL it was advised, as a
+      work-around, to set the operating system environment variable
+      <span class="code">SSL_CERT_FILE</span> to point at a file containing CA
+      certificates. That variable is no longer needed, and is not
+      recognised by Erlang/OTP SSL any more.
+      </p>
+    <p>However, the OpenSSL package does interpret that environment
+      variable. Hence a setting of that variable might have
+      unpredictable effects on the Erlang/OTP SSL application. It is
+      therefore adviced to not used that environment variable at all.</p>
+  </div>
+  <h3><a name="id2258123">Environment</a></h3>
+<div class="REFBODY">
+    
+    <p>The following application environment configuration parameters
+      are defined for the SSL application. Refer to application(3) for
+      more information about configuration parameters.
+      </p>
+    <p>Note that the environment parameters can be set on the command line,
+      for instance,</p>
+    <p><span class="code">erl ... -ssl protocol_version '[sslv2,sslv3]' ...</span>.
+      </p>
+    <dl>
+      <dt><strong><span class="code">ephemeral_rsa = true | false &lt;optional&gt;</span></strong></dt>
+      <dd>
+        <p>Enables all SSL servers (those that listen and accept)
+          to use ephemeral RSA key generation when a clients connect with
+          weak handshake cipher specifications, that need equally weak
+          ciphers from the server (i.e. obsolete restrictions on export
+          ciphers).  Default is <span class="code">false</span>.
+          </p>
+      </dd>
+      <dt><strong><span class="code">debug = true | false &lt;optional&gt;</span></strong></dt>
+      <dd>
+        <p>Causes debug information to be written to standard
+          output. Default is <span class="code">false</span>.
+          </p>
+      </dd>
+      <dt><strong><span class="code">debugdir = path() | false &lt;optional&gt;</span></strong></dt>
+      <dd>
+        <p>Causes debug information output controlled by <span class="code">debug</span>
+          and <span class="code">msgdebug</span> to be printed to a file named 
+          <span class="code">ssl_esock.&lt;pid&gt;.log</span> in the directory specified by
+          <span class="code">debugdir</span>, where <span class="code">&lt;pid&gt;</span> is the operating system
+          specific textual representation of the process identifier 
+          of the external port program of the SSL application. Default
+          is <span class="code">false</span>, i.e. no log file is produced.
+          </p>
+      </dd>
+      <dt><strong><span class="code">msgdebug = true | false &lt;optional&gt;</span></strong></dt>
+      <dd>
+        <p>Sets <span class="code">debug = true</span> and causes also the contents
+          of low level messages to be printed to standard output.
+          Default is <span class="code">false</span>.
+          </p>
+      </dd>
+      <dt><strong><span class="code">port_program = string() | false &lt;optional&gt;</span></strong></dt>
+      <dd>
+        <p>Name of port program. The default is <span class="code">ssl_esock</span>.
+          </p>
+      </dd>
+      <dt><strong><span class="code">protocol_version = [sslv2|sslv3|tlsv1] &lt;optional&gt;</span>.</strong></dt>
+      <dd>
+        <p>Name of protocols to use. If this option is not set, 
+          all protocols are assumed, i.e. the default value is
+          <span class="code">[sslv2, sslv3, tlsv1]</span>.
+          </p>
+      </dd>
+      <dt><strong><span class="code">proxylsport = integer() | false &lt;optional&gt;</span></strong></dt>
+      <dd>
+        <p>Define the port number of the listen port of the 
+          SSL port program. Almost never is this option needed.
+          </p>
+      </dd>
+      <dt><strong><span class="code">proxylsbacklog = integer() | false &lt;optional&gt;</span></strong></dt>
+      <dd>
+        <p>Set the listen queue size of the listen port of the
+          SSL port program. The default is 128.
+          </p>
+      </dd>
+    </dl>
+  </div>
+  <h3><a name="id2262550">OpenSSL libraries</a></h3>
+<div class="REFBODY">
+    
+    <p>The current implementation of the Erlang SSL application is
+      based on the <strong>OpenSSL</strong> package version 0.9.7 or higher.
+      There are source and binary releases on the web.
+      </p>
+    <p>Source releases of OpenSSL can be downloaded from the <span class="bold_code">
+<a href="http://www.openssl.org">OpenSSL</a></span> project home page,
+      or mirror sites listed there.
+      </p>
+    <p>The same URL also contains links to some compiled binaries and
+      libraries of OpenSSL (see the <span class="code">Related/Binaries</span> menu) of
+      which the <span class="bold_code">
+<a href="http://www.shininglightpro.com/search.php?searchname=Win32+OpenSSL">Shining Light Productions Win32 and OpenSSL</a></span> pages are of
+      interest for the Win32 user.
+      </p>
+    <p>For some Unix flavours there are binary packages available
+      on the net. 
+      </p>
+    <p>If you cannot find a suitable binary OpenSSL package, you 
+      have to fetch an OpenSSL source release and compile it. 
+      </p>
+    <p>You then have to compile and install the libraries
+      <span class="code">libcrypto.so</span> and <span class="code">libssl.so</span> (Unix), or the
+      libraries <span class="code">libeay32.dll</span> and <span class="code">ssleay32.dll</span> (Win32).
+      </p>
+    <p>For Unix The <span class="code">ssl_esock</span> port program is delivered linked
+      to OpenSSL libraries in <span class="code">/usr/local/lib</span>, but the default
+      dynamic linking will also accept libraries in <span class="code">/lib</span> and
+      <span class="code">/usr/lib</span>.
+      </p>
+    <p>If that is not applicable to the particular Unix operating
+      system used, the example <span class="code">Makefile</span> in the SSL
+      <span class="code">priv/obj</span> directory, should be used as a guide to
+      relinking the final version of the port program.
+      </p>
+    <p>For <span class="code">Win32</span> it is only required that the libraries can be
+      found from the <span class="code">PATH</span> environment variable, or that they
+      reside in the appropriate <span class="code">SYSTEM32</span> directory; hence no
+      particular relinking is need. Hence no example <span class="code">Makefile</span>
+      for Win32 is provided.</p>
+  </div>
+  <h3><a name="id2262614">Restrictions</a></h3>
+<div class="REFBODY">
+    
+    <p>Users must be aware of export restrictions and patent rights
+      concerning cryptographic software.
+      </p>
+  </div>
+  <h3><a name="id2262627">SEE ALSO</a></h3>
+<div class="REFBODY">
+    
+    <p>application(3)</p>
+  </div>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- Processes</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="../pdf/otp-system-documentation.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Efficiency Guide</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../js/flipmenu">
+<li title="Introduction" expanded="false">Introduction<ul>
+<li>
+<a href="introduction.html">
+              Top of chapter
+            </a></li>
+<li title="Purpose">
+<a href="introduction.html#id2259534">Purpose</a></li>
+<li title="Prerequisites">
+<a href="introduction.html#id2258051">Prerequisites</a></li>
+</ul>
+</li>
+<li title="The Eight Myths of Erlang Performance" expanded="false">The Eight Myths of Erlang Performance<ul>
+<li>
+<a href="myths.html">
+              Top of chapter
+            </a></li>
+<li title="Myth: Funs are slow">
+<a href="myths.html#id2263963">Myth: Funs are slow</a></li>
+<li title="Myth: List comprehensions are slow">
+<a href="myths.html#id2252420">Myth: List comprehensions are slow</a></li>
+<li title="Myth: Tail-recursive functions are MUCH faster
+    than recursive functions">
+<a href="myths.html#id2256447">Myth: Tail-recursive functions are MUCH faster
+    than recursive functions</a></li>
+<li title="Myth: '++' is always bad">
+<a href="myths.html#id2259251">Myth: '++' is always bad</a></li>
+<li title="Myth: Strings are slow">
+<a href="myths.html#id2258139">Myth: Strings are slow</a></li>
+<li title="Myth: Repairing a Dets file is very slow">
+<a href="myths.html#id2256452">Myth: Repairing a Dets file is very slow</a></li>
+<li title="Myth: BEAM is a stack-based byte-code virtual machine (and therefore slow)">
+<a href="myths.html#id2256466">Myth: BEAM is a stack-based byte-code virtual machine (and therefore slow)</a></li>
+<li title="Myth: Use '_' to speed up your program when a variable is not used">
+<a href="myths.html#id2259957">Myth: Use '_' to speed up your program when a variable is not used</a></li>
+</ul>
+</li>
+<li title="Common Caveats" expanded="false">Common Caveats<ul>
+<li>
+<a href="commoncaveats.html">
+              Top of chapter
+            </a></li>
+<li title="The regexp module">
+<a href="commoncaveats.html#id2256371">The regexp module</a></li>
+<li title="The timer module">
+<a href="commoncaveats.html#id2259574">The timer module</a></li>
+<li title="list_to_atom/1">
+<a href="commoncaveats.html#id2251593">list_to_atom/1</a></li>
+<li title="length/1">
+<a href="commoncaveats.html#id2251487">length/1</a></li>
+<li title="setelement/3">
+<a href="commoncaveats.html#id2258633">setelement/3</a></li>
+<li title="size/1">
+<a href="commoncaveats.html#id2252188">size/1</a></li>
+<li title="split_binary/2">
+<a href="commoncaveats.html#id2256516">split_binary/2</a></li>
+<li title="The '--' operator">
+<a href="commoncaveats.html#id2251635">The '--' operator</a></li>
+</ul>
+</li>
+<li title="Constructing and matching binaries" expanded="false">Constructing and matching binaries<ul>
+<li>
+<a href="binaryhandling.html">
+              Top of chapter
+            </a></li>
+<li title="How binaries are implemented">
+<a href="binaryhandling.html#id2252289">How binaries are implemented</a></li>
+<li title="Constructing binaries">
+<a href="binaryhandling.html#id2259474">Constructing binaries</a></li>
+<li title="Matching binaries">
+<a href="binaryhandling.html#id2263824">Matching binaries</a></li>
+</ul>
+</li>
+<li title="List handling" expanded="false">List handling<ul>
+<li>
+<a href="listHandling.html">
+              Top of chapter
+            </a></li>
+<li title="Creating a list">
+<a href="listHandling.html#id2260830">Creating a list</a></li>
+<li title="List comprehensions">
+<a href="listHandling.html#id2262072">List comprehensions</a></li>
+<li title="Deep and flat lists">
+<a href="listHandling.html#id2262150">Deep and flat lists</a></li>
+<li title="Why you should not worry about recursive lists functions">
+<a href="listHandling.html#id2262303">Why you should not worry about recursive lists functions</a></li>
+</ul>
+</li>
+<li title="Functions" expanded="false">Functions<ul>
+<li>
+<a href="functions.html">
+              Top of chapter
+            </a></li>
+<li title="Pattern matching">
+<a href="functions.html#id2262443">Pattern matching</a></li>
+<li title="Function Calls ">
+<a href="functions.html#id2262691">Function Calls </a></li>
+<li title="Memory usage in recursion">
+<a href="functions.html#id2262842">Memory usage in recursion</a></li>
+</ul>
+</li>
+<li title="Tables and databases" expanded="false">Tables and databases<ul>
+<li>
+<a href="tablesDatabases.html">
+              Top of chapter
+            </a></li>
+<li title="Ets, Dets and Mnesia">
+<a href="tablesDatabases.html#id2262942">Ets, Dets and Mnesia</a></li>
+<li title="Ets specific">
+<a href="tablesDatabases.html#id2264413">Ets specific</a></li>
+<li title="Mnesia specific">
+<a href="tablesDatabases.html#id2264530">Mnesia specific</a></li>
+</ul>
+</li>
+<li title="Processes" expanded="true">Processes<ul>
+<li>
+<a href="processes.html">
+              Top of chapter
+            </a></li>
+<li title="Creation of an Erlang process">
+<a href="processes.html#id2264653">Creation of an Erlang process</a></li>
+<li title="Process messages">
+<a href="processes.html#id2264827">Process messages</a></li>
+<li title="The SMP emulator">
+<a href="processes.html#id2265045">The SMP emulator</a></li>
+</ul>
+</li>
+<li title="Drivers" expanded="false">Drivers<ul>
+<li>
+<a href="drivers.html">
+              Top of chapter
+            </a></li>
+<li title="Drivers and concurrency">
+<a href="drivers.html#id2265164">Drivers and concurrency</a></li>
+<li title="Avoiding copying of binaries when calling a driver">
+<a href="drivers.html#id2265214">Avoiding copying of binaries when calling a driver</a></li>
+<li title="Returning small binaries from a driver">
+<a href="drivers.html#id2265291">Returning small binaries from a driver</a></li>
+<li title="Returning big binaries without copying from a driver">
+<a href="drivers.html#id2265332">Returning big binaries without copying from a driver</a></li>
+</ul>
+</li>
+<li title="Advanced" expanded="false">Advanced<ul>
+<li>
+<a href="advanced.html">
+              Top of chapter
+            </a></li>
+<li title="Memory">
+<a href="advanced.html#id2265486">Memory</a></li>
+<li title="System limits">
+<a href="advanced.html#id2265856">System limits</a></li>
+</ul>
+</li>
+<li title="Profiling" expanded="false">Profiling<ul>
+<li>
+<a href="profiling.html">
+              Top of chapter
+            </a></li>
+<li title="Do not guess about performance - profile">
+<a href="profiling.html#id2266192">Do not guess about performance - profile</a></li>
+<li title="Big systems">
+<a href="profiling.html#id2266274">Big systems</a></li>
+<li title="What to look for">
+<a href="profiling.html#id2266300">What to look for</a></li>
+<li title="Tools">
+<a href="profiling.html#id2266367">Tools</a></li>
+<li title="Benchmarking">
+<a href="profiling.html#id2266861">Benchmarking</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>8 Processes</h1>
+  
+  <h3><a name="id2264653">8.1 
+        Creation of an Erlang process</a></h3>
+    
+    <p>An Erlang process is lightweight compared to operating
+    systems threads and processes.</p>
+    <p>A newly spawned Erlang process uses 309 words of memory
+    in the non-SMP emulator without HiPE support. (SMP support
+    and HiPE support will both add to this size.) The size can
+    be found out like this:</p>
+    <div class="example"><pre>
+Erlang (BEAM) emulator version 5.6 [async-threads:0] [kernel-poll:false]
+Eshell V5.6  (abort with ^G)
+1&gt; <span class="bold_code">Fun = fun() -&gt; receive after infinity -&gt; ok end end.</span>
+#Fun&lt;...&gt;
+2&gt; <span class="bold_code">{_,Bytes} = process_info(spawn(Fun), memory).</span>
+{memory,1232}
+3&gt; <span class="bold_code">Bytes div erlang:system_info(wordsize).</span>
+309</pre></div>
+    
+    <p>The size includes 233 words for the heap area (which includes the stack).
+    The garbage collector will increase the heap as needed.</p>
+    <p>The main (outer) loop for a process <strong>must</strong> be tail-recursive.
+    If not, the stack will grow until the process terminates.</p>
+    <p><strong>DO NOT</strong></p>
+    <div class="example"><pre>
+loop() -&gt; 
+  receive
+     {sys, Msg} -&gt;
+         handle_sys_msg(Msg),
+         loop();
+     {From, Msg} -&gt;
+          Reply = handle_msg(Msg),
+          From ! Reply,
+          loop()
+  end,
+  io:format("Message is processed~n", []).</pre></div>
+    <p>The call to <span class="code">io:format/2</span> will never be executed, but a
+    return address will still be pushed to the stack each time
+    <span class="code">loop/0</span> is called recursively. The correct tail-recursive
+    version of the function looks like this:</p>
+    <p><strong>DO</strong></p>
+<div class="example"><pre>
+   loop() -&gt; 
+      receive
+         {sys, Msg} -&gt;
+            handle_sys_msg(Msg),
+            loop();
+         {From, Msg} -&gt;
+            Reply = handle_msg(Msg),
+            From ! Reply,
+            loop()
+    end.</pre></div>
+    <h4>Initial heap size</h4>
+      
+      <p>The default initial heap size of 233 words is quite conservative
+      in order to support Erlang systems with hundreds of thousands or
+      even millions of processes. The garbage collector will grow and
+      shrink the heap as needed.</p>
+      <p>In a system that use comparatively few processes, performance
+      <strong>might</strong> be improved by increasing the minimum heap size using either
+      the <span class="code">+h</span> option for
+      <span class="bold_code">
+<a href="../man/erl.html">erl</a></span> or on a process-per-process
+      basis using the <span class="code">min_heap_size</span> option for
+      <span class="bold_code">
+<a href="../man/erlang.html#spawn_opt-4">spawn_opt/4</a></span>.</p>
+      <p>The gain is twofold: Firstly, although the garbage collector will
+      grow the heap, it will it grow it step by step, which will be more
+      costly than directly establishing a larger heap when the process
+      is spawned. Secondly, the garbage collector may also shrink the
+      heap if it is much larger than the amount of data stored on it;
+      setting the minimum heap size will prevent that.</p>
+      <div class="warning">
+<div class="label">Warning</div>
+<div class="content"><p><p>The emulator will probably use more memory, and because garbage
+      collections occur less frequently, huge binaries could be
+      kept much longer.</p></p></div>
+</div>
+      <p>In systems with many processes, computation tasks that run
+      for a short time could be spawned off into a new process with
+      a higher minimum heap size. When the process is done, it will
+      send the result of the computation to another process and terminate.
+      If the minimum heap size is calculated properly, the process may not
+      have to do any garbage collections at all.
+      <strong>This optimization should not be attempted
+      without proper measurements.</strong></p>
+    
+  
+  <h3><a name="id2264827">8.2 
+        Process messages</a></h3>
+    
+    <p>All data in messages between Erlang processes is copied, with
+      the exception of
+      <span class="bold_code">
+<a href="binaryhandling.html#refc_binary">refc binaries</a></span>
+      on the same Erlang node.</p>
+    <p>When a message is sent to a process on another Erlang node,
+      it will first be encoded to the Erlang External Format before
+      being sent via an TCP/IP socket. The receiving Erlang node decodes
+      the message and distributes it to the right process.</p>
+    <h4>The constant pool</h4>
+      
+      <p>Constant Erlang terms (also called <strong>literals</strong>) are now
+      kept in constant pools; each loaded module has its own pool.
+      The following function</p>
+    <p><strong>DO</strong> (in R12B and later)</p>
+      <div class="example"><pre>
+days_in_month(M) -&gt;
+    element(M, {31,28,31,30,31,30,31,31,30,31,30,31}).</pre></div>     
+      <p>will no longer build the tuple every time it is called (only
+      to have it discarded the next time the garbage collector was run), but
+      the tuple will be located in the module's constant pool.</p>
+      <p>But if a constant is sent to another process (or stored in
+      an ETS table), it will be <strong>copied</strong>.
+      The reason is that the run-time system must be able
+      to keep track of all references to constants in order to properly
+      unload code containing constants. (When the code is unloaded,
+      the constants will be copied to the heap of the processes that refer
+      to them.) The copying of constants might be eliminated in a future
+      release.</p>
+    
+    <h4>Loss of sharing</h4>
+      
+      <p>Shared sub-terms are <strong>not</strong> preserved when a term is sent
+      to another process, passed as the initial process arguments in
+      the <span class="code">spawn</span> call, or stored in an ETS table.
+      That is an optimization. Most applications do not send message
+      with shared sub-terms.</p>
+      <p>Here is an example of how a shared sub-term can be created:</p>
+      <div class="example"><pre>
+kilo_byte() -&gt;
+    kilo_byte(10, [42]).
+kilo_byte(0, Acc) -&gt;
+    Acc;
+kilo_byte(N, Acc) -&gt;
+    kilo_byte(N-1, [Acc|Acc]).</pre></div>
+       <p><span class="code">kilo_byte/1</span> creates a deep list. If we call
+       <span class="code">list_to_binary/1</span>, we can convert the deep list to a binary
+       of 1024 bytes:</p>
+      <div class="example"><pre>
+1&gt; <span class="bold_code">byte_size(list_to_binary(efficiency_guide:kilo_byte())).</span>
+1024</pre></div>
+       <p>Using the <span class="code">erts_debug:size/1</span> BIF we can see that the
+       deep list only requires 22 words of heap space:</p>
+      <div class="example"><pre>
+2&gt; <span class="bold_code">erts_debug:size(efficiency_guide:kilo_byte()).</span>
+22</pre></div>
+       <p>Using the <span class="code">erts_debug:flat_size/1</span> BIF, we can calculate
+       the size of the deep list if sharing is ignored. It will be
+       the size of the list when it has been sent to another process
+       or stored in an ETS table:</p>
+      <div class="example"><pre>
+3&gt; <span class="bold_code">erts_debug:flat_size(efficiency_guide:kilo_byte()).</span>
+4094</pre></div>
+      <p>We can verify that sharing will be lost if we insert the
+      data into an ETS table:</p>
+      <div class="example"><pre>
+4&gt; <span class="bold_code">T = ets:new(tab, []).</span>
+17
+5&gt; <span class="bold_code">ets:insert(T, {key,efficiency_guide:kilo_byte()}).</span>
+true
+6&gt; <span class="bold_code">erts_debug:size(element(2, hd(ets:lookup(T, key)))).</span>
+4094
+7&gt; <span class="bold_code">erts_debug:flat_size(element(2, hd(ets:lookup(T, key)))).</span>
+4094</pre></div>
+      <p>When the data has passed through an ETS table,
+      <span class="code">erts_debug:size/1</span> and <span class="code">erts_debug:flat_size/1</span>
+      return the same value. Sharing has been lost.</p>
+      <p>In a future release of Erlang/OTP, we might implement a
+      way to (optionally) preserve sharing. We have no plans to make
+      preserving of sharing the default behaviour, since that would
+      penalize the vast majority of Erlang applications.</p>
+    
+  
+  <h3><a name="id2265045">8.3 
+        The SMP emulator</a></h3>
+    
+    <p>The SMP emulator (introduced in R11B) will take advantage of
+    multi-core or multi-CPU computer by running several Erlang schedulers
+    threads (typically, the same as the number of cores). Each scheduler
+    thread schedules Erlang processes in the same way as the Erlang scheduler
+    in the non-SMP emulator.</p>
+    <p>To gain performance by using the SMP emulator, your application
+    <strong>must have more than one runnable Erlang process</strong> most of the time.
+    Otherwise, the Erlang emulator can still only run one Erlang process
+    at the time, but you must still pay the overhead for locking. Although
+    we try to reduce the locking overhead as much as possible, it will never
+    become exactly zero.</p>
+    <p>Benchmarks that may seem to be concurrent are often sequential.
+    The estone benchmark, for instance, is entirely sequential. So is also
+    the most common implementation of the "ring benchmark"; usually one process
+    is active, while the others wait in a <span class="code">receive</span> statement.</p>
+    <p>The <span class="bold_code">
+<a href="../man/percept.html">percept</a></span> application
+    can be used to profile your application to see how much potential (or lack
+    thereof) it has for concurrency.</p>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2001-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

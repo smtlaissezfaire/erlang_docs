@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Inviso</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="inviso.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Inviso</strong><br><strong>User's Guide</strong><br><small>Version 0.6.1</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu"><li title="Inviso" expanded="true">Inviso<ul>
+<li>
+<a href="inviso_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="inviso_chapter.html#id2253096">Introduction</a></li>
+<li title="Incarnation runtime tags">
+<a href="inviso_chapter.html#id2258794">Incarnation runtime tags</a></li>
+<li title="Runtime component state and status">
+<a href="inviso_chapter.html#id2253125">Runtime component state and status</a></li>
+<li title="The Runtime Meta Tracer">
+<a href="inviso_chapter.html#id2251580">The Runtime Meta Tracer</a></li>
+<li title="Runtime Component Autostart">
+<a href="inviso_chapter.html#id2252263">Runtime Component Autostart</a></li>
+<li title="The Dependency Property">
+<a href="inviso_chapter.html#id2258942">The Dependency Property</a></li>
+<li title="Overload Protection">
+<a href="inviso_chapter.html#id2258975">Overload Protection</a></li>
+<li title="Merging and Formatting Logfiles">
+<a href="inviso_chapter.html#id2259038">Merging and Formatting Logfiles</a></li>
+<li title="Trace Cases">
+<a href="inviso_chapter.html#id2258670">Trace Cases</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Inviso</h1>
+  
+  <h3><a name="id2253096">1.1 
+        Introduction</a></h3>
+    
+    <p><strong>inviso</strong>: (Latin) to go to see, visit, inspect, look at.</p>
+    <p>The Inviso trace system consists of one or several runtime components supposed to run on each Erlang node doing tracing and one control component which can run on any node with available processor power. Inviso may also be part of a higher layer trace tool. See the inviso-tool as an example. The implementation is spread out over the Runtime_tools and the Inviso Erlang/OTP applications. Erlang modules necessary to run the runtime component are located in Runtime_tools and therefore assumed to be available on any node. Even though Inviso is introduced with Erlang/OTP R11B the runtime component implementation is done with backward compatibility in mind. Meaning that it is possible to compile and run it on older Erlang/OTP releases.</p>
+    <img alt="IMAGE MISSING" src="inviso_users_guide_pic1.gif"><br>
+      <em>Figure
+        1.1:
+         
+        Inviso Trace System Architecture Overview.</em>
+    
+    <p>This document describes the control and runtime components of the Inviso trace system.</p>
+    <h4>Underlying Mechanisms</h4>
+      
+      <p>Inviso is built on Erlang trace BIFs and standard linked in trace-port drivers for efficient trace message logging. This means that Inviso can not co-exist in runtime with any other trace tool using the trace BIFs.</p>
+    
+    <h4>Trace Recepie</h4>
+      
+      <p>This is a short step-by-step description of how tracing using Inviso can be done.</p>
+      <ul>
+        <li>Start the Inviso control component at any node. Preferably a node that is not participating in the "work" done by your "system". The control component runs independently and normally not linked to any other process. (Prompt 2 in the example below.)</li>
+        <li>Add all Erlang nodes to the inviso control component where you want to trace. This is starting runtime components on all involved Erlang nodes. Can include the node where the control component runs as well. Note that the Runtime_Tools application must be running on the nodes where runtime components shall be started. (Prompt 1 and 3 in the example below.)</li>
+        <li>Initiate tracing on the added nodes. Initiating tracing means "opening" the output to where trace-messages will be written. Most commonly this is a file. Note that it is not actually necessary to initiate the same tracing on all nodes. It might for instance be wise to use different filenames on different nodes. In the example below tracing is initiated on two nodes. The same node as where the shell is running (<span class="code">node()</span>) and at <span class="code">node2@hurin</span>. Further both "regular" tracing (<span class="code">trace</span>) as well as trace information (<span class="code">ti</span>) are specified for both nodes. (Prompt 4 in the example below).</li>
+        <li>If needing pid-to-alias translations, activate meta tracing on the necessary functions. This requires that trace information was specified when initiating tracing. (Prompt 5 in the example below illustrates using pid to locally registered name translations).</li>
+        <li>Set trace-patterns on the functions that shall be traced. (Prompt 6 in the example below).</li>
+        <li>Set process trace flags on necessary processes. Do not forget to use the <span class="code">timestamp</span> flag in order to be able to merge log files together in chronological order. (Prompt 7 in the example below).</li>
+        <li>Run your code. (Prompt 8 in the example below).</li>
+        <li>Stop tracing (opposite of initiate tracing) and clear trace-patterns on the nodes. It is actually not necessary to stop tracing on all nodes at once. Nodes no longer of interest can be made to stop tracing before others. (Prompt 9 in the example below stops tracing. Prompt 13 removes all trace flags and trace patterns. Removing trace flags are really not necessary since those will be removed when the runtime components are stopped. Removing trace patterns may many times be necessary to "return" the node to a "clean" state from a trace perspective. Trace patterns are never automatically cleared by the runtime system unless the Erlang module in question is reloaded.)</li>
+        <li>If necessary fetch the log files from the various nodes. (Prompt 10 in the example blow).</li>
+        <li>Merge and format the log files. (Prompt 12 in the example below).</li>
+        <li>Stop the runtime components. This is important if the Erlang nodes are real "live" systems, and will not necessarily be stopped just because the tracing is completed. (Prompt 14 in the example below).</li>
+      </ul>
+      <p>This "recipe" is valid also when tracing in a non-distributed environment. The only difference is that function calls not taking a node-name as argument are used. The runtime component will then of course run on the same node as the control component.</p>
+      <p>Simple example illustrating the above listed recipe. It traces on two nodes, node1 where the control component also runs. And node2 which is a remote node from the control components perspective. The example uses a mixture of API-calls specifying what nodes to trace on and API functions working on all added nodes. This is in this example interchangeable since all to the control component known nodes are participating in the same way.</p>
+      <div class="example"><pre>
+Eshell V5.5  (abort with ^G)
+(node1@hurin)1&gt;<span class="bold_code">application:start(runtime_tools).</span>
+ok
+(node1@hurin)2&gt; <span class="bold_code">inviso:start().</span>
+{ok,&lt;0.56.0&gt;}
+(node1@hurin)3&gt; <span class="bold_code">inviso:add_nodes([node(),node2@hurin],mytag).</span>
+{ok,[{'node1@hurin',{ok,new}},
+     {'node2@hurin',{ok,new}}]}
+(node1@hurin)4&gt; <span class="bold_code">inviso:init_tracing( [{node(),[{trace,{file,"tracefile_node1.log"}},{ti,{file,"trace_node1.ti"}}]}, {node2@hurin,[{trace,{file,"tracefile_node2.log"}},{ti,{file,"trace_node2.ti"}}]}]).</span>
+{ok,[{'node1@hurin',{ok,[{trace_log,ok},{ti_log,ok}]}},
+     {'node2@hurin',{ok,[{trace_log,ok},{ti_log,ok}]}}]}
+(node1@hurin)5&gt; <span class="bold_code">inviso:tpm_localnames([node(),node2@hurin]).</span>
+{ok,[{'node1@hurin',{{ok,1},{ok,1}}},
+     {'node2@hurin',{{ok,1},{ok,1}}}]}
+(node1@hurin)6&gt; <span class="bold_code">inviso:tpl([node(),node2@hurin],code,which,'_',[]).</span>
+{ok,[{'node1@hurin',{ok,[2]}},
+     {'node2@hurin',{ok,[2]}}]}
+(node1@hurin)7&gt; <span class="bold_code">inviso:tf(all,[call,timestamp]).</span>
+{ok,[{'node1@hurin',{ok,"/"}},
+     {'node2@hurin',{ok,"-"}}]}
+(node1@hurin)8&gt; <span class="bold_code">code:which(ordset).</span>
+non_existing
+(node1@hurin)9&gt; <span class="bold_code">inviso:stop_tracing().</span>
+{ok,[{'node1@hurin',{ok,idle}},
+     {'node2@hurin',{ok,idle}}]}
+(node1@hurin)10&gt; <span class="bold_code">inviso:fetch_log([node2@hurin],".","aprefix_").</span>
+{ok,[{'node2@hurin',
+         {complete,[{trace_log,[{ok,"aprefix_tracefile_node2.log"}]},
+                    {ti_log,[{ok,"aprefix_trace_node2.ti"}]}]}}]}
+(node1@hurin)11&gt; <span class="bold_code">inviso:list_logs([node()]).</span>
+{ok,[{'node1@hurin',
+         {ok,[{trace_log,".",["tracefile_node1.log"]},
+              {ti_log,".",["trace_node1.ti"]}]}}]}
+(node1@hurin)12&gt; <span class="bold_code">inviso_lfm:merge( [{node(),[{trace_log,["tracefile_node1.log"]}, {ti_log,["trace_node1.ti"]}]}, {node2@hurin,[{trace_log,["aprefix_tracefile_node2.log"]}, {ti_log,["aprefix_trace_node2.ti"]}]}],"theoutfile.txt").</span>
+{ok,15}
+(node1@hurin)13&gt; <span class="bold_code">inviso:clear().</span>
+{ok,[{'node1@hurin',{ok,{new,running}}},
+     {'node2@hurin',{ok,{new,running}}}]}
+(node1@hurin)14&gt; <span class="bold_code">inviso:stop_nodes().</span>
+{ok,[{'node2@hurin',ok},
+     {'node1@hurin',ok}]}
+(node1@hurin)15&gt;       </pre></div>
+    
+  
+  <h3><a name="id2258794">1.2 
+        Incarnation runtime tags</a></h3>
+    
+    <p>Incarnation runtime tags are used to identify an incarnation of a runtime component. An incarnation is one "start-up" of a runtime component on a specific Erlang node. The reason why it can sometimes be necessary to examine the incarnation runtime tag is that a user wants to connect, adopt, an already running runtime component. This may be the case if the runtime component has autostarted or because the control component terminated without killing the runtime component. While the user has been out of control of the runtime component it may very well have terminated and been restarted. If it was restarted without the user's knowledge, its incarnation runtime tag has most likely changed. The user can therefore, if the current incarnation runtime tag is not what it is supposed to be, conclude that the runtime component is not "doing" what is expected.</p>
+    <p>The runtime tag is set at runtime component start-up. This is either done when it is started manually by a call to <span class="code">inviso:add_nodes/X</span>, or according to a specification in one of the autostart configuration files.</p>
+  
+  <h3><a name="id2253125">1.3 
+        Runtime component state and status</a></h3>
+    
+    <p>A runtime component has a state and a status. The possible states are: <span class="code">new</span>, <span class="code">tracing</span> and <span class="code">idle</span>. A runtime component that is <span class="code">tracing</span> has (possibly) open log files. A <span class="code">new</span> runtime component has no current tracer-data. That is it lacks any history of what it has done just recently. An <span class="code">idle</span> runtime component is no longer tracing. It does therefore have current tracer-data that describes what it did do when it was tracing.</p>
+    <p>The status describes if the runtime component is <span class="code">running</span> or suspended. A suspended runtime component may very well be in state <span class="code">tracing</span>. However the point is that it shall not generate any processor load. It will therefore refrain from generating any trace messages.</p>
+  
+  <h3><a name="id2251580">1.4 
+        The Runtime Meta Tracer</a></h3>
+    
+    <p>Meta tracing is a trace mechanism separate from the regular tracing. It is normally used by a trace-tool to learn about function calls made anywhere in an Erlang node. A typical example is that there is a possibility in Inviso to get pids translated to registered name in the final formatted trace-log (for processes having registered names). This is done by meta-tracing on the BIF <span class="code">register/2</span> to learn about all name/pid associations made.</p>
+    <p>Meta tracing in Inviso is done by the <span class="code">inviso_rt_meta</span> process, which is part of the runtime component if trace-information, ti, is initiated. See <span class="bold_code">
+<a href="../../man/inviso.html#init_tracing-1">inviso:init_tracing/1</a></span> for details. The runtime meta tracer opens and controls the so called trace information file. Translations can then be done off-line using the associations logged in the trace information file. Currently the only type of trace information file available is a straight binary file. A wrap-file makes no sense since pid-to-name associations made in the beginning will most likely be lost.</p>
+    <p>The runtime meta tracer can also be used to translate pids to own identifiers. The only thing needed is one or several association points in the form of function calls which will only be made if an association is done in the system. The pid and own-identifier must be arguments and/or return values from the same function call.</p>
+    <p>The runtime meta tracer can further more be used to achieve side-effects during tracing, like turning tracing on or off.</p>
+    <h4>Matching function calls with return values</h4>
+      
+      <p>It may sometimes be necessary to wait for a meta traced function to return before it can be decided what to do. This may be due to that one piece of information to make the decision is in the arguments to the function, the other in the return value. This kind of logic can be programmed to be executed by the inviso meta tracer. In order for the inviso meta tracer to "remember" function-call arguments until the function return trace message arrives, a <span class="code">public loop data structure</span> is implemented. The public loop data structure is first created when tracing is initiated (of course only when trace information is specified in the <strong>init_tracing</strong> call). The public loop data can then later be further initiated each time meta tracing (<span class="code">tpm</span> and <span class="code">tpm_ms</span>) is activated for a certain function.</p>
+      <p>The default public loop data structure is a tuple of size two. The first element in that tuple is used by the predefined meta tracing for capturing locally registered names. The second element is free to use for any other purpose. The elements of the tuple must in the default implementation be lists of tuples. Where each sub-tuple shall represent one waiting call. The last element of that tuple must be a now-stamp (as returned by the BIF <span class="code">now/0</span>). See below for an explanation of the now-stamp. The size of the outer most tuple may be increased as long as the term residing in the first element is left unchanged, and all other elements follow the above described rules.</p>
+      <p>The inviso meta tracer "cleans" the public loop data structure approximately once every minute. The reason for this is that entries in the public loop data structure may become abandoned. If for instance a process crashes while executing the body of a meta traced function, no return value will be generated. Or in other words, receiving the call meta trace-message can have caused information to have been written into the public loop data structure. That entry will be used and removed when the return_trace meta trace-message arrives. But if the meta traced function causes an exception, no return_trace message will come. The function which normally removes the entry is then therefore never called.</p>
+      <p>The default clean-function assumes that every item in the public loop data tuple is a list. Where each list contains tuples where the last element of those tuples are "now-stamps". The default clean-function considers an entry older than 30 seconds to be abandoned.</p>
+    
+    <h4>Making pid/alias entries in the ti-file</h4>
+      
+      <p>When activating meta tracing for a function for the purpose of writing pid-alias associations in the trace information file, a call-func and possibly also a return-func is specified. These functions will be called when a meta trace message arrives to the inviso meta tracer as a result of function calls or returns for this meta traced function. What exactly to write in the trace information file is dictated by the merge mechanism. This since pid-alias translations are done off line when merging log-files. See the chapter on merging and formatting log files for more details.</p>
+      <p>Simple example where the call to the function <span class="code">connection:assoc_id(Pid,Ref)</span> will associated <span class="code">Pid</span> with the id <span class="code">Ref</span>. We will then in a merged log-file see a translation between <span class="code">Pid</span> and <span class="code">Ref</span>. Actually for all future since there is no unalias function meta traced in this example. The inviso meta tracer will receive a meta trace message every time <span class="code">connection:assoc_id/2</span> is called. When that message arrives the meta tracer will call <span class="code">mytrace:call_assoc_id/3</span> which must return <span class="code">{ok,NewPublicLoopData,OutPutBinary}</span>.</p>
+      <div class="example"><pre>
+    -module(mytrace).
+    call_assoc_id(_CallingPid,[Pid,Ref],PublLoopData) -&gt;
+        {ok,PublLoopData,term_to_binary({Pid,Ref,alias,now()})}.
+      </pre></div>
+      <div class="example"><pre>
+(node1@hurin)21&gt; <span class="bold_code">inviso:tpm(connection,assoc_id,2,[], {mytrace,call_assoc_id}).</span>
+{ok,[{'node1@hurin',{ok,1}},
+     {'node2@hurin',{ok,1}}]}
+(node1@hurin)22&gt;      </pre></div>
+    
+    <h4>Extending the public loop data structure.</h4>
+      
+      <p>It is of course very likely that the public loop data structure must be extended to host all functions where the meta tracer must delay its action until the function in question returns. What is necessary is to create your own public loop data structure at trace initialization. This is done by using the <span class="code">TiSpec</span>. <span class="code">TiSpec={InitMFA,RemoveMF,CleanMF}</span>, where <span class="code">InitMFA</span> creates the structure, <span class="code">RemoveMF</span> removes it (must often not necessary unless a database, file or similar is used as storage instead of a tuple). <span class="code">CleanMF</span> is the function which will be called each every 60 seconds to go over the public loop data structure. Following the below rules, not much programming will be needed, apart from the <span class="code">InitMFA</span>:</p>
+      <ul>
+        <li>Make the public loop data structure a tuple of lists, where each list is a list of tuples where the tuples represents one entry.</li>
+        <li>Make the <span class="code">CallFunc</span> (the function called each time a call meta trace message arrives for the function in question) add a tuple to the correct list where the last element of that tuple is a now-stamp.</li>
+        <li>Make sure that the first element in the loop data structure tuple is left alone for the default implementation of the handling of registered names.</li>
+        <li>Use <span class="code">inviso_rt_meta:clean_std_publld/1</span> (which is exported for this purpose) as <span class="code">CleanMF</span>. This function is normally the default clean function, if not using the possibility to in detail initiate the inner workings of the inviso meta tracer.</li>
+      </ul>
+      <p>Simple example where tracing is initiated with a public loop data structure having 10 places for nine (the locally registered names is mandatory) different functions to be meta traced. Note that the BIF <span class="code">list_to_tuple/1</span> is used as initialization function. And that the Stdlib function <span class="code">lists:duplicate/2</span> is used to create something for the initialization function to work on.</p>
+      <div class="example"><pre>
+(node1@hurin)4&gt; <span class="bold_code">inviso:init_tracing( [{node2@hurin,[{trace,{file,"tracefile_node2.log"}}, {ti,{file,"trace_node2.ti",{{erlang,list_to_tuple,[lists:duplicate(10,[])]}, void,{inviso_rt_meta,clean_std_publld}}}}]}]).</span>
+{ok,[{'node2@hurin',{ok,[{trace_log,ok},{ti_log,ok}]}}]}
+(node1@hurin)5&gt;       </pre></div>
+    
+    <h4>Using the inviso meta tracer to achieve side effects</h4>
+      
+      <p>Since meta tracing is independent of regular tracing and catches any function call to a particular function made in any process, it is well suited to be used to turn things on or off during execution. That trick is done by letting the <span class="code">CallFunc</span> and (if used) <span class="code">ReturnFunc</span> do these sideeffects. One must of course remember that the inviso meta tracer is a process amongst all other processes in the system. Meaning that the side effect is not necessarily done exactly when the meta traced function is called. Unless the side effect can be achieved using a match specification action.</p>
+    
+  
+  <h3><a name="id2252263">1.5 
+        Runtime Component Autostart</a></h3>
+    
+    <p>In order to trace before any user interaction is possible, an autostart mechanism is implemented. The runtime component is started by the top supervisor of the Runtime_Tools application top supervisor. Hence the Runtime_Tools application must be part of the boot script for autostart tracing to work. The Runtime_Tools applications must of course be started before any application that is to be traced. Do note that application startup is not entirely synchronous. Meaning that just because the application controller has begun starting the next application, Runtime_Tools is not necessarily fully up and running.</p>
+    <p>The autostart mechanism is configurable. The runtime component comes with a standard autostart configuration, only missing two text-files to be completely operational.</p>
+    <h4>Autostart Configuration</h4>
+      
+      <p>The autostart is controlled by the Runtime_Tools application configuration parameter <span class="code">inviso_autostart_mod</span>. It must be the name of a module exporting an <span class="code">autostart/1</span> function. The default value is <span class="code">inviso_autostart</span>, a module which is provided with Runtime_Tools. See <span class="bold_code">
+<a href="#inviso_autostart">below</a></span> for details.</p>
+      <p>An <span class="code">autostart/1</span> function must offer the following:</p>
+      <div class="example"><pre>
+autostart(RuntimeToolsArg) = {MFA,Options,Tag} | any()
+      </pre></div>
+      <p><span class="code">RuntimeToolsArgs</span> is the argument <span class="code">Arg</span> provided to the Runtime_Tools application through the application resource file <span class="code">{mod,{Module,Arg}}</span> parameter.</p>
+      <p><span class="code">MFA = {AutoMod,AutoFunc,AutoArgs} | any()</span> controls how tracing will be initiated. Note that initiating tracing is not necessarily the same as starting a runtime component. It is possible to have a runtime component without doing any tracing. The runtime component is started as long as <span class="code">autostart/1</span> returns the proper tuple, and <span class="code">Options</span> does not for instance require a certain non-existing control component. If it is not a proper tuple or there are other faults in the tuple items, the autostart will terminate. Typically will this happen if there is no <span class="code">autostart/1</span> function.</p>
+      <p>If MFA does not properly point out a function possible to call with <span class="code">spawn(AutoMod,AutoFunc,AutoArg)</span>, there will simply be no initialization. (Initialization is done by a separate process spawned by the runtime component during autostart.) It may be worth reminding that <span class="code">AutoMod</span> must be present at the node where the runtime component is supposed to run. Not necessarily the node where the control component usually runs.</p>
+      <p><span class="code">Options</span> is the list of options given to the runtime component. See <span class="code">Options</span> in <span class="bold_code">
+<a href="../../man/inviso.html#add_nodes-2">inviso:add_nodes/2</a></span>.</p>
+      <p><span class="code">Tag</span> is the runtime component incarnation tag. See <span class="code">Tag</span> in <span class="bold_code">
+<a href="../../man/inviso.html#add_nodes-2">inviso:add_nodes/2</a></span>.</p>
+    
+    <h4>The Standard Autostart Implementation</h4>
+      
+      <p>As mentioned above, Inviso comes with a complete implementation of autostart sufficient for most situations.</p>
+      
+        <a name="inviso_autostart"></a>
+        
+        <p>The default autostart module is <span class="code">inviso_autostart</span>, provided as part of the Runtime_Tools application. Since that name is the default module name, it is not really necessary to set the <span class="code">inviso_autostart_mod</span> configuration parameter for the Runtime_Tools application.</p>
+        <p>Its <span class="code">autostart/1</span> function reads a configuration file pointed out by the Runtime_Tools application configuration parameter <span class="code">inviso_autostart_conf</span>. If the parameter is not present, a default file, <span class="code">inviso_autostart.config</span> in the current working directory, will be consulted.</p>
+        <p>The config file must be an ascii text file with one or more tuples ended with a dot. The following parameters are recognized:</p>
+        <dl>
+          <dt><strong><span class="code">{repeat,N}</span></strong></dt>
+          <dd>
+            <p>Optional parameter where <span class="code">N</span> specifies the maximum remaining autostarts. The autostart functionality will rewrite the configuration decreasing <span class="code">N</span> if present. If <span class="code">N==0</span> the autostart will be terminated.</p>
+          </dd>
+          <dt><strong><span class="code">{mfa,{M,F,Args}}</span></strong></dt>
+          <dd>
+            <p>Optional parameter controlling how initialization shall be done. The control component will spawn a separate process to do the initializations by doing <span class="code">spawn(M,F,Args)</span>.</p>
+          </dd>
+          <dt><strong><span class="code">{options,Options}</span></strong></dt>
+          <dd>
+            <p>Optional parameter specifying the options for the runtime component itself. See <span class="code">Options</span> in <span class="bold_code">
+<a href="../../man/inviso.html#add_nodes-2">inviso:add_nodes/2</a></span>.</p>
+          </dd>
+          <dt><strong><span class="code">{tag,Tag}</span></strong></dt>
+          <dd>
+            <p>Optional parameter specifying the runtime component tag. If missing the default tag will be <span class="code">default_tag</span>.</p>
+          </dd>
+        </dl>
+        <p>Example:</p>
+        <div class="example"><pre>
+{repeat,1}.
+{mfa,{inviso_autostart_server,
+      init,
+      [[{tracerdata,{file,"mylogfile"}},
+        {cmdfiles,["a_trace_case.txt"]},
+        {bindings,[{'M',mymod},{'F','_'},{'Arity','_'}]},
+        {translations,[]}]]}}.
+        </pre></div>
+        <p>The example file results in the start of a runtime component given no specific options. There will only be one autostart since the repeat parameter is set to 1. Tracing will be initiated by the standard initiator (<span class="bold_code">
+<a href="#autostart_server">inviso_autostart_server</a></span>). The initiator will initiate tracing opening a plain trace-port logfile (<span class="code">"mylogfile"</span>). It will further read the <span class="code">"a_trace_case.txt"</span> file to get instructions on what patterns and flags to set. If there are variables mentioned in the trace-case file <span class="code">"a_trace_case.txt"</span>, it is parameterized, the variables <span class="code">M</span>, <span class="code">F</span> and <span class="code">Arity</span> will get the values according to <span class="code">bindings</span>. There will be no translations done, hence the trace-case file must be written using <span class="code">inviso_rt</span> function calls directly.</p>
+      
+      
+        <a name="autostart_server"></a>
+        
+        <p>To further facilitate the standard autostart implementation a default initiator is implemented. To use it, simply specify it as mfa in the config file read by the standard autostart module.</p>
+        <p>Its <span class="code">init/1</span> function takes one argument on the form of a list of tuples. The following tuple-parameters are recognized:</p>
+        <dl>
+          <dt><strong><span class="code">{tracerdata,TracerData}</span></strong></dt>
+          <dd>
+            <p>Specifies how tracing is initiated. See <span class="bold_code">
+<a href="../../man/inviso.html#init_tracing-1">inviso:init_tracing/1</a></span> for details on <span class="code">TracerData</span>.</p>
+          </dd>
+          <dt><strong><span class="code">{cmdfiles,ListOfFileNames}</span></strong></dt>
+          <dd>
+            <p>Specifies trace-case files which shall be executed to set the patterns and flags of the trace. See the <span class="bold_code">
+<a href="#trace_cases">Trace Cases</a></span> chapter for more details. The files will be executed in the order specified.</p>
+          </dd>
+          <dt><strong><span class="code">{translations,Translations}</span></strong></dt>
+          <dd>
+            <p>Optional parameter specifying how functions in trace-case files shall be translated. This is useful since trace-cases can be written for higher-layer Inviso tools, but must during an autostart execute using <span class="code">inviso_rt</span> function calls only.</p>
+            <div class="example"><pre>
+Translations=
+  [{{Mod1,Func1,Arity},
+    {Mod2,Func2,{TranslMod,TranslFunc}}},...]
+TranslMod:TranslFunc(ListOfOrigArgs)-&gt;
+  ListOfTransformedArgs
+            </pre></div>
+            <p><span class="code">Mod1:Func1/Arity</span> specifies the function that shall be translated into <span class="code">Mod2:Func2/Arity</span>. The actual arguments will be translated with <span class="code">TranslMod:TranslFunc/1</span>. The translation function shall take a list of the actual arguments, and return a list of new arguments. The return-value list may for instance have certain arguments removed, if such are not relevant to the <span class="code">Func2</span> function. (Such arguments must actually be removed since the return-value list from the translation function must have the correct amount of elements corresponding to the arity of <span class="code">Func2</span>.)</p>
+          </dd>
+          <dt><strong><span class="code">{bindings,Bindings}</span></strong></dt>
+          <dd>
+            <p><span class="code">Bindings=[{Var,Val}]</span>              <br>
+<span class="code">Var=atom()</span>, the name of the variable</p>
+            <p>Optional parameter specifying the actual values of variables used in the trace-cases. <span class="code">Bindings</span> is a bindings structure as used by functions in the <span class="code">erl_eval</span> module.</p>
+          </dd>
+        </dl>
+      
+      
+        
+        <p>To facilitate creating the configuration file described above, there are functions in a module named <span class="code">inviso_as_lib</span> which can both create new files according to supplied arguments and update existing configuration files.</p>
+        <p>The node(s) in question must be running since the functionality in the utility library uses distributed Erlang to access the file system.</p>
+      
+    
+  
+  <h3><a name="id2258942">1.6 
+        The Dependency Property</a></h3>
+    
+    <p>In order to protect real "live" systems from getting a runtime component lingering around without a control component, a dependency property can be specified at runtime component start-up. The property specifies a dependency in milliseconds. Meaning that if the property is set to 0 (zero), the runtime component will terminate immediately if its current control component terminates.</p>
+    <p>If a control component tries to start a runtime component at an Erlang node where there already is a runtime component, the control component will adopt the already existing runtime component if it has no current control component. Otherwise the control component will experience an error, not being able to start a runtime component at that node.</p>
+    <p>It must also be noted that an autostart runtime component is running without control component, at least before any control component adopts it.</p>
+  
+  <h3><a name="id2258975">1.7 
+        Overload Protection</a></h3>
+    
+    <p>Since Inviso is intended to be used on real "live" systems, it is possible to protect the system against overload, having Inviso suspend tracing should an overload situation occur.</p>
+    <p>What indicates an overload situation must be programmed and configured outside of Inviso. Inviso can initiate an overload protection, call an overload function periodically and clean-up an overload mechanism should it decide to terminate.</p>
+    <p>Internally inside the runtime component, suspending tracing means removing all process trace flags and meta patterns. Reactivating tracing is outside the scoop of Inviso, but can be implemented in a tool using Inviso.</p>
+    <p>Simple example adding a runtime component and making it protect its Erlang node from overload.</p>
+    <div class="example"><pre>
+inviso:add_node(my_rt_tag,
+                [{overload,{{my_ovl,check},
+                            15000,
+                            {my_ovl,start,[my_port_pgm]},
+                            {my_ovl,stop,[my_port_pgm]}}}]).
+    </pre></div>
+    <p>Immediately when the runtime component is started, it will initiate overload protection by calling <span class="code">my_ovl:start(my_port_pgm)</span>. When tracing (not when in state idle or new), the runtime component will every 15000 milliseconds call <span class="code">my_ovl:check/1</span>. Depending on its return value, the runtime component will either do nothing or suspend tracing. When the runtime component is stopped, <span class="code">my_ovl:stop(my_port_pgm)</span> will be called.</p>
+  
+  <h3><a name="id2259038">1.8 
+        Merging and Formatting Logfiles</a></h3>
+    
+    <p>If logging trace messages to a logfile has been used (decided when tracing is initiated) the various log files will be located on the different Erlang nodes participating in the trace. The log files must be merged and formatted for the following reasons:</p>
+    <ul>
+      <li>The various log files from the different nodes must be merged into one logfile in chronological order (where trace messages from different nodes will be mixed). If only one Erlang node participated in the trace, this step is obviously not necessary.</li>
+      <li>Trace-port log files are on binary format and must in most cases be transformed in some way. This can for instance be to a text-file format or inserted into a database for analysis.</li>
+      <li>Use trace information data to translate process identifiers to aliases, both standard Erlang ones (as registered names) as well as own invented.</li>
+    </ul>
+    <p>The first step before any merging can take place is of course to get all log files, including any trace information files to a location where the logfile merger can access them. This can either be done by simply copying the files. However if the file systems on the Erlang nodes are not that easily accessed, there is a <span class="code">fetch_log</span> function implemented in the runtime component. It will transfer log files using distributed Erlang.</p>
+    <p>Inviso comes with two Erlang modules, <span class="code">inviso_lfm</span> and <span class="code">inviso_lfm_tpfreader</span>, implementing a standard log file merger and formatter. The log file merger (<span class="code">inviso_lfm</span>) uses a file reader process (implemented in <span class="code">inviso_lfm_tpfreader</span>) to access log entries in parallel. It is possible to write your own logfile reader. This is necessary since you may have your own trace-log format and/or own trace information log format. The logfile merger can further more be configured to use your own formatter, customizing what to do with a trace message.</p>
+    <p>Trace messages in the log files must of course be time-stamped for the logfile merger to be capable of correctly merging them. This means using the <span class="code">timestamp</span> process trace flag.</p>
+    <p>The standard inviso log-file reader understands the following trace information file entries:</p>
+    <ul>
+      <li>
+        <div class="example"><pre>
+{Pid,Alias,alias,NowStamp}        </pre></div>
+      </li>
+      <li>
+        <div class="example"><pre>
+{Pid,Alias,unalias,NowStamp}        </pre></div>
+      </li>
+    </ul>
+    <p>The <span class="code">Pid</span> in an <span class="code">alias</span> entry must always be a proper pid. In an <span class="code">unalias</span> entry it may also be the atom <span class="code">undefined</span>. The latter means that all associations involving <span class="code">Alias</span> shall stop to be valid. The standard inviso log file reader uses the now-stamp to make sure that associations are only used during time periods in the log-file when such are valid.</p>
+  
+  <h3><a name="id2258670">1.9 
+        Trace Cases</a></h3>
+    <a name="trace_cases"></a>
+    
+    <p>The idea behind trace cases is that someone knowledgeable of a certain system component can write a file specifying the trace-patterns and process trace flags necessary to trace on certain items once and for all. Hence a trace case will most likely be a series of calls to functions setting trace patterns and process trace flags.</p>
+    <p>However, the actual Erlang nodes and values of arguments given in the trace function calls can not be static in order for the trace cases to become useful and reusable. A trace case file must therefore be possible to parameterize. Introducing variables that will get their values at the time of trace case execution. It may also be the case that Inviso is used as a component in a higher layer trace tool. Trace cases may therefore be written calling more complex functions than the low level <span class="code">inviso_rt</span> functions which are available to autostart mechanisms. In a matter of fact, the <span class="code">inviso</span> API itself can be considered a higher layer. It addresses multiple nodes at once where the <span class="code">inviso_rt</span> API can only address the local node.</p>
+    <p>This results in that for trace cases to be useful there must be a function call translation mechanism and an execution environment capable of handling variable bindings.</p>
+    <p>A trace-case is a text ascii file consisting of function calls written as they could have been done in the Erlang shell:</p>
+    <div class="example"><pre>
+modulename:functionname(arg1,arg3,...).
+    </pre></div>
+    <p>A trace-case may contain any valid function call, including binding new variables which are used later in the trace-case, but:</p>
+    <ul>
+      <li>No spawn, send or receive.</li>
+      <li>No apply or similar (including <span class="code">mod:F(Arg1,Arg2)</span>). This because the variable environment is not available during the translation. Only during execution.</li>
+    </ul>
+    <p>Example: Trace cases are expected to be written to be executed directly in an Erlang shell (by some utility reading a text file on trace case format) calling <span class="code">inviso</span> functions. The translations must then translate <span class="code">inviso</span> function calls to <span class="code">inviso_rt</span> function calls, since <span class="code">inviso</span> is not available in the Runtime_Tools applications. It can not be assumed that any trace tools outside the Runtime_Tools application is available on the nodes. Luckily (!) the <span class="code">inviso_rt</span> API resembles the <span class="code">inviso</span> API very much, apart from that the <span class="code">inviso_rt</span> API does not take a list of nodes as an argument. Therefore in most situations the only transformation necessary is to change from <span class="code">inviso</span> to <span class="code">inviso_rt</span> and remove the first argument to the function call.</p>
+    <p>Assume that we have the following trace-case file:</p>
+    <div class="example"><pre>
+inviso:tpl(Nodes,mymod,'_','_',MS).
+inviso:tf(Nodes,all,[call,timestamp]).
+    </pre></div>
+    <p>For this to work in an autostart the following translation is needed:</p>
+    <div class="example"><pre>
+[{{inviso,tpl,5},{inviso_rt,tpl,{erlang,tl}}},
+ {{inviso,tf,3},{inviso_rt,tf,{erlang,tl}}}]
+    </pre></div>
+    <p>Since transforming the arguments from <span class="code">inviso</span> calls to <span class="code">inviso_rt</span> calls is simply removing the first argument, there is no need to program any function to do this. The BIF <span class="code">tl/1</span> can be used directly.</p>
+    <p>Further there must be a variable binding for <span class="code">MS</span> when executing the trace-case. It is not necessary to have one for <span class="code">Nodes</span> since that argument is removed from all function calls by the translation.</p>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2006-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

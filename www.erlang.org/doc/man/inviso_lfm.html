@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- inviso_lfm</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/inviso/users_guide.html">User's Guide</a><br>
+<a href="../apps/inviso/index.html">Reference Manual</a><br>
+<a href="../apps/inviso/release_notes.html">Release Notes</a><br>
+<a href="../apps/inviso/inviso.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Inviso</strong><br><strong>Reference Manual</strong><br><small>Version 0.6.1</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="inviso " expanded="false">inviso<ul>
+<li>
+<a href="inviso.html">
+                  Top of manual page
+                </a></li>
+<li title="start-0">
+<a href="inviso.html#start-0">start/0</a></li>
+<li title="start-1">
+<a href="inviso.html#start-1">start/1</a></li>
+<li title="stop-0">
+<a href="inviso.html#stop-0">stop/0</a></li>
+<li title="add_node-1">
+<a href="inviso.html#add_node-1">add_node/1</a></li>
+<li title="add_node-2">
+<a href="inviso.html#add_node-2">add_node/2</a></li>
+<li title="add_node_if_ref-1">
+<a href="inviso.html#add_node_if_ref-1">add_node_if_ref/1</a></li>
+<li title="add_node_if_ref-2">
+<a href="inviso.html#add_node_if_ref-2">add_node_if_ref/2</a></li>
+<li title="add_nodes-2">
+<a href="inviso.html#add_nodes-2">add_nodes/2</a></li>
+<li title="add_nodes-3">
+<a href="inviso.html#add_nodes-3">add_nodes/3</a></li>
+<li title="add_nodes_if_ref-2">
+<a href="inviso.html#add_nodes_if_ref-2">add_nodes_if_ref/2</a></li>
+<li title="add_nodes_if_ref-3">
+<a href="inviso.html#add_nodes_if_ref-3">add_nodes_if_ref/3</a></li>
+<li title="stop_nodes-0">
+<a href="inviso.html#stop_nodes-0">stop_nodes/0</a></li>
+<li title="stop_nodes-1">
+<a href="inviso.html#stop_nodes-1">stop_nodes/1</a></li>
+<li title="stop_all-0">
+<a href="inviso.html#stop_all-0">stop_all/0</a></li>
+<li title="change_options-1">
+<a href="inviso.html#change_options-1">change_options/1</a></li>
+<li title="change_options-2">
+<a href="inviso.html#change_options-2">change_options/2</a></li>
+<li title="init_tracing-1">
+<a href="inviso.html#init_tracing-1">init_tracing/1</a></li>
+<li title="init_tracing-1">
+<a href="inviso.html#init_tracing-1">init_tracing/1</a></li>
+<li title="init_tracing-2">
+<a href="inviso.html#init_tracing-2">init_tracing/2</a></li>
+<li title="stop_tracing-1">
+<a href="inviso.html#stop_tracing-1">stop_tracing/1</a></li>
+<li title="stop_tracing-0">
+<a href="inviso.html#stop_tracing-0">stop_tracing/0</a></li>
+<li title="clear-0">
+<a href="inviso.html#clear-0">clear/0</a></li>
+<li title="clear-2">
+<a href="inviso.html#clear-2">clear/2</a></li>
+<li title="clear-1">
+<a href="inviso.html#clear-1">clear/1</a></li>
+<li title="tp-6">
+<a href="inviso.html#tp-6">tp/6</a></li>
+<li title="tp-5">
+<a href="inviso.html#tp-5">tp/5</a></li>
+<li title="tp-5">
+<a href="inviso.html#tp-5">tp/5</a></li>
+<li title="tp-4">
+<a href="inviso.html#tp-4">tp/4</a></li>
+<li title="tp-2">
+<a href="inviso.html#tp-2">tp/2</a></li>
+<li title="tp-1">
+<a href="inviso.html#tp-1">tp/1</a></li>
+<li title="tpl-5">
+<a href="inviso.html#tpl-5">tpl/5</a></li>
+<li title="tpl-6">
+<a href="inviso.html#tpl-6">tpl/6</a></li>
+<li title="tpl-4">
+<a href="inviso.html#tpl-4">tpl/4</a></li>
+<li title="tpl-5">
+<a href="inviso.html#tpl-5">tpl/5</a></li>
+<li title="tpl-2">
+<a href="inviso.html#tpl-2">tpl/2</a></li>
+<li title="tpl-1">
+<a href="inviso.html#tpl-1">tpl/1</a></li>
+<li title="ctp-4">
+<a href="inviso.html#ctp-4">ctp/4</a></li>
+<li title="ctp-3">
+<a href="inviso.html#ctp-3">ctp/3</a></li>
+<li title="ctpl-4">
+<a href="inviso.html#ctpl-4">ctpl/4</a></li>
+<li title="ctpl-3">
+<a href="inviso.html#ctpl-3">ctpl/3</a></li>
+<li title="tf-3">
+<a href="inviso.html#tf-3">tf/3</a></li>
+<li title="tf-2">
+<a href="inviso.html#tf-2">tf/2</a></li>
+<li title="tf-2">
+<a href="inviso.html#tf-2">tf/2</a></li>
+<li title="tf-1">
+<a href="inviso.html#tf-1">tf/1</a></li>
+<li title="tf-1">
+<a href="inviso.html#tf-1">tf/1</a></li>
+<li title="ctf-3">
+<a href="inviso.html#ctf-3">ctf/3</a></li>
+<li title="ctf-2">
+<a href="inviso.html#ctf-2">ctf/2</a></li>
+<li title="ctf-2">
+<a href="inviso.html#ctf-2">ctf/2</a></li>
+<li title="ctf-1">
+<a href="inviso.html#ctf-1">ctf/1</a></li>
+<li title="ctf_all-1">
+<a href="inviso.html#ctf_all-1">ctf_all/1</a></li>
+<li title="ctf_all-0">
+<a href="inviso.html#ctf_all-0">ctf_all/0</a></li>
+<li title="init_tpm-4">
+<a href="inviso.html#init_tpm-4">init_tpm/4</a></li>
+<li title="init_tpm-5">
+<a href="inviso.html#init_tpm-5">init_tpm/5</a></li>
+<li title="init_tpm-7">
+<a href="inviso.html#init_tpm-7">init_tpm/7</a></li>
+<li title="init_tpm-8">
+<a href="inviso.html#init_tpm-8">init_tpm/8</a></li>
+<li title="tpm-4">
+<a href="inviso.html#tpm-4">tpm/4</a></li>
+<li title="tpm-5">
+<a href="inviso.html#tpm-5">tpm/5</a></li>
+<li title="tpm-5">
+<a href="inviso.html#tpm-5">tpm/5</a></li>
+<li title="tpm-6">
+<a href="inviso.html#tpm-6">tpm/6</a></li>
+<li title="tpm-8">
+<a href="inviso.html#tpm-8">tpm/8</a></li>
+<li title="tpm-9">
+<a href="inviso.html#tpm-9">tpm/9</a></li>
+<li title="tpm_tracer-4">
+<a href="inviso.html#tpm_tracer-4">tpm_tracer/4</a></li>
+<li title="tpm_tracer-5">
+<a href="inviso.html#tpm_tracer-5">tpm_tracer/5</a></li>
+<li title="tpm_tracer-5">
+<a href="inviso.html#tpm_tracer-5">tpm_tracer/5</a></li>
+<li title="tpm_tracer-6">
+<a href="inviso.html#tpm_tracer-6">tpm_tracer/6</a></li>
+<li title="tpm_tracer-8">
+<a href="inviso.html#tpm_tracer-8">tpm_tracer/8</a></li>
+<li title="tpm_tracer-9">
+<a href="inviso.html#tpm_tracer-9">tpm_tracer/9</a></li>
+<li title="tpm_ms-5">
+<a href="inviso.html#tpm_ms-5">tpm_ms/5</a></li>
+<li title="tpm_ms-6">
+<a href="inviso.html#tpm_ms-6">tpm_ms/6</a></li>
+<li title="tpm_ms_tracer-5">
+<a href="inviso.html#tpm_ms_tracer-5">tpm_ms_tracer/5</a></li>
+<li title="tpm_ms_tracer-6">
+<a href="inviso.html#tpm_ms_tracer-6">tpm_ms_tracer/6</a></li>
+<li title="ctpm_ms-4">
+<a href="inviso.html#ctpm_ms-4">ctpm_ms/4</a></li>
+<li title="ctpm_ms-5">
+<a href="inviso.html#ctpm_ms-5">ctpm_ms/5</a></li>
+<li title="ctpm-3">
+<a href="inviso.html#ctpm-3">ctpm/3</a></li>
+<li title="ctpm-4">
+<a href="inviso.html#ctpm-4">ctpm/4</a></li>
+<li title="tpm_localnames-0">
+<a href="inviso.html#tpm_localnames-0">tpm_localnames/0</a></li>
+<li title="tpm_localnames-1">
+<a href="inviso.html#tpm_localnames-1">tpm_localnames/1</a></li>
+<li title="ctpm_localnames-0">
+<a href="inviso.html#ctpm_localnames-0">ctpm_localnames/0</a></li>
+<li title="ctpm_localnames-1">
+<a href="inviso.html#ctpm_localnames-1">ctpm_localnames/1</a></li>
+<li title="tpm_globalnames-0">
+<a href="inviso.html#tpm_globalnames-0">tpm_globalnames/0</a></li>
+<li title="tpm_globalnames-1">
+<a href="inviso.html#tpm_globalnames-1">tpm_globalnames/1</a></li>
+<li title="ctpm_globalnames-0">
+<a href="inviso.html#ctpm_globalnames-0">ctpm_globalnames/0</a></li>
+<li title="ctpm_globalnames-1">
+<a href="inviso.html#ctpm_globalnames-1">ctpm_globalnames/1</a></li>
+<li title="ctp_all-0">
+<a href="inviso.html#ctp_all-0">ctp_all/0</a></li>
+<li title="ctp_all-1">
+<a href="inviso.html#ctp_all-1">ctp_all/1</a></li>
+<li title="suspend-1">
+<a href="inviso.html#suspend-1">suspend/1</a></li>
+<li title="suspend-2">
+<a href="inviso.html#suspend-2">suspend/2</a></li>
+<li title="cancel_suspension-0">
+<a href="inviso.html#cancel_suspension-0">cancel_suspension/0</a></li>
+<li title="cancel_suspend-1">
+<a href="inviso.html#cancel_suspend-1">cancel_suspend/1</a></li>
+<li title="get_status-0">
+<a href="inviso.html#get_status-0">get_status/0</a></li>
+<li title="get_status-1">
+<a href="inviso.html#get_status-1">get_status/1</a></li>
+<li title="get_tracerdata-0">
+<a href="inviso.html#get_tracerdata-0">get_tracerdata/0</a></li>
+<li title="get_tracerdata-1">
+<a href="inviso.html#get_tracerdata-1">get_tracerdata/1</a></li>
+<li title="list_logs-0">
+<a href="inviso.html#list_logs-0">list_logs/0</a></li>
+<li title="list_logs-1">
+<a href="inviso.html#list_logs-1">list_logs/1</a></li>
+<li title="list_logs-1">
+<a href="inviso.html#list_logs-1">list_logs/1</a></li>
+<li title="list_logs-1">
+<a href="inviso.html#list_logs-1">list_logs/1</a></li>
+<li title="fetch_log-3">
+<a href="inviso.html#fetch_log-3">fetch_log/3</a></li>
+<li title="fetch_log-2">
+<a href="inviso.html#fetch_log-2">fetch_log/2</a></li>
+<li title="delete_log-2">
+<a href="inviso.html#delete_log-2">delete_log/2</a></li>
+<li title="delete_log-1">
+<a href="inviso.html#delete_log-1">delete_log/1</a></li>
+<li title="delete_log-1">
+<a href="inviso.html#delete_log-1">delete_log/1</a></li>
+<li title="delete_log-1">
+<a href="inviso.html#delete_log-1">delete_log/1</a></li>
+<li title="delete_log-0">
+<a href="inviso.html#delete_log-0">delete_log/0</a></li>
+<li title="subscribe-0">
+<a href="inviso.html#subscribe-0">subscribe/0</a></li>
+<li title="subscribe-1">
+<a href="inviso.html#subscribe-1">subscribe/1</a></li>
+<li title="unsubscribe-0">
+<a href="inviso.html#unsubscribe-0">unsubscribe/0</a></li>
+<li title="unsubscribe-1">
+<a href="inviso.html#unsubscribe-1">unsubscribe/1</a></li>
+</ul>
+</li>
+<li title="inviso_as_lib " expanded="false">inviso_as_lib<ul>
+<li>
+<a href="inviso_as_lib.html">
+                  Top of manual page
+                </a></li>
+<li title="setup_autostart-8">
+<a href="inviso_as_lib.html#setup_autostart-8">setup_autostart/8</a></li>
+<li title="set_repeat-2">
+<a href="inviso_as_lib.html#set_repeat-2">set_repeat/2</a></li>
+<li title="inhibit_autostart-1">
+<a href="inviso_as_lib.html#inhibit_autostart-1">inhibit_autostart/1</a></li>
+</ul>
+</li>
+<li title="inviso_lfm " expanded="true">inviso_lfm<ul>
+<li>
+<a href="inviso_lfm.html">
+                  Top of manual page
+                </a></li>
+<li title="merge-2">
+<a href="inviso_lfm.html#merge-2">merge/2</a></li>
+<li title="merge-3">
+<a href="inviso_lfm.html#merge-3">merge/3</a></li>
+<li title="merge-5">
+<a href="inviso_lfm.html#merge-5">merge/5</a></li>
+</ul>
+</li>
+<li title="inviso_lfm_tpfreader " expanded="false">inviso_lfm_tpfreader<ul>
+<li>
+<a href="inviso_lfm_tpfreader.html">
+                  Top of manual page
+                </a></li>
+<li title="handle_logfile_sort_wrapset-1">
+<a href="inviso_lfm_tpfreader.html#handle_logfile_sort_wrapset-1">handle_logfile_sort_wrapset/1</a></li>
+</ul>
+</li>
+<li title="inviso_rt " expanded="false">inviso_rt<ul>
+<li>
+<a href="inviso_rt.html">
+                  Top of manual page
+                </a></li>
+<li title="init_tracing-1">
+<a href="inviso_rt.html#init_tracing-1">init_tracing/1</a></li>
+<li title="tp-5">
+<a href="inviso_rt.html#tp-5">tp/5</a></li>
+<li title="tp-4">
+<a href="inviso_rt.html#tp-4">tp/4</a></li>
+<li title="tp-1">
+<a href="inviso_rt.html#tp-1">tp/1</a></li>
+<li title="tpl-4">
+<a href="inviso_rt.html#tpl-4">tpl/4</a></li>
+<li title="tpl-5">
+<a href="inviso_rt.html#tpl-5">tpl/5</a></li>
+<li title="tpl-1">
+<a href="inviso_rt.html#tpl-1">tpl/1</a></li>
+<li title="ctp-3">
+<a href="inviso_rt.html#ctp-3">ctp/3</a></li>
+<li title="ctpl-3">
+<a href="inviso_rt.html#ctpl-3">ctpl/3</a></li>
+<li title="tf-2">
+<a href="inviso_rt.html#tf-2">tf/2</a></li>
+<li title="tf-1">
+<a href="inviso_rt.html#tf-1">tf/1</a></li>
+<li title="ctf-2">
+<a href="inviso_rt.html#ctf-2">ctf/2</a></li>
+<li title="ctf-1">
+<a href="inviso_rt.html#ctf-1">ctf/1</a></li>
+<li title="init_tpm-4">
+<a href="inviso_rt.html#init_tpm-4">init_tpm/4</a></li>
+<li title="init_tpm-7">
+<a href="inviso_rt.html#init_tpm-7">init_tpm/7</a></li>
+<li title="tpm-4">
+<a href="inviso_rt.html#tpm-4">tpm/4</a></li>
+<li title="tpm-5">
+<a href="inviso_rt.html#tpm-5">tpm/5</a></li>
+<li title="tpm-8">
+<a href="inviso_rt.html#tpm-8">tpm/8</a></li>
+<li title="tpm_tracer-4">
+<a href="inviso_rt.html#tpm_tracer-4">tpm_tracer/4</a></li>
+<li title="tpm_tracer-5">
+<a href="inviso_rt.html#tpm_tracer-5">tpm_tracer/5</a></li>
+<li title="tpm_tracer-8">
+<a href="inviso_rt.html#tpm_tracer-8">tpm_tracer/8</a></li>
+<li title="tpm_ms-5">
+<a href="inviso_rt.html#tpm_ms-5">tpm_ms/5</a></li>
+<li title="tpm_ms_tracer-5">
+<a href="inviso_rt.html#tpm_ms_tracer-5">tpm_ms_tracer/5</a></li>
+<li title="ctpm_ms-4">
+<a href="inviso_rt.html#ctpm_ms-4">ctpm_ms/4</a></li>
+<li title="ctpm-3">
+<a href="inviso_rt.html#ctpm-3">ctpm/3</a></li>
+<li title="local_register-0">
+<a href="inviso_rt.html#local_register-0">local_register/0</a></li>
+<li title="remove_local_register-0">
+<a href="inviso_rt.html#remove_local_register-0">remove_local_register/0</a></li>
+<li title="global_register-0">
+<a href="inviso_rt.html#global_register-0">global_register/0</a></li>
+<li title="remove_global_register-0">
+<a href="inviso_rt.html#remove_global_register-0">remove_global_register/0</a></li>
+</ul>
+</li>
+<li title="inviso_rt_meta " expanded="false">inviso_rt_meta<ul>
+<li>
+<a href="inviso_rt_meta.html">
+                  Top of manual page
+                </a></li>
+<li title="tpm_ms-5">
+<a href="inviso_rt_meta.html#tpm_ms-5">tpm_ms/5</a></li>
+<li title="tpm_ms_tracer-5">
+<a href="inviso_rt_meta.html#tpm_ms_tracer-5">tpm_ms_tracer/5</a></li>
+<li title="list_tpm_ms-3">
+<a href="inviso_rt_meta.html#list_tpm_ms-3">list_tpm_ms/3</a></li>
+<li title="ctpm_ms-4">
+<a href="inviso_rt_meta.html#ctpm_ms-4">ctpm_ms/4</a></li>
+<li title="get_tracer-0">
+<a href="inviso_rt_meta.html#get_tracer-0">get_tracer/0</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>inviso_lfm</h1></center>
+  
+  <h3>MODULE</h3>
+<div class="REFBODY">inviso_lfm</div>
+  <h3>MODULE SUMMARY</h3>
+<div class="REFBODY">An Inviso Off-Line Logfile Merger</div>
+  <h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+    <p>Implements an off-line logfile merger, merging binary trace-log files from several nodes together in chronological order. The logfile merger can also do pid-to-alias translations.</p>
+    <p>The logfile merger is supposed to be called from the Erlang shell or a higher layer trace tool. For it to work, all logfiles and trace information files (containing the pid-alias associations) must be located in the file system accessible from this node and organized according to the API description.</p>
+    <p>The logfile merger starts a process, the output process, which in its turn starts one reader process for every node it shall merge logfiles from. Note that the reason for a process for each node is not remote communication, the logfile merger is an off-line utility, it is to sort the logfile entries in chronological order.</p>
+    <p>The logfile merger can be customized both when it comes to the implementation of the reader processes and the output the output process shall generate for every logfile entry.</p>
+  </p></div>
+  <h3>EXPORTS</h3>
+    <p><a name="merge-2"><span class="bold_code">merge(Files, OutFile) -&gt;</span></a><br><a name="merge-3"><span class="bold_code">merge(Files, WorkHFun, InitHandlerData) -&gt;</span></a><br><a name="merge-5"><span class="bold_code">merge(Files, BeginHFun, WorkHFun, EndHFun, InitHandlerData) -&gt; {ok, Count} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Files = [FileDescription]</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code"> FileDescription = FileSet | {reader,RMod,RFunc,FileSet}</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">  FileSet = {Node,LogFiles} | {Node,[LogFiles]}</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">   Node = atom()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">   LogFiles = [{trace_log,[FileName]}] | [{trace_log,[FileName]},{ti_log,TiFileSpec}]</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">    TiFileSpec = [string()] - a list of one string.</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">    FileName = string()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">  RMod = RFunc = atom()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">OutFile = string()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">BeginHFun = fun(InitHandlerData) -&gt; {ok, NewHandlerData} | {error, Reason}</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">WorkHFun = fun(Node, LogEntry, PidMappings, HandlerData) -&gt; {ok, NewHandlerData}</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code"> LogEntry = tuple()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code"> PidMappings = term()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">EndHFun = fun(HandlerData) -&gt; ok | {error, Reason}</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Count = int()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Merges the logfiles in <span class="code">Files</span> together into one file in chronological order. The logfile merger consists of an output process and one or several reader processes.</p>
+        <p>Returns <span class="code">{ok, Count}</span> where <span class="code">Count</span> is the total number of log entries processed, if successful.</p>
+        <p>When specifying <span class="code">LogFiles</span>, currently the standard reader-process only supports:</p>
+        <ul>
+          <li>one single file</li>
+          <li>a list of wraplog files, following the naming convention <span class="code">&lt;Prefix&gt;&lt;Nr&gt;&lt;Suffix&gt;</span>.</li>
+        </ul>
+        <p>Note that (when using the standard reader process) it is possible to give a list of <span class="code">LogFiles</span>. The list must be sorted starting with the oldest. This will cause several trace-logs (from the same node) to be merged together in the same <span class="code">OutFile</span>. The reader process will simply start reading the next file (or wrapset) when the previous is done.</p>
+        <p><span class="code">FileDescription == {reader,RMod,RFunc,FileSet}</span> indicates that <span class="code">spawn(RMod, RFunc, [OutputPid,LogFiles])</span> shall create a reader process.</p>
+        <p>The output process is customized with <span class="code">BeginHFun</span>, <span class="code">WorkHFun</span> and <span class="code">EndHFun</span>. If using <span class="code">merge/2</span> a default output process configuration is used, basically creating a text file and writing the output line by line. <span class="code">BeginHFun</span> is called once before requesting log entries from the reader processes. <span class="code">WorkHFun</span> is called for every log entry (trace message) <span class="code">LogEntry</span>. Here the log entry typically gets written to the output. <span class="code">PidMappings</span> is the translations produced by the reader process. <span class="code">EndHFun</span> is called when all reader processes have terminated.</p>
+        <p>Currently the standard reader can only handle one ti-file (per <span class="code">LogFiles</span>). The current inviso meta tracer is further not capable of wrapping ti-files. (This also because a wrapped ti-log will most likely be worthless since alias associations done in the beginning are erased but still used in the trace-log).</p>
+        <p>The standard reader process is implemented in the module <span class="code">inviso_lfm_tpreader</span> (trace port reader). It understands Erlang linked in trace-port driver generated trace-logs and <span class="code">inviso_rt_meta</span> generated trace information files.</p>
+      </p></div>
+  
+  <h3><a name="id2265965">Writing Your Own Reader Process</a></h3>
+<div class="REFBODY">
+    
+    <p>Writing a reader process is not that difficult. It must:</p>
+    <ul>
+      <li>Export an init-like function accepting two arguments, pid of the output process and the <span class="code">LogFiles</span> component. <span class="code">LogFiles</span> is actually only used by the reader processes, making it possible to redefine <span class="code">LogFiles</span> if implementing an own reader process.</li>
+      <li>Respond to <span class="code">{get_next_entry, OutputPid}</span> messages with <span class="code">{next_entry, self(), PidMappings, NowTimeStamp, Term}</span> or <span class="code">{next_entry, self(), {error,Reason}}</span>.</li>
+      <li>Terminate normally when no more log entries are available.</li>
+      <li>Terminate on an incoming EXIT-signal from <span class="code">OutputPid</span>.</li>
+    </ul>
+    <p>The reader process must of course understand the format of a logfile written by the runtime component.</p>
+  </div>
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2006-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

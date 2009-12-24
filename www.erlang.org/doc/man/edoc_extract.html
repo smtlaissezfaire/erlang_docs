@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- edoc_extract</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/edoc/users_guide.html">User's Guide</a><br>
+<a href="../apps/edoc/index.html">Reference Manual</a><br>
+<a href="../apps/edoc/release_notes.html">Release Notes</a><br>
+<a href="../apps/edoc/edoc.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>EDoc</strong><br><strong>Reference Manual</strong><br><small>Version 0.7.6.5</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="edoc " expanded="false">edoc<ul>
+<li>
+<a href="edoc.html">
+                  Top of manual page
+                </a></li>
+<li title="application-1">
+<a href="edoc.html#application-1">application/1</a></li>
+<li title="application-2">
+<a href="edoc.html#application-2">application/2</a></li>
+<li title="application-3">
+<a href="edoc.html#application-3">application/3</a></li>
+<li title="file-1">
+<a href="edoc.html#file-1">file/1</a></li>
+<li title="file-2">
+<a href="edoc.html#file-2">file/2</a></li>
+<li title="files-2">
+<a href="edoc.html#files-2">files/2</a></li>
+<li title="files-3">
+<a href="edoc.html#files-3">files/3</a></li>
+<li title="get_doc-1">
+<a href="edoc.html#get_doc-1">get_doc/1</a></li>
+<li title="get_doc-2">
+<a href="edoc.html#get_doc-2">get_doc/2</a></li>
+<li title="get_doc-3">
+<a href="edoc.html#get_doc-3">get_doc/3</a></li>
+<li title="layout-1">
+<a href="edoc.html#layout-1">layout/1</a></li>
+<li title="layout-2">
+<a href="edoc.html#layout-2">layout/2</a></li>
+<li title="packages-1">
+<a href="edoc.html#packages-1">packages/1</a></li>
+<li title="packages-2">
+<a href="edoc.html#packages-2">packages/2</a></li>
+<li title="read-1">
+<a href="edoc.html#read-1">read/1</a></li>
+<li title="read-2">
+<a href="edoc.html#read-2">read/2</a></li>
+<li title="read_comments-1">
+<a href="edoc.html#read_comments-1">read_comments/1</a></li>
+<li title="read_comments-2">
+<a href="edoc.html#read_comments-2">read_comments/2</a></li>
+<li title="read_source-1">
+<a href="edoc.html#read_source-1">read_source/1</a></li>
+<li title="read_source-2">
+<a href="edoc.html#read_source-2">read_source/2</a></li>
+<li title="run-4">
+<a href="edoc.html#run-4">run/4</a></li>
+</ul>
+</li>
+<li title="edoc_doclet " expanded="false">edoc_doclet<ul>
+<li>
+<a href="edoc_doclet.html">
+                  Top of manual page
+                </a></li>
+<li title="run-2">
+<a href="edoc_doclet.html#run-2">run/2</a></li>
+</ul>
+</li>
+<li title="edoc_extract " expanded="true">edoc_extract<ul>
+<li>
+<a href="edoc_extract.html">
+                  Top of manual page
+                </a></li>
+<li title="file-4">
+<a href="edoc_extract.html#file-4">file/4</a></li>
+<li title="header-3">
+<a href="edoc_extract.html#header-3">header/3</a></li>
+<li title="header-4">
+<a href="edoc_extract.html#header-4">header/4</a></li>
+<li title="header-5">
+<a href="edoc_extract.html#header-5">header/5</a></li>
+<li title="source-3">
+<a href="edoc_extract.html#source-3">source/3</a></li>
+<li title="source-4">
+<a href="edoc_extract.html#source-4">source/4</a></li>
+<li title="source-5">
+<a href="edoc_extract.html#source-5">source/5</a></li>
+<li title="text-4">
+<a href="edoc_extract.html#text-4">text/4</a></li>
+</ul>
+</li>
+<li title="edoc_layout " expanded="false">edoc_layout<ul>
+<li>
+<a href="edoc_layout.html">
+                  Top of manual page
+                </a></li>
+<li title="module-2">
+<a href="edoc_layout.html#module-2">module/2</a></li>
+<li title="overview-2">
+<a href="edoc_layout.html#overview-2">overview/2</a></li>
+<li title="package-2">
+<a href="edoc_layout.html#package-2">package/2</a></li>
+<li title="type-1">
+<a href="edoc_layout.html#type-1">type/1</a></li>
+</ul>
+</li>
+<li title="edoc_lib " expanded="false">edoc_lib<ul>
+<li>
+<a href="edoc_lib.html">
+                  Top of manual page
+                </a></li>
+<li title="copy_file-2">
+<a href="edoc_lib.html#copy_file-2">copy_file/2</a></li>
+<li title="count-2">
+<a href="edoc_lib.html#count-2">count/2</a></li>
+<li title="datestr-1">
+<a href="edoc_lib.html#datestr-1">datestr/1</a></li>
+<li title="escape_uri-1">
+<a href="edoc_lib.html#escape_uri-1">escape_uri/1</a></li>
+<li title="filename-1">
+<a href="edoc_lib.html#filename-1">filename/1</a></li>
+<li title="find_doc_dirs-0">
+<a href="edoc_lib.html#find_doc_dirs-0">find_doc_dirs/0</a></li>
+<li title="find_file-3">
+<a href="edoc_lib.html#find_file-3">find_file/3</a></li>
+<li title="find_sources-2">
+<a href="edoc_lib.html#find_sources-2">find_sources/2</a></li>
+<li title="find_sources-3">
+<a href="edoc_lib.html#find_sources-3">find_sources/3</a></li>
+<li title="get_doc_env-1">
+<a href="edoc_lib.html#get_doc_env-1">get_doc_env/1</a></li>
+<li title="get_doc_env-4">
+<a href="edoc_lib.html#get_doc_env-4">get_doc_env/4</a></li>
+<li title="get_first_sentence-1">
+<a href="edoc_lib.html#get_first_sentence-1">get_first_sentence/1</a></li>
+<li title="is_name-1">
+<a href="edoc_lib.html#is_name-1">is_name/1</a></li>
+<li title="is_relative_uri-1">
+<a href="edoc_lib.html#is_relative_uri-1">is_relative_uri/1</a></li>
+<li title="is_space-1">
+<a href="edoc_lib.html#is_space-1">is_space/1</a></li>
+<li title="join_uri-2">
+<a href="edoc_lib.html#join_uri-2">join_uri/2</a></li>
+<li title="lines-1">
+<a href="edoc_lib.html#lines-1">lines/1</a></li>
+<li title="parse_contact-2">
+<a href="edoc_lib.html#parse_contact-2">parse_contact/2</a></li>
+<li title="parse_expr-2">
+<a href="edoc_lib.html#parse_expr-2">parse_expr/2</a></li>
+<li title="read_info_file-1">
+<a href="edoc_lib.html#read_info_file-1">read_info_file/1</a></li>
+<li title="run_doclet-2">
+<a href="edoc_lib.html#run_doclet-2">run_doclet/2</a></li>
+<li title="run_layout-2">
+<a href="edoc_lib.html#run_layout-2">run_layout/2</a></li>
+<li title="segment-2">
+<a href="edoc_lib.html#segment-2">segment/2</a></li>
+<li title="simplify_path-1">
+<a href="edoc_lib.html#simplify_path-1">simplify_path/1</a></li>
+<li title="split_at-2">
+<a href="edoc_lib.html#split_at-2">split_at/2</a></li>
+<li title="split_at_space-1">
+<a href="edoc_lib.html#split_at_space-1">split_at_space/1</a></li>
+<li title="split_at_stop-1">
+<a href="edoc_lib.html#split_at_stop-1">split_at_stop/1</a></li>
+<li title="strip_space-1">
+<a href="edoc_lib.html#strip_space-1">strip_space/1</a></li>
+<li title="timestr-1">
+<a href="edoc_lib.html#timestr-1">timestr/1</a></li>
+<li title="to_label-1">
+<a href="edoc_lib.html#to_label-1">to_label/1</a></li>
+<li title="transpose-1">
+<a href="edoc_lib.html#transpose-1">transpose/1</a></li>
+<li title="try_subdir-2">
+<a href="edoc_lib.html#try_subdir-2">try_subdir/2</a></li>
+<li title="unique-1">
+<a href="edoc_lib.html#unique-1">unique/1</a></li>
+<li title="uri_get-1">
+<a href="edoc_lib.html#uri_get-1">uri_get/1</a></li>
+<li title="write_file-3">
+<a href="edoc_lib.html#write_file-3">write_file/3</a></li>
+<li title="write_file-4">
+<a href="edoc_lib.html#write_file-4">write_file/4</a></li>
+<li title="write_info_file-4">
+<a href="edoc_lib.html#write_info_file-4">write_info_file/4</a></li>
+</ul>
+</li>
+<li title="edoc_run " expanded="false">edoc_run<ul>
+<li>
+<a href="edoc_run.html">
+                  Top of manual page
+                </a></li>
+<li title="application-1">
+<a href="edoc_run.html#application-1">application/1</a></li>
+<li title="file-1">
+<a href="edoc_run.html#file-1">file/1</a></li>
+<li title="files-1">
+<a href="edoc_run.html#files-1">files/1</a></li>
+<li title="packages-1">
+<a href="edoc_run.html#packages-1">packages/1</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>edoc_extract</h1></center>
+<h3>MODULE</h3>
+<div class="REFBODY">edoc_extract</div>
+<h3>MODULE SUMMARY</h3>
+<div class="REFBODY">EDoc documentation extraction.</div>
+<h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+<p>EDoc documentation extraction.</p></p></div>
+<h3><a name="id2262053">DATA TYPES</a></h3>
+<div class="REFBODY">
+<a name="types"></a>
+<dl>
+<dt><strong><span class="code">edoc_env() = edoc_env() (see module edoc_lib)</span></strong></dt>
+<dd>
+<a name="type-edoc_env"></a> </dd>
+<dt><strong><span class="code">filename() = filename() (see module file)</span></strong></dt>
+<dd>
+<a name="type-filename"></a> </dd>
+</dl>
+</div>
+<h3>EXPORTS</h3>
+<p><a name="file-4"><span class="bold_code">file(File::filename(), Context, Env::edoc_env(), Options::proplist()) -&gt; {ok, Tags} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Context = overview | package</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Tags = [term()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="file-4"></a>
+<p>Reads a text file and returns the list of tags in the file. Any
+  lines of text before the first tag are ignored. <span class="code">Env</span> is an
+  environment created by <span class="bold_code">
+<a href="edoc_lib.html#get_doc_env-4">edoc_lib:get_doc_env/4</a></span>. Upon error,
+  <span class="code">Reason</span> is an atom returned from the call to <span class="bold_code">
+<a href="file.html#read_file-1">file:read_file/1</a></span>.</p>
+ 
+  <p>See <span class="bold_code">
+<a href="#text-4">text/4</a></span> for options.</p>
+</p></div>
+<p><a name="header-3"><span class="bold_code">header(File::filename(), Env::edoc_env(), Options::proplist()) -&gt; {ok, Tags} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Tags = [term()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="header-3"></a>
+<p>Similar to <span class="bold_code">
+<a href="#header-5">header/5</a></span>, but reads the syntax tree and the
+  comments from the specified file.
+ </p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="#header-4">header/4</a></span>, <span class="bold_code">
+<a href="edoc.html#read_comments-2">edoc:read_comments/2</a></span>, <span class="bold_code">
+<a href="edoc.html#read_source-2">edoc:read_source/2</a></span>.</p>
+</p></div>
+<p><a name="header-4"><span class="bold_code">header(Forms, File::filename(), Env::edoc_env(), Options::proplist()) -&gt; {ok, Tags} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Forms = syntaxTree() | [syntaxTree()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Tags = [term()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="header-4"></a>
+<p>Extracts EDoc documentation from commented header file syntax
+  trees. Similar to <span class="bold_code">
+<a href="#source-5">source/5</a></span>, but ignores any documentation
+  that occurs before a module declaration or a function definition.
+  (Warning messages are printed if content may be ignored.) <span class="code">Env</span> is
+  assumed to already be set up with a suitable module context.
+ </p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="erl_recomment.html">erl_recomment(3)</a></span>, <span class="bold_code">
+<a href="#header-5">header/5</a></span>.</p>
+</p></div>
+<p><a name="header-5"><span class="bold_code">header(Forms, Comments::[comment()], File::filename(), Env::edoc_env(), Options::proplist()) -&gt; {ok, Tags} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Forms = syntaxTree() | [syntaxTree()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Tags = [term()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="header-5"></a>
+<p>Similar to <span class="bold_code">
+<a href="#header-4">header/4</a></span>, but first inserts the given
+  comments in the syntax trees. The syntax trees must contain valid
+  position information. (Cf. <span class="bold_code">
+<a href="edoc.html#read_comments-2">edoc:read_comments/2</a></span>.)
+ </p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="erl_recomment.html">erl_recomment(3)</a></span>, <span class="bold_code">
+<a href="#header-3">header/3</a></span>, <span class="bold_code">
+<a href="#header-4">header/4</a></span>.</p>
+</p></div>
+<p><a name="source-3"><span class="bold_code">source(File::filename(), Env::edoc_env(), Options::proplist()) -&gt; {ModuleName, edoc_module()}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">ModuleName = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">[term()]</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="source-3"></a>
+<p>Like <span class="bold_code">
+<a href="#source-5">source/5</a></span>, but reads the syntax tree and the
+  comments from the specified file.
+ </p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="#source-4">source/4</a></span>, <span class="bold_code">
+<a href="edoc.html#read_comments-2">edoc:read_comments/2</a></span>, <span class="bold_code">
+<a href="edoc.html#read_source-2">edoc:read_source/2</a></span>.</p>
+</p></div>
+<p><a name="source-4"><span class="bold_code">source(Forms, File::filename(), Env::edoc_env(), Options::proplist()) -&gt; {ModuleName, edoc_module()}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Forms = syntaxTree() | [syntaxTree()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">ModuleName = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">edoc_module() (see module edoc)</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="source-4"></a>
+<p>Extracts EDoc documentation from commented source code syntax
+  trees. The given <span class="code">Forms</span> must be a single syntax tree of
+  type <span class="code">form_list</span>, or a list of syntax trees representing
+  "program forms" (cf. <span class="bold_code">
+<a href="edoc.html#read_source-2">edoc:read_source/2</a></span>.
+  <span class="code">Env</span> is an environment created by <span class="bold_code">
+<a href="edoc_lib.html#get_doc_env-4">edoc_lib:get_doc_env/4</a></span>. The <span class="code">File</span> argument is used for  
+error reporting and output file name generation only.</p>
+ 
+  <p>See <span class="bold_code">
+<a href="edoc.html#get_doc-2">edoc:get_doc/2</a></span> for descriptions of the <span class="code">def</span>,
+  <span class="code">hidden</span>, <span class="code">private</span>, and <span class="code">todo</span> options.
+ </p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="erl_recomment.html">erl_recomment(3)</a></span>, <span class="bold_code">
+<a href="#source-5">source/5</a></span>, <span class="bold_code">
+<a href="edoc.html#read_comments-2">edoc:read_comments/2</a></span>, <span class="bold_code">
+<a href="edoc.html#read_source-2">edoc:read_source/2</a></span>.</p>
+</p></div>
+<p><a name="source-5"><span class="bold_code">source(Forms, Comments::[comment()], File::filename(), Env::edoc_env(), Options::proplist()) -&gt; {ModuleName, edoc_module()}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Forms = syntaxTree() | [syntaxTree()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">{Line, Column, Indentation, Text}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Line = integer()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Column = integer()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Indentation = integer()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Text = [string()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">ModuleName = atom()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="source-5"></a>
+<p>Like <span class="bold_code">
+<a href="#source-4">source/4</a></span>, but first inserts the given comments in
+  the syntax trees. The syntax trees must contain valid position
+  information. (Cf. <span class="bold_code">
+<a href="edoc.html#read_comments-2">edoc:read_comments/2</a></span>.)
+ </p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="erl_recomment.html">erl_recomment(3)</a></span>, <span class="bold_code">
+<a href="#source-3">source/3</a></span>, <span class="bold_code">
+<a href="#source-4">source/4</a></span>, <span class="bold_code">
+<a href="edoc.html#read_comments-2">edoc:read_comments/2</a></span>, <span class="bold_code">
+<a href="edoc.html#read_source-2">edoc:read_source/2</a></span>.</p>
+</p></div>
+<p><a name="text-4"><span class="bold_code">text(Text::string(), Context, Env::edoc_env(), Options::proplist()) -&gt; Tags</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Context = overview | package</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Tags = [term()]</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="text-4"></a>
+<p>Returns the list of tags in the text. Any lines of text before
+  the first tag are ignored. <span class="code">Env</span> is an environment created by <span class="bold_code">
+<a href="edoc_lib.html#get_doc_env-4">edoc_lib:get_doc_env/4</a></span>.</p>
+ 
+  <p>See <span class="bold_code">
+<a href="#source-4">source/4</a></span> for a description of the <span class="code">def</span> option.</p>
+</p></div>
+<h3><a name="id2263340">See also</a></h3>
+<div class="REFBODY"><p><span class="bold_code">
+<a href="edoc.html">edoc</a></span></p></div>
+Richard Carlsson
+richardc@it.uu.se</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2006-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

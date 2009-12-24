@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Event Domain Service</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="cosEventDomain.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>cosEventDomain</strong><br><strong>User's Guide</strong><br><small>Version 1.1.7</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="The cosEventDomain Application" expanded="false">The cosEventDomain Application<ul>
+<li>
+<a href="ch_contents.html">
+              Top of chapter
+            </a></li>
+<li title="Content Overview">
+<a href="ch_contents.html#id2251835">Content Overview</a></li>
+<li title="Brief Description of the User's Guide">
+<a href="ch_contents.html#id2255419">Brief Description of the User's Guide</a></li>
+</ul>
+</li>
+<li title="Introduction to cosEventDomain" expanded="false">Introduction to cosEventDomain<ul>
+<li>
+<a href="ch_introduction.html">
+              Top of chapter
+            </a></li>
+<li title="Overview">
+<a href="ch_introduction.html#id2252501">Overview</a></li>
+</ul>
+</li>
+<li title="Quality Of Service and Admin Properties" expanded="false">Quality Of Service and Admin Properties<ul>
+<li>
+<a href="ch_QoS.html">
+              Top of chapter
+            </a></li>
+<li title="Quality Of Service and Admin Properties">
+<a href="ch_QoS.html#id2252291">Quality Of Service and Admin Properties</a></li>
+</ul>
+</li>
+<li title="Event Domain Service" expanded="true">Event Domain Service<ul>
+<li>
+<a href="ch_event_domain_service.html">
+              Top of chapter
+            </a></li>
+<li title="Overview of the CosEventDomain Service">
+<a href="ch_event_domain_service.html#id2251760">Overview of the CosEventDomain Service</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>4 Event Domain Service</h1>
+  
+  <h3><a name="id2251760">4.1 
+        Overview of the CosEventDomain Service</a></h3>
+    
+    <p>The Event Domain service allows programmers to manage a cluster
+      of information channels.</p>
+    <h4>Event Domain Service Components</h4>
+      
+      <p>There are two components in the OMG CosEventDomainAdmin service architecture:</p>
+      <ul>
+        <li>
+<strong>EventDomainFactory:</strong> a factory for creating EventDomains.</li>
+        <li>
+<strong>EventDomain:</strong> supplies a tool, which makes it easy to create
+         topologies of interconnected channels (i.e. a directed graph).</li>
+      </ul>
+    
+    <h4>A Tutorial on How to Create a Simple Service</h4>
+      
+      <p>To be able to use the cosEventDomain application, the cosNotification
+        and, possibly, the cosTime application must be installed.</p>
+    
+    <h4>How to Run Everything</h4>
+      
+      <p>Below is a short transcript on how to run cosEventDomain. </p>
+      <div class="example"><pre>
+ 
+%% Start Mnesia and Orber
+mnesia:delete_schema([node()]),
+mnesia:create_schema([node()]),
+orber:install([node()]),
+mnesia:start(),
+orber:start(),
+ 
+%% Install and start cosNotification.
+cosNotificationApp:install(),
+cosNotificationApp:start(),
+%% Install and start cosEventDomain.
+cosEventDomainApp:install(),
+cosEventDomainApp:start(),
+%% Start a CosEventDomainAdmin factory.
+AdminFac = cosEventDomainApp:start_factory(),
+%% Define the desired QoS settings:
+QoS = 
+   [#'CosNotification_Property'
+    {name='CosEventDomainAdmin':'DiamondDetection'(), 
+     value=any:create(orber_tc:short(),
+     'CosEventDomainAdmin':'AuthorizeDiamonds'())},
+    #'CosNotification_Property'
+    {name='CosEventDomainAdmin':'CycleDetection'(), 
+     value=any:create(orber_tc:short(),
+     'CosEventDomainAdmin':'ForbidCycles'())}],
+%% Create a new EventDomain:
+{ED, EDId} = 'CosEventDomainAdmin_EventDomainFactory':
+                        create_event_domain(Fac, QoS, []),
+%% Now we can add Notification Channels to the Domain. How this
+%% is done, see the cosNotification documentation. Let us assume
+%% that we have gained access to two Channel Objects; add them to the
+%% domain:
+ID1 = 'CosEventDomainAdmin_EventDomain':add_channel(ED, Ch1),
+ID2 = 'CosEventDomainAdmin_EventDomain':add_channel(ED, Ch2),
+%% To connect them, we must first define a connection struct:
+C1 = #'CosEventDomainAdmin_Connection'{supplier_id=ID1, 
+\011\011\011\011       consumer_id=ID2,
+\011\011\011\011       ctype='STRUCTURED_EVENT',
+\011\011\011\011       notification_style='Pull'},
+%% Connect them:
+'CosEventDomainAdmin_EventDomain':add_connection(ED, C1),
+      </pre></div>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2001-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

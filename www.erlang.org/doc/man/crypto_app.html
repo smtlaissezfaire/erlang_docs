@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- crypto</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/crypto/users_guide.html">User's Guide</a><br>
+<a href="../apps/crypto/index.html">Reference Manual</a><br>
+<a href="../apps/crypto/release_notes.html">Release Notes</a><br>
+<a href="../apps/crypto/crypto.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>crypto</strong><br><strong>Reference Manual</strong><br><small>Version 1.6.3</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="crypto (App)">
+<a href="crypto_app.html">crypto (App)
+                </a></li>
+<li title="crypto " expanded="true">crypto<ul>
+<li>
+<a href="crypto.html">
+                  Top of manual page
+                </a></li>
+<li title="start-0">
+<a href="crypto.html#start-0">start/0</a></li>
+<li title="stop-0">
+<a href="crypto.html#stop-0">stop/0</a></li>
+<li title="info-0">
+<a href="crypto.html#info-0">info/0</a></li>
+<li title="info_lib-0">
+<a href="crypto.html#info_lib-0">info_lib/0</a></li>
+<li title="md5-1">
+<a href="crypto.html#md5-1">md5/1</a></li>
+<li title="md5_init-0">
+<a href="crypto.html#md5_init-0">md5_init/0</a></li>
+<li title="md5_update-2">
+<a href="crypto.html#md5_update-2">md5_update/2</a></li>
+<li title="md5_final-1">
+<a href="crypto.html#md5_final-1">md5_final/1</a></li>
+<li title="sha-1">
+<a href="crypto.html#sha-1">sha/1</a></li>
+<li title="sha_init-0">
+<a href="crypto.html#sha_init-0">sha_init/0</a></li>
+<li title="sha_update-2">
+<a href="crypto.html#sha_update-2">sha_update/2</a></li>
+<li title="sha_final-1">
+<a href="crypto.html#sha_final-1">sha_final/1</a></li>
+<li title="md5_mac-2">
+<a href="crypto.html#md5_mac-2">md5_mac/2</a></li>
+<li title="md5_mac_96-2">
+<a href="crypto.html#md5_mac_96-2">md5_mac_96/2</a></li>
+<li title="sha_mac-2">
+<a href="crypto.html#sha_mac-2">sha_mac/2</a></li>
+<li title="sha_mac_96-2">
+<a href="crypto.html#sha_mac_96-2">sha_mac_96/2</a></li>
+<li title="des_cbc_encrypt-3">
+<a href="crypto.html#des_cbc_encrypt-3">des_cbc_encrypt/3</a></li>
+<li title="des_cbc_decrypt-3">
+<a href="crypto.html#des_cbc_decrypt-3">des_cbc_decrypt/3</a></li>
+<li title="des_cbc_ivec-1">
+<a href="crypto.html#des_cbc_ivec-1">des_cbc_ivec/1</a></li>
+<li title="des3_cbc_encrypt-5">
+<a href="crypto.html#des3_cbc_encrypt-5">des3_cbc_encrypt/5</a></li>
+<li title="des3_cbc_decrypt-5">
+<a href="crypto.html#des3_cbc_decrypt-5">des3_cbc_decrypt/5</a></li>
+<li title="blowfish_cfb64_encrypt-3">
+<a href="crypto.html#blowfish_cfb64_encrypt-3">blowfish_cfb64_encrypt/3</a></li>
+<li title="blowfish_cfb64_decrypt-3">
+<a href="crypto.html#blowfish_cfb64_decrypt-3">blowfish_cfb64_decrypt/3</a></li>
+<li title="aes_cfb_128_encrypt-3">
+<a href="crypto.html#aes_cfb_128_encrypt-3">aes_cfb_128_encrypt/3</a></li>
+<li title="aes_cbc_128_encrypt-3">
+<a href="crypto.html#aes_cbc_128_encrypt-3">aes_cbc_128_encrypt/3</a></li>
+<li title="aes_cfb_128_decrypt-3">
+<a href="crypto.html#aes_cfb_128_decrypt-3">aes_cfb_128_decrypt/3</a></li>
+<li title="aes_cbc_128_decrypt-3">
+<a href="crypto.html#aes_cbc_128_decrypt-3">aes_cbc_128_decrypt/3</a></li>
+<li title="aes_cbc_ivec-1">
+<a href="crypto.html#aes_cbc_ivec-1">aes_cbc_ivec/1</a></li>
+<li title="erlint-1">
+<a href="crypto.html#erlint-1">erlint/1</a></li>
+<li title="mpint-1">
+<a href="crypto.html#mpint-1">mpint/1</a></li>
+<li title="rand_bytes-1">
+<a href="crypto.html#rand_bytes-1">rand_bytes/1</a></li>
+<li title="rand_uniform-2">
+<a href="crypto.html#rand_uniform-2">rand_uniform/2</a></li>
+<li title="mod_exp-3">
+<a href="crypto.html#mod_exp-3">mod_exp/3</a></li>
+<li title="rsa_sign-2">
+<a href="crypto.html#rsa_sign-2">rsa_sign/2</a></li>
+<li title="rsa_sign-3">
+<a href="crypto.html#rsa_sign-3">rsa_sign/3</a></li>
+<li title="rsa_verify-3">
+<a href="crypto.html#rsa_verify-3">rsa_verify/3</a></li>
+<li title="rsa_verify-4">
+<a href="crypto.html#rsa_verify-4">rsa_verify/4</a></li>
+<li title="rsa_public_encrypt-3">
+<a href="crypto.html#rsa_public_encrypt-3">rsa_public_encrypt/3</a></li>
+<li title="rsa_private_decrypt-3">
+<a href="crypto.html#rsa_private_decrypt-3">rsa_private_decrypt/3</a></li>
+<li title="rsa_private_encrypt-3">
+<a href="crypto.html#rsa_private_encrypt-3">rsa_private_encrypt/3</a></li>
+<li title="rsa_public_decrypt-3">
+<a href="crypto.html#rsa_public_decrypt-3">rsa_public_decrypt/3</a></li>
+<li title="dss_sign-2">
+<a href="crypto.html#dss_sign-2">dss_sign/2</a></li>
+<li title="dss_verify-3">
+<a href="crypto.html#dss_verify-3">dss_verify/3</a></li>
+<li title="rc4_encrypt-2">
+<a href="crypto.html#rc4_encrypt-2">rc4_encrypt/2</a></li>
+<li title="dh_generate_key-1">
+<a href="crypto.html#dh_generate_key-1">dh_generate_key/1</a></li>
+<li title="dh_generate_key-2">
+<a href="crypto.html#dh_generate_key-2">dh_generate_key/2</a></li>
+<li title="dh_compute_key-3">
+<a href="crypto.html#dh_compute_key-3">dh_compute_key/3</a></li>
+<li title="exor-2">
+<a href="crypto.html#exor-2">exor/2</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>crypto</h1></center>
+  
+  <h3>APPLICATION</h3>
+<div class="REFBODY">crypto</div>
+  <h3>APPLICATION SUMMARY</h3>
+<div class="REFBODY">The Crypto Application</div>
+  <h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+    <p>The purpose of the Crypto application is to provide message
+      digest and DES encryption for SMNPv3. It provides computation of
+      message digests MD5 and SHA, and CBC-DES encryption and
+      decryption.</p>
+    <p></p>
+  </p></div>
+  <h3><a name="id2257510">Configuration</a></h3>
+<div class="REFBODY">
+    
+    <p>The following environment configuration parameters are defined
+      for the Crypto application. Refer to application(3) for more
+      information about configuration parameters.
+      </p>
+    <dl>
+      <dt><strong><span class="code">debug = true | false &lt;optional&gt;</span></strong></dt>
+      <dd>
+        <p>Causes debug information to be written to standard
+          error or standard output. Default is <span class="code">false</span>.
+          </p>
+      </dd>
+    </dl>
+  </div>
+  <h3><a name="id2254692">OpenSSL libraries</a></h3>
+<div class="REFBODY">
+    
+    <p>The current implementation of the Erlang Crypto application is
+      based on the <strong>OpenSSL</strong> package version 0.9.7 or higher.
+      There are source and binary releases on the web.
+      </p>
+    <p>Source releases of OpenSSL can be downloaded from the <span class="bold_code">
+<a href="http://www.openssl.org">OpenSSL</a></span> project home page,
+      or mirror sites listed there.
+      </p>
+    <p>The same URL also contains links to some compiled binaries and
+      libraries of OpenSSL (see the <span class="code">Related/Binaries</span> menu) of
+      which the <span class="bold_code">
+<a href="http://www.shininglightpro.com/search.php?searchname=Win32+OpenSSL">Shining Light Productions Win32 and OpenSSL</a></span> pages are of
+      interest for the Win32 user.
+      </p>
+    <p>For some Unix flavours there are binary packages available
+      on the net.
+      </p>
+    <p>If you cannot find a suitable binary OpenSSL package, you
+      have to fetch an OpenSSL source release and compile it.
+      </p>
+    <p>You then have to compile and install the library
+      <span class="code">libcrypto.so</span> (Unix), or the library <span class="code">libeay32.dll</span>
+      (Win32).
+      </p>
+    <p>For Unix The <span class="code">crypto_drv</span> dynamic driver is delivered linked
+      to OpenSSL libraries in <span class="code">/usr/local/lib</span>, but the default
+      dynamic linking will also accept libraries in <span class="code">/lib</span> and
+      <span class="code">/usr/lib</span>.
+      </p>
+    <p>If that is not applicable to the particular Unix operating
+      system used, the example <span class="code">Makefile</span> in the Crypto
+      <span class="code">priv/obj</span> directory, should be used as a basis for 
+      relinking the final version of the port program.
+      </p>
+    <p>For <span class="code">Win32</span> it is only required that the library can be
+      found from the <span class="code">PATH</span> environment variable, or that they
+      reside in the appropriate <span class="code">SYSTEM32</span> directory; hence no
+      particular relinking is need. Hence no example <span class="code">Makefile</span>
+      for Win32 is provided.</p>
+  </div>
+  <h3><a name="id2258634">SEE ALSO</a></h3>
+<div class="REFBODY">
+    
+    <p>application(3)</p>
+  </div>
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

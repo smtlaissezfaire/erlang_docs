@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- Creating a First Target System</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="../pdf/otp-system-documentation.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>System Principles</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../js/flipmenu">
+<li title="System Principles" expanded="false">System Principles<ul>
+<li>
+<a href="system_principles.html">
+              Top of chapter
+            </a></li>
+<li title="Starting the System">
+<a href="system_principles.html#id2253202">Starting the System</a></li>
+<li title="Restarting and Stopping the System">
+<a href="system_principles.html#id2258722">Restarting and Stopping the System</a></li>
+<li title="Boot Scripts">
+<a href="system_principles.html#id2252381">Boot Scripts</a></li>
+<li title="Code Loading Strategy">
+<a href="system_principles.html#id2252129">Code Loading Strategy</a></li>
+<li title="File Types">
+<a href="system_principles.html#id2260027">File Types</a></li>
+</ul>
+</li>
+<li title="Error Logging" expanded="false">Error Logging<ul>
+<li>
+<a href="error_logging.html">
+              Top of chapter
+            </a></li>
+<li title="Error Information From the Runtime System">
+<a href="error_logging.html#id2257392">Error Information From the Runtime System</a></li>
+<li title="SASL Error Logging">
+<a href="error_logging.html#id2252191">SASL Error Logging</a></li>
+</ul>
+</li>
+<li title="Creating a First Target System" expanded="true">Creating a First Target System<ul>
+<li>
+<a href="create_target.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="create_target.html#id2258588">Introduction</a></li>
+<li title="Creating a Target System">
+<a href="create_target.html#id2259533">Creating a Target System</a></li>
+<li title="Installing a Target System">
+<a href="create_target.html#id2258255">Installing a Target System</a></li>
+<li title="Starting a Target System">
+<a href="create_target.html#id2259429">Starting a Target System</a></li>
+<li title="System Configuration Parameters">
+<a href="create_target.html#id2251983">System Configuration Parameters</a></li>
+<li title="Differences from the Install Script">
+<a href="create_target.html#id2252036">Differences from the Install Script</a></li>
+<li title="Listing of target_system.erl">
+<a href="create_target.html#id2252066">Listing of target_system.erl</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>3 Creating a First Target System</h1>
+  
+  <h3><a name="id2258588">3.1 
+        Introduction</a></h3>
+    
+    <p>When creating a system using Erlang/OTP, the most simple way is
+      to install Erlang/OTP somewhere, install the application specific
+      code somewhere else, and then start the Erlang runtime system,
+      making sure the code path includes the application specific code.</p>
+    <p>Often it is not desirable to use an Erlang/OTP system as is. A
+      developer may create new Erlang/OTP compliant applications for a
+      particular purpose, and several original Erlang/OTP applications
+      may be irrelevant for the purpose in question. Thus, there is a
+      need to be able to create a new system based on a given
+      Erlang/OTP system, where dispensable applications are removed,
+      and a set of new applications that are included in the new
+      system. Documentation and source code is irrelevant and is
+      therefore not included in the new system.</p>
+    <p>This chapter is about creating such a system, which we call a 
+      <strong>target system</strong>.</p>
+    <p>In the following sections we consider creating target systems with
+      different requirements of functionality:</p>
+    <ul>
+      <li>a <strong>basic target system</strong> that can be started by
+       calling the ordinary <span class="code">erl</span> script, </li>
+      <li>a <strong>simple target system</strong> where also code
+       replacement in run-time can be performed, and</li>
+      <li>an <strong>embedded target system</strong> where there is also
+       support for logging output from the system to file for later
+       inspection, and where the system can be started automatically
+       at boot time. </li>
+    </ul>
+    <p>We only consider the case when Erlang/OTP is running on a UNIX
+      system.</p>
+    <p>There is an example Erlang module <span class="code">target_system.erl</span> that
+      contains functions for creating and installing a target system.
+      That module is used in the examples below. The source code of
+      the module is listed at the end of this chapter.</p>
+  
+  <h3><a name="id2259533">3.2 
+        Creating a Target System</a></h3>
+    
+    <p>It is assumed that you have a working Erlang/OTP system structured
+      according to the OTP Design Principles.</p>
+    <p><strong>Step 1.</strong> First create a <span class="code">.rel</span> file (see
+      <span class="code">rel(4)</span>) that specifies the <span class="code">erts</span> version
+      and lists all applications that should be included in the new
+      basic target system. An example is the following
+      <span class="code">mysystem.rel</span> file:</p>
+    <div class="example"><pre>
+%% mysystem.rel
+{release,
+ {"MYSYSTEM", "FIRST"},
+ {erts, "5.1"},
+ [{kernel, "2.7"},
+  {stdlib, "1.10"},
+  {sasl, "1.9.3"},
+  {pea, "1.0"}]}.    </pre></div>
+    <p>The listed applications are not only original Erlang/OTP
+      applications but possibly also new applications that you have
+      written yourself (here examplified by the application
+      <span class="code">pea</span>). </p>
+    <p><strong>Step 2.</strong> From the directory where the <span class="code">mysystem.rel</span>
+      file reside, start the Erlang/OTP system:</p>
+    <div class="example"><pre>
+os&gt; <span class="bold_code">erl -pa /home/user/target_system/myapps/pea-1.0/ebin</span></pre></div>
+    <p>where also the path to the <span class="code">pea-1.0</span> ebin directory is 
+      provided. </p>
+    <p><strong>Step 3.</strong> Now create the target system: </p>
+    <div class="example"><pre>
+1&gt; <span class="bold_code">target_system:create("mysystem").</span></pre></div>
+    <p>The <span class="code">target_system:create/1</span> function does the following:</p>
+    <ul>
+      <li>Reads the <span class="code">mysystem.rel</span> file, and creates a new file
+      <span class="code">plain.rel</span> which is identical to former, except that it
+       only lists the <span class="code">kernel</span> and <span class="code">stdlib</span> applications. </li>
+      <li>From the <span class="code">mysystem.rel</span> and <span class="code">plain.rel</span> files
+       creates the files <span class="code">mysystem.script</span>,
+      <span class="code">mysystem.boot</span>, <span class="code">plain.script</span>, and
+      <span class="code">plain.boot</span> through a call to
+      <span class="code">systools:make_script/2</span>.</li>
+      <li>
+        <p>Creates the file <span class="code">mysystem.tar.gz</span> by a call to
+          <span class="code">systools:make_tar/2</span>. That file has the following
+          contents:</p>
+        <div class="example"><pre>
+erts-5.1/bin/
+releases/FIRST/start.boot
+releases/mysystem.rel
+lib/kernel-2.7/
+lib/stdlib-1.10/
+lib/sasl-1.9.3/
+lib/pea-1.0/        </pre></div>
+        <p>The file <span class="code">releases/FIRST/start.boot</span> is a copy of our
+          <span class="code">mysystem.boot</span>, and a copy of the original
+          <span class="code">mysystem.rel</span> has been put in the <span class="code">releases</span>
+          directory.</p>
+      </li>
+      <li>Creates the temporary directory <span class="code">tmp</span> and extracts the tar file
+      <span class="code">mysystem.tar.gz</span> into that directory. </li>
+      <li>Deletes the <span class="code">erl</span> and <span class="code">start</span> files from
+      <span class="code">tmp/erts-5.1/bin</span>. XXX Why.</li>
+      <li>Creates the directory <span class="code">tmp/bin</span>.</li>
+      <li>Copies the previously creates file <span class="code">plain.boot</span> to
+      <span class="code">tmp/bin/start.boot</span>.</li>
+      <li>Copies the files <span class="code">epmd</span>, <span class="code">run_erl</span>, and
+      <span class="code">to_erl</span> from the directory <span class="code">tmp/erts-5.1/bin</span> to
+       the directory <span class="code">tmp/bin</span>.</li>
+      <li>Creates the file <span class="code">tmp/releases/start_erl.data</span> with the 
+       contents "5.1 FIRST".
+      </li>
+      <li>Recreates the file <span class="code">mysystem.tar.gz</span> from the directories
+       in the directory <span class="code">tmp</span>, and removes <span class="code">tmp</span>.</li>
+    </ul>
+  
+  <h3><a name="id2258255">3.3 
+        Installing a Target System</a></h3>
+    
+    <p><strong>Step 4.</strong> Install the created target system in a 
+      suitable directory. </p>
+    <div class="example"><pre>
+2&gt; <span class="bold_code">target_system:install("mysystem", "/usr/local/erl-target").</span></pre></div>
+    <p>The function <span class="code">target_system:install/2</span> does the following:
+      </p>
+    <ul>
+      <li>Extracts the tar file <span class="code">mysystem.tar.gz</span> into the target
+       directory <span class="code">/usr/local/erl-target</span>.</li>
+      <li>In the target directory reads the file <span class="code">releases/start_erl.data</span>
+       in order to find the Erlang runtime system version ("5.1").</li>
+      <li>Substitutes <span class="code">%FINAL_ROOTDIR%</span> and <span class="code">%EMU%</span> for
+      <span class="code">/usr/local/erl-target</span> and <span class="code">beam</span>, respectively, in
+       the files <span class="code">erl.src</span>, <span class="code">start.src</span>, and
+      <span class="code">start_erl.src</span> of the target <span class="code">erts-5.1/bin</span>
+       directory, and puts the resulting files <span class="code">erl</span>,
+      <span class="code">start</span>, and <span class="code">run_erl</span> in the target <span class="code">bin</span>
+       directory.</li>
+      <li>Finally the target <span class="code">releases/RELEASES</span> file is created
+       from data in the <span class="code">releases/mysystem.rel</span> file.</li>
+    </ul>
+  
+  <h3><a name="id2259429">3.4 
+        Starting a Target System</a></h3>
+    
+    <p>Now we have a target system that can be started in various ways.</p>
+    <p>We start it as a <strong>basic target system</strong> by invoking</p>
+    <div class="example"><pre>
+os&gt; <span class="bold_code">/usr/local/erl-target/bin/erl</span></pre></div>
+    <p>where only the <span class="code">kernel</span> and <span class="code">stdlib</span> applications are
+      started, i.e. the system is started as an ordinary development
+      system. There are only two files needed for all this to work:
+      <span class="code">bin/erl</span> file (obtained from <span class="code">erts-5.1/bin/erl.src</span>)
+      and the <span class="code">bin/start.boot</span> file (a copy of <span class="code">plain.boot</span>).</p>
+    <p>We can also start a distributed system (requires <span class="code">bin/epmd</span>).</p>
+    <p>To start all applications specified in the original
+      <span class="code">mysystem.rel</span> file, use the <span class="code">-boot</span> flag as follows:</p>
+    <div class="example"><pre>
+os&gt; <span class="bold_code">/usr/local/erl-target/bin/erl -boot /usr/local/erl-target/releases/FIRST/start</span></pre></div>
+    <p>We start a <strong>simple target system</strong> as above. The only difference
+      is that also the file <span class="code">releases/RELEASES</span> is present for 
+      code replacement in run-time to work.</p>
+    <p>To start an <strong>embedded target system</strong> the shell script
+      <span class="code">bin/start</span> is used. That shell script calls
+      <span class="code">bin/run_erl</span>, which in turn calls <span class="code">bin/start_erl</span>
+      (roughly, <span class="code">start_erl</span> is an embedded variant of
+      <span class="code">erl</span>). </p>
+    <p>The shell script <span class="code">start</span> is only an example. You should
+      edit it to suite your needs. Typically it is executed when the
+      UNIX system boots.</p>
+    <p><span class="code">run_erl</span> is a wrapper that provides logging of output from
+      the run-time system to file. It also provides a simple mechanism
+      for attaching to the Erlang shell (<span class="code">to_erl</span>).</p>
+    <p><span class="code">start_erl</span> requires the root directory
+      (<span class="code">"/usr/local/erl-target"</span>), the releases directory
+      (<span class="code">"/usr/local/erl-target/releases"</span>), and the location of
+      the <span class="code">start_erl.data</span> file. It reads the run-time system
+      version (<span class="code">"5.1"</span>) and release version (<span class="code">"FIRST"</span>) from
+      the <span class="code">start_erl.data</span> file, starts the run-time system of the
+      version found, and provides <span class="code">-boot</span> flag specifying the boot
+      file of the release version found
+      (<span class="code">"releases/FIRST/start.boot"</span>).</p>
+    <p><span class="code">start_erl</span> also assumes that there is <span class="code">sys.config</span> in
+      release version directory (<span class="code">"releases/FIRST/sys.config</span>). That
+      is the topic of the next section (see below).</p>
+    <p>The <span class="code">start_erl</span> shell script should normally not be
+      altered by the user.</p>
+  
+  <h3><a name="id2251983">3.5 
+        System Configuration Parameters</a></h3>
+    
+    <p>As was pointed out above <span class="code">start_erl</span> requires a
+      <span class="code">sys.config</span> in the release version directory
+      (<span class="code">"releases/FIRST/sys.config"</span>). If there is no such a
+      file, the system start will fail. Hence such a file has to
+      added as well.</p>
+    <p></p>
+    <p>If you have system configuration data that are neither file
+      location dependent nor site dependent, it may be convenient to
+      create the <span class="code">sys.config</span> early, so that it becomes a part of
+      the target system tar file created by
+      <span class="code">target_system:create/1</span>. In fact, if you create, in the
+      current directory, not only the <span class="code">mysystem.rel</span> file, but
+      also a <span class="code">sys.config</span> file, that latter file will be tacitly
+      put in the apropriate directory.</p>
+  
+  <h3><a name="id2252036">3.6 
+        Differences from the Install Script</a></h3>
+    
+    <p>The above <span class="code">install/2</span> procedure differs somewhat from that
+      of the ordinary <span class="code">Install</span> shell script. In fact, <span class="code">create/1</span>
+      makes the release package as complete as possible, and leave to the
+      <span class="code">install/2</span> procedure to finish by only considering location
+      dependent files.</p>
+  
+  <h3><a name="id2252066">3.7 
+        Listing of target_system.erl</a></h3>
+    
+    <div class="example"><pre>
+-module(target_system).
+-include_lib("kernel/include/file.hrl").
+-export([create/1, install/2]).
+-define(BUFSIZE, 8192).
+%% Note: RelFileName below is the *stem* without trailing .rel,
+%% .script etc.
+%%
+%% create(RelFileName)
+%%
+create(RelFileName) -&gt;
+    RelFile = RelFileName ++ ".rel", 
+    io:fwrite("Reading file: \\"~s\\" ...~n", [RelFile]),
+    {ok, [RelSpec]} = file:consult(RelFile),
+    io:fwrite("Creating file: \\"~s\\" from \\"~s\\" ...~n", 
+              ["plain.rel", RelFile]),
+    {release,
+     {RelName, RelVsn},
+     {erts, ErtsVsn},
+     AppVsns} = RelSpec,
+    PlainRelSpec = {release, 
+                    {RelName, RelVsn},
+                    {erts, ErtsVsn},
+                    lists:filter(fun({kernel, _}) -&gt; 
+                                         true;
+                                    ({stdlib, _}) -&gt;
+                                         true;
+                                    (_) -&gt;
+                                         false
+                                 end, AppVsns)
+                   },
+    {ok, Fd} = file:open("plain.rel", [write]),
+    io:fwrite(Fd, "~p.~n", [PlainRelSpec]),
+    file:close(Fd),
+    io:fwrite("Making \\"plain.script\\" and \\"plain.boot\\" files ...~n"),
+    make_script("plain"),
+    io:fwrite("Making \\"~s.script\\" and \\"~s.boot\\" files ...~n", 
+              [RelFileName, RelFileName]),
+    make_script(RelFileName),
+    TarFileName = io_lib:fwrite("~s.tar.gz", [RelFileName]),
+    io:fwrite("Creating tar file \\"~s\\" ...~n", [TarFileName]),
+    make_tar(RelFileName),
+    io:fwrite("Creating directory \\"tmp\\" ...~n"),
+    file:make_dir("tmp"), 
+    io:fwrite("Extracting \\"~s\\" into directory \\"tmp\\" ...~n", [TarFileName]),
+    extract_tar(TarFileName, "tmp"),
+    TmpBinDir = filename:join(["tmp", "bin"]),
+    ErtsBinDir = filename:join(["tmp", "erts-" ++ ErtsVsn, "bin"]),
+    io:fwrite("Deleting \\"erl\\" and \\"start\\" in directory \\"~s\\" ...~n", 
+              [ErtsBinDir]),
+    file:delete(filename:join([ErtsBinDir, "erl"])),
+    file:delete(filename:join([ErtsBinDir, "start"])),
+    io:fwrite("Creating temporary directory \\"~s\\" ...~n", [TmpBinDir]),
+    file:make_dir(TmpBinDir),
+    io:fwrite("Copying file \\"plain.boot\\" to \\"~s\\" ...~n", 
+              [filename:join([TmpBinDir, "start.boot"])]),
+    copy_file("plain.boot", filename:join([TmpBinDir, "start.boot"])),
+    io:fwrite("Copying files \\"epmd\\", \\"run_erl\\" and \\"to_erl\\" from \
+"
+              "\\"~s\\" to \\"~s\\" ...~n", 
+              [ErtsBinDir, TmpBinDir]),
+    copy_file(filename:join([ErtsBinDir, "epmd"]), 
+              filename:join([TmpBinDir, "epmd"]), [preserve]),
+    copy_file(filename:join([ErtsBinDir, "run_erl"]), 
+              filename:join([TmpBinDir, "run_erl"]), [preserve]),
+    copy_file(filename:join([ErtsBinDir, "to_erl"]), 
+              filename:join([TmpBinDir, "to_erl"]), [preserve]),
+    StartErlDataFile = filename:join(["tmp", "releases", "start_erl.data"]),
+    io:fwrite("Creating \\"~s\\" ...~n", [StartErlDataFile]),
+    StartErlData = io_lib:fwrite("~s ~s~n", [ErtsVsn, RelVsn]),
+    write_file(StartErlDataFile, StartErlData),
+    
+    io:fwrite("Recreating tar file \\"~s\\" from contents in directory "
+              "\\"tmp\\" ...~n", [TarFileName]),
+    {ok, Tar} = erl_tar:open(TarFileName, [write, compressed]),
+    {ok, Cwd} = file:get_cwd(),
+    file:set_cwd("tmp"),
+    erl_tar:add(Tar, "bin", []),
+    erl_tar:add(Tar, "erts-" ++ ErtsVsn, []),
+    erl_tar:add(Tar, "releases", []),
+    erl_tar:add(Tar, "lib", []),
+    erl_tar:close(Tar),
+    file:set_cwd(Cwd),
+    io:fwrite("Removing directory \\"tmp\\" ...~n"),
+    remove_dir_tree("tmp"),
+    ok.
+install(RelFileName, RootDir) -&gt;
+    TarFile = RelFileName ++ ".tar.gz", 
+    io:fwrite("Extracting ~s ...~n", [TarFile]),
+    extract_tar(TarFile, RootDir),
+    StartErlDataFile = filename:join([RootDir, "releases", "start_erl.data"]),
+    {ok, StartErlData} = read_txt_file(StartErlDataFile),
+    [ErlVsn, RelVsn| _] = string:tokens(StartErlData, " \
+"),
+    ErtsBinDir = filename:join([RootDir, "erts-" ++ ErlVsn, "bin"]),
+    BinDir = filename:join([RootDir, "bin"]),
+    io:fwrite("Substituting in erl.src, start.src and start_erl.src to\
+"
+              "form erl, start and start_erl ...\
+"),
+    subst_src_scripts(["erl", "start", "start_erl"], ErtsBinDir, BinDir, 
+                      [{"FINAL_ROOTDIR", RootDir}, {"EMU", "beam"}],
+                      [preserve]),
+    io:fwrite("Creating the RELEASES file ...\
+"),
+    create_RELEASES(RootDir, 
+                    filename:join([RootDir, "releases", RelFileName])).
+%% LOCALS 
+%% make_script(RelFileName)
+%%
+make_script(RelFileName) -&gt;
+    Opts = [no_module_tests],
+    systools:make_script(RelFileName, Opts).
+%% make_tar(RelFileName)
+%%
+make_tar(RelFileName) -&gt;
+    RootDir = code:root_dir(),
+    systools:make_tar(RelFileName, [{erts, RootDir}]).
+%% extract_tar(TarFile, DestDir)
+%%
+extract_tar(TarFile, DestDir) -&gt;
+    erl_tar:extract(TarFile, [{cwd, DestDir}, compressed]).
+create_RELEASES(DestDir, RelFileName) -&gt;
+    release_handler:create_RELEASES(DestDir, RelFileName ++ ".rel").
+subst_src_scripts(Scripts, SrcDir, DestDir, Vars, Opts) -&gt; 
+    lists:foreach(fun(Script) -&gt;
+                          subst_src_script(Script, SrcDir, DestDir, 
+                                           Vars, Opts)
+                  end, Scripts).
+subst_src_script(Script, SrcDir, DestDir, Vars, Opts) -&gt; 
+    subst_file(filename:join([SrcDir, Script ++ ".src"]),
+               filename:join([DestDir, Script]),
+               Vars, Opts).
+subst_file(Src, Dest, Vars, Opts) -&gt;
+    {ok, Conts} = read_txt_file(Src),
+    NConts = subst(Conts, Vars),
+    write_file(Dest, NConts),
+    case lists:member(preserve, Opts) of
+        true -&gt;
+            {ok, FileInfo} = file:read_file_info(Src),
+            file:write_file_info(Dest, FileInfo);
+        false -&gt;
+            ok
+    end.
+%% subst(Str, Vars)
+%% Vars = [{Var, Val}]
+%% Var = Val = string()
+%% Substitute all occurrences of %Var% for Val in Str, using the list
+%% of variables in Vars.
+%%
+subst(Str, Vars) -&gt;
+    subst(Str, Vars, []).
+subst([$%, C| Rest], Vars, Result) when $A =&lt; C, C =&lt; $Z -&gt;
+    subst_var([C| Rest], Vars, Result, []);
+subst([$%, C| Rest], Vars, Result) when $a =&lt; C, C =&lt; $z -&gt;
+    subst_var([C| Rest], Vars, Result, []);
+subst([$%, C| Rest], Vars, Result) when  C == $_ -&gt;
+    subst_var([C| Rest], Vars, Result, []);
+subst([C| Rest], Vars, Result) -&gt;
+    subst(Rest, Vars, [C| Result]);
+subst([], _Vars, Result) -&gt;
+    lists:reverse(Result).
+subst_var([$%| Rest], Vars, Result, VarAcc) -&gt;
+    Key = lists:reverse(VarAcc),
+    case lists:keysearch(Key, 1, Vars) of
+        {value, {Key, Value}} -&gt;
+            subst(Rest, Vars, lists:reverse(Value, Result));
+        false -&gt;
+            subst(Rest, Vars, [$%| VarAcc ++ [$%| Result]])
+    end;
+subst_var([C| Rest], Vars, Result, VarAcc) -&gt;
+    subst_var(Rest, Vars, Result, [C| VarAcc]);
+subst_var([], Vars, Result, VarAcc) -&gt;
+    subst([], Vars, [VarAcc ++ [$%| Result]]).
+copy_file(Src, Dest) -&gt;
+    copy_file(Src, Dest, []).
+copy_file(Src, Dest, Opts) -&gt;
+    {ok, InFd} = file:open(Src, [raw, binary, read]),
+    {ok, OutFd} = file:open(Dest, [raw, binary, write]),
+    do_copy_file(InFd, OutFd),
+    file:close(InFd),
+    file:close(OutFd),
+    case lists:member(preserve, Opts) of
+        true -&gt;
+            {ok, FileInfo} = file:read_file_info(Src),
+            file:write_file_info(Dest, FileInfo);
+        false -&gt;
+            ok
+    end.
+do_copy_file(InFd, OutFd) -&gt;
+    case file:read(InFd, ?BUFSIZE) of
+        {ok, Bin} -&gt;
+            file:write(OutFd, Bin),
+            do_copy_file(InFd, OutFd);
+        eof  -&gt;
+            ok
+    end.
+       
+write_file(FName, Conts) -&gt;
+    {ok, Fd} = file:open(FName, [write]),
+    file:write(Fd, Conts),
+    file:close(Fd).
+read_txt_file(File) -&gt;
+    {ok, Bin} = file:read_file(File),
+    {ok, binary_to_list(Bin)}.
+remove_dir_tree(Dir) -&gt;
+    remove_all_files(".", [Dir]).
+remove_all_files(Dir, Files) -&gt;
+    lists:foreach(fun(File) -&gt;
+                          FilePath = filename:join([Dir, File]),
+                          {ok, FileInfo} = file:read_file_info(FilePath),
+                          case FileInfo#file_info.type of
+                              directory -&gt;
+                                  {ok, DirFiles} = file:list_dir(FilePath), 
+                                  remove_all_files(FilePath, DirFiles),
+                                  file:del_dir(FilePath);
+                              _ -&gt;
+                                  file:delete(FilePath)
+                          end
+                  end, Files).
+    </pre></div>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1996-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

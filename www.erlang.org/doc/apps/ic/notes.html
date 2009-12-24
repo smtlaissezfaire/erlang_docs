@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- IDL Compiler Release Notes</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="ic.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>ic</strong><br><strong>Release Notes</strong><br><small>Version 4.2.23</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu"><li title="IDL Compiler Release Notes" expanded="true">IDL Compiler Release Notes<ul>
+<li>
+<a href="notes.html">
+              Top of chapter
+            </a></li>
+<li title="IC 4.2.23">
+<a href="notes.html#id2257150">IC 4.2.23</a></li>
+<li title="IC 4.2.22">
+<a href="notes.html#id2257184">IC 4.2.22</a></li>
+<li title="IC 4.2.21">
+<a href="notes.html#id2257215">IC 4.2.21</a></li>
+<li title="IC 4.2.20">
+<a href="notes.html#id2261348">IC 4.2.20</a></li>
+<li title="IC 4.2.19">
+<a href="notes.html#id2261380">IC 4.2.19</a></li>
+<li title="IC 4.2.18">
+<a href="notes.html#id2261412">IC 4.2.18</a></li>
+<li title="IC 4.2.17">
+<a href="notes.html#id2261445">IC 4.2.17</a></li>
+<li title="IC 4.2.16">
+<a href="notes.html#id2258438">IC 4.2.16</a></li>
+<li title="IC 4.2.15">
+<a href="notes.html#id2258471">IC 4.2.15</a></li>
+<li title="IC 4.2.14">
+<a href="notes.html#id2258506">IC 4.2.14</a></li>
+<li title="IC 4.2.13">
+<a href="notes.html#id2258539">IC 4.2.13</a></li>
+<li title="IC 4.2.12">
+<a href="notes.html#id2262257">IC 4.2.12</a></li>
+<li title="IC 4.2.11">
+<a href="notes.html#id2262290">IC 4.2.11</a></li>
+<li title="IC 4.2.10">
+<a href="notes.html#id2262324">IC 4.2.10</a></li>
+<li title="IC 4.2.9">
+<a href="notes.html#id2262358">IC 4.2.9</a></li>
+<li title="IC 4.2.8">
+<a href="notes.html#id2262393">IC 4.2.8</a></li>
+<li title="IC 4.2.7">
+<a href="notes.html#id2262431">IC 4.2.7</a></li>
+<li title="IC 4.2.6">
+<a href="notes.html#id2262474">IC 4.2.6</a></li>
+<li title="IC 4.2.5">
+<a href="notes.html#id2256425">IC 4.2.5</a></li>
+<li title="IC 4.2.4">
+<a href="notes.html#id2256501">IC 4.2.4</a></li>
+<li title="IC 4.2.3">
+<a href="notes.html#id2256582">IC 4.2.3</a></li>
+<li title="IC 4.2.2">
+<a href="notes.html#id2259181">IC 4.2.2</a></li>
+<li title="IC 4.2.1">
+<a href="notes.html#id2259221">IC 4.2.1</a></li>
+<li title="IC 4.2">
+<a href="notes.html#id2259255">IC 4.2</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 IDL Compiler Release Notes</h1>
+  
+   <h3><a name="id2257150">1.1 
+        IC 4.2.23</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>
+            The documentation is now built with open source tools (xsltproc and fop) 
+            that exists on most platforms. One visible change is that the frames are removed.</p>
+          <p>
+            Own Id: OTP-8201 Aux Id:</p>
+        </li>
+      </ul>
+    
+  
+   <h3><a name="id2257184">1.2 
+        IC 4.2.22</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The 64-bit version of libic was not compiled with the -fPIC flag.</p>
+          <p>Own id: OTP-8088</p>
+        </li>
+      </ul>
+    
+  
+   <h3><a name="id2257215">1.3 
+        IC 4.2.21</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The function print_erlang_binary (oe_ei_code_erlang_binary.c)
+             updated to avoid compiler warning.</p>
+          <p>Own id: OTP-7982</p>
+        </li>
+      </ul>
+    
+  
+   <h3><a name="id2261348">1.4 
+        IC 4.2.20</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Updated file headers.</p>
+          <p>Own id: OTP-7837</p>
+        </li>
+      </ul>
+    
+  
+   <h3><a name="id2261380">1.5 
+        IC 4.2.19</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Documentation source included in open source releases.</p>
+          <p>Own id: OTP-7595</p>
+        </li>
+      </ul>
+    
+  
+   <h3><a name="id2261412">1.6 
+        IC 4.2.18</a></h3>
+     
+     <h4>Fixed Bugs and Malfunctions</h4>
+       
+       <ul>
+         <li>
+           <p>Insufficient buffer allocated when passing wide strings
+	      using the C backend on a 64-bit architecture.</p>
+           <p>Own Id: OTP-7313 Aux Id:</p>
+         </li>
+       </ul>
+     
+   
+   <h3><a name="id2261445">1.7 
+        IC 4.2.17</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Updated file headers.</p>
+          <p>Own id: OTP-7011</p>
+        </li>
+        <li>
+          <p>IC no longer use the obsolete function file:rawopen/2.</p>
+          <p>Own id: OTP-7182</p>
+        </li>
+      </ul>
+    
+  
+ <h3><a name="id2258438">1.8 
+        IC 4.2.16</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Added links to classes inherited from Jinterface in the
+             User's Guide.</p>
+          <p>Own Id: OTP-6965 Aux Id: </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2258471">1.9 
+        IC 4.2.15</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>If an inherited function name begun with a capital letter
+             the generated stub/skeleton oe_tc/1 function was incorrect.</p>
+          <p>Own Id: OTP-6855 Aux Id:</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2258506">1.10 
+        IC 4.2.14</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>The documentation source has been converted from SGML to XML.</p>
+          <p>Own Id: OTP-6754 Aux Id: </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2258539">1.11 
+        IC 4.2.13</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Minor Makefile changes.</p>
+          <p>Own Id: OTP-6701 Aux Id: </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262257">1.12 
+        IC 4.2.12</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Dead code was deleted from the following modules:
+            ic_cclient, ic_code, ic_cserver, ic_erlbe, ic_java_type,
+            ic_noc, ic_plainbe, ic_pp, ic_pragma, icscan, icstruct, 
+            ictype, icunion.</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262290">1.13 
+        IC 4.2.11</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Changed code generation to avoid warnings such as unused
+            variables.</p>
+          <p>Own Id: OTP-5930 Aux Id: </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262324">1.14 
+        IC 4.2.10</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The FD_SETSIZE limit has been increased to 2048 for
+            VxWorks/PPC603.</p>
+          <p>Own Id: OTP-5395 Aux Id: seq9751</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262358">1.15 
+        IC 4.2.9</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>In C back-ends, the compiler crashed when generating C code
+            for error reports when a scoped name was used as a type
+            in a union.</p>
+          <p>Own Id: OTP-5375 Aux Id: seq9740 </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262393">1.16 
+        IC 4.2.8</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>In C back-ends, when decoding a sequence of "small"
+            integers, which from Erlang is sent as a string (i.e.
+            each element between 0 and 255), each string element was
+            considered to be of signed character type. Each such
+            element is now correctly treated as an unsigned character
+            type.</p>
+          <p>Own Id: OTP-5205 Aux Id: seq9241 </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262431">1.17 
+        IC 4.2.7</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>A new compiler option <span class="code">c_report</span> has been introduced
+            for C back-ends (client and server). If that option is
+            set, encoding/decoding errors will be reported to
+            <span class="code">stderr</span>.</p>
+          <p>Own Id: OTP-4977</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262474">1.18 
+        IC 4.2.6</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>The size of modules, used then registering data in the 
+            IFR DB (e.g., oe_MyModule:oe_register()), can be minimized
+            if the compile option light_ifr is used and Orber is
+            configured to use Light IFR. Requires that orber-3.5.1, or
+            later, is used.</p>
+          <p>Own Id: OTP-5036</p>
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <ul>
+        <li>
+          <p>The compile option <span class="code">multiple_be</span> is no longer supported.</p>
+          <p>Own Id: OTP-5049</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2256425">1.19 
+        IC 4.2.5</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Send and receive functions with timeouts have been added
+            to the C back-ends for the standard protocol (i.e. Erlang
+            distribution + gen_server protocol).</p>
+          <p>Accordingly a new compiler option <span class="code">{c_timeout, {SendTimeout, RecvTimeout}}</span> has been added. Timeouts
+            are specified in milliseconds.</p>
+          <p>A user that want to implement its own protocols with
+            function timeouts has to implement the following functions.</p>
+          <p>For C clients the functions <span class="code">int PFX_send_notification(CORBA_Environment *env, unsigned int send_ms)</span>, and <span class="code">int PFX_send_request_and_receive_reply(CORBA_Environment *env, unsigned int send_ms, unsigned int recv_ms)</span>
+            have to be additionally implemented, where PFX is the
+            user defined prefix.</p>
+          <p>For C servers no additional functions have to be
+            implemented, but a clone of the <span class="code">int oe_server_receive_tmo(CORBA_Environment *env, oe_map_t *map, unsigned int send_ms, unsigned int recv_ms)</span>
+            might be handy.</p>
+          <p>Own Id: OTP-4972</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2256501">1.20 
+        IC 4.2.4</a></h3>
+    
+    <h4>Improvements and new features</h4>
+      
+      <ul>
+        <li>
+          <p>The C back-ends has been opened up, so that a user can
+            define his own protocol, differing from the Erlang
+            distribution + gen_server protocol.             <br>
+            For C clients it means to replace the library functions
+            <span class="code">int oe_prepare_notification_encoding(CORBA_Environment *env)</span>, <span class="code">int oe_send_notification(CORBA_Environment *env)</span>, <span class="code">int oe_prepare_request_encoding(CORBA_Environment *env)</span>,
+            <span class="code">int oe_send_request_and_receive_reply(CORBA_Environment *env)</span>, and <span class="code">int oe_prepare_reply_decoding(CORBA_Environment *env)</span>,
+            with functions of the same signature, but with the prefix
+            "oe" replaced by a user defined prefix.
+            For C servers the functions <span class="code">int oe_prepare_request_decoding(CORBA_Environment *env)</span>,
+            and <span class="code">int oe_prepare_reply_encoding(CORBA_Environment *env)</span>, are similarly replaced.            <br>
+            The new compiler option <span class="code">{user_protocol, Prefix}</span> has
+            been added.</p>
+          <p>Own Id: OTP-4834</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2256582">1.21 
+        IC 4.2.3</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>In generated code for the C server back-end, the naming scope
+            was in error for prototypes in C header files for interfaces
+            inheriting base interfaces.</p>
+          <p>Own Id: OTP-4881</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2259181">1.22 
+        IC 4.2.2</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>IDL long long and unsigned long long could not
+            be used in a struct for the Java backend.</p>
+          <p>All unsigned integer types for the Java backend
+            had broken marshalling for large values.</p>
+          <p>Own Id: OTP-4763</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2259221">1.23 
+        IC 4.2.1</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>A scoping problem (IC could not find typedefs contained
+            inherited interfaces) in the C-backend solved.</p>
+          <p>Own Id: OTP-4758</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2259255">1.24 
+        IC 4.2</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>The CORBA stub/skeleton-files generated by IC have been improved,
+            i.e., depending on the IDL-files, reduced the size of the
+            erl- and beam-files and decreased dependencies off Orber's
+            Interface Repository. It is necessary to re-compile all IDL-files
+            and use COS-applications, including Orber, compiled with
+            IC-4.2.</p>
+          <p>Own Id: OTP-4576</p>
+        </li>
+      </ul>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1998-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

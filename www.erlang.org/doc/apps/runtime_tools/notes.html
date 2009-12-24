@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Runtime_Tools Release Notes</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="runtime_tools.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Runtime_Tools</strong><br><strong>Release Notes</strong><br><small>Version 1.8.2</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu"><li title="Runtime_Tools Release Notes" expanded="true">Runtime_Tools Release Notes<ul>
+<li>
+<a href="notes.html">
+              Top of chapter
+            </a></li>
+<li title="Runtime_Tools 1.8.2">
+<a href="notes.html#id2257537">Runtime_Tools 1.8.2</a></li>
+<li title="Runtime_Tools 1.8.1">
+<a href="notes.html#id2254030">Runtime_Tools 1.8.1</a></li>
+<li title="Runtime_Tools 1.8">
+<a href="notes.html#id2254063">Runtime_Tools 1.8</a></li>
+<li title="Runtime_Tools 1.7.3">
+<a href="notes.html#id2258754">Runtime_Tools 1.7.3</a></li>
+<li title="Runtime_Tools 1.7.2">
+<a href="notes.html#id2258785">Runtime_Tools 1.7.2</a></li>
+<li title="Runtime_Tools 1.7.1">
+<a href="notes.html#id2258828">Runtime_Tools 1.7.1</a></li>
+<li title="Runtime_Tools 1.7">
+<a href="notes.html#id2253402">Runtime_Tools 1.7</a></li>
+<li title="Runtime_Tools 1.6.8">
+<a href="notes.html#id2253519">Runtime_Tools 1.6.8</a></li>
+<li title="Runtime_Tools 1.6.7">
+<a href="notes.html#id2253562">Runtime_Tools 1.6.7</a></li>
+<li title="Runtime_Tools 1.6.6">
+<a href="notes.html#id2253632">Runtime_Tools 1.6.6</a></li>
+<li title="Runtime_Tools 1.6.5">
+<a href="notes.html#id2256428">Runtime_Tools 1.6.5</a></li>
+<li title="Runtime_Tools 1.6.4">
+<a href="notes.html#id2256461">Runtime_Tools 1.6.4</a></li>
+<li title="Runtime_Tools 1.6.3">
+<a href="notes.html#id2256495">Runtime_Tools 1.6.3</a></li>
+<li title="Runtime_Tools 1.6.2">
+<a href="notes.html#id2256558">Runtime_Tools 1.6.2</a></li>
+<li title="Runtime_Tools 1.6.1">
+<a href="notes.html#id2256593">Runtime_Tools 1.6.1</a></li>
+<li title="Runtime_Tools 1.6">
+<a href="notes.html#id2256646">Runtime_Tools 1.6</a></li>
+<li title="Runtime_Tools 1.5.1.1">
+<a href="notes.html#id2256661">Runtime_Tools 1.5.1.1</a></li>
+<li title="Runtime_Tools 1.5.1">
+<a href="notes.html#id2256700">Runtime_Tools 1.5.1</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Runtime_Tools Release Notes</h1>
+  
+  <p>This document describes the changes made to the Runtime_Tools
+    application.</p>
+<h3><a name="id2257537">1.1 
+        Runtime_Tools 1.8.2</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    The documentation is now built with open source tools
+	    (xsltproc and fop) that exists on most platforms. One
+	    visible change is that the frames are removed.</p>
+          <p>
+	    Own Id: OTP-8201</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2254030">1.2 
+        Runtime_Tools 1.8.1</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+	    <span class="code">Makefile.in</span> has been updated to use the LDFLAGS
+	    environment variable (if set). (Thanks to Davide
+	    Pesavento.)</p>
+          <p>
+	    Own Id: OTP-8157</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2254063">1.3 
+        Runtime_Tools 1.8</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    <span class="code">etop</span> would crash if the emulator's custom
+	    allocators had been turned off (e.g. using the
+	    <span class="code">+Meamin</span> option).</p>
+          <p>
+	    Own Id: OTP-7519</p>
+        </li>
+        <li>
+	    <p>The copyright notices have been updated.</p>
+          <p>
+	    Own Id: OTP-7851</p>
+        </li>
+        <li>
+	    <p>Now, dbg:p/2 accepts {X,Y,Z} process specification as
+	    stated in the documentation. It also now accepts
+	    "&lt;X.Y.Z&gt;" like from erlang:pid_to_list/1.</p>
+	    <p>There is now a pre-saved match spec in dbg that saves
+	    a lot of typing. Use dbg:ltp/0 to find out more...</p>
+          <p>
+	    Own Id: OTP-7867</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2258754">1.4 
+        Runtime_Tools 1.7.3</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+	    <p>Fixed a timestamp problem where some events could be
+	    sent out of order. Minor fixes to presentation of
+	    data.</p>
+          <p>
+	    Own Id: OTP-7544 Aux Id: otp-7442 </p>
+        </li>
+      </ul>
+    
+<h3><a name="id2258785">1.5 
+        Runtime_Tools 1.7.2</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+	    <p><span class="code">etop</span> now collects process information faster
+	    and more reliably than before (a race condition reported
+	    by Igor Goryachev has been eliminated).</p>
+	    <p>Trace messages could be lost when <span class="code">ttb:stop/0</span>
+	    was called.</p>
+          <p>
+	    Own Id: OTP-7164</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2258828">1.6 
+        Runtime_Tools 1.7.1</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+	    <p>The documentation has been updated so as to reflect
+	    the last updates of the Erlang shell as well as the minor
+	    modifications of the control sequence <span class="code">p</span> of the
+	    <span class="code">io_lib</span> module.</p> <p>Superfluous empty lines have
+	    been removed from code examples and from Erlang shell
+	    examples.</p>
+          <p>
+	    Own Id: OTP-6944 Aux Id: OTP-6554, OTP-6911 </p>
+        </li>
+        <li>
+	    <p>Memory management improvements especially for the
+	    runtime system with SMP support:</p> <ul> <li> The
+	    runtime system with SMP support can now use multiple,
+	    thread specific instances of most memory allocators. This
+	    improves performance since it reduces lock contention in
+	    the memory allocators. It may however increase memory
+	    usage for some applications. The runtime system with SMP
+	    support will by default enable this feature on most
+	    allocators. The amount of instances used can be
+	    configured. </li> <li> <span class="code">driver_alloc()</span>,
+	    <span class="code">driver_realloc()</span>, and <span class="code">driver_free()</span> now use
+	    their own erts specific memory allocator instead of the
+	    default <span class="code">malloc()</span> implementation on the system.
+	    </li> <li> The default configuration of some
+	    allocators have been changed to fit applications that use
+	    much memory better. </li> <li> Some new
+	    <span class="code">erts_alloc</span> configuration parameters have been
+	    added. </li> <li> <span class="code">erts_alloc_config</span> has been
+	    modified to be able to create configurations suitable for
+	    multiple instances of allocators. </li> <li> The
+	    returned value from <span class="code">erlang:system_info({allocator,
+	    Alloc})</span> has been changed. This since an allocator may
+	    now run in multiple instances. </li> </ul> <p>If you
+	    for some reason want the memory allocators to be
+	    configured as before, you can pass the <span class="code">+Mea r11b</span>
+	    command-line argument to <span class="code">erl</span>.</p> <p>For more
+	    information see the <span class="code">erts_alloc(3)</span>, the
+	    <span class="code">erts_alloc_config(3)</span>, and the <span class="code">erlang(3)</span>
+	    documentation.</p>
+          <p>
+	    *** POTENTIAL INCOMPATIBILITY ***</p>
+          <p>
+	    Own Id: OTP-7100</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2253402">1.7 
+        Runtime_Tools 1.7</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+	    <span class="code">dbg</span> could leave traced processes in a suspended
+	    state if the tracer process was killed with exit reason
+	    <span class="code">kill</span>.</p>
+          <p>
+	    <span class="code">erlang:suspend_process/2</span> has been introduced which
+	    accepts an option list as second argument. For more
+	    information see the <span class="code">erlang(3)</span> documentation.</p>
+          <p>
+	    Processes suspended via
+	    <span class="code">erlang:suspend_process/[1,2]</span> will now be
+	    automatically resumed if the process that called
+	    <span class="code">erlang:suspend_process/[1,2]</span> terminates.</p>
+          <p>
+	    Processes could previously be suspended by one process
+	    and resumed by another unless someone was tracing the
+	    suspendee. This is <strong>not</strong> possible anymore. The
+	    process resuming a process <strong>has</strong> to be the one
+	    that suspended it.</p>
+          <p>
+	    *** POTENTIAL INCOMPATIBILITY ***</p>
+          <p>
+	    Own Id: OTP-6946</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    The undocumented and unsupported function
+	    <span class="code">dbg:tracer/1</span> has been removed. The undocumented,
+	    unsupported, and broken function <span class="code">dbg:i/1</span> has been
+	    removed.</p>
+          <p>
+	    Own Id: OTP-6939</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2253519">1.8 
+        Runtime_Tools 1.6.8</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            In this release the following has been fixed and
+            enhanced: Autostart: It is now possible to configure
+            modules that shall be loaded by the autostart mechanism.
+            This because it is not certain that all application
+            systems make use of the OTP boot script to set up paths
+            to all Erlang modules. Runtime_tools/Inviso: A bug in the
+            fetch_log functionality has been fixed. Further a bug
+            that was (supposedly) fixed in a previous patch
+            concerning meta-tracer write_ti has been fixed (again) in
+            this patch. A bug in inviso_as_lib making remote
+            autostart config file updates fail has been fixed.
+            Inviso: inviso_tool has been given a flush API.</p>
+          <p>
+            Own Id: OTP-6918</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2253562">1.9 
+        Runtime_Tools 1.6.7</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            The following bugs/improvements have been done: Internal
+            interworking between inviso_rt and inviso_rt_meta. The
+            call function used by inviso_rt to call inviso_rt_meta is
+            now protected with a monitor. Inviso_rt_meta now includes
+            the timestamp of the incoming meta trace message when
+            calling the call-callback. (Makes it possible to add a
+            "better" timestamp to the ti-file.) Bug in inviso_tool
+            making it not remove trace patterns when terminating. Bug
+            in internal function h_start_session making inviso_tool
+            crash if there were no active nodes to start the session
+            on. The user-inviso_tool and inviso API-inviso control
+            component request/response gen_server protocols had
+            default time-out. Since many trace operations can be time
+            consuming, a longer time-out is necessary. Improved
+            overload protection. It is now possible to let the
+            overload protection renew itself (e.g after an exit from
+            an external overload protector). Inviso_rt_meta now fully
+            uses the exception_trace match spec action term. Run
+            Trace Case API (as in contrast to activate and deactivate
+            trace case APIs) in inviso_tool. Flush trace-port API
+            added to inviso. Get_session_data API added to
+            inviso_tool. Improved inviso_tool:stop making it possible
+            to name nodes which shall not have their trace patterns
+            removed when inviso_tool terminates. Bug in handling of
+            writing multiple ti-entries if returned from a
+            call/return_from call-back in inviso_rt_meta Process
+            trace flags are no longer explicitly removed by the
+            inviso_tool when it terminates. Not necessary.
+            Inviso_tool get_autostart_data adopted to standard
+            autostarter.</p>
+          <p>
+            *** INCOMPATIBILITY with Meta trace call-backs are called
+            with different arguments now. ***</p>
+          <p>
+            Own Id: OTP-6881</p>
+        </li>
+      </ul>
+    
+  <h3><a name="id2253632">1.10 
+        Runtime_Tools 1.6.6</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>A bug in inviso_rt_meta caused an ETS table containing
+            information on initiated (init_tpm) functions to be lost
+            when suspending tracing. Further an enhancement to
+            inviso_rt has been introduced making it possible to
+            activate process trace flags based on globally registered
+            names. It is then not an error to activate a global name
+            on a node where the name does not reside. The process
+            count in the return value will simply be set to zero
+            (hence exactly one node in the NodeResult part of the
+            return value will indicate one matching process found). A
+            bug was found in fetch_log API. At the same time the
+            fetch_log functionality was enhanced to also offer flow
+            control making fetcher processes send chunks of
+            transferred file data at a slower pace.</p>
+          <p>Own Id: OTP-6703</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Minor Makefile changes.</p>
+          <p>Own Id: OTP-6689 Aux Id: OTP-6742 </p>
+        </li>
+        <li>
+          <p>An experimental tool called <span class="code">erts_alloc_config</span>
+            has been added. <span class="code">erts_alloc_config</span> is intended to
+            be used to aid creation of an <span class="code">erts_alloc</span>
+            configuration that is suitable for a limited number of
+            runtime scenarios. For more information see the
+            <span class="code">erts_alloc_config(3)</span> documentation.</p>
+          <p>Own Id: OTP-6700</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2256428">1.11 
+        Runtime_Tools 1.6.5</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Misc improvements.</p>
+          <p>Own Id: OTP-6576</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2256461">1.12 
+        Runtime_Tools 1.6.4</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>This application has been updated to eliminate warnings
+            by Dialyzer.</p>
+          <p>Own Id: OTP-6551</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2256495">1.13 
+        Runtime_Tools 1.6.3</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>This ticket includes several improvements and bugfixes to
+            both runtime_tools and inviso. The overload mechanism can
+            now also react to incoming messages. This is useful if
+            an external overload watch-dog is used. Some improvements
+            of variable bindings has been done to the default
+            autostart mechanism - inviso_autostart_server. Autostart
+            "jobs" can now be done in parallel, allowing for some
+            jobs to hang waiting for some parts of the traced system
+            to become ready before proceeding. Previously when using
+            named meta-match-specs (tpm_ms) ending up with zero
+            match-specs still kept the meta trace pattern active.
+            This caused zero match-specs to be equal to unlimited
+            meta tracing on that particular function. If the internal
+            database becomes empty of meta match specs, meta trace
+            pattern is removed for that function. Standard public
+            loop data in the inviso runtime meta tracer process is
+            now extended to a 2-tuple. The functions ctp/1 and ctpl/1
+            are added making it possible to remove trace patterns for
+            a list of functions rather than one by one.
+            Inviso_rt_meta will now accept a list of binaries to be
+            output into the trace information file, in additions to a
+            single binary. Further it is also possible to make own
+            output to the trace information file using the write_ti/1
+            function. An error was discovered in inviso_rt making the
+            inviso_rt_meta remain rather than terminate if the
+            inviso_rt terminated due to "running alone" (not allowed
+            to run without a control component). A new tool,
+            inviso_tool, has been added to the inviso application.</p>
+          <p>Own Id: OTP-6426</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2256558">1.14 
+        Runtime_Tools 1.6.2</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Several minor bugs and race conditions eliminated in the
+            runtime_tools and observer applications.</p>
+          <p>Own Id: OTP-6265</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2256593">1.15 
+        Runtime_Tools 1.6.1</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>There are new BIFs <span class="code">erlang:spawn_monitor/1,3</span>,
+            and the new option <span class="code">monitor</span> for
+            <span class="code">spawn_opt/2,3,4,5</span>.</p>
+          <p>The <span class="code">observer_backend</span> module has been updated to
+            handle the new BIFs.</p>
+          <p>Own Id: OTP-6281</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2256646">1.16 
+        Runtime_Tools 1.6</a></h3>
+    
+    <p>Added the runtime part of the Inviso tracer, see the new Inviso
+      application for more information. This also meant adding an
+      application callback module and an application supervisor tree
+      for Runtime_Tools.</p>
+  
+  <h3><a name="id2256661">1.17 
+        Runtime_Tools 1.5.1.1</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>The <span class="code">dbg</span> manual page has been updated with information
+            about how to avoid deadlock when tracing.</p>
+          <p>Own Id: OTP-5373 Aux Id: seq9729</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2256700">1.18 
+        Runtime_Tools 1.5.1</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Linked in drivers in the Crypto, and Asn1 applications
+            are now compiled with the <span class="code">-D_THREAD_SAFE</span> and
+            <span class="code">-D_REENTRANT</span> switches on unix when the emulator has
+            thread support enabled.</p>
+          <p>Linked in drivers on MacOSX are not compiled with the
+            undocumented <span class="code">-lbundle1.o</span> switch anymore. Thanks to
+            Sean Hinde who sent us a patch.</p>
+          <p>Linked in driver in Crypto, and port programs in SSL, now
+            compiles on OSF1.</p>
+          <p>Minor <span class="code">Makefile</span> improvements in Runtime_Tools.</p>
+          <p>Own Id: OTP-5346</p>
+        </li>
+      </ul>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

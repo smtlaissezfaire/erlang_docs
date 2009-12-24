@@ -1,0 +1,1093 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- The Test Server Controller</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/test_server/users_guide.html">User's Guide</a><br>
+<a href="../apps/test_server/index.html">Reference Manual</a><br>
+<a href="../apps/test_server/release_notes.html">Release Notes</a><br>
+<a href="../apps/test_server/test_server.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Test Server</strong><br><strong>Reference Manual</strong><br><small>Version 3.3.5</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="test_server (App)">
+<a href="test_server_app.html">test_server (App)
+                </a></li>
+<li title="test_server_ctrl " expanded="true">test_server_ctrl<ul>
+<li>
+<a href="test_server_ctrl.html">
+                  Top of manual page
+                </a></li>
+<li title="start-0">
+<a href="test_server_ctrl.html#start-0">start/0</a></li>
+<li title="start-1">
+<a href="test_server_ctrl.html#start-1">start/1</a></li>
+<li title="stop-0">
+<a href="test_server_ctrl.html#stop-0">stop/0</a></li>
+<li title="add_dir-2">
+<a href="test_server_ctrl.html#add_dir-2">add_dir/2</a></li>
+<li title="add_dir-3">
+<a href="test_server_ctrl.html#add_dir-3">add_dir/3</a></li>
+<li title="add_dir-2">
+<a href="test_server_ctrl.html#add_dir-2">add_dir/2</a></li>
+<li title="add_dir-3">
+<a href="test_server_ctrl.html#add_dir-3">add_dir/3</a></li>
+<li title="add_module-1">
+<a href="test_server_ctrl.html#add_module-1">add_module/1</a></li>
+<li title="add_module-2">
+<a href="test_server_ctrl.html#add_module-2">add_module/2</a></li>
+<li title="add_case-2">
+<a href="test_server_ctrl.html#add_case-2">add_case/2</a></li>
+<li title="add_case-3">
+<a href="test_server_ctrl.html#add_case-3">add_case/3</a></li>
+<li title="add_cases-2">
+<a href="test_server_ctrl.html#add_cases-2">add_cases/2</a></li>
+<li title="add_cases-3">
+<a href="test_server_ctrl.html#add_cases-3">add_cases/3</a></li>
+<li title="add_spec-1">
+<a href="test_server_ctrl.html#add_spec-1">add_spec/1</a></li>
+<li title="add_dir_with_skip-3">
+<a href="test_server_ctrl.html#add_dir_with_skip-3">add_dir_with_skip/3</a></li>
+<li title="add_dir_with_skip-4">
+<a href="test_server_ctrl.html#add_dir_with_skip-4">add_dir_with_skip/4</a></li>
+<li title="add_module_with_skip-2">
+<a href="test_server_ctrl.html#add_module_with_skip-2">add_module_with_skip/2</a></li>
+<li title="add_module_with_skip-3">
+<a href="test_server_ctrl.html#add_module_with_skip-3">add_module_with_skip/3</a></li>
+<li title="add_case_with_skip-3">
+<a href="test_server_ctrl.html#add_case_with_skip-3">add_case_with_skip/3</a></li>
+<li title="add_case_with_skip-4">
+<a href="test_server_ctrl.html#add_case_with_skip-4">add_case_with_skip/4</a></li>
+<li title="add_cases_with_skip-3">
+<a href="test_server_ctrl.html#add_cases_with_skip-3">add_cases_with_skip/3</a></li>
+<li title="add_cases_with_skip-4">
+<a href="test_server_ctrl.html#add_cases_with_skip-4">add_cases_with_skip/4</a></li>
+<li title="add_tests_with_skip-3">
+<a href="test_server_ctrl.html#add_tests_with_skip-3">add_tests_with_skip/3</a></li>
+<li title="abort_current_testcase-1">
+<a href="test_server_ctrl.html#abort_current_testcase-1">abort_current_testcase/1</a></li>
+<li title="set_levels-3">
+<a href="test_server_ctrl.html#set_levels-3">set_levels/3</a></li>
+<li title="get_levels-0">
+<a href="test_server_ctrl.html#get_levels-0">get_levels/0</a></li>
+<li title="jobs-0">
+<a href="test_server_ctrl.html#jobs-0">jobs/0</a></li>
+<li title="multiply_timetraps-1">
+<a href="test_server_ctrl.html#multiply_timetraps-1">multiply_timetraps/1</a></li>
+<li title="cover-2">
+<a href="test_server_ctrl.html#cover-2">cover/2</a></li>
+<li title="cover-2">
+<a href="test_server_ctrl.html#cover-2">cover/2</a></li>
+<li title="cover-3">
+<a href="test_server_ctrl.html#cover-3">cover/3</a></li>
+<li title="cross_cover_analyse-1">
+<a href="test_server_ctrl.html#cross_cover_analyse-1">cross_cover_analyse/1</a></li>
+<li title="trc-1">
+<a href="test_server_ctrl.html#trc-1">trc/1</a></li>
+<li title="stop_trace-0">
+<a href="test_server_ctrl.html#stop_trace-0">stop_trace/0</a></li>
+<li title="run_test-1">
+<a href="test_server_ctrl.html#run_test-1">run_test/1</a></li>
+<li title="get_suite-2">
+<a href="test_server_ctrl.html#get_suite-2">get_suite/2</a></li>
+<li title="init_tc-3">
+<a href="test_server_ctrl.html#init_tc-3">init_tc/3</a></li>
+<li title="end_tc-3">
+<a href="test_server_ctrl.html#end_tc-3">end_tc/3</a></li>
+<li title="report-2">
+<a href="test_server_ctrl.html#report-2">report/2</a></li>
+<li title="error_notification-4">
+<a href="test_server_ctrl.html#error_notification-4">error_notification/4</a></li>
+<li title="warn-1">
+<a href="test_server_ctrl.html#warn-1">warn/1</a></li>
+<li title="target_info-0">
+<a href="test_server_ctrl.html#target_info-0">target_info/0</a></li>
+</ul>
+</li>
+<li title="test_server " expanded="false">test_server<ul>
+<li>
+<a href="test_server.html">
+                  Top of manual page
+                </a></li>
+<li title="os_type-0">
+<a href="test_server.html#os_type-0">os_type/0</a></li>
+<li title="fail-0">
+<a href="test_server.html#fail-0">fail/0</a></li>
+<li title="fail-1">
+<a href="test_server.html#fail-1">fail/1</a></li>
+<li title="timetrap-1">
+<a href="test_server.html#timetrap-1">timetrap/1</a></li>
+<li title="timetrap_cancel-1">
+<a href="test_server.html#timetrap_cancel-1">timetrap_cancel/1</a></li>
+<li title="timetrap_scale_factor-0">
+<a href="test_server.html#timetrap_scale_factor-0">timetrap_scale_factor/0</a></li>
+<li title="sleep-1">
+<a href="test_server.html#sleep-1">sleep/1</a></li>
+<li title="hours-1">
+<a href="test_server.html#hours-1">hours/1</a></li>
+<li title="minutes-1">
+<a href="test_server.html#minutes-1">minutes/1</a></li>
+<li title="seconds-1">
+<a href="test_server.html#seconds-1">seconds/1</a></li>
+<li title="format-1">
+<a href="test_server.html#format-1">format/1</a></li>
+<li title="format-2">
+<a href="test_server.html#format-2">format/2</a></li>
+<li title="format-2">
+<a href="test_server.html#format-2">format/2</a></li>
+<li title="format-3">
+<a href="test_server.html#format-3">format/3</a></li>
+<li title="capture_start-0">
+<a href="test_server.html#capture_start-0">capture_start/0</a></li>
+<li title="capture_stop-0">
+<a href="test_server.html#capture_stop-0">capture_stop/0</a></li>
+<li title="capture_get-0">
+<a href="test_server.html#capture_get-0">capture_get/0</a></li>
+<li title="messages_get-0">
+<a href="test_server.html#messages_get-0">messages_get/0</a></li>
+<li title="timecall-3">
+<a href="test_server.html#timecall-3">timecall/3</a></li>
+<li title="do_times-4">
+<a href="test_server.html#do_times-4">do_times/4</a></li>
+<li title="do_times-2">
+<a href="test_server.html#do_times-2">do_times/2</a></li>
+<li title="m_out_of_n-3">
+<a href="test_server.html#m_out_of_n-3">m_out_of_n/3</a></li>
+<li title="call_crash-3">
+<a href="test_server.html#call_crash-3">call_crash/3</a></li>
+<li title="call_crash-4">
+<a href="test_server.html#call_crash-4">call_crash/4</a></li>
+<li title="call_crash-5">
+<a href="test_server.html#call_crash-5">call_crash/5</a></li>
+<li title="temp_name-1">
+<a href="test_server.html#temp_name-1">temp_name/1</a></li>
+<li title="break-1">
+<a href="test_server.html#break-1">break/1</a></li>
+<li title="continue-0">
+<a href="test_server.html#continue-0">continue/0</a></li>
+<li title="run_on_shielded_node-2">
+<a href="test_server.html#run_on_shielded_node-2">run_on_shielded_node/2</a></li>
+<li title="start_node-3">
+<a href="test_server.html#start_node-3">start_node/3</a></li>
+<li title="stop_node-1">
+<a href="test_server.html#stop_node-1">stop_node/1</a></li>
+<li title="is_commercial-0">
+<a href="test_server.html#is_commercial-0">is_commercial/0</a></li>
+<li title="is_release_available-1">
+<a href="test_server.html#is_release_available-1">is_release_available/1</a></li>
+<li title="is_native-1">
+<a href="test_server.html#is_native-1">is_native/1</a></li>
+<li title="app_test-1">
+<a href="test_server.html#app_test-1">app_test/1</a></li>
+<li title="app_test-2">
+<a href="test_server.html#app_test-2">app_test/2</a></li>
+<li title="comment-1">
+<a href="test_server.html#comment-1">comment/1</a></li>
+<li title="all-1">
+<a href="test_server.html#all-1">all/1</a></li>
+<li title="init_per_suite-1">
+<a href="test_server.html#init_per_suite-1">init_per_suite/1</a></li>
+<li title="end_per_suite-1">
+<a href="test_server.html#end_per_suite-1">end_per_suite/1</a></li>
+<li title="init_per_testcase-2">
+<a href="test_server.html#init_per_testcase-2">init_per_testcase/2</a></li>
+<li title="end_per_testcase-2">
+<a href="test_server.html#end_per_testcase-2">end_per_testcase/2</a></li>
+<li title="Case-1">
+<a href="test_server.html#Case-1">Case/1</a></li>
+<li title="Case-1">
+<a href="test_server.html#Case-1">Case/1</a></li>
+<li title="Case-1">
+<a href="test_server.html#Case-1">Case/1</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>test_server_ctrl</h1></center>
+  
+  <h3>MODULE</h3>
+<div class="REFBODY">test_server_ctrl</div>
+  <h3>MODULE SUMMARY</h3>
+<div class="REFBODY">This module provides a low level interface to the Test Server.</div>
+  <h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+    <p>The <span class="code">test_server_ctrl</span> module provides a low level
+      interface to the Test Server. This interface is normally
+      not used directly by the tester, but through a framework built 
+      on top of <span class="code">test_server_ctrl</span>.
+      </p>
+    <p>Common Test is such a framework, well suited for automated
+      black box testing of target systems of any kind (not necessarily
+      implemented in Erlang). Common Test is also a very useful tool for
+      white box testing Erlang programs and OTP applications. 
+      Please see the Common Test User's Guide and reference manual for 
+      more information.
+      </p>
+    <p>If you want to write your own framework, some more information
+      can be found in the chapter "Writing your own test server
+      framework" in the Test Server User's Guide. Details about the
+      interface provided by <span class="code">test_server_ctrl</span> follows below.
+      </p>
+  </p></div>
+  <h3>EXPORTS</h3>
+    <p><a name="start-0"><span class="bold_code">start() -&gt; Result</span></a><br><a name="start-1"><span class="bold_code">start(ParameterFile) -&gt; Result</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Result = ok | {error, {already_started, pid()}</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">ParameterFile = atom() | string()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function starts the test server. If the parameter file
+          is given, it indicates that the target is remote. In that case
+          the target node is started and a socket connection is
+          established between the controller and the target node.
+          </p>
+        <p>The parameter file is a text file containing key-value
+          tuples. Each tuple must be followed by a dot-newline
+          sequence. The following key-value tuples are allowed:
+          </p>
+        <dl>
+          <dt><strong><span class="code">{type,PlatformType}</span></strong></dt>
+          <dd>This is an atom indicating the target platform type,
+           currently supported: <span class="code">PlatformType = vxworks</span>          <br>
+Mandatory
+          </dd>
+          <dt><strong><span class="code">{target,TargetHost}</span></strong></dt>
+          <dd>This is the name of the target host, can be atom or
+           string.
+                    <br>
+Mandatory
+          </dd>
+          <dt><strong><span class="code">{slavetargets,SlaveTargets}</span></strong></dt>
+          <dd>This is a list of available hosts where slave nodes
+           can be started. The hostnames are given as atoms or strings.
+                    <br>
+Optional, default <span class="code">SlaveTargets = []</span>
+</dd>
+          <dt><strong><span class="code">{longnames,Bool}</span></strong></dt>
+          <dd>This indicates if longnames shall be used, i.e. if the
+          <span class="code">-name</span> option should be used for the target node
+           instead of <span class="code">-sname</span>          <br>
+Optional, default <span class="code">Bool = false</span>
+</dd>
+          <dt><strong><span class="code">{master, {MasterHost, MasterCookie}}</span></strong></dt>
+          <dd>If target is remote and the target node is started as
+           a slave node, this option indicates which master and 
+	   cookie to use. The given master
+           will also be used as master for slave nodes started with
+          <span class="code">test_server:start_node/3</span>. It is expected that the
+          <span class="code">erl_boot_server</span> is started on the master node before
+           the <span class="code">test_server_ctrl:start/1</span> function is called.
+                    <br>
+Optional, if not given the test server controller node
+           is used as master and the <span class="code">erl_boot_server</span> is
+           automatically started.</dd>
+        </dl>
+      </p></div>
+    <p><a name="stop-0"><span class="bold_code">stop() -&gt; ok</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>This stops the test server (both controller and target) and
+          all its activity.  The running test suite (if any) will be
+          halted.</p>
+      </p></div>
+    <p><a name="add_dir-2"><span class="bold_code">add_dir(Name, Dir) -&gt; ok</span></a><br><a name="add_dir-3"><span class="bold_code">add_dir(Name, Dir, Pattern) -&gt; ok</span></a><br><a name="add_dir-2"><span class="bold_code">add_dir(Name, [Dir|Dirs]) -&gt; ok</span></a><br><a name="add_dir-3"><span class="bold_code">add_dir(Name, [Dir|Dirs], Pattern) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Name = term()</span><br>
+</div>
+        <div class="REFBODY">The jobname for this directory.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Dir = term()</span><br>
+</div>
+        <div class="REFBODY">The directory to scan for test suites.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Dirs = [term()]</span><br>
+</div>
+        <div class="REFBODY">List of directories to scan for test suites.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Pattern = term()</span><br>
+</div>
+        <div class="REFBODY">Suite match pattern. Directories will be scanned for Pattern_SUITE.erl files.</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Puts a collection of suites matching (*_SUITE) in given
+          directories into the job queue. <span class="code">Name</span> is an arbitrary
+          name for the job, it can be any erlang term. If <span class="code">Pattern</span>
+          is given, only modules matching <span class="code">Pattern*</span> will be added.</p>
+      </p></div>
+    <p><a name="add_module-1"><span class="bold_code">add_module(Mod) -&gt; ok</span></a><br><a name="add_module-2"><span class="bold_code">add_module(Name, [Mod|Mods]) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Mod = atom()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mods = [atom()]</span><br>
+</div>
+        <div class="REFBODY">The name(s) of the module(s) to add.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Name = term()</span><br>
+</div>
+        <div class="REFBODY">Name for the job.</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function adds a module or a list of modules, to the
+          test servers job queue. <span class="code">Name</span> may be any Erlang
+          term. When <span class="code">Name</span> is not given, the job gets the name of
+          the module.</p>
+      </p></div>
+    <p><a name="add_case-2"><span class="bold_code">add_case(Mod, Case) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Mod = atom()</span><br>
+</div>
+        <div class="REFBODY">Name of the module the test case is in.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Case = atom() </span><br>
+</div>
+        <div class="REFBODY">Function name of the test case to add.</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function will add one test case to the job queue. The
+          job will be given the module's name.</p>
+      </p></div>
+    <p><a name="add_case-3"><span class="bold_code">add_case(Name, Mod, Case) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Name = string()</span><br>
+</div>
+        <div class="REFBODY">Name to use for the test job.</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Equivalent to <span class="code">add_case/2</span>, but the test job will get
+          the specified name.</p>
+      </p></div>
+    <p><a name="add_cases-2"><span class="bold_code">add_cases(Mod, Cases) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Mod = atom()</span><br>
+</div>
+        <div class="REFBODY">Name of the module the test case is in.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Cases = [Case] </span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Case = atom() </span><br>
+</div>
+        <div class="REFBODY">Function names of the test cases to add.</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function will add one or more test cases to the job
+          queue. The job will be given the module's name.</p>
+      </p></div>
+    <p><a name="add_cases-3"><span class="bold_code">add_cases(Name, Mod, Cases) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Name = string()</span><br>
+</div>
+        <div class="REFBODY">Name to use for the test job.</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Equivalent to <span class="code">add_cases/2</span>, but the test job will get
+          the specified name.</p>
+      </p></div>
+    <p><a name="add_spec-1"><span class="bold_code">add_spec(TestSpecFile) -&gt; ok | {error, nofile}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">TestSpecFile = string()</span><br>
+</div>
+        <div class="REFBODY">Name of the test specification file</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function will add the content of the given test
+          specification file to the job queue. The job will be given the
+          name of the test specification file, e.g. if the file is
+          called <span class="code">test.spec</span>, the job will be called <span class="code">test</span>.
+          </p>
+        <p>See the reference manual for the test server application
+          for details about the test specification file.</p>
+      </p></div>
+      <p><a name="add_dir_with_skip-3"><span class="bold_code">add_dir_with_skip(Name, [Dir|Dirs], Skip) -&gt; ok</span></a><br><a name="add_dir_with_skip-4"><span class="bold_code">add_dir_with_skip(Name, [Dir|Dirs], Pattern, Skip) -&gt; ok</span></a><br><a name="add_module_with_skip-2"><span class="bold_code">add_module_with_skip(Mod, Skip) -&gt; ok</span></a><br><a name="add_module_with_skip-3"><span class="bold_code">add_module_with_skip(Name, [Mod|Mods], Skip) -&gt; ok</span></a><br><a name="add_case_with_skip-3"><span class="bold_code">add_case_with_skip(Mod, Case, Skip) -&gt; ok</span></a><br><a name="add_case_with_skip-4"><span class="bold_code">add_case_with_skip(Name, Mod, Case, Skip) -&gt; ok</span></a><br><a name="add_cases_with_skip-3"><span class="bold_code">add_cases_with_skip(Mod, Cases, Skip) -&gt; ok</span></a><br><a name="add_cases_with_skip-4"><span class="bold_code">add_cases_with_skip(Name, Mod, Cases, Skip) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">Skip = [SkipItem]</span><br>
+</div>
+	<div class="REFBODY">List of items to be skipped from the test.</div>
+        <div class="REFTYPES">
+<span class="bold_code">SkipItem = {Mod,Comment} | {Mod,Case,Comment} | {Mod,Cases,Comment}</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Mod = atom()</span><br>
+</div>
+	<div class="REFBODY">Test suite name.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Comment = string()</span><br>
+</div>
+	<div class="REFBODY">Reason why suite or case is being skipped.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Cases = [Case]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Case = atom()</span><br>
+</div>
+	<div class="REFBODY">Name of test case function.</div>
+	</div>
+<div class="REFBODY"><p>
+	  <p>These functions add test jobs just like the add_dir, add_module,
+	    add_case and add_cases functions above, but carry an additional
+	    argument, Skip. Skip is a list of items that should be skipped
+	    in the current test run. Test job items that occur in the Skip
+	    list will be logged as SKIPPED with the associated Comment.</p>
+	</p></div>
+    <p><a name="add_tests_with_skip-3"><span class="bold_code">add_tests_with_skip(Name, Tests, Skip) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Name = term()</span><br>
+</div>
+        <div class="REFBODY">The jobname for this directory.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Tests = [TestItem]</span><br>
+</div>
+	<div class="REFBODY">List of jobs to add to the run queue.</div>
+	<div class="REFTYPES">
+<span class="bold_code">TestItem = {Dir,all,all} | {Dir,Mods,all} | {Dir,Mod,Cases}</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Dir = term()</span><br>
+</div>
+        <div class="REFBODY">The directory to scan for test suites.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Mods = [Mod]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Mod = atom()</span><br>
+</div>
+	<div class="REFBODY">Test suite name.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Cases = [Case]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Case = atom()</span><br>
+</div>
+	<div class="REFBODY">Name of test case function.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Skip = [SkipItem]</span><br>
+</div>
+	<div class="REFBODY">List of items to be skipped from the test.</div>
+        <div class="REFTYPES">
+<span class="bold_code">SkipItem = {Mod,Comment} | {Mod,Case,Comment} | {Mod,Cases,Comment}</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Comment = string()</span><br>
+</div>
+	<div class="REFBODY">Reason why suite or case is being skipped.</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>This function adds various test jobs to the test_server_ctrl
+	job queue. These jobs can be of different type (all or specific suites 
+	in one directory, all or specific cases in one suite, etc). It is also
+	possible to get particular items skipped by passing them along in the
+	Skip list (see the add_*_with_skip functions above).</p>
+	</p></div>
+    <p><a name="abort_current_testcase-1"><span class="bold_code">abort_current_testcase(Reason) -&gt; ok | {error,no_testcase_running}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+      <div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+      <div class="REFBODY">The reason for stopping the test case, which will be printed in the log.</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>When calling this function, the currently executing test case will be aborted.
+	   It is the user's responsibility to know for sure which test case is currently
+	   executing. The function is therefore only safe to call from a function which
+	   has been called (or synchronously invoked) by the test case.</p>
+	</p></div>
+    <p><a name="set_levels-3"><span class="bold_code">set_levels(Console, Major, Minor) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Console = integer()</span><br>
+</div>
+        <div class="REFBODY">Level for I/O to be sent to console.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Major = integer()</span><br>
+</div>
+        <div class="REFBODY">Level for I/O to be sent to the major logfile.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Minor = integer()</span><br>
+</div>
+        <div class="REFBODY">Level for I/O to be sent to the minor logfile.</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Determines where I/O from test suites/test server will
+          go. All text output from test suites and the test server is
+          tagged with a priority value which ranges from 0 to 100, 100
+          being the most detailed. (see the section about log files in
+          the user's guide). Output from the test cases (using
+          <span class="code">io:format/2</span>) has a detail level of 50. Depending on the
+          levels set by this function, this I/O may be sent to the
+          console, the major log file (for the whole test suite) or to
+          the minor logfile (separate for each test case).
+          </p>
+        <p>All output with detail level:</p>
+        <ul>
+          <li>Less than or equal to <span class="code">Console</span> is displayed on
+           the screen (default 1)
+          </li>
+          <li>Less than or equal to <span class="code">Major</span> is logged in the
+           major log file (default 19)
+          </li>
+          <li>Greater than or equal to <span class="code">Minor</span> is logged in the
+           minor log files (default 10)
+          </li>
+        </ul>
+        <p>To view the currently set thresholds, use the
+          <span class="code">get_levels/0</span> function.</p>
+      </p></div>
+    <p><a name="get_levels-0"><span class="bold_code">get_levels() -&gt; {Console, Major, Minor}</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Returns the current levels. See <span class="code">set_levels/3</span> for
+          types.</p>
+      </p></div>
+    <p><a name="jobs-0"><span class="bold_code">jobs() -&gt; JobQueue</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">JobQueue = [{list(), pid()}]</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function will return all the jobs currently in the job
+          queue.</p>
+      </p></div>
+    <p><a name="multiply_timetraps-1"><span class="bold_code">multiply_timetraps(N) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">N = integer() | infinity</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function should be called before a test is started
+          which requires extended timetraps, e.g. if extensive tracing
+          is used. All timetraps started after this call will be
+          multiplied by <span class="code">N</span>.</p>
+      </p></div>
+    <p><a name="cover-2"><span class="bold_code">cover(Application,Analyse) -&gt; ok</span></a><br><a name="cover-2"><span class="bold_code">cover(CoverFile,Analyse) -&gt; ok</span></a><br><a name="cover-3"><span class="bold_code">cover(App,CoverFile,Analyse) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Application = atom()</span><br>
+</div>
+        <div class="REFBODY">OTP application to cover compile</div>
+        <div class="REFTYPES">
+<span class="bold_code">CoverFile = string()</span><br>
+</div>
+        <div class="REFBODY">Name of file listing modules to exclude from or include in cover compilation. The filename must include full path to the file.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Analyse = details | overview</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function informs the test_server controller that next
+          test shall run with code coverage analysis. All timetraps will
+          automatically be multiplied by 10 when cover i run.
+          </p>
+        <p><span class="code">Application</span> and <span class="code">CoverFile</span> indicates what to
+          cover compile. If <span class="code">Application</span> is given, the default is
+          that all modules in the <span class="code">ebin</span> directory of the
+          application will be cover compiled. The <span class="code">ebin</span> directory
+          is found by adding <span class="code">ebin</span> to
+          <span class="code">code:lib_dir(Application)</span>.
+          </p>
+        <p>A <span class="code">CoverFile</span> can have the following entries:</p>
+        <div class="example"><pre>
+{exclude, all | ExcludeModuleList}.
+{include, IncludeModuleList}.        </pre></div>
+        <p>Note that each line must end with a full
+          stop. <span class="code">ExcludeModuleList</span> and <span class="code">IncludeModuleList</span>
+          are lists of atoms, where each atom is a module name.
+          </p>
+        <p>If both an <span class="code">Application</span> and a <span class="code">CoverFile</span> is
+          given, all modules in the application are cover compiled,
+          except for the modules listed in <span class="code">ExcludeModuleList</span>. The
+          modules in <span class="code">IncludeModuleList</span> are also cover compiled.
+          </p>
+        <p>If a <span class="code">CoverFile</span> is given, but no <span class="code">Application</span>,
+          only the modules in <span class="code">IncludeModuleList</span> are cover
+          compiled.
+          </p>
+        <p><span class="code">Analyse</span> indicates the detail level of the cover
+          analysis. If <span class="code">Analyse = details</span>, each cover compiled
+          module will be analysed with
+          <span class="code">cover:analyse_to_file/1</span>. If <span class="code">Analyse = overview</span>
+          an overview of all cover compiled modules is created, listing
+          the number of covered and not covered lines for each module.
+          </p>
+        <p>If the test following this call starts any slave or peer
+          nodes with <span class="code">test_server:start_node/3</span>, the same cover
+          compiled code will be loaded on all nodes. If the loading
+          fails, e.g. if the node runs an old version of OTP, the node
+          will simply not be a part of the coverage analysis. Note that
+          slave or peer nodes must be stopped with
+          <span class="code">test_server:stop_node/1</span> for the node to be part of the
+          coverage analysis, else the test server will not be able to
+          fetch coverage data from the node.
+          </p>
+        <p>When the test is finished, the coverage analysis is
+          automatically completed, logs are created and the cover
+          compiled modules are unloaded. If another test is to be run
+          with coverage analysis, <span class="code">test_server_ctrl:cover/2/3</span> must
+          be called again.
+          </p>
+      </p></div>
+    <p><a name="cross_cover_analyse-1"><span class="bold_code">cross_cover_analyse(Level) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Level = details | overview</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Analyse cover data collected from all tests. The modules
+          analysed are the ones listed in the cross cover file
+          <span class="code">cross.cover</span> in the current directory of the test
+          server.</p>
+        <p>The modules listed in the <span class="code">cross.cover</span> file are
+          modules that are heavily used by other applications than the
+          one they belong to. This function should be run after all
+          tests are completed, and the result will be stored in a file
+          called cross_cover.html in the run.&lt;timestamp&gt;
+          directory of the application the modules belong to.
+          </p>
+        <p>The <span class="code">cross.cover</span> file contains elements like this:</p>
+        <div class="example"><pre>
+{App,Modules}.        </pre></div>
+        <p>where <span class="code">App</span> can be an application name or the atom
+          <span class="code">all</span>. The application (or all applications) will cover
+          compile the listed <span class="code">Modules</span>.
+          </p>
+      </p></div>
+    <p><a name="trc-1"><span class="bold_code">trc(TraceInfoFile) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">TraceInfoFile = atom() | string()</span><br>
+</div>
+        <div class="REFBODY">Name of a file defining which functions to trace and how</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function starts call trace on target and on slave or
+          peer nodes that are started or will be started by the test
+          suites.
+          </p>
+        <p>Timetraps are not extended automatically when tracing is
+          used. Use <span class="code">multiply_timetraps/1</span> if necessary.
+          </p>
+        <p>Note that the trace support in the test server is in a very
+          early stage of the implementation, and thus not yet as
+          powerful as one might wish for.
+          </p>
+        <p>The trace information file specified by the
+          <span class="code">TraceInfoFile</span> argument is a text file containing one or
+          more of the following elements:
+          </p>
+        <ul>
+          <li><span class="code">{SetTP,Module,Pattern}.</span></li>
+          <li><span class="code">{SetTP,Module,Function,Pattern}.</span></li>
+          <li><span class="code">{SetTP,Module,Function,Arity,Pattern}.</span></li>
+          <li><span class="code">ClearTP.</span></li>
+          <li><span class="code">{ClearTP,Module}.</span></li>
+          <li><span class="code">{ClearTP,Module,Function}.</span></li>
+          <li><span class="code">{ClearTP,Module,Function,Arity}.</span></li>
+        </ul>
+        <dl>
+          <dt><strong><span class="code">SetTP = tp | tpl</span></strong></dt>
+          <dd>This is maps to the corresponding functions in the
+          <span class="code">ttb</span> module in the <span class="code">observer</span>
+           application. <span class="code">tp</span> means set trace pattern on global
+           function calls. <span class="code">tpl</span> means set trace pattern on local
+           and global function calls.
+          </dd>
+          <dt><strong><span class="code">ClearTP =  ctp | ctpl | ctpg</span></strong></dt>
+          <dd>This is maps to the corresponding functions in the
+          <span class="code">ttb</span> module in the <span class="code">observer</span>
+           application. <span class="code">ctp</span> means clear trace pattern (i.e. turn
+           off) on global and local function calls. <span class="code">ctpl</span> means
+           clear trace pattern on local function calls only and <span class="code">ctpg</span>
+           means clear trace pattern on global function calls only.
+          </dd>
+          <dt><strong><span class="code">Module = atom()</span></strong></dt>
+          <dd>The module to trace
+          </dd>
+          <dt><strong><span class="code">Function = atom()</span></strong></dt>
+          <dd>The name of the function to trace
+          </dd>
+          <dt><strong><span class="code">Arity = integer()</span></strong></dt>
+          <dd>The arity of the function to trace
+          </dd>
+          <dt><strong><span class="code">Pattern = [] | match_spec()</span></strong></dt>
+          <dd>The trace pattern to set for the module or
+           function. For a description of the match_spec() syntax,
+           please turn to the User's guide for the runtime system
+           (erts). The chapter "Match Specification in Erlang" explains
+           the general match specification language.
+          </dd>
+        </dl>
+        <p>The trace result will be logged in a (binary) file called
+          <span class="code">NodeName-test_server</span> in the current directory of the
+          test server controller node. The log must be formatted using
+          <span class="code">ttb:format/1/2</span>.
+          </p>
+        <p>This is valid for all targets except the OSE/Delta target
+          for which all nodes will be logged and automatically formatted
+          in one single text file called <span class="code">allnodes-test_server</span>.</p>
+      </p></div>
+    <p><a name="stop_trace-0"><span class="bold_code">stop_trace() -&gt; ok | {error, not_tracing}</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>This function stops tracing on target, and on slave or peer
+          nodes that are currently running. New slave or peer nodes will
+          no longer be traced after this.</p>
+      </p></div>
+  
+  <h3><a name="id2253485">FUNCTIONS INVOKED FROM COMMAND LINE</a></h3>
+<div class="REFBODY">
+    
+    <p>The following functions are supposed to be invoked from the
+      command line using the <span class="code">-s</span> option when starting the erlang
+      node.</p>
+  </div>
+  <h3>EXPORTS</h3>
+    <p><a name="run_test-1"><span class="bold_code">run_test(CommandLine) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">CommandLine = FlagList</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function is supposed to be invoked from the
+          commandline. It starts the test server, interprets the
+          argument supplied from the commandline, runs the tests
+          specified and when all tests are done, stops the test server
+          and returns to the Erlang prompt.
+          </p>
+        <p>The <span class="code">CommandLine</span> argument is a list of command line
+          flags, typically <span class="code">['KEY1', Value1, 'KEY2', Value2, ...]</span>. 
+          The valid command line flags are listed below.
+          </p>
+        <p>Under a UNIX command prompt, this function can be invoked like this:
+                    <br>
+<span class="code">erl -noshell -s test_server_ctrl run_test KEY1 Value1 KEY2 Value2 ... -s erlang halt</span></p>
+        <p>Or make an alias (this is for unix/tcsh)          <br>
+<span class="code">alias erl_test 'erl -noshell -s test_server_ctrl run_test \\!* -s erlang halt'</span></p>
+        <p>And then use it like this          <br>
+<span class="code">erl_test KEY1 Value1 KEY2 Value2 ...</span>          <br>
+</p>
+        <p>The valid command line flags are</p>
+        <dl>
+          <dt><strong><span class="code">DIR dir</span></strong></dt>
+          <dd>Adds all test modules in the directory <span class="code">dir</span> to
+           the job queue.
+          </dd>
+          <dt><strong><span class="code">MODULE mod</span></strong></dt>
+          <dd>Adds the module <span class="code">mod</span> to the job queue.
+          </dd>
+          <dt><strong><span class="code">CASE mod case</span></strong></dt>
+          <dd>Adds the case <span class="code">case</span> in module <span class="code">mod</span> to the
+           job queue.
+          </dd>
+          <dt><strong><span class="code">SPEC spec</span></strong></dt>
+          <dd>Runs the test specification file <span class="code">spec</span>.
+          </dd>
+          <dt><strong><span class="code">SKIPMOD mod</span></strong></dt>
+          <dd>Skips all test cases in the module <span class="code">mod</span>
+</dd>
+          <dt><strong><span class="code">SKIPCASE mod case</span></strong></dt>
+          <dd>Skips the test case <span class="code">case</span> in module <span class="code">mod</span>.
+          </dd>
+          <dt><strong><span class="code">NAME name</span></strong></dt>
+          <dd>Names the test suite to something else than the
+           default name. This does not apply to <span class="code">SPEC</span> which keeps
+           it's names.
+          </dd>
+          <dt><strong><span class="code">PARAMETERS parameterfile</span></strong></dt>
+          <dd>Specifies the parameter file to use when starting
+           remote target
+          </dd>
+          <dt><strong><span class="code">COVER app cover_file analyse</span></strong></dt>
+          <dd>Indicates that the test should be run with cover
+           analysis. <span class="code">app</span>, <span class="code">cover_file</span> and <span class="code">analyse</span>
+           corresponds to the parameters to
+          <span class="code">test_server_ctrl:cover/3</span>. If no cover file is used,
+           the atom <span class="code">none</span> should be given.
+          </dd>
+          <dt><strong><span class="code">TRACE traceinfofile</span></strong></dt>
+          <dd>Specifies a trace information file. When this option
+           is given, call tracing is started on the target node and all
+           slave or peer nodes that are started. The trace information
+           file specifies which modules and functions to trace. See the
+           function <span class="code">trc/1</span> above for more information about the
+           syntax of this file.
+          </dd>
+        </dl>
+      </p></div>
+  
+  <h3><a name="id2254625">FRAMEWORK CALLBACK FUNCTIONS</a></h3>
+<div class="REFBODY">
+    
+    <p>A test server framework can be defined by setting the
+      environment variable <span class="code">TEST_SERVER_FRAMEWORK</span> to a module
+      name. This module will then be framework callback module, and it
+      must export the following function:</p>
+  </div>
+  <h3>EXPORTS</h3>
+    <p><a name="get_suite-2"><span class="bold_code">get_suite(Mod,Func) -&gt; TestCaseList</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Mod = atom()</span><br>
+</div>
+	<div class="REFBODY">Test suite name.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Func = atom()</span><br>
+</div>
+	<div class="REFBODY">Name of test case.</div>
+        <div class="REFTYPES">
+<span class="bold_code">TestCaseList = [SubCase]</span><br>
+</div>
+	<div class="REFBODY">List of test cases.</div>
+        <div class="REFTYPES">
+<span class="bold_code">SubCase = atom()</span><br>
+</div>
+	<div class="REFBODY">Name of a case.</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function is called before a test case is started. The
+          purpose is to retrieve a list of subcases. The default
+          behaviour of this function should be to call
+          <span class="code">Mod:Func(suite)</span> and return the result from this call.</p>
+      </p></div>
+    <p><a name="init_tc-3"><span class="bold_code">init_tc(Mod,Func,Args0) -&gt; {ok,Args1} | {skip,ReasonToSkip} | {auto_skip,ReasonToSkip} | {fail,ReasonToFail}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Mod = atom()</span><br>
+</div>
+	<div class="REFBODY">Test suite name.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Func = atom()</span><br>
+</div>
+	<div class="REFBODY">Name of test case or configuration function.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Args0 = Args1 = [tuple()]</span><br>
+</div>
+	<div class="REFBODY">Normally Args = [Config]</div>
+	<div class="REFTYPES">
+<span class="bold_code">ReasonToSkip = term()</span><br>
+</div>
+	<div class="REFBODY">Reason to skip the test case or configuration function.</div>
+	<div class="REFTYPES">
+<span class="bold_code">ReasonToFail = term()</span><br>
+</div>
+	<div class="REFBODY">Reason to fail the test case or configuration function.</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function is called before a test case or configuration
+	function starts. It is called on the process executing the function
+        <span class="code">Mod:Func</span>. Typical use of this function can be to alter
+        the input parameters to the test case function (<span class="code">Args</span>) or
+        to set properties for the executing process.</p>
+	<p>By returning <span class="code">{skip,Reason}</span>, <span class="code">Func</span> gets skipped.
+	<span class="code">Func</span> also gets skipped if <span class="code">{auto_skip,Reason}</span> is returned,
+	but then gets an auto skipped status (rather than user skipped).</p>
+	<p>To fail <span class="code">Func</span> immediately instead of executing it, return 
+	<span class="code">{fail,ReasonToFail}.</span></p>
+      </p></div>
+    <p><a name="end_tc-3"><span class="bold_code">end_tc(Mod,Func,Status) -&gt; ok | {fail,ReasonToFail}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Mod = atom()</span><br>
+</div>
+	<div class="REFBODY">Test suite name.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Func = atom()</span><br>
+</div>
+	<div class="REFBODY">Name of test case or configuration function.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Status = {Result,Args} | {TCPid,Result,Args}</span><br>
+</div>
+	<div class="REFBODY">The status of the test case or configuration function.</div>
+	<div class="REFTYPES">
+<span class="bold_code">ReasonToFail = term()</span><br>
+</div>
+	<div class="REFBODY">Reason to fail the test case or configuration function.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Result = ok | Skip | Fail</span><br>
+</div>
+	<div class="REFBODY">The final result of the test case or configuration function.</div>
+	<div class="REFTYPES">
+<span class="bold_code">TCPid = pid()</span><br>
+</div>
+	<div class="REFBODY">Pid of the process executing Func</div>
+	<div class="REFTYPES">
+<span class="bold_code">Skip = {skip,SkipReason}</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">SkipReason = term() | {failed,{Mod,init_per_testcase,term()}}</span><br>
+</div>
+	<div class="REFBODY">Reason why the function was skipped.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Fail = {error,term()} | {'EXIT',term()} | {timetrap_timeout,integer()} |
+	          {testcase_aborted,term()} | testcase_aborted_or_killed | 
+		  {failed,term()} | {failed,{Mod,end_per_testcase,term()}}</span><br>
+</div>
+	<div class="REFBODY">Reason why the function failed.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Args = [tuple()]</span><br>
+</div>
+	<div class="REFBODY">Normally Args = [Config]</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function is called when a test case, or a configuration function,
+	  is finished. It is normally called on the process where the function
+          <span class="code">Mod:Func</span> has been executing, but if not, the pid of the test 
+	  case process is passed with the <span class="code">Status</span> argument.</p> 
+	  <p>Typical use of the <span class="code">end_tc/3</span> function can be to clean up 
+	  after <span class="code">init_tc/3</span>.</p> 
+	  <p>If <span class="code">Func</span> is a test case, it is possible to analyse the value of 
+	  <span class="code">Result</span> to verify that <span class="code">init_per_testcase/2</span> and 
+	  <span class="code">end_per_testcase/2</span> executed successfully.</p>
+	  <p>It is possible with <span class="code">end_tc/3</span> to fail an otherwise successful
+	  test case, by returning <span class="code">{fail,ReasonToFail}</span>. The test case <span class="code">Func</span>
+	  will be logged as failed with the provided term as reason.</p>
+      </p></div>
+    <p><a name="report-2"><span class="bold_code">report(What,Data) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">What = atom()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Data = term()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function is called in order to keep the framework up-to-date with 
+	the progress of the test. This is useful e.g. if the
+        framework implements a GUI where the progress information is
+        constantly updated. The following can be reported:
+        </p>
+        <p><span class="code">What = tests_start, Data = {Name,NumCases}</span><br>
+	   <span class="code">What = tests_done, Data = {Ok,Failed,{UserSkipped,AutoSkipped}}</span><br>
+	   <span class="code">What = tc_start, Data = {Mod,Func}</span><br>
+	   <span class="code">What = tc_done, Data = {Mod,Func,Result}</span><br>
+	   <span class="code">What = tc_user_skip, Data = {Mod,Func,Comment}</span><br>
+	   <span class="code">What = tc_auto_skip, Data = {Mod,Func,Comment}</span></p>
+      </p></div>
+    <p><a name="error_notification-4"><span class="bold_code">error_notification(Mod, Func, Args, Error) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Mod = atom()</span><br>
+</div>
+	<div class="REFBODY">Test suite name.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Func = atom()</span><br>
+</div>
+	<div class="REFBODY">Name of test case or configuration function.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Args = [tuple()]</span><br>
+</div>
+	<div class="REFBODY">Normally Args = [Config]</div>
+        <div class="REFTYPES">
+<span class="bold_code">Error = {Reason,Location}</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+	<div class="REFBODY">Reason for termination.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Location = unknown | [{Mod,Func,Line}]</span><br>
+</div>
+	<div class="REFBODY">Last known position in Mod before termination.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Line = integer()</span><br>
+</div>
+	<div class="REFBODY">Line number in file Mod.erl.</div> 
+      </div>
+<div class="REFBODY"><p>
+        <p>This function is called as the result of function <span class="code">Mod:Func</span> failing
+	  with Reason at Location. The function is intended mainly to aid
+	  specific logging or error handling in the framework application. Note
+	  that for Location to have relevant values (i.e. other than unknown), 
+	  the <span class="code">line</span> macro or <span class="code">test_server_line</span> parse transform must 
+	  be used. For details, please see the section about test suite line numbers
+	  in the <span class="code">test_server</span> reference manual page.</p>
+      </p></div>
+    <p><a name="warn-1"><span class="bold_code">warn(What) -&gt; boolean()</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">What = processes | nodes</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>The test server checks the number of processes and nodes
+          before and after the test is executed. This function is a
+          question to the framework if the test server should warn when
+          the number of processes or nodes has changed during the test
+          execution. If <span class="code">true</span> is returned, a warning will be written
+          in the test case minor log file.</p>
+      </p></div>
+    <p><a name="target_info-0"><span class="bold_code">target_info() -&gt; InfoStr</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">InfoStr = string() | ""</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>The test server will ask the framework for information about
+	  the test target system and print InfoStr in the test case
+	  log file below the host information.</p>
+      </p></div>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2002-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

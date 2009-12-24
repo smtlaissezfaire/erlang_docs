@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Creating Certificates</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="ssl.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Secure Socket Layer </strong><br><strong>User's Guide</strong><br><small>Version 3.10.7</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="The SSL Protocol" expanded="false">The SSL Protocol<ul>
+<li>
+<a href="ssl_protocol.html">
+              Top of chapter
+            </a></li>
+<li title="SSL Connections">
+<a href="ssl_protocol.html#id2258671">SSL Connections</a></li>
+<li title="Certificates">
+<a href="ssl_protocol.html#id2258845">Certificates</a></li>
+<li title="Encryption Algorithms">
+<a href="ssl_protocol.html#id2257256">Encryption Algorithms</a></li>
+<li title="SSL Handshake">
+<a href="ssl_protocol.html#id2256606">SSL Handshake</a></li>
+<li title="Authentication">
+<a href="ssl_protocol.html#id2257112">Authentication</a></li>
+</ul>
+</li>
+<li title="Using the SSL application" expanded="false">Using the SSL application<ul>
+<li>
+<a href="using_ssl.html">
+              Top of chapter
+            </a></li>
+<li title="The ssl Module">
+<a href="using_ssl.html#id2257330">The ssl Module</a></li>
+<li title="A Client-Server Example">
+<a href="using_ssl.html#id2259690">A Client-Server Example</a></li>
+</ul>
+</li>
+<li title="PKIX Certificates" expanded="false">PKIX Certificates<ul>
+<li>
+<a href="pkix_certs.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction to Certificates">
+<a href="pkix_certs.html#id2259122">Introduction to Certificates</a></li>
+<li title="PKIX Certificates">
+<a href="pkix_certs.html#id2259172">PKIX Certificates</a></li>
+</ul>
+</li>
+<li title="Creating Certificates" expanded="true">Creating Certificates<ul>
+<li>
+<a href="create_certs.html">
+              Top of chapter
+            </a></li>
+<li title="The openssl Command">
+<a href="create_certs.html#id2254410">The openssl Command</a></li>
+<li title="An Example">
+<a href="create_certs.html#id2254772">An Example</a></li>
+</ul>
+</li>
+<li title="Using SSL for Erlang Distribution" expanded="false">Using SSL for Erlang Distribution<ul>
+<li>
+<a href="ssl_distribution.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ssl_distribution.html#id2259944">Introduction</a></li>
+<li title="Building boot scripts including the SSL application">
+<a href="ssl_distribution.html#id2260020">Building boot scripts including the SSL application</a></li>
+<li title="Specifying distribution module for net_kernel">
+<a href="ssl_distribution.html#id2260150">Specifying distribution module for net_kernel</a></li>
+<li title="Specifying security options and other SSL options">
+<a href="ssl_distribution.html#id2260252">Specifying security options and other SSL options</a></li>
+<li title="Setting up environment to always use SSL">
+<a href="ssl_distribution.html#id2260349">Setting up environment to always use SSL</a></li>
+</ul>
+</li>
+<li title="Licenses" expanded="false">Licenses<ul>
+<li>
+<a href="licenses.html">
+              Top of chapter
+            </a></li>
+<li title="OpenSSL License">
+<a href="licenses.html#id2260534">OpenSSL License</a></li>
+<li title="SSLeay License">
+<a href="licenses.html#id2260592">SSLeay License</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>4 Creating Certificates</h1>
+  
+  <p>Here we consider the creation of example certificates. 
+    </p>
+  <h3><a name="id2254410">4.1 
+        The openssl Command</a></h3>
+    
+    <p>The <span class="code">openssl</span> command is a utility that comes with the
+      OpenSSL distribution. It provides a variety of subcommands. Each
+      subcommand is invoked as</p>
+    <div class="example"><pre>
+      openssl subcmd &lt;options and arguments&gt;    </pre></div>
+    <p>where <span class="code">subcmd</span> denotes the subcommand in question.
+      </p>
+    <p>We shall use the following subcommands to create certificates for
+      the purpose of testing Erlang/OTP SSL:
+      </p>
+    <ul>
+      <li>
+<strong>req</strong> to create certificate requests and a
+       self-signed certificates, 
+      </li>
+      <li>
+<strong>ca</strong> to create certificates from certificate requests.</li>
+    </ul>
+    <p>We create the following certificates:
+      </p>
+    <ul>
+      <li>the <strong>erlangCA</strong> root certificate (a self-signed
+       certificate), </li>
+      <li>the <strong>otpCA</strong> certificate signed by the <strong>erlangCA</strong>, </li>
+      <li>a client certificate signed by the <strong>otpCA</strong>, and</li>
+      <li>a server certificate signed by the <strong>otpCA</strong>.</li>
+    </ul>
+    <h4>The openssl configuration file</h4>
+      
+      <p>An <span class="code">openssl</span> configuration file consist of a number of
+        sections, where each section starts with one line containing
+        <span class="code">[ section_name ]</span>, where <span class="code">section_name</span> is the name
+        of the section. The first section of the file is either
+        unnamed, or is named <span class="code">[ default ]</span>. For further details
+        see the OpenSSL config(5) manual page.
+        </p>
+      <p>The required sections for the subcommands we are going to 
+        use are as follows:
+        </p>
+      <table border="1" cellpadding="2" cellspacing="0">
+<tr>
+          <td align="left" valign="middle">subcommand</td>
+          <td align="left" valign="middle">required/default section</td>
+          <td align="left" valign="middle">override command line option</td>
+          <td align="left" valign="middle">configuration file option</td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">req</td>
+          <td align="left" valign="middle">[req]</td>
+          <td align="left" valign="middle">-</td>
+          <td align="left" valign="middle"><span class="code">-config FILE</span></td>
+        </tr>
+<tr>
+          <td align="left" valign="middle">ca</td>
+          <td align="left" valign="middle">[ca]</td>
+          <td align="left" valign="middle"><span class="code">-name section</span></td>
+          <td align="left" valign="middle"><span class="code">-config FILE</span></td>
+        </tr>
+</table>
+<em>Table
+        4.1:
+         
+        openssl subcommands to use</em>
+    
+    <h4>Creating the Erlang root CA</h4>
+      
+      <p>The Erlang root CA is created with the command</p>
+      <div class="example"><pre>
+\011openssl req -new -x509 -config /some/path/req.cnf \\
+\011    -keyout /some/path/key.pem -out /some/path/cert.pem      </pre></div>
+      <p>where the option <span class="code">-new</span> indicates that we want to create
+        a new certificate request and the option <span class="code">-x509</span> implies
+        that a self-signed certificate is created.
+        </p>
+    
+    <h4>Creating the OTP CA</h4>
+      
+      <p>The OTP CA is created by first creating a certificate request
+        with the command</p>
+      <div class="example"><pre>
+\011openssl req -new -config /some/path/req.cnf \\
+\011    -keyout /some/path/key.pem -out /some/path/req.pem      </pre></div>
+      <p>and the ask the Erlang CA to sign it:</p>
+      <div class="example"><pre>
+\011openssl ca -batch -notext -config /some/path/req.cnf \\
+\011   -extensions ca_cert -in /some/path/req.pem -out /some/path/cert.pem      </pre></div>
+      <p>where the option <span class="code">-extensions</span> refers to a section in the
+        configuration file saying that it should create a CA certificate, 
+        and not a plain user certificate. 
+        </p>
+      <p>The <span class="code">client</span> and <span class="code">server</span> certificates are created
+        similarly, except that the option <span class="code">-extensions</span> then has the 
+        value <span class="code">user_cert</span>.  
+        </p>
+    
+  
+  <h3><a name="id2254772">4.2 
+        An Example</a></h3>
+    
+    <p>The following module <span class="code">create_certs</span> is used by the Erlang/OTP
+      SSL application for generating certificates to be used in tests. The
+      source code is also found in <span class="code">ssl-X.Y.Z/examples/certs/src</span>.
+      </p>
+    <p>The purpose of the <span class="code">create_certs:all/1</span> function is to make
+      it possible to provide from the <span class="code">erl</span> command line, the
+      full path name of the <span class="code">openssl</span> command.
+      </p>
+    <p>Note that the module creates temporary OpenSSL configuration files
+      for the <span class="code">req</span> and <span class="code">ca</span> subcommands. 
+      </p>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

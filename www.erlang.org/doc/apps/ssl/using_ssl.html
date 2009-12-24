@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Using the SSL application</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="ssl.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Secure Socket Layer </strong><br><strong>User's Guide</strong><br><small>Version 3.10.7</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="The SSL Protocol" expanded="false">The SSL Protocol<ul>
+<li>
+<a href="ssl_protocol.html">
+              Top of chapter
+            </a></li>
+<li title="SSL Connections">
+<a href="ssl_protocol.html#id2258671">SSL Connections</a></li>
+<li title="Certificates">
+<a href="ssl_protocol.html#id2258845">Certificates</a></li>
+<li title="Encryption Algorithms">
+<a href="ssl_protocol.html#id2257256">Encryption Algorithms</a></li>
+<li title="SSL Handshake">
+<a href="ssl_protocol.html#id2256606">SSL Handshake</a></li>
+<li title="Authentication">
+<a href="ssl_protocol.html#id2257112">Authentication</a></li>
+</ul>
+</li>
+<li title="Using the SSL application" expanded="true">Using the SSL application<ul>
+<li>
+<a href="using_ssl.html">
+              Top of chapter
+            </a></li>
+<li title="The ssl Module">
+<a href="using_ssl.html#id2257330">The ssl Module</a></li>
+<li title="A Client-Server Example">
+<a href="using_ssl.html#id2259690">A Client-Server Example</a></li>
+</ul>
+</li>
+<li title="PKIX Certificates" expanded="false">PKIX Certificates<ul>
+<li>
+<a href="pkix_certs.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction to Certificates">
+<a href="pkix_certs.html#id2259122">Introduction to Certificates</a></li>
+<li title="PKIX Certificates">
+<a href="pkix_certs.html#id2259172">PKIX Certificates</a></li>
+</ul>
+</li>
+<li title="Creating Certificates" expanded="false">Creating Certificates<ul>
+<li>
+<a href="create_certs.html">
+              Top of chapter
+            </a></li>
+<li title="The openssl Command">
+<a href="create_certs.html#id2254410">The openssl Command</a></li>
+<li title="An Example">
+<a href="create_certs.html#id2254772">An Example</a></li>
+</ul>
+</li>
+<li title="Using SSL for Erlang Distribution" expanded="false">Using SSL for Erlang Distribution<ul>
+<li>
+<a href="ssl_distribution.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ssl_distribution.html#id2259944">Introduction</a></li>
+<li title="Building boot scripts including the SSL application">
+<a href="ssl_distribution.html#id2260020">Building boot scripts including the SSL application</a></li>
+<li title="Specifying distribution module for net_kernel">
+<a href="ssl_distribution.html#id2260150">Specifying distribution module for net_kernel</a></li>
+<li title="Specifying security options and other SSL options">
+<a href="ssl_distribution.html#id2260252">Specifying security options and other SSL options</a></li>
+<li title="Setting up environment to always use SSL">
+<a href="ssl_distribution.html#id2260349">Setting up environment to always use SSL</a></li>
+</ul>
+</li>
+<li title="Licenses" expanded="false">Licenses<ul>
+<li>
+<a href="licenses.html">
+              Top of chapter
+            </a></li>
+<li title="OpenSSL License">
+<a href="licenses.html#id2260534">OpenSSL License</a></li>
+<li title="SSLeay License">
+<a href="licenses.html#id2260592">SSLeay License</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>2 Using the SSL application</h1>
+  
+  <p>Here we provide an introduction to using the Erlang/OTP SSL
+    application, which is accessed through the <span class="code">ssl</span> interface
+    module. 
+    </p>
+  <p>We also present example code in the Erlang module
+    <span class="code">client_server</span>, also provided in the directory
+    <span class="code">ssl-X.Y.Z/examples</span>, with source code in <span class="code">src</span> and the
+    compiled module in <span class="code">ebin</span> of that directory.
+    </p>
+  <h3><a name="id2257330">2.1 
+        The ssl Module</a></h3>
+    
+    <p>The <span class="code">ssl</span> module provides the user interface to the Erlang/OTP
+      SSL application. The interface functions provided are very similar
+      to those provided by the <span class="code">gen_tcp</span> and <span class="code">inet</span> modules. 
+      </p>
+    <p>Servers use the interface functions <span class="code">listen</span> and
+      <span class="code">accept</span>. The <span class="code">listen</span> function specifies a TCP port
+      to to listen to, and each call to the <span class="code">accept</span> function
+      establishes an incoming connection.
+      </p>
+    <p>Clients use the <span class="code">connect</span> function which specifies the address 
+      and port of a server to connect to, and  a successful call establishes
+      such a connection. 
+      </p>
+    <p>The <span class="code">listen</span> and <span class="code">connect</span> functions have almost all
+      the options that the corresponding functions in <span class="code">gen_tcp/</span> have, 
+      but there are also additional options specific to the SSL protocol. 
+      </p>
+    <p>The most important SSL specific option is the <span class="code">cacertfile</span>
+      option which specifies a local file containing trusted CA
+      certificates which are and used for peer authentication. This
+      option is used by clients and servers in case they want to
+      authenticate their peers.
+      </p>
+    <p>The <span class="code">certfile</span> option specifies a local path to a file
+      containing the certificate of the holder of the connection
+      endpoint. In case of a server endpoint this option is mandatory
+      since the contents of the sever certificate is needed in the
+      the handshake preceding the establishment of a connection. 
+      </p>
+    <p>Similarly, the <span class="code">keyfile</span> option points to a local file
+      containing the private key of the holder of the endpoint. If the
+      <span class="code">certfile</span> option is present, this option has to be
+      specified as well, unless the private key is provided in the
+      same file as specified by the <span class="code">certfile</span> option (a
+      certificate and a private key can thus coexist in the same file).
+      </p>
+    <p>The <span class="code">verify</span> option specifies how the peer should be verified:
+      </p>
+    <dl>
+      <dt><strong>0</strong></dt>
+      <dd>Do not verify the peer,</dd>
+      <dt><strong>1</strong></dt>
+      <dd>Verify peer,</dd>
+      <dt><strong>2</strong></dt>
+      <dd>Verify peer, fail the verification if the peer has no 
+       certificate. </dd>
+    </dl>
+    <p>The <span class="code">depth</span> option specifies the maximum length of the
+      verification certificate chain. Depth = 0 means the peer
+      certificate, depth = 1 the CA certificate, depth = 2 the next CA
+      certificate etc. If the verification process does not find a
+      trusted CA certificate within the maximum length, the verification
+      fails.
+      </p>
+    <p>The <span class="code">ciphers</span> option specifies which ciphers to use (a
+      string of colon separated cipher names). To obtain a list of
+      available ciphers, evaluate the <span class="code">ssl:ciphers/0</span> function
+      (the SSL application has to be running). 
+      </p>
+  
+  <h3><a name="id2259690">2.2 
+        A Client-Server Example</a></h3>
+    
+    <p>Here is a simple client server example. 
+      </p>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

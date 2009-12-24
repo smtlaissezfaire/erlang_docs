@@ -1,0 +1,1007 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- crypto</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/crypto/users_guide.html">User's Guide</a><br>
+<a href="../apps/crypto/index.html">Reference Manual</a><br>
+<a href="../apps/crypto/release_notes.html">Release Notes</a><br>
+<a href="../apps/crypto/crypto.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>crypto</strong><br><strong>Reference Manual</strong><br><small>Version 1.6.3</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="crypto (App)">
+<a href="crypto_app.html">crypto (App)
+                </a></li>
+<li title="crypto " expanded="true">crypto<ul>
+<li>
+<a href="crypto.html">
+                  Top of manual page
+                </a></li>
+<li title="start-0">
+<a href="crypto.html#start-0">start/0</a></li>
+<li title="stop-0">
+<a href="crypto.html#stop-0">stop/0</a></li>
+<li title="info-0">
+<a href="crypto.html#info-0">info/0</a></li>
+<li title="info_lib-0">
+<a href="crypto.html#info_lib-0">info_lib/0</a></li>
+<li title="md5-1">
+<a href="crypto.html#md5-1">md5/1</a></li>
+<li title="md5_init-0">
+<a href="crypto.html#md5_init-0">md5_init/0</a></li>
+<li title="md5_update-2">
+<a href="crypto.html#md5_update-2">md5_update/2</a></li>
+<li title="md5_final-1">
+<a href="crypto.html#md5_final-1">md5_final/1</a></li>
+<li title="sha-1">
+<a href="crypto.html#sha-1">sha/1</a></li>
+<li title="sha_init-0">
+<a href="crypto.html#sha_init-0">sha_init/0</a></li>
+<li title="sha_update-2">
+<a href="crypto.html#sha_update-2">sha_update/2</a></li>
+<li title="sha_final-1">
+<a href="crypto.html#sha_final-1">sha_final/1</a></li>
+<li title="md5_mac-2">
+<a href="crypto.html#md5_mac-2">md5_mac/2</a></li>
+<li title="md5_mac_96-2">
+<a href="crypto.html#md5_mac_96-2">md5_mac_96/2</a></li>
+<li title="sha_mac-2">
+<a href="crypto.html#sha_mac-2">sha_mac/2</a></li>
+<li title="sha_mac_96-2">
+<a href="crypto.html#sha_mac_96-2">sha_mac_96/2</a></li>
+<li title="des_cbc_encrypt-3">
+<a href="crypto.html#des_cbc_encrypt-3">des_cbc_encrypt/3</a></li>
+<li title="des_cbc_decrypt-3">
+<a href="crypto.html#des_cbc_decrypt-3">des_cbc_decrypt/3</a></li>
+<li title="des_cbc_ivec-1">
+<a href="crypto.html#des_cbc_ivec-1">des_cbc_ivec/1</a></li>
+<li title="des3_cbc_encrypt-5">
+<a href="crypto.html#des3_cbc_encrypt-5">des3_cbc_encrypt/5</a></li>
+<li title="des3_cbc_decrypt-5">
+<a href="crypto.html#des3_cbc_decrypt-5">des3_cbc_decrypt/5</a></li>
+<li title="blowfish_cfb64_encrypt-3">
+<a href="crypto.html#blowfish_cfb64_encrypt-3">blowfish_cfb64_encrypt/3</a></li>
+<li title="blowfish_cfb64_decrypt-3">
+<a href="crypto.html#blowfish_cfb64_decrypt-3">blowfish_cfb64_decrypt/3</a></li>
+<li title="aes_cfb_128_encrypt-3">
+<a href="crypto.html#aes_cfb_128_encrypt-3">aes_cfb_128_encrypt/3</a></li>
+<li title="aes_cbc_128_encrypt-3">
+<a href="crypto.html#aes_cbc_128_encrypt-3">aes_cbc_128_encrypt/3</a></li>
+<li title="aes_cfb_128_decrypt-3">
+<a href="crypto.html#aes_cfb_128_decrypt-3">aes_cfb_128_decrypt/3</a></li>
+<li title="aes_cbc_128_decrypt-3">
+<a href="crypto.html#aes_cbc_128_decrypt-3">aes_cbc_128_decrypt/3</a></li>
+<li title="aes_cbc_ivec-1">
+<a href="crypto.html#aes_cbc_ivec-1">aes_cbc_ivec/1</a></li>
+<li title="erlint-1">
+<a href="crypto.html#erlint-1">erlint/1</a></li>
+<li title="mpint-1">
+<a href="crypto.html#mpint-1">mpint/1</a></li>
+<li title="rand_bytes-1">
+<a href="crypto.html#rand_bytes-1">rand_bytes/1</a></li>
+<li title="rand_uniform-2">
+<a href="crypto.html#rand_uniform-2">rand_uniform/2</a></li>
+<li title="mod_exp-3">
+<a href="crypto.html#mod_exp-3">mod_exp/3</a></li>
+<li title="rsa_sign-2">
+<a href="crypto.html#rsa_sign-2">rsa_sign/2</a></li>
+<li title="rsa_sign-3">
+<a href="crypto.html#rsa_sign-3">rsa_sign/3</a></li>
+<li title="rsa_verify-3">
+<a href="crypto.html#rsa_verify-3">rsa_verify/3</a></li>
+<li title="rsa_verify-4">
+<a href="crypto.html#rsa_verify-4">rsa_verify/4</a></li>
+<li title="rsa_public_encrypt-3">
+<a href="crypto.html#rsa_public_encrypt-3">rsa_public_encrypt/3</a></li>
+<li title="rsa_private_decrypt-3">
+<a href="crypto.html#rsa_private_decrypt-3">rsa_private_decrypt/3</a></li>
+<li title="rsa_private_encrypt-3">
+<a href="crypto.html#rsa_private_encrypt-3">rsa_private_encrypt/3</a></li>
+<li title="rsa_public_decrypt-3">
+<a href="crypto.html#rsa_public_decrypt-3">rsa_public_decrypt/3</a></li>
+<li title="dss_sign-2">
+<a href="crypto.html#dss_sign-2">dss_sign/2</a></li>
+<li title="dss_verify-3">
+<a href="crypto.html#dss_verify-3">dss_verify/3</a></li>
+<li title="rc4_encrypt-2">
+<a href="crypto.html#rc4_encrypt-2">rc4_encrypt/2</a></li>
+<li title="dh_generate_key-1">
+<a href="crypto.html#dh_generate_key-1">dh_generate_key/1</a></li>
+<li title="dh_generate_key-2">
+<a href="crypto.html#dh_generate_key-2">dh_generate_key/2</a></li>
+<li title="dh_compute_key-3">
+<a href="crypto.html#dh_compute_key-3">dh_compute_key/3</a></li>
+<li title="exor-2">
+<a href="crypto.html#exor-2">exor/2</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>crypto</h1></center>
+  
+  <h3>MODULE</h3>
+<div class="REFBODY">crypto</div>
+  <h3>MODULE SUMMARY</h3>
+<div class="REFBODY">Crypto Functions</div>
+  <h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+    <p>This module provides a set of cryptographic functions.
+      </p>
+    <p>References:</p>
+    <ul>
+      <li>
+        <p>md5: The MD5 Message Digest Algorithm (RFC 1321)</p>
+      </li>
+      <li>
+        <p>sha: Secure Hash Standard (FIPS 180-2)</p>
+      </li>
+      <li>
+        <p>hmac: Keyed-Hashing for Message Authentication (RFC 2104)</p>
+      </li>
+      <li>
+        <p>des: Data Encryption Standard (FIPS 46-3)</p>
+      </li>
+      <li>
+        <p>aes: Advanced Encryption Standard (AES) (FIPS 197) </p>
+      </li>
+      <li>
+        <p>ecb, cbc, cfb, ofb: Recommendation for Block Cipher Modes
+          of Operation (NIST SP 800-38A).</p>
+      </li>
+      <li>
+        <p>rsa: Recommendation for Block Cipher Modes of Operation
+          (NIST 800-38A)</p>
+      </li>
+      <li>
+        <p>dss: Digital Signature Standard (FIPS 186-2)</p>
+      </li>
+    </ul>
+    <p>The above publications can be found at <span class="bold_code">
+<a href="http://csrc.nist.gov/publications">NIST publications</a></span>, at <span class="bold_code">
+<a href="http://www.ietf.org">IETF</a></span>.
+      </p>
+    <p><strong>Types</strong></p>
+    <div class="example"><pre>
+byte() = 0 ... 255
+ioelem() = byte() | binary() | iolist()
+iolist() = [ioelem()]
+Mpint() = &lt;&lt;ByteLen:32/integer-big, Bytes:ByteLen/binary&gt;&gt;
+    </pre></div>
+    <p></p>
+  </p></div>
+  <h3>EXPORTS</h3>
+    <p><a name="start-0"><span class="bold_code">start() -&gt; ok</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Starts the crypto server.</p>
+      </p></div>
+    <p><a name="stop-0"><span class="bold_code">stop() -&gt; ok</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Stops the crypto server.</p>
+      </p></div>
+    <p><a name="info-0"><span class="bold_code">info() -&gt; [atom()]</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Provides the available crypto functions in terms of a list
+          of atoms.</p>
+      </p></div>
+    <p><a name="info_lib-0"><span class="bold_code">info_lib() -&gt; [{Name,VerNum,VerStr}]</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Name = binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">VerNum = integer()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">VerStr = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Provides the name and version of the libraries used by crypto.</p>
+        <p><span class="code">Name</span> is the name of the library. <span class="code">VerNum</span> is
+        the numeric version according to the library's own versioning
+        scheme. <span class="code">VerStr</span> contains a text variant of the version.</p>
+        <div class="example"><pre>
+&gt; <span class="bold_code">info_lib().</span>
+[{&lt;&lt;"OpenSSL"&gt;&gt;,9469983,&lt;&lt;"OpenSSL 0.9.8a 11 Oct 2005"&gt;&gt;}]
+        </pre></div>
+      </p></div>
+    <p><a name="md5-1"><span class="bold_code">md5(Data) -&gt; Digest</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Data = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Digest = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Computes an <span class="code">MD5</span> message digest from <span class="code">Data</span>, where
+          the length of the digest is 128 bits (16 bytes).</p>
+      </p></div>
+    <p><a name="md5_init-0"><span class="bold_code">md5_init() -&gt; Context</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Context = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Creates an MD5 context, to be used in subsequent calls to 
+          <span class="code">md5_update/2</span>.</p>
+      </p></div>
+    <p><a name="md5_update-2"><span class="bold_code">md5_update(Context, Data) -&gt; NewContext</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Data = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Context = NewContext = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Updates an MD5 <span class="code">Context</span> with <span class="code">Data</span>, and returns
+          a <span class="code">NewContext</span>.</p>
+      </p></div>
+    <p><a name="md5_final-1"><span class="bold_code">md5_final(Context) -&gt; Digest</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Context = Digest = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Finishes the update of an MD5 <span class="code">Context</span> and returns
+          the computed <span class="code">MD5</span> message digest.</p>
+      </p></div>
+    <p><a name="sha-1"><span class="bold_code">sha(Data) -&gt; Digest</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Data = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Digest = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Computes an <span class="code">SHA</span> message digest from <span class="code">Data</span>, where
+          the length of the digest is 160 bits (20 bytes).</p>
+      </p></div>
+    <p><a name="sha_init-0"><span class="bold_code">sha_init() -&gt; Context</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Context = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Creates an SHA context, to be used in subsequent calls to 
+          <span class="code">sha_update/2</span>.</p>
+      </p></div>
+    <p><a name="sha_update-2"><span class="bold_code">sha_update(Context, Data) -&gt; NewContext</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Data = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Context = NewContext = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Updates an SHA <span class="code">Context</span> with <span class="code">Data</span>, and returns
+          a <span class="code">NewContext</span>.</p>
+      </p></div>
+    <p><a name="sha_final-1"><span class="bold_code">sha_final(Context) -&gt; Digest</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Context = Digest = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Finishes the update of an SHA <span class="code">Context</span> and returns
+          the computed <span class="code">SHA</span> message digest.</p>
+      </p></div>
+    <p><a name="md5_mac-2"><span class="bold_code">md5_mac(Key, Data) -&gt; Mac</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key = Data = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mac = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Computes an <span class="code">MD5 MAC</span> message authentification code
+          from <span class="code">Key</span> and <span class="code">Data</span>, where the the length of the
+          Mac is 128 bits (16 bytes).</p>
+      </p></div>
+    <p><a name="md5_mac_96-2"><span class="bold_code">md5_mac_96(Key, Data) -&gt; Mac</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key = Data = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mac = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Computes an <span class="code">MD5 MAC</span> message authentification code
+          from <span class="code">Key</span> and <span class="code">Data</span>, where the length of the Mac
+          is 96 bits (12 bytes).</p>
+      </p></div>
+    <p><a name="sha_mac-2"><span class="bold_code">sha_mac(Key, Data) -&gt; Mac</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key = Data = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mac = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Computes an <span class="code">SHA MAC</span> message authentification code
+          from <span class="code">Key</span> and <span class="code">Data</span>, where the length of the Mac
+          is 160 bits (20 bytes).</p>
+      </p></div>
+    <p><a name="sha_mac_96-2"><span class="bold_code">sha_mac_96(Key, Data) -&gt; Mac</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key = Data = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mac = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Computes an <span class="code">SHA MAC</span> message authentification code
+          from <span class="code">Key</span> and <span class="code">Data</span>, where the length of the Mac
+          is 96 bits (12 bytes).</p>
+      </p></div>
+    <p><a name="des_cbc_encrypt-3"><span class="bold_code">des_cbc_encrypt(Key, IVec, Text) -&gt; Cipher</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key = Text = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">IVec = Cipher = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Encrypts <span class="code">Text</span> according to DES in CBC
+          mode. <span class="code">Text</span> must be a multiple of 64 bits (8
+          bytes). <span class="code">Key</span> is the DES key, and <span class="code">IVec</span> is an
+          arbitrary initializing vector. The lengths of <span class="code">Key</span> and
+          <span class="code">IVec</span> must be 64 bits (8 bytes).</p>
+      </p></div>
+    <p><a name="des_cbc_decrypt-3"><span class="bold_code">des_cbc_decrypt(Key, IVec, Cipher) -&gt; Text</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key = Cipher = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">IVec = Text = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Decrypts <span class="code">Cipher</span> according to DES in CBC mode.
+          <span class="code">Key</span> is the DES key, and <span class="code">IVec</span> is an arbitrary
+          initializing vector.  <span class="code">Key</span> and <span class="code">IVec</span> must have
+          the same values as those used when encrypting. <span class="code">Cipher</span>
+          must be a multiple of 64 bits (8 bytes).  The lengths of
+          <span class="code">Key</span> and <span class="code">IVec</span> must be 64 bits (8 bytes).</p>
+      </p></div>
+    <p><a name="des_cbc_ivec-1"><span class="bold_code">des_cbc_ivec(Data) -&gt; IVec</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Data = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">IVec = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Returns the <span class="code">IVec</span> to be used in a next iteration of 
+          <span class="code">des_cbc_[encrypt|decrypt]</span>. <span class="code">Data</span> is the encrypted
+          data from the previous iteration step.</p>
+      </p></div>
+    <p><a name="des3_cbc_encrypt-5"><span class="bold_code">des3_cbc_encrypt(Key1, Key2, Key3, IVec, Text) -&gt; Cipher</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key1 =Key2 = Key3 Text = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">IVec = Cipher = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Encrypts <span class="code">Text</span> according to DES3 in CBC
+          mode. <span class="code">Text</span> must be a multiple of 64 bits (8
+          bytes). <span class="code">Key1</span>, <span class="code">Key2</span>, <span class="code">Key3</span>, are the DES
+          keys, and <span class="code">IVec</span> is an arbitrary initializing
+          vector. The lengths of each of <span class="code">Key1</span>, <span class="code">Key2</span>,
+          <span class="code">Key3</span> and <span class="code">IVec</span> must be 64 bits (8 bytes).</p>
+      </p></div>
+    <p><a name="des3_cbc_decrypt-5"><span class="bold_code">des3_cbc_decrypt(Key1, Key2, Key3, IVec, Cipher) -&gt; Text</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key1 = Key2 = Key3 = Cipher = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">IVec = Text = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Decrypts <span class="code">Cipher</span> according to DES3 in CBC mode.
+          <span class="code">Key1</span>, <span class="code">Key2</span>, <span class="code">Key3</span> are the DES key, and
+          <span class="code">IVec</span> is an arbitrary initializing vector.
+          <span class="code">Key1</span>, <span class="code">Key2</span>, <span class="code">Key3</span> and <span class="code">IVec</span> must
+          and <span class="code">IVec</span> must have the same values as those used when
+          encrypting. <span class="code">Cipher</span> must be a multiple of 64 bits (8
+          bytes).  The lengths of <span class="code">Key1</span>, <span class="code">Key2</span>,
+          <span class="code">Key3</span>, and <span class="code">IVec</span> must be 64 bits (8 bytes).</p>
+      </p></div>
+    <p><a name="blowfish_cfb64_encrypt-3"><span class="bold_code">blowfish_cfb64_encrypt(Key, IVec, Text) -&gt; Cipher</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key = Text = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">IVec = Cipher = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Encrypts <span class="code">Text</span> using Blowfish in CFB mode with 64 bit
+          feedback. <span class="code">Key</span> is the Blowfish key, and <span class="code">IVec</span> is an
+          arbitrary initializing vector. The length of <span class="code">IVec</span>
+          must be 64 bits (8 bytes).</p>
+      </p></div>
+    <p><a name="blowfish_cfb64_decrypt-3"><span class="bold_code">blowfish_cfb64_decrypt(Key, IVec, Text) -&gt; Cipher</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key = Text = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">IVec = Cipher = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Decrypts <span class="code">Text</span> using Blowfish in CFB mode with 64 bit
+          feedback. <span class="code">Key</span> is the Blowfish key, and <span class="code">IVec</span> is an
+          arbitrary initializing vector. The length of <span class="code">IVec</span>
+          must be 64 bits (8 bytes).</p>
+      </p></div>
+    <p><a name="aes_cfb_128_encrypt-3"><span class="bold_code">aes_cfb_128_encrypt(Key, IVec, Text) -&gt; Cipher</span></a><br><a name="aes_cbc_128_encrypt-3"><span class="bold_code">aes_cbc_128_encrypt(Key, IVec, Text) -&gt; Cipher</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key = Text = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">IVec = Cipher = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Encrypts <span class="code">Text</span> according to AES in Cipher Feedback 
+          mode (CFB) or Cipher Block Chaining mode (CBC). <span class="code">Text</span>
+          must be a multiple of 128 bits (16 bytes). <span class="code">Key</span> is the
+          AES key, and <span class="code">IVec</span> is an arbitrary initializing vector.
+          The lengths of <span class="code">Key</span> and <span class="code">IVec</span> must be 128 bits
+          (16 bytes).</p>
+      </p></div>
+    <p><a name="aes_cfb_128_decrypt-3"><span class="bold_code">aes_cfb_128_decrypt(Key, IVec, Cipher) -&gt; Text</span></a><br><a name="aes_cbc_128_decrypt-3"><span class="bold_code">aes_cbc_128_decrypt(Key, IVec, Cipher) -&gt; Text</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Key = Cipher = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">IVec = Text = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Decrypts <span class="code">Cipher</span> according to Cipher Feedback Mode (CFB)
+          or Cipher Block Chaining mode (CBC).
+          <span class="code">Key</span> is the AES key, and <span class="code">IVec</span> is an arbitrary
+          initializing vector. <span class="code">Key</span> and <span class="code">IVec</span> must have
+          the same values as those used when encrypting. <span class="code">Cipher</span>
+          must be a multiple of 128 bits (16 bytes).  The lengths of
+          <span class="code">Key</span> and <span class="code">IVec</span> must be 128 bits (16 bytes).</p>
+      </p></div>
+    <p><a name="aes_cbc_ivec-1"><span class="bold_code">aes_cbc_ivec(Data) -&gt; IVec</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Data = iolist() | binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">IVec = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Returns the <span class="code">IVec</span> to be used in a next iteration of 
+          <span class="code">aes_cbc_*_[encrypt|decrypt]</span>. <span class="code">Data</span> is the encrypted
+          data from the previous iteration step.</p>
+      </p></div>
+    <p><a name="erlint-1"><span class="bold_code">erlint(Mpint) -&gt; N</span></a><br><a name="mpint-1"><span class="bold_code">mpint(N) -&gt; Mpint</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Mpint = binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">N = integer()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Convert a binary multi-precision integer <span class="code">Mpint</span> to and from
+          an erlang big integer. A multi-precision integer is a binary
+          with the following form:
+          <span class="code">&lt;&lt;ByteLen:32/integer, Bytes:ByteLen/binary&gt;&gt;</span> where both
+          <span class="code">ByteLen</span> and <span class="code">Bytes</span> are big-endian. Mpints are used in
+          some of the functions in <span class="code">crypto</span> and are not translated
+          in the API for performance reasons.</p>
+      </p></div>
+    <p><a name="rand_bytes-1"><span class="bold_code">rand_bytes(N) -&gt; binary()</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">N = integer()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Generates N bytes randomly uniform 0..255, and returns the
+          result in a binary. Uses the <span class="code">crypto</span> library pseudo-random
+          number generator.</p>
+      </p></div>
+    <p><a name="rand_uniform-2"><span class="bold_code">rand_uniform(Lo, Hi) -&gt; N</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Lo, Hi, N = Mpint | integer()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mpint = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Generate a random number <span class="code">N, Lo =&lt; N &lt; Hi.</span> Uses the
+          <span class="code">crypto</span> library pseudo-random number generator. The
+          arguments (and result) can be either erlang integers or binary
+          multi-precision integers.</p>
+      </p></div>
+    <p><a name="mod_exp-3"><span class="bold_code">mod_exp(N, P, M) -&gt; Result</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">N, P, M, Result = Mpint</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mpint = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>This function performs the exponentiation <span class="code">N ^ P mod M</span>,
+          using the <span class="code">crypto</span> library.</p>
+      </p></div>
+    <p><a name="rsa_sign-2"><span class="bold_code">rsa_sign(Data, Key) -&gt; Signature</span></a><br><a name="rsa_sign-3"><span class="bold_code">rsa_sign(DigestType, Data, Key) -&gt; Signature</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Data = Mpint</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Key = [E, N, D]</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">E, N, D = Mpint</span><br>
+</div>
+        <div class="REFBODY">Where <span class="code">E</span> is the public exponent, <span class="code">N</span> is public modulus and 
+	  <span class="code">D</span> is the private exponent.</div>
+	<div class="REFTYPES">
+<span class="bold_code">DigestType = md5 | sha</span><br>
+</div>
+	<div class="REFBODY">The default <span class="code">DigestType</span> is sha.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mpint = binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Signature = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Calculates a <span class="code">DigestType</span> digest of the <span class="code">Data</span>
+	  and creates a RSA signature with the private key <span class="code">Key</span>
+	  of the digest.</p>
+      </p></div>
+    <p><a name="rsa_verify-3"><span class="bold_code">rsa_verify(Data, Signature, Key) -&gt; Verified</span></a><br><a name="rsa_verify-4"><span class="bold_code">rsa_verify(DigestType, Data, Signature, Key) -&gt; Verified </span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Verified = boolean()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Data, Signature = Mpint</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Key = [E, N]</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">E, N = Mpint</span><br>
+</div>
+        <div class="REFBODY">Where <span class="code">E</span> is the public exponent and <span class="code">N</span> is public modulus.</div>
+	<div class="REFTYPES">
+<span class="bold_code">DigestType = md5 | sha</span><br>
+</div>
+	<div class="REFBODY"> The default <span class="code">DigestType</span> is sha.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mpint = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Calculates a <span class="code">DigestType</span> digest of the <span class="code">Data</span>
+          and verifies that the digest matches the RSA signature using the
+          signer's public key <span class="code">Key</span>.
+	</p>
+      </p></div>
+    
+    <p><a name="rsa_public_encrypt-3"><span class="bold_code">rsa_public_encrypt(PlainText, PublicKey, Padding) -&gt; ChipherText</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">PlainText = binary()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">PublicKey = [E, N]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">E, N = Mpint</span><br>
+</div>	
+	<div class="REFBODY">Where <span class="code">E</span> is the public exponent and <span class="code">N</span> is public modulus.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Padding = rsa_pkcs1_padding | rsa_pkcs1_oaep_padding | rsa_no_padding</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">ChipherText = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>Encrypts the <span class="code">PlainText</span> (usually a session key) using the <span class="code">PublicKey</span>
+	  and returns the cipher. The <span class="code">Padding</span> decides what padding mode is used,
+	  <span class="code">rsa_pkcs1_padding</span> is PKCS #1 v1.5 currently the most
+	  used mode and <span class="code">rsa_pkcs1_oaep_padding</span> is EME-OAEP as
+	  defined in PKCS #1 v2.0 with SHA-1, MGF1 and an empty encoding
+	  parameter. This mode is recommended for all new applications.
+	  The size of the <span class="code">Msg</span> must be less
+	  than <span class="code">byte_size(N)-11</span> if
+	  <span class="code">rsa_pkcs1_padding</span> is used, <span class="code">byte_size(N)-41</span> if 
+	  <span class="code">rsa_pkcs1_oaep_padding</span> is used and <span class="code">byte_size(N)</span> if <span class="code">rsa_no_padding</span> 
+	  is used.
+	  Where byte_size(N) is the size part of an <span class="code">Mpint-1</span>.
+	</p>
+      </p></div>
+    <p><a name="rsa_private_decrypt-3"><span class="bold_code">rsa_private_decrypt(ChipherText, PrivateKey, Padding) -&gt; PlainText</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">ChipherText = binary()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">PrivateKey = [E, N, D]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">E, N, D = Mpint</span><br>
+</div>
+	<div class="REFBODY">Where <span class="code">E</span> is the public exponent, <span class="code">N</span> is public modulus  and 
+	  <span class="code">D</span> is the private exponent.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Padding = rsa_pkcs1_padding | rsa_pkcs1_oaep_padding | rsa_no_padding</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">PlainText = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>Decrypts the <span class="code">ChipherText</span> (usually a session key encrypted with 
+	  <span class="bold_code">
+<a href="#rsa_public_encrypt-3">rsa_public_encrypt/3</a></span>) 
+	  using the <span class="code">PrivateKey</span> and returns the
+	  message. The <span class="code">Padding</span> is the padding mode that was
+	  used to encrypt the data, 
+	  see <span class="bold_code">
+<a href="#rsa_public_encrypt-3">rsa_public_encrypt/3</a></span>.
+	</p>
+      </p></div>
+    <p><a name="rsa_private_encrypt-3"><span class="bold_code">rsa_private_encrypt(PlainText, PrivateKey, Padding) -&gt; ChipherText</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">PlainText = binary()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">PrivateKey = [E, N, D]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">E, N, D = Mpint</span><br>
+</div>	
+	<div class="REFBODY">Where <span class="code">E</span> is the public exponent, <span class="code">N</span> is public modulus and 
+	  <span class="code">D</span> is the private exponent.</div>
+	<div class="REFTYPES">
+<span class="bold_code">Padding = rsa_pkcs1_padding | rsa_no_padding</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">ChipherText = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>Encrypts the <span class="code">PlainText</span> using the <span class="code">PrivateKey</span>
+	  and returns the cipher. The <span class="code">Padding</span> decides what padding mode is used,
+	  <span class="code">rsa_pkcs1_padding</span> is PKCS #1 v1.5 currently the most
+	  used mode.
+	  The size of the <span class="code">Msg</span> must be less than <span class="code">byte_size(N)-11</span> if
+	  <span class="code">rsa_pkcs1_padding</span> is used, and <span class="code">byte_size(N)</span> if <span class="code">rsa_no_padding</span> 
+	  is used.  Where byte_size(N) is the size part of an <span class="code">Mpint-1</span>.
+	</p>
+      </p></div>
+    <p><a name="rsa_public_decrypt-3"><span class="bold_code">rsa_public_decrypt(ChipherText, PublicKey, Padding) -&gt; PlainText</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">ChipherText = binary()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">PublicKey = [E, N]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">E, N = Mpint</span><br>
+</div>
+	<div class="REFBODY">Where <span class="code">E</span> is the public exponent and <span class="code">N</span> is public modulus</div>
+	<div class="REFTYPES">
+<span class="bold_code">Padding = rsa_pkcs1_padding | rsa_no_padding</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">PlainText = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>Decrypts the <span class="code">ChipherText</span> (encrypted with 
+	  <span class="bold_code">
+<a href="#rsa_private_encrypt-3">rsa_private_encrypt/3</a></span>) 
+	  using the <span class="code">PrivateKey</span> and returns the
+	  message. The <span class="code">Padding</span> is the padding mode that was
+	  used to encrypt the data, 
+	  see <span class="bold_code">
+<a href="#rsa_private_encrypt-3">rsa_private_encrypt/3</a></span>.
+	</p>
+      </p></div>
+      
+    <p><a name="dss_sign-2"><span class="bold_code">dss_sign(Data, Key) -&gt; Signature</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Digest = Mpint</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Key = [P, Q, G, X]</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">P, Q, G, X = Mpint</span><br>
+</div>
+	<div class="REFBODY"> Where <span class="code">P</span>, <span class="code">Q</span> and <span class="code">G</span> are the dss
+	  parameters and <span class="code">X</span> is the private key.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mpint = binary()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Signature = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Calculates the sha digest of the <span class="code">Data</span>
+	  and creates a DSS signature with the private key <span class="code">Key</span>
+	  of the digest.</p>
+      </p></div>
+    <p><a name="dss_verify-3"><span class="bold_code">dss_verify(Data, Signature, Key) -&gt; Verified</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+        <div class="REFTYPES">
+<span class="bold_code">Verified = boolean()</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Digest, Signature = Mpint</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">Key = [P, Q, G, Y]</span><br>
+</div>
+        <div class="REFTYPES">
+<span class="bold_code">P, Q, G, Y = Mpint</span><br>
+</div>
+	<div class="REFBODY"> Where <span class="code">P</span>, <span class="code">Q</span> and <span class="code">G</span> are the dss
+	  parameters and <span class="code">Y</span> is the public key.</div>
+        <div class="REFTYPES">
+<span class="bold_code">Mpint = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+        <p>Calculates the sha digest of the <span class="code">Data</span> and verifies that the
+          digest matches the DSS signature using the public key <span class="code">Key</span>.
+	</p>
+      </p></div>
+    <p><a name="rc4_encrypt-2"><span class="bold_code">rc4_encrypt(Key, Data) -&gt; Result</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">Key, Data = iolist() | binary()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Result = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>Encrypts the data with RC4 symmetric stream encryption.
+	  Since it is symmetric, the same function is used for
+	  decryption.</p>
+      </p></div>
+    <p><a name="dh_generate_key-1"><span class="bold_code">dh_generate_key(DHParams) -&gt; {PublicKey,PrivateKey} </span></a><br><a name="dh_generate_key-2"><span class="bold_code">dh_generate_key(PrivateKey, DHParams) -&gt; {PublicKey,PrivateKey} </span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">DHParameters = [P, G]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">P, G = Mpint</span><br>
+</div>
+	<div class="REFBODY"> Where <span class="code">P</span> is the shared prime number and <span class="code">G</span> is the shared generator.</div>
+	<div class="REFTYPES">
+<span class="bold_code">PublicKey, PrivateKey = Mpint()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>Generates a Diffie-Hellman <span class="code">PublicKey</span> and <span class="code">PrivateKey</span> (if not given).
+	</p>
+      </p></div>
+    <p><a name="dh_compute_key-3"><span class="bold_code">dh_compute_key(OthersPublicKey, MyPrivateKey, DHParams) -&gt; SharedSecret</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">DHParameters = [P, G]</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">P, G = Mpint</span><br>
+</div>
+	<div class="REFBODY"> Where <span class="code">P</span> is the shared prime number and <span class="code">G</span> is the shared generator.</div>
+	<div class="REFTYPES">
+<span class="bold_code">OthersPublicKey, MyPrivateKey = Mpint()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">SharedSecret = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>Computes the shared secret from the private key and the other party's public key.
+	</p>
+      </p></div>
+   
+    <p><a name="exor-2"><span class="bold_code">exor(Data1, Data2) -&gt; Result</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+	<div class="REFTYPES">
+<span class="bold_code">Data1, Data2 = iolist() | binary()</span><br>
+</div>
+	<div class="REFTYPES">
+<span class="bold_code">Result = binary()</span><br>
+</div>
+      </div>
+<div class="REFBODY"><p>
+	<p>Performs bit-wise XOR (exclusive or) on the data supplied.</p>
+      </p></div>
+  
+  <h3><a name="id2260366">DES in CBC mode</a></h3>
+<div class="REFBODY">
+    
+    <p>The Data Encryption Standard (DES) defines an algorithm for
+      encrypting and decrypting an 8 byte quantity using an 8 byte key
+      (actually only 56 bits of the key is used).
+      </p>
+    <p>When it comes to encrypting and decrypting blocks that are
+      multiples of 8 bytes various modes are defined (NIST SP
+      800-38A). One of those modes is the Cipher Block Chaining (CBC)
+      mode, where the encryption of an 8 byte segment depend not only
+      of the contents of the segment itself, but also on the result of
+      encrypting the previous segment: the encryption of the previous
+      segment becomes the initializing vector of the encryption of the
+      current segment.
+      </p>
+    <p>Thus the encryption of every segment depends on the encryption
+      key (which is secret) and the encryption of the previous
+      segment, except the first segment which has to be provided with
+      an initial initializing vector. That vector could be chosen at
+      random, or be a counter of some kind. It does not have to be
+      secret.
+      </p>
+    <p>The following example is drawn from the old FIPS 81 standard
+      (replaced by NIST SP 800-38A), where both the plain text and the
+      resulting cipher text is settled. The following code fragment
+      returns `true'.
+      </p>
+    <div class="example"><pre>
+      Key = &lt;&lt;16#01,16#23,16#45,16#67,16#89,16#ab,16#cd,16#ef&gt;&gt;,
+      IVec = &lt;&lt;16#12,16#34,16#56,16#78,16#90,16#ab,16#cd,16#ef&gt;&gt;,
+      P = "Now is the time for all ",
+      C = crypto:des_cbc_encrypt(Key, IVec, P),
+         % Which is the same as 
+      P1 = "Now is t", P2 = "he time ", P3 = "for all ",
+      C1 = crypto:des_cbc_encrypt(Key, IVec, P1),
+      C2 = crypto:des_cbc_encrypt(Key, C1, P2),
+      C3 = crypto:des_cbc_encrypt(Key, C2, P3),
+      C = &lt;&lt;C1/binary, C2/binary, C3/binary&gt;&gt;,
+      C = &lt;&lt;16#e5,16#c7,16#cd,16#de,16#87,16#2b,16#f2,16#7c,
+             16#43,16#e9,16#34,16#00,16#8c,16#38,16#9c,16#0f,
+             16#68,16#37,16#88,16#49,16#9a,16#7c,16#05,16#f6&gt;&gt;,
+      &lt;&lt;"Now is the time for all "&gt;&gt; == 
+                        crypto:des_cbc_decrypt(Key, IVec, C).
+    </pre></div>
+    <p>The following is true for the DES CBC mode. For all
+      decompositions <span class="code">P1 ++ P2 = P</span> of a plain text message
+      <span class="code">P</span> (where the length of all quantities are multiples of 8
+      bytes), the encryption <span class="code">C</span> of <span class="code">P</span> is equal to <span class="code">C1 ++
+      C2</span>, where <span class="code">C1</span> is obtained by encrypting <span class="code">P1</span> with
+      <span class="code">Key</span> and the initializing vector <span class="code">IVec</span>, and where
+      <span class="code">C2</span> is obtained by encrypting <span class="code">P2</span> with <span class="code">Key</span>
+      and the initializing vector <span class="code">last8(C1)</span>,
+      where <span class="code">last(Binary)</span> denotes the last 8 bytes of the
+      binary <span class="code">Binary</span>.
+      </p>
+    <p>Similarly, for all decompositions <span class="code">C1 ++ C2 = C</span> of a
+      cipher text message <span class="code">C</span> (where the length of all quantities
+      are multiples of 8 bytes), the decryption <span class="code">P</span> of <span class="code">C</span>
+      is equal to <span class="code">P1 ++ P2</span>, where <span class="code">P1</span> is obtained by
+      decrypting <span class="code">C1</span> with <span class="code">Key</span> and the initializing vector
+      <span class="code">IVec</span>, and where <span class="code">P2</span> is obtained by decrypting
+      <span class="code">C2</span> with <span class="code">Key</span> and the initializing vector
+      <span class="code">last8(C1)</span>, where <span class="code">last8(Binary)</span> is as above.
+      </p>
+    <p>For DES3 (which uses three 64 bit keys) the situation is the
+      same.
+    </p>
+  </div>
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

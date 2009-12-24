@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Observer Release Notes</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="observer.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Observer</strong><br><strong>Release Notes</strong><br><small>Version 0.9.8.1</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu"><li title="Observer Release Notes" expanded="true">Observer Release Notes<ul>
+<li>
+<a href="notes.html">
+              Top of chapter
+            </a></li>
+<li title="Observer 0.9.8.1">
+<a href="notes.html#id2251913">Observer 0.9.8.1</a></li>
+<li title="Observer 0.9.8">
+<a href="notes.html#id2252110">Observer 0.9.8</a></li>
+<li title="Observer 0.9.7.4">
+<a href="notes.html#id2252159">Observer 0.9.7.4</a></li>
+<li title="Observer 0.9.7.3">
+<a href="notes.html#id2252203">Observer 0.9.7.3</a></li>
+<li title="Observer 0.9.7.2">
+<a href="notes.html#id2262433">Observer 0.9.7.2</a></li>
+<li title="Observer 0.9.7.1">
+<a href="notes.html#id2262466">Observer 0.9.7.1</a></li>
+<li title="Observer 0.9.7 (R11B)">
+<a href="notes.html#id2262502">Observer 0.9.7 (R11B)</a></li>
+<li title="Observer 0.9.6.2">
+<a href="notes.html#id2262545">Observer 0.9.6.2</a></li>
+<li title="Observer 0.9.6.1">
+<a href="notes.html#id2254290">Observer 0.9.6.1</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Observer Release Notes</h1>
+  
+  <p>This document describes the changes made to the Observer
+    application.</p>
+<h3><a name="id2251913">1.1 
+        Observer 0.9.8.1</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    Major improvements of the Erlang distribution for Erlang
+	    runtime systems with SMP support. Previously distribution
+	    port locks were heavily contended, and all encoding and
+	    decoding for a specific distribution channel had to be
+	    done in sequence. Lock contention due to the distribution
+	    is now negligible and both encoding and decoding of
+	    Erlang messages can be done in parallel.</p>
+          <p>
+	    The old atom cache protocol used by the Erlang
+	    distribution has been dropped since it effectively
+	    prevented all parallel encoding and decoding of messages
+	    passed over the same distribution channel.</p>
+          <p>
+	    A new atom cache protocol has been introduced which
+	    isolates atom cache accesses and makes parallel encoding
+	    and decoding of messages passed over the same
+	    distribution channel possible. The new atom cache
+	    protocol also use an atom cache size 8 times larger than
+	    before. The new atom cache protocol is documented in the
+	    ERTS users guide.</p>
+          <p>
+	    Erlang messages received via the distribution are now
+	    decoded by the receiving Erlang processes without holding
+	    any distribution channel specific locks. Erlang messages
+	    and signals sent over the distribution are as before
+	    encoded by the sending Erlang process, but now without
+	    holding any distribution channel specific locks during
+	    the encoding. That is, both encoding and decoding can be
+	    and are done in parallel regardless of distribution
+	    channel used.</p>
+          <p>
+	    The part that cannot be parallelized is the atom cache
+	    updates. Atom cache updates are therefore now scheduled
+	    on the distribution port. Since it is only one entity per
+	    distribution channel doing this work there is no lock
+	    contention due to the atom cache updates.</p>
+          <p>
+	    The new runtime system does not understand the old atom
+	    cache protocol. New and old runtime systems can however
+	    still communicate, but no atom cache will be used.</p>
+          <p>
+	    Own Id: OTP-7774</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2252110">1.2 
+        Observer 0.9.8</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    <span class="code">etop</span> would crash if the emulator's custom
+	    allocators had been turned off (e.g. using the
+	    <span class="code">+Meamin</span> option).</p>
+          <p>
+	    Own Id: OTP-7519</p>
+        </li>
+        <li>
+	    <p>The copyright notices have been updated.</p>
+          <p>
+	    Own Id: OTP-7851</p>
+        </li>
+      </ul>
+    
+  <h3><a name="id2252159">1.3 
+        Observer 0.9.7.4</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Minor Makefile changes.</p>
+          <p>Own Id: OTP-6689</p>
+        </li>
+        <li>
+          <p>Obsolete guard tests (such as list()) have been replaced
+            with the modern guard tests (such as is_list()).</p>
+          <p>Own Id: OTP-6725</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2252203">1.4 
+        Observer 0.9.7.3</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>This application has been updated to eliminate warnings
+            by Dialyzer.</p>
+          <p>Own Id: OTP-6551</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262433">1.5 
+        Observer 0.9.7.2</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Several minor bugs and race conditions eliminated in the
+            runtime_tools and observer applications.</p>
+          <p>Own Id: OTP-6265</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262466">1.6 
+        Observer 0.9.7.1</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Crash dump with large integers could crash the
+            <span class="code">crashdump_viewer</span>.</p>
+          <p>Own Id: OTP-6301</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262502">1.7 
+        Observer 0.9.7 (R11B)</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Fixed a bug in <span class="code">etop</span> which made the Load and Memory
+            information in the header incorrect -- for example the
+            value shown for <span class="code">binary</span> (memory allocated for
+            binaries) was actually the number of currently running
+            processes. (Thanks to Rikard Johansson.)</p>
+          <p>Own Id: OTP-6075</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2262545">1.8 
+        Observer 0.9.6.2</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The Observer application has been recompiled because of
+            a compiler bug.</p>
+          <p>Own Id: OTP-5700</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2254290">1.9 
+        Observer 0.9.6.1</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p><span class="code">crashdump_viewer</span> is faster when showing message,
+            dictionary, and stack dump for large processes.</p>
+          <p>Own Id: OTP-5408</p>
+        </li>
+      </ul>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2002-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

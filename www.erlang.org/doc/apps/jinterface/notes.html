@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Jinterface Release Notes</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="jinterface.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>jinterface</strong><br><strong>Release Notes</strong><br><small>Version 1.5.2</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu"><li title="Jinterface Release Notes" expanded="true">Jinterface Release Notes<ul>
+<li>
+<a href="notes.html">
+              Top of chapter
+            </a></li>
+<li title="Jinterface 1.5.2">
+<a href="notes.html#id2256947">Jinterface 1.5.2</a></li>
+<li title="Jinterface 1.5.1">
+<a href="notes.html#id2256978">Jinterface 1.5.1</a></li>
+<li title="Jinterface 1.5">
+<a href="notes.html#id2257038">Jinterface 1.5</a></li>
+<li title="Jinterface 1.4.2">
+<a href="notes.html#id2257445">Jinterface 1.4.2</a></li>
+<li title="Jinterface 1.4.1">
+<a href="notes.html#id2257475">Jinterface 1.4.1</a></li>
+<li title="Jinterface 1.4">
+<a href="notes.html#id2257530">Jinterface 1.4</a></li>
+<li title="Jinterface 1.3">
+<a href="notes.html#id2257592">Jinterface 1.3</a></li>
+<li title="Jinterface 1.2.1.2">
+<a href="notes.html#id2253490">Jinterface 1.2.1.2</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Jinterface Release Notes</h1>
+  
+  <p>This document describes the changes made to the Jinterface application.</p>
+<h3><a name="id2256947">1.1 
+        Jinterface 1.5.2</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    The documentation is now built with open source tools
+	    (xsltproc and fop) that exists on most platforms. One
+	    visible change is that the frames are removed.</p>
+          <p>
+	    Own Id: OTP-8201</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2256978">1.2 
+        Jinterface 1.5.1</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+	    Many Erlang classes, e.g. OtpErlangRef, was missing an
+	    implementation of the hashCode() method, making it futile
+	    to put them in hash structures such as HashMap. Bug and
+	    patch provided by Paul Guyot. We extended the patch to
+	    all classes and improved (?) on the hash algorithm.</p>
+          <p>
+	    Own Id: OTP-7899</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    jinterface uses the new environment variable
+	    ERL_EPMD_PORT the same way that erl, epmd and
+	    erl_interface do since R13A.</p>
+          <p>
+	    Own Id: OTP-7885</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2257038">1.3 
+        Jinterface 1.5</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    A number of fixes and improvements from the ErlIDE group;
+	    Vlad Dumitrescu and Jakob Cederlund: JDK 1.5 is now a
+	    minimal requirement for building Jinterface. New method:
+	    OtpEpmd.lookupNames. OtpErlangList is now iterable.
+	    Non-proper lists are now allowed - you have to test if a
+	    list is proper or not. Non-proper lists can also be
+	    created. New methods: isProper, getHead, getTail and
+	    getNthTail. The get tail methods creates a sublist object
+	    that re-uses the original list. OtpErlangPid is now
+	    Comparable. Empty atoms can now be constructed, a missing
+	    feature pointed out by Sebastien Boisgerault on
+	    erlang-questions.</p>
+          <p>
+	    *** POTENTIAL INCOMPATIBILITY ***</p>
+          <p>
+	    Own Id: OTP-7832</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2257445">1.4 
+        Jinterface 1.4.2</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+	    A bug when Jinterface did not detect remote node
+	    disconnects has been corrected.</p>
+          <p>
+	    Own Id: OTP-7624</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2257475">1.5 
+        Jinterface 1.4.1</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+	    Jinterface has been fixed to use the loopback interface
+	    when connecting to the Erlang Port Mapper Daemon - epmd.
+	    This facilitates firewall configuration and saves
+	    resources.</p>
+          <p>
+	    Own Id: OTP-7103</p>
+        </li>
+        <li>
+	    <p>Jinterface now refuses to connect to another node that
+	    does not agree on the other node's name. This has been a
+	    problem in that a connection was set up, but not used on
+	    a following send, which caused a second erroneous
+	    connection attempt to fail since the other (Erlang) node
+	    rejects a connection due to name disagreement.</p>
+	    <p>Problem reported and dissected by Alexander Lamb</p>
+          <p>
+	    Own Id: OTP-7330</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2257530">1.6 
+        Jinterface 1.4</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+	    <p>Jinterface has been updated to handle compressed
+	    terms, bitstring, new (IEEE) floats and bignums. This has
+	    caused a few incompatibilities.</p>
+	    <p>com.ericsson.otp.erlang.OtpOutputStream now extends
+	    java.io.ByteArrayOutputStream, previously
+	    java.lang.Object, and hence the method size() now return
+	    the number of bytes in the stream as dictated by the new
+	    parent class and not the buffer length as before. The new
+	    method length() returns what the old size() did return.
+	    The method count() is deprecated as it returns the same
+	    as the new size().</p>
+	    <p>com.ericsson.otp.erlang.OtpErlangLong now can handle
+	    larger values than 64-bit. Previously when larger than
+	    64-bit integers were sent to a Jinterface node, it caused
+	    an com.ericsson.otp.erlang.OtpDecodeException. Now the
+	    integer is accepted, but the return value of longValue()
+	    is silently truncated, as opposed to the return value of
+	    intValue() that now and previously raises an
+	    com.ericsson.otp.erlang.OtpRangeException for
+	    unrepresentable values. The new methods isLong() and
+	    isULong() can be used to determine if the value fits in a
+	    long.</p>
+          <p>
+	    *** POTENTIAL INCOMPATIBILITY ***</p>
+          <p>
+	    Own Id: OTP-6809</p>
+        </li>
+      </ul>
+    
+  <h3><a name="id2257592">1.7 
+        Jinterface 1.3</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p><span class="code">OtpMbox.receive()</span> and <span class="code">OtpMbox.receive(long timeout)</span> can now throw
+            <span class="code">OtpErlangDecodeException</span> if the received message
+            can not be decoded. <span class="code">null</span> is now only returned from
+            <span class="code">OtpMbox.receive(long timeout)</span> if a timeout occurs.
+            <span class="code">OtpMbox.receive()</span> will never return <span class="code">null</span>.</p>
+          <p>*** POTENTIAL INCOMPATIBILITY ***</p>
+          <p>Own Id: OTP-3932 Aux Id: seq5196 </p>
+        </li>
+        <li>
+          <p>Strings longer than 65535 bytes were encoded wrong by
+            jinterface.</p>
+          <p>Own Id: OTP-4883 Aux Id: OTP-4865 </p>
+        </li>
+        <li>
+          <p>Misc bugfixes: </p>
+          <ul>
+            <li>
+              <p>A node pinging itself does no
+                longer cause the java program to hang.</p>
+              <p></p>
+            </li>
+            <li>
+              <p><span class="code">OtpMbox.close()</span> uses exit reason
+                <span class="code">'normal'</span> (atom) instead of <span class="code">"normal"</span>
+                (string).</p>
+              <p></p>
+            </li>
+            <li>
+              <p>Added <span class="code">OtpNode.closeMbox(OtpMbox mbox, OtpErlangObject reason)</span>.</p>
+              <p></p>
+            </li>
+            <li>
+              <p>Added <span class="code">OtpMbox.exit(OtpErlangObject reason)</span>
+                and <span class="code">OtpMbox.exit(String reason)</span>.</p>
+              <p></p>
+            </li>
+            <li>
+              <p>Added <span class="code">OtpMbox.exit(OtpErlangPid to, OtpErlangObject reason)</span>.</p>
+              <p></p>
+            </li>
+            <li>
+              <p><span class="code">OtpMbox.exit(OtpErlangPid to, String reason)</span>
+                is now equivalent to <span class="code">OtpMbox.exit(to, new OtpErlangAtom(reason))</span>.</p>
+              <p></p>
+            </li>
+            <li>Exit signals from an Erlang node can now contain
+             any erlang term as reason, not only atoms. </li>
+          </ul>
+          <p>Own Id: OTP-5088</p>
+        </li>
+        <li>
+          <p>For java versions 1.3.1 or later, <span class="code">localStatus</span> was
+            not sent to registered status handler when
+            <span class="code">OtpNode.close()</span> was called. This is now corrected.</p>
+          <p>Own Id: OTP-5169</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Process identifiers and port identifiers have been
+            made more unique. Previously 18 bits were used as id in
+            the internal representation of process and port
+            identifiers. Now 28 bits are used. </p>
+          <p>The maximum
+            limit on the number of concurrently existing processes
+            due to the representation of pids has been increased to
+            268435456 processes. The same is true for ports. This
+            limit will at least on a 32-bit architecture be
+            impossible to reach due to memory shortage. </p>
+          <p><strong>NOTE:</strong> By default, the <span class="code">ERTS</span>, and the
+            <span class="code">erl_interface</span>, <span class="code">ei</span>, and <span class="code">jinterface</span>
+            libraries are now only guaranteed to be compatible with
+            other Erlang/OTP components from the same release. It is
+            possible to set each component in compatibility mode of
+            an earlier release, though. See the documentation for
+            respective component on how to set it in compatibility
+            mode. </p>
+          <p>*** POTENTIAL INCOMPATIBILITY ***</p>
+          <p>Own Id: OTP-4968 Aux Id: OTP-4196 </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2253490">1.8 
+        Jinterface 1.2.1.2</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Output of Java long was truncated to 32 bits. IDL long
+            long and unsigned long long could not be used in a struct
+            for the Java backend. All unsigned integer types for the
+            Java backend had broken marshalling for large values.
+            These bugs has now been fixed.</p>
+          <p>Own Id: OTP-4763 Aux Id: seq8024 </p>
+        </li>
+      </ul>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2000-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- VxWorks</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="../pdf/otp-system-documentation.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Embedded Systems</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../js/flipmenu">
+<li title="Embedded Solaris" expanded="false">Embedded Solaris<ul>
+<li>
+<a href="embedded_solaris.html">
+              Top of chapter
+            </a></li>
+<li title="Memory Usage">
+<a href="embedded_solaris.html#id2251694">Memory Usage</a></li>
+<li title="Disk Space Usage">
+<a href="embedded_solaris.html#id2254700">Disk Space Usage</a></li>
+<li title="Installation">
+<a href="embedded_solaris.html#id2257427">Installation</a></li>
+<li title="Starting Erlang">
+<a href="embedded_solaris.html#id2258096">Starting Erlang</a></li>
+<li title="Programs">
+<a href="embedded_solaris.html#id2258167">Programs</a></li>
+</ul>
+</li>
+<li title="Windows NT" expanded="false">Windows NT<ul>
+<li>
+<a href="embedded_nt.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="embedded_nt.html#id2259205">Introduction</a></li>
+<li title="Memory Usage">
+<a href="embedded_nt.html#id2259218">Memory Usage</a></li>
+<li title="Disk Space Usage">
+<a href="embedded_nt.html#id2259232">Disk Space Usage</a></li>
+<li title="Installation">
+<a href="embedded_nt.html#id2259244">Installation</a></li>
+<li title="Starting Erlang">
+<a href="embedded_nt.html#id2259288">Starting Erlang</a></li>
+</ul>
+</li>
+<li title="VxWorks" expanded="true">VxWorks<ul>
+<li>
+<a href="vxworks.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="vxworks.html#id2251731">Introduction</a></li>
+<li title="Memory Usage">
+<a href="vxworks.html#id2251751">Memory Usage</a></li>
+<li title="Disk Usage">
+<a href="vxworks.html#id2251763">Disk Usage</a></li>
+<li title="Installation">
+<a href="vxworks.html#id2251775">Installation</a></li>
+<li title="OS Specific Functionality/Information">
+<a href="vxworks.html#id2251894">OS Specific Functionality/Information</a></li>
+<li title="Starting Erlang">
+<a href="vxworks.html#id2251980">Starting Erlang</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>3 VxWorks</h1>
+  
+  <p>This chapter describes the OS specific parts of OTP which relate
+    to VxWorks.
+    </p>
+  <h3><a name="id2251731">3.1 
+        Introduction</a></h3>
+    
+    <p>The Erlang/OTP distribution for VxWorks is limited to what
+      Switchboard requires (Switchboard is a general purpose
+      switching hardware developed by Ericsson).
+      </p>
+    <p>Please consult the README file, included at root level in the
+      installation, for latest information on the distribution.
+      </p>
+  
+  <h3><a name="id2251751">3.2 
+        Memory Usage</a></h3>
+    
+    <p>Memory required is 32 Mbyte.
+      </p>
+  
+  <h3><a name="id2251763">3.3 
+        Disk Usage</a></h3>
+    
+    <p>The disk space required is 22 Mbyte, the documentation included.   
+      </p>
+  
+  <h3><a name="id2251775">3.4 
+        Installation</a></h3>
+    
+    <p>OTP/VxWorks is supplied in a distribution file named
+      <span class="code">&lt;PREFIX&gt;.tar.gz</span>; i.e.  a tar archive that is
+      compressed with gzip. <span class="code">&lt;PREFIX&gt;</span> represents the
+      name of the release,
+      e.g. <span class="code">otp_LXA12345_vxworks_cpu32_R42A</span>. Assuming you are
+      installing to a Solaris file system, the installation is
+      performed by following these steps: &lt;
+      </p>
+    <p></p>
+    <ul>
+      <li>Change to the directory where you want to install
+       OTP/VxWorks (<span class="code">&lt;ROOTDIR&gt;</span>): <span class="code">cd &lt;ROOTDIR&gt;</span>
+</li>
+      <li>Make a directory to put OTP/VxWorks in: <span class="code">mkdir otp_vxworks_cpu32</span> (or whatever you want to call it)</li>
+      <li>Change directory to the newly created one: <span class="code">cd otp_vxworks_cpu32</span>
+</li>
+      <li>Copy the distribution file there from where it is located
+       (<span class="code">&lt;RELDIR&gt;</span>): <span class="code">cp &lt;RELDIR&gt;/&lt;PREFIX&gt;.tar.gz .</span>
+</li>
+      <li>Unzip the distribution file: <span class="code">gunzip &lt;PREFIX&gt;.tar.gz</span>
+</li>
+      <li>Untar <span class="code">&lt;PREFIX&gt;.tar</span>: <span class="code">tar xvf &lt;PREFIX&gt;.tar</span>
+</li>
+      <li>Create a bin directory: <span class="code">mkdir bin</span>
+</li>
+      <li>Copy the VxWorks Erlang/OTP start-up script to the bin directory:
+      <span class="code">cp erts-Vsn/bin/erl bin/.</span>
+</li>
+      <li>Copy the example start scripts to the bin directory: 
+      <span class="code">cp releases/R42A/*.boot bin/.</span>
+</li>
+    </ul>
+    <p>If you use VxWorks nfs mounting facility to mount the Solaris
+      file system, this installation may be directly used. An other
+      possibility is to copy the installation to a local VxWorks DOS
+      file system, from where it is used.
+      </p>
+  
+  <h3><a name="id2251894">3.5 
+        OS Specific Functionality/Information</a></h3>
+    
+    <p>There are a couple of files that are unique to the VxWorks
+      distribution of Erlang/OTP, these files are described here.
+      </p>
+    <ul>
+      <li>README - this files has some information on VxWorks
+       specifics that you are advised to consult. This includes the
+       latest information on what parts of OTP are included in the
+       VxWorks distribution of Erlang/OTP. If you want us to
+       include more parts, please contact us to discuss
+       this.</li>
+      <li>erts-Vsn/bin/resolv.conf - A resolver configuration EXAMPLE file. 
+       You have to edit this file.</li>
+      <li>erts-Vsn/bin/erl - This is an EXAMPLE start script for VxWorks.
+       You have to edit this file to suit your needs.</li>
+      <li>erts-Vsn/bin/erl_io - One possible solution to the problem
+       of competing Erlang and VxWorks shell. Contains the function
+       'start_erl' called by the erl script. Also contains the
+       function 'to_erl' to be used when connecting to the Erlang
+       shell from VxWorks' shell.</li>
+      <li>erts-Vsn/bin/erl_exec - Rearranges command line arguments
+       and starts Erlang.</li>
+      <li>erts-Vsn/bin/vxcall - Allows spawning of standard VxWorks
+       shell functions (which is just about any function in the
+       system...) from open_port/2.  E.g. open_port({spawn, 'vxcall
+       func arg1 arg2'}, []) will cause the output that 'func arg1,
+       arg2' would have given in the shell to be received from the
+       port.</li>
+      <li>erts-Vsn/bin/rdate - Set the time from a networked host,
+       like the SunOS command.  Nothing Erlang-specific, but nice
+       if you want date/0 and time/0 to give meaningful values (you
+       also need a TIMEZONE environment setting if GMT isn't
+       acceptable).  For example: <span class="code">putenv "TIMEZONE=CET::-60:033002:102603"</span> sets central european
+       time.</li>
+      <li>erts-Vsn/src - Contains source for the above files, and
+       additionally config.c, driver.h, preload.c and
+       reclaim.h. Reclaim.h defines the interface to a simple
+       mechanism for "resource reclamation" that is part of the
+       Erlang runtime system - may be useful to "port program" writers (and
+       possibly others). Take careful note of the caveats listed in
+       the file!</li>
+    </ul>
+  
+  <h3><a name="id2251980">3.6 
+        Starting Erlang</a></h3>
+    
+    <p>Start (and restart) of the system depends on what file system
+      is used. To be able to start the system from a nfs mounted
+      file system you can use VxWorks start script facility to run a
+      start script similar to the example below. Note that the
+      Erlang/OTP start-up script is run at the end of this script.
+      </p>
+    <div class="example"><pre>
+#  start.script v1.0 1997/09/08 patrik
+#  
+#  File name:  start.script 
+#  Purpose:    Starting the VxWorks/cpu32 erlang/OTP
+#  Author:     patrik@erix.ericsson.se
+#  Resides in: ~tornado/wind/target/config/ads360/
+#
+# Set shell prompt
+#
+shellPromptSet("sauron-&gt; ")
+#
+# Set default gateway
+#
+hostAdd "router-20","150.236.20.251"
+routeAdd "0","router-20"
+#
+# Mount /home from gandalf
+#
+hostAdd "gandalf","150.236.20.16"
+usergroup=10 
+nfsAuthUnixSet("gandalf", 452, 10, 1, &amp;usergroup) 
+nfsMount("gandalf", "/export/home", "/home")
+#
+# Load and run rdate.o to set correct date on the target
+#
+ld &lt; /home/gandalf/tornado/wind/target/config/ads360/rdate.o
+rdate("gandalf")
+#
+# Setup timezone information (Central European time)
+#
+putenv "TIMEZONE=CET::-60:033002:102603"
+#
+# Run the Erlang/OTP start script
+#
+cd "/home/gandalf/tornado/wind/target/erlang_cpu32_R42A/bin"
+&lt;erl
+    </pre></div>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1997-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

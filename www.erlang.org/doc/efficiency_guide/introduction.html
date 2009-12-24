@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- Introduction</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="../pdf/otp-system-documentation.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Efficiency Guide</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../js/flipmenu">
+<li title="Introduction" expanded="true">Introduction<ul>
+<li>
+<a href="introduction.html">
+              Top of chapter
+            </a></li>
+<li title="Purpose">
+<a href="introduction.html#id2259534">Purpose</a></li>
+<li title="Prerequisites">
+<a href="introduction.html#id2258051">Prerequisites</a></li>
+</ul>
+</li>
+<li title="The Eight Myths of Erlang Performance" expanded="false">The Eight Myths of Erlang Performance<ul>
+<li>
+<a href="myths.html">
+              Top of chapter
+            </a></li>
+<li title="Myth: Funs are slow">
+<a href="myths.html#id2263963">Myth: Funs are slow</a></li>
+<li title="Myth: List comprehensions are slow">
+<a href="myths.html#id2252420">Myth: List comprehensions are slow</a></li>
+<li title="Myth: Tail-recursive functions are MUCH faster
+    than recursive functions">
+<a href="myths.html#id2256447">Myth: Tail-recursive functions are MUCH faster
+    than recursive functions</a></li>
+<li title="Myth: '++' is always bad">
+<a href="myths.html#id2259251">Myth: '++' is always bad</a></li>
+<li title="Myth: Strings are slow">
+<a href="myths.html#id2258139">Myth: Strings are slow</a></li>
+<li title="Myth: Repairing a Dets file is very slow">
+<a href="myths.html#id2256452">Myth: Repairing a Dets file is very slow</a></li>
+<li title="Myth: BEAM is a stack-based byte-code virtual machine (and therefore slow)">
+<a href="myths.html#id2256466">Myth: BEAM is a stack-based byte-code virtual machine (and therefore slow)</a></li>
+<li title="Myth: Use '_' to speed up your program when a variable is not used">
+<a href="myths.html#id2259957">Myth: Use '_' to speed up your program when a variable is not used</a></li>
+</ul>
+</li>
+<li title="Common Caveats" expanded="false">Common Caveats<ul>
+<li>
+<a href="commoncaveats.html">
+              Top of chapter
+            </a></li>
+<li title="The regexp module">
+<a href="commoncaveats.html#id2256371">The regexp module</a></li>
+<li title="The timer module">
+<a href="commoncaveats.html#id2259574">The timer module</a></li>
+<li title="list_to_atom/1">
+<a href="commoncaveats.html#id2251593">list_to_atom/1</a></li>
+<li title="length/1">
+<a href="commoncaveats.html#id2251487">length/1</a></li>
+<li title="setelement/3">
+<a href="commoncaveats.html#id2258633">setelement/3</a></li>
+<li title="size/1">
+<a href="commoncaveats.html#id2252188">size/1</a></li>
+<li title="split_binary/2">
+<a href="commoncaveats.html#id2256516">split_binary/2</a></li>
+<li title="The '--' operator">
+<a href="commoncaveats.html#id2251635">The '--' operator</a></li>
+</ul>
+</li>
+<li title="Constructing and matching binaries" expanded="false">Constructing and matching binaries<ul>
+<li>
+<a href="binaryhandling.html">
+              Top of chapter
+            </a></li>
+<li title="How binaries are implemented">
+<a href="binaryhandling.html#id2252289">How binaries are implemented</a></li>
+<li title="Constructing binaries">
+<a href="binaryhandling.html#id2259474">Constructing binaries</a></li>
+<li title="Matching binaries">
+<a href="binaryhandling.html#id2263824">Matching binaries</a></li>
+</ul>
+</li>
+<li title="List handling" expanded="false">List handling<ul>
+<li>
+<a href="listHandling.html">
+              Top of chapter
+            </a></li>
+<li title="Creating a list">
+<a href="listHandling.html#id2260830">Creating a list</a></li>
+<li title="List comprehensions">
+<a href="listHandling.html#id2262072">List comprehensions</a></li>
+<li title="Deep and flat lists">
+<a href="listHandling.html#id2262150">Deep and flat lists</a></li>
+<li title="Why you should not worry about recursive lists functions">
+<a href="listHandling.html#id2262303">Why you should not worry about recursive lists functions</a></li>
+</ul>
+</li>
+<li title="Functions" expanded="false">Functions<ul>
+<li>
+<a href="functions.html">
+              Top of chapter
+            </a></li>
+<li title="Pattern matching">
+<a href="functions.html#id2262443">Pattern matching</a></li>
+<li title="Function Calls ">
+<a href="functions.html#id2262691">Function Calls </a></li>
+<li title="Memory usage in recursion">
+<a href="functions.html#id2262842">Memory usage in recursion</a></li>
+</ul>
+</li>
+<li title="Tables and databases" expanded="false">Tables and databases<ul>
+<li>
+<a href="tablesDatabases.html">
+              Top of chapter
+            </a></li>
+<li title="Ets, Dets and Mnesia">
+<a href="tablesDatabases.html#id2262942">Ets, Dets and Mnesia</a></li>
+<li title="Ets specific">
+<a href="tablesDatabases.html#id2264413">Ets specific</a></li>
+<li title="Mnesia specific">
+<a href="tablesDatabases.html#id2264530">Mnesia specific</a></li>
+</ul>
+</li>
+<li title="Processes" expanded="false">Processes<ul>
+<li>
+<a href="processes.html">
+              Top of chapter
+            </a></li>
+<li title="Creation of an Erlang process">
+<a href="processes.html#id2264653">Creation of an Erlang process</a></li>
+<li title="Process messages">
+<a href="processes.html#id2264827">Process messages</a></li>
+<li title="The SMP emulator">
+<a href="processes.html#id2265045">The SMP emulator</a></li>
+</ul>
+</li>
+<li title="Drivers" expanded="false">Drivers<ul>
+<li>
+<a href="drivers.html">
+              Top of chapter
+            </a></li>
+<li title="Drivers and concurrency">
+<a href="drivers.html#id2265164">Drivers and concurrency</a></li>
+<li title="Avoiding copying of binaries when calling a driver">
+<a href="drivers.html#id2265214">Avoiding copying of binaries when calling a driver</a></li>
+<li title="Returning small binaries from a driver">
+<a href="drivers.html#id2265291">Returning small binaries from a driver</a></li>
+<li title="Returning big binaries without copying from a driver">
+<a href="drivers.html#id2265332">Returning big binaries without copying from a driver</a></li>
+</ul>
+</li>
+<li title="Advanced" expanded="false">Advanced<ul>
+<li>
+<a href="advanced.html">
+              Top of chapter
+            </a></li>
+<li title="Memory">
+<a href="advanced.html#id2265486">Memory</a></li>
+<li title="System limits">
+<a href="advanced.html#id2265856">System limits</a></li>
+</ul>
+</li>
+<li title="Profiling" expanded="false">Profiling<ul>
+<li>
+<a href="profiling.html">
+              Top of chapter
+            </a></li>
+<li title="Do not guess about performance - profile">
+<a href="profiling.html#id2266192">Do not guess about performance - profile</a></li>
+<li title="Big systems">
+<a href="profiling.html#id2266274">Big systems</a></li>
+<li title="What to look for">
+<a href="profiling.html#id2266300">What to look for</a></li>
+<li title="Tools">
+<a href="profiling.html#id2266367">Tools</a></li>
+<li title="Benchmarking">
+<a href="profiling.html#id2266861">Benchmarking</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Introduction</h1>
+  
+  <h3><a name="id2259534">1.1 
+        Purpose</a></h3>
+    
+    <p>Premature optimization is the root of all evil. -- D.E. Knuth</p>
+    <p>Efficient code can be well-structured and clean code, based on
+    on a sound overall architecture and sound algorithms.
+    Efficient code can be highly implementation-code that bypasses
+    documented interfaces and takes advantage of obscure quirks in
+    the current implementation.</p>
+    
+    <p>Ideally, your code should only contain the first kind of efficient
+    code. If that turns out to be too slow, you should profile the application
+    to find out where the performance bottlenecks are and optimize only the
+    bottlenecks. Other code should stay as clean as possible.</p>
+    <p>Fortunately, compiler and run-time optimizations introduced in
+    R12B makes it easier to write code that is both clean and
+    efficient. For instance, the ugly workarounds needed in R11B and earlier
+    releases to get the most speed out of binary pattern matching are
+    no longer necessary. In fact, the ugly code is slower
+    than the clean code (because the clean code has become faster, not
+    because the uglier code has become slower).</p>
+    
+    <p>This Efficiency Guide cannot really learn you how to write efficient
+    code. It can give you a few pointers about what to avoid and what to use,
+    and some understanding of how certain language features are implemented.
+    We have generally not included general tips about optimization that will
+    work in any language, such as moving common calculations out of loops.</p>
+  
+  <h3><a name="id2258051">1.2 
+        Prerequisites</a></h3>
+    
+    <p>It is assumed that the reader is familiar with the Erlang
+      programming language and concepts of OTP.</p>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2001-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

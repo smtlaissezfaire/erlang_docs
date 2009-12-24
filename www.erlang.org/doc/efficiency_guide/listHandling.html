@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- List handling</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="../pdf/otp-system-documentation.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Efficiency Guide</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../js/flipmenu">
+<li title="Introduction" expanded="false">Introduction<ul>
+<li>
+<a href="introduction.html">
+              Top of chapter
+            </a></li>
+<li title="Purpose">
+<a href="introduction.html#id2259534">Purpose</a></li>
+<li title="Prerequisites">
+<a href="introduction.html#id2258051">Prerequisites</a></li>
+</ul>
+</li>
+<li title="The Eight Myths of Erlang Performance" expanded="false">The Eight Myths of Erlang Performance<ul>
+<li>
+<a href="myths.html">
+              Top of chapter
+            </a></li>
+<li title="Myth: Funs are slow">
+<a href="myths.html#id2263963">Myth: Funs are slow</a></li>
+<li title="Myth: List comprehensions are slow">
+<a href="myths.html#id2252420">Myth: List comprehensions are slow</a></li>
+<li title="Myth: Tail-recursive functions are MUCH faster
+    than recursive functions">
+<a href="myths.html#id2256447">Myth: Tail-recursive functions are MUCH faster
+    than recursive functions</a></li>
+<li title="Myth: '++' is always bad">
+<a href="myths.html#id2259251">Myth: '++' is always bad</a></li>
+<li title="Myth: Strings are slow">
+<a href="myths.html#id2258139">Myth: Strings are slow</a></li>
+<li title="Myth: Repairing a Dets file is very slow">
+<a href="myths.html#id2256452">Myth: Repairing a Dets file is very slow</a></li>
+<li title="Myth: BEAM is a stack-based byte-code virtual machine (and therefore slow)">
+<a href="myths.html#id2256466">Myth: BEAM is a stack-based byte-code virtual machine (and therefore slow)</a></li>
+<li title="Myth: Use '_' to speed up your program when a variable is not used">
+<a href="myths.html#id2259957">Myth: Use '_' to speed up your program when a variable is not used</a></li>
+</ul>
+</li>
+<li title="Common Caveats" expanded="false">Common Caveats<ul>
+<li>
+<a href="commoncaveats.html">
+              Top of chapter
+            </a></li>
+<li title="The regexp module">
+<a href="commoncaveats.html#id2256371">The regexp module</a></li>
+<li title="The timer module">
+<a href="commoncaveats.html#id2259574">The timer module</a></li>
+<li title="list_to_atom/1">
+<a href="commoncaveats.html#id2251593">list_to_atom/1</a></li>
+<li title="length/1">
+<a href="commoncaveats.html#id2251487">length/1</a></li>
+<li title="setelement/3">
+<a href="commoncaveats.html#id2258633">setelement/3</a></li>
+<li title="size/1">
+<a href="commoncaveats.html#id2252188">size/1</a></li>
+<li title="split_binary/2">
+<a href="commoncaveats.html#id2256516">split_binary/2</a></li>
+<li title="The '--' operator">
+<a href="commoncaveats.html#id2251635">The '--' operator</a></li>
+</ul>
+</li>
+<li title="Constructing and matching binaries" expanded="false">Constructing and matching binaries<ul>
+<li>
+<a href="binaryhandling.html">
+              Top of chapter
+            </a></li>
+<li title="How binaries are implemented">
+<a href="binaryhandling.html#id2252289">How binaries are implemented</a></li>
+<li title="Constructing binaries">
+<a href="binaryhandling.html#id2259474">Constructing binaries</a></li>
+<li title="Matching binaries">
+<a href="binaryhandling.html#id2263824">Matching binaries</a></li>
+</ul>
+</li>
+<li title="List handling" expanded="true">List handling<ul>
+<li>
+<a href="listHandling.html">
+              Top of chapter
+            </a></li>
+<li title="Creating a list">
+<a href="listHandling.html#id2260830">Creating a list</a></li>
+<li title="List comprehensions">
+<a href="listHandling.html#id2262072">List comprehensions</a></li>
+<li title="Deep and flat lists">
+<a href="listHandling.html#id2262150">Deep and flat lists</a></li>
+<li title="Why you should not worry about recursive lists functions">
+<a href="listHandling.html#id2262303">Why you should not worry about recursive lists functions</a></li>
+</ul>
+</li>
+<li title="Functions" expanded="false">Functions<ul>
+<li>
+<a href="functions.html">
+              Top of chapter
+            </a></li>
+<li title="Pattern matching">
+<a href="functions.html#id2262443">Pattern matching</a></li>
+<li title="Function Calls ">
+<a href="functions.html#id2262691">Function Calls </a></li>
+<li title="Memory usage in recursion">
+<a href="functions.html#id2262842">Memory usage in recursion</a></li>
+</ul>
+</li>
+<li title="Tables and databases" expanded="false">Tables and databases<ul>
+<li>
+<a href="tablesDatabases.html">
+              Top of chapter
+            </a></li>
+<li title="Ets, Dets and Mnesia">
+<a href="tablesDatabases.html#id2262942">Ets, Dets and Mnesia</a></li>
+<li title="Ets specific">
+<a href="tablesDatabases.html#id2264413">Ets specific</a></li>
+<li title="Mnesia specific">
+<a href="tablesDatabases.html#id2264530">Mnesia specific</a></li>
+</ul>
+</li>
+<li title="Processes" expanded="false">Processes<ul>
+<li>
+<a href="processes.html">
+              Top of chapter
+            </a></li>
+<li title="Creation of an Erlang process">
+<a href="processes.html#id2264653">Creation of an Erlang process</a></li>
+<li title="Process messages">
+<a href="processes.html#id2264827">Process messages</a></li>
+<li title="The SMP emulator">
+<a href="processes.html#id2265045">The SMP emulator</a></li>
+</ul>
+</li>
+<li title="Drivers" expanded="false">Drivers<ul>
+<li>
+<a href="drivers.html">
+              Top of chapter
+            </a></li>
+<li title="Drivers and concurrency">
+<a href="drivers.html#id2265164">Drivers and concurrency</a></li>
+<li title="Avoiding copying of binaries when calling a driver">
+<a href="drivers.html#id2265214">Avoiding copying of binaries when calling a driver</a></li>
+<li title="Returning small binaries from a driver">
+<a href="drivers.html#id2265291">Returning small binaries from a driver</a></li>
+<li title="Returning big binaries without copying from a driver">
+<a href="drivers.html#id2265332">Returning big binaries without copying from a driver</a></li>
+</ul>
+</li>
+<li title="Advanced" expanded="false">Advanced<ul>
+<li>
+<a href="advanced.html">
+              Top of chapter
+            </a></li>
+<li title="Memory">
+<a href="advanced.html#id2265486">Memory</a></li>
+<li title="System limits">
+<a href="advanced.html#id2265856">System limits</a></li>
+</ul>
+</li>
+<li title="Profiling" expanded="false">Profiling<ul>
+<li>
+<a href="profiling.html">
+              Top of chapter
+            </a></li>
+<li title="Do not guess about performance - profile">
+<a href="profiling.html#id2266192">Do not guess about performance - profile</a></li>
+<li title="Big systems">
+<a href="profiling.html#id2266274">Big systems</a></li>
+<li title="What to look for">
+<a href="profiling.html#id2266300">What to look for</a></li>
+<li title="Tools">
+<a href="profiling.html#id2266367">Tools</a></li>
+<li title="Benchmarking">
+<a href="profiling.html#id2266861">Benchmarking</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>5 List handling</h1>
+  
+  <h3><a name="id2260830">5.1 
+        Creating a list</a></h3>
+    
+    
+    <p>Lists can only be built starting from the end and attaching
+    list elements at the beginning. If you use the <span class="code">++</span> operator
+    like this</p>
+    <div class="example"><pre>
+List1 ++ List2</pre></div>
+    <p>you will create a new list which is copy of the elements in <span class="code">List1</span>,
+    followed by <span class="code">List2</span>. Looking at how <span class="code">lists:append/1</span> or <span class="code">++</span> would be
+    implemented in plain Erlang, it can be seen clearly that the first list
+    is copied:</p>
+    <div class="example"><pre>
+append([H|T], Tail) -&gt;
+    [H|append(T, Tail)];
+append([], Tail) -&gt;
+    Tail.</pre></div>
+    <p>So the important thing when recursing and building a list is to
+    make sure that you attach the new elements to the beginning of the list,
+    so that you build <strong>a</strong> list, and not hundreds or thousands of
+    copies of the growing result list.</p>
+    <p>Let us first look at how it should not be done:</p>
+    <p><strong>DO NOT</strong></p>
+    <div class="example"><pre>
+bad_fib(N) -&gt;
+    bad_fib(N, 0, 1, []).
+bad_fib(0, _Current, _Next, Fibs) -&gt;
+    Fibs;
+bad_fib(N, Current, Next, Fibs) -&gt; 
+    bad_fib(N - 1, Next, Current + Next, Fibs ++ [Current]).</pre></div>
+    <p>Here we are not a building a list; in each iteration step we
+    create a new list that is one element longer than the new previous list.</p>
+    <p>To avoid copying the result in each iteration, we must build the list in
+    reverse order and reverse the list when we are done:</p>
+    <p><strong>DO</strong></p>
+    <div class="example"><pre>
+tail_recursive_fib(N) -&gt;
+    tail_recursive_fib(N, 0, 1, []).
+tail_recursive_fib(0, _Current, _Next, Fibs) -&gt;
+    lists:reverse(Fibs);
+tail_recursive_fib(N, Current, Next, Fibs) -&gt; 
+    tail_recursive_fib(N - 1, Next, Current + Next, [Current|Fibs]).</pre></div>
+  
+  <h3><a name="id2262072">5.2 
+        List comprehensions</a></h3>
+    
+    <p>Lists comprehensions still have a reputation for being slow.
+    They used to be implemented using funs, which used to be slow.</p>
+    <p>In recent Erlang/OTP releases (including R12B), a list comprehension</p>
+    <div class="example"><pre>
+[Expr(E) || E &lt;- List]</pre></div>
+    <p>is basically translated to a local function</p>
+    <div class="example"><pre>
+'lc^0'([E|Tail], Expr) -&gt;
+    [Expr(E)|'lc^0'(Tail, Expr)];
+'lc^0'([], _Expr) -&gt; [].</pre></div>
+    <p>In R12B, if the result of the list comprehension will <strong>obviously</strong> not be used,
+    a list will not be constructed. For instance, in this code</p>
+    
+    <div class="example"><pre>
+[io:put_chars(E) || E &lt;- List],
+ok.</pre></div>
+ 
+    <p>or in this code</p>
+   
+    <div class="example"><pre>
+.
+.
+.
+case Var of
+    ... -&gt;
+        [io:put_chars(E) || E &lt;- List];
+    ... -&gt;
+end,
+some_function(...),
+.
+.
+.</pre></div>
+    
+    <p>the value is neither assigned to a variable, nor passed to another function,
+    nor returned, so there is no need to construct a list and the compiler will simplify
+    the code for the list comprehension to</p>
+    <div class="example"><pre>
+'lc^0'([E|Tail], Expr) -&gt;
+    Expr(E),
+    'lc^0'(Tail, Expr);
+'lc^0'([], _Expr) -&gt; [].</pre></div>
+  
+  <h3><a name="id2262150">5.3 
+        Deep and flat lists</a></h3>
+    
+    <p><span class="bold_code">
+<a href="../man/lists.html#flatten-1">lists:flatten/1</a></span>
+    builds an entirely new list. Therefore, it is expensive, and even
+    <strong>more</strong> expensive than the <span class="code">++</span> (which copies its left argument,
+    but not its right argument).</p>
+    <p>In the following situations, you can easily avoid calling <span class="code">lists:flatten/1</span>:</p>
+    <ul>
+      <li>When sending data to a port. Ports understand deep lists
+       so there is no reason to flatten the list before sending it to
+       the port.</li>
+      <li>When calling BIFs that accept deep lists, such as
+      <span class="bold_code">
+<a href="../man/erlang.html#list_to_binary-1">list_to_binary/1</a></span> or
+      <span class="bold_code">
+<a href="../man/erlang.html#iolist_to_binary-1">iolist_to_binary/1</a></span>.</li>
+      <li>When you know that your list is only one level deep, you can can use
+      <span class="bold_code">
+<a href="../man/lists.html#append-1">lists:append/1</a></span>.</li>
+    </ul>
+    <p><strong>Port example</strong></p>
+    <p><strong>DO</strong></p>
+    <div class="example"><pre>
+      ...
+      port_command(Port, DeepList)
+      ...</pre></div>
+    <p><strong>DO NOT</strong></p>
+    <div class="example"><pre>
+      ...
+      port_command(Port, lists:flatten(DeepList))
+      ...</pre></div>
+    <p>A common way to send a zero-terminated string to a port is the following:</p>
+    <p><strong>DO NOT</strong></p>
+    <div class="example"><pre>
+      ...
+      TerminatedStr = String ++ [0], % String="foo" =&gt; [$f, $o, $o, 0]
+      port_command(Port, TerminatedStr)
+      ...</pre></div>
+    <p>Instead do like this:</p>
+    <p><strong>DO</strong></p>
+    <div class="example"><pre>
+      ...
+      TerminatedStr = [String, 0], % String="foo" =&gt; [[$f, $o, $o], 0]
+      port_command(Port, TerminatedStr) 
+      ...</pre></div>
+    <p><strong>Append example</strong></p>
+    <p><strong>DO</strong></p>
+    <div class="example"><pre>
+      &gt; lists:append([[1], [2], [3]]).
+      [1,2,3]
+      &gt;</pre></div>
+    <p><strong>DO NOT</strong></p>
+    <div class="example"><pre>
+      &gt; lists:flatten([[1], [2], [3]]).
+      [1,2,3]
+      &gt;</pre></div>
+  
+  <h3><a name="id2262303">5.4 
+        Why you should not worry about recursive lists functions</a></h3>
+    
+    <p>In the performance myth chapter, the following myth was exposed:
+    <span class="bold_code">
+<a href="myths.html#tail_recursive">Tail-recursive functions
+    are MUCH faster than recursive functions</a></span>.</p>
+    <p>To summarize, in R12B there is usually not much difference between
+    a body-recursive list function and tail-recursive function that reverses
+    the list at the end. Therefore, concentrate on writing beautiful code
+    and forget about the performance of your list functions. In the time-critical
+    parts of your code (and only there), <strong>measure</strong> before rewriting
+    your code.</p>
+    <p><strong>Important note</strong>: This section talks about lists functions that
+    <strong>construct</strong> lists. A tail-recursive function that does not construct
+    a list runs in constant space, while the corresponding body-recursive
+    function uses stack space proportional to the length of the list.
+    For instance, a function that sums a list of integers, should <strong>not</strong> be
+    written like this</p>
+    
+    <p><strong>DO NOT</strong></p>
+    <div class="example"><pre>
+recursive_sum([H|T]) -&gt; H+recursive_sum(T);
+recursive_sum([])    -&gt; 0.</pre></div>
+    <p>but like this</p>
+    <p><strong>DO</strong></p>
+    <div class="example"><pre>
+sum(L) -&gt; sum(L, 0).
+sum([H|T], Sum) -&gt; sum(T, Sum + H);
+sum([], Sum)    -&gt; Sum.</pre></div>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2001-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

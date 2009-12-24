@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Introduction</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="et.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Event Tracer (ET)</strong><br><strong>User's Guide</strong><br><small>Version 1.3.3</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="Introduction" expanded="true">Introduction<ul>
+<li>
+<a href="et_intro.html">
+              Top of chapter
+            </a></li>
+<li title="Scope and Purpose">
+<a href="et_intro.html#id2252214">Scope and Purpose</a></li>
+<li title="Prerequisites">
+<a href="et_intro.html#id2258801">Prerequisites</a></li>
+<li title="About This Manual">
+<a href="et_intro.html#id2252181">About This Manual</a></li>
+<li title="Where to Find More Information">
+<a href="et_intro.html#id2258303">Where to Find More Information</a></li>
+</ul>
+</li>
+<li title="Usage" expanded="false">Usage<ul>
+<li>
+<a href="et_architecture.html">
+              Top of chapter
+            </a></li>
+<li title="Overview">
+<a href="et_architecture.html#id2260500">Overview</a></li>
+<li title="Filters and dictionary">
+<a href="et_architecture.html#id2257323">Filters and dictionary</a></li>
+<li title="Trace clients">
+<a href="et_architecture.html#id2254004">Trace clients</a></li>
+<li title="Global tracing and phone home">
+<a href="et_architecture.html#id2256620">Global tracing and phone home</a></li>
+<li title="Viewer window">
+<a href="et_architecture.html#id2253098">Viewer window</a></li>
+<li title="Configuration">
+<a href="et_architecture.html#id2253923">Configuration</a></li>
+<li title="Contents viewer window">
+<a href="et_architecture.html#id2251386">Contents viewer window</a></li>
+</ul>
+</li>
+<li title="Examples" expanded="false">Examples<ul>
+<li>
+<a href="et_examples.html">
+              Top of chapter
+            </a></li>
+<li title="A simulated Mnesia transaction">
+<a href="et_examples.html#id2257221">A simulated Mnesia transaction</a></li>
+<li title="Some convenient functions used in the Mnesia transaction example">
+<a href="et_examples.html#id2251858">Some convenient functions used in the Mnesia transaction example</a></li>
+<li title="Erlang trace of a Mnesia transaction">
+<a href="et_examples.html#id2260128">Erlang trace of a Mnesia transaction</a></li>
+<li title="Erlang trace of Megaco startup">
+<a href="et_examples.html#id2260234">Erlang trace of Megaco startup</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Introduction</h1>
+  
+  <p>The Event Tracer (ET) uses the built-in trace mechanism in Erlang
+    and provides tools for collection and graphical viewing of trace
+    data.</p>
+  <p>The viewed trace data is normally collected from Erlang trace ports
+    or files.</p>
+  <h3><a name="id2252214">1.1 
+        Scope and Purpose</a></h3>
+    
+    <p>This manual describes the Event Tracer (ET) application, as a component
+      of the Erlang/Open Telecom Platform development environment. It
+      is assumed that the reader is familiar with the Erlang
+      Development Environment, which is described in a separate User's
+      Guide.</p>
+  
+  <h3><a name="id2258801">1.2 
+        Prerequisites</a></h3>
+    
+    <p>The following prerequisites is required for understanding the
+      material in the Event Tracer (ET) User's Guide:</p>
+    <ul>
+      <li>
+        <p>familiarity with the Erlang system and Erlang programming in
+          general and the especially the art of Erlang tracing.</p>
+      </li>
+    </ul>
+    <p>The application requires Erlang/OTP release R7B or later.</p>
+  
+  <h3><a name="id2252181">1.3 
+        About This Manual</a></h3>
+    
+    <p>In addition to this introductory chapter, the Megaco User's
+      Guide contains the following chapters:</p>
+    <ul>
+      <li>
+        <p>Chapter 2: "Usage" describes the architecture
+          and typical usage of the application.</p>
+      </li>
+      <li>
+        <p>Chapter 3: "Examples" gives some usage examples</p>
+      </li>
+    </ul>
+  
+  <h3><a name="id2258303">1.4 
+        Where to Find More Information</a></h3>
+    
+    <p>Refer to the following documentation for more information about
+      Event Tracer (ET) and about the Erlang/OTP development system:</p>
+    <ul>
+      <li>
+        <p>the Reference Manual of the <span class="code">Event Tracer (ET)</span>.</p>
+      </li>
+      <li>
+        <p>documentation of basic tracing in <span class="code">erlang:trace/4</span> and 
+          <span class="code">erlang:trace_pattern/3</span> and then the utilities derived from
+          these: <span class="code">dbg</span>, <span class="code">observer</span> and <span class="code">et</span>.</p>
+      </li>
+      <li>
+        <p>Concurrent Programming in Erlang, 2nd Edition (1996),
+          Prentice-Hall, ISBN 0-13-508301-X.</p>
+      </li>
+    </ul>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2002-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

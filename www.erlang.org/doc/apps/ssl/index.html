@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- SSL Reference Manual</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="ssl.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Secure Socket Layer </strong><br><strong>Reference Manual</strong><br><small>Version 3.10.7</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="ssl (App)">
+<a href="../../man/ssl_app.html">ssl (App)
+                </a></li>
+<li title="ssl " expanded="false">ssl<ul>
+<li>
+<a href="../../man/ssl.html">
+                  Top of manual page
+                </a></li>
+<li title="ciphers-0">
+<a href="../../man/ssl.html#ciphers-0">ciphers/0</a></li>
+<li title="close-1">
+<a href="../../man/ssl.html#close-1">close/1</a></li>
+<li title="connect-3">
+<a href="../../man/ssl.html#connect-3">connect/3</a></li>
+<li title="connect-4">
+<a href="../../man/ssl.html#connect-4">connect/4</a></li>
+<li title="connection_info-1">
+<a href="../../man/ssl.html#connection_info-1">connection_info/1</a></li>
+<li title="controlling_process-2">
+<a href="../../man/ssl.html#controlling_process-2">controlling_process/2</a></li>
+<li title="format_error-1">
+<a href="../../man/ssl.html#format_error-1">format_error/1</a></li>
+<li title="getopts-2">
+<a href="../../man/ssl.html#getopts-2">getopts/2</a></li>
+<li title="listen-2">
+<a href="../../man/ssl.html#listen-2">listen/2</a></li>
+<li title="peercert-1">
+<a href="../../man/ssl.html#peercert-1">peercert/1</a></li>
+<li title="peercert-2">
+<a href="../../man/ssl.html#peercert-2">peercert/2</a></li>
+<li title="peername-1">
+<a href="../../man/ssl.html#peername-1">peername/1</a></li>
+<li title="pid-1">
+<a href="../../man/ssl.html#pid-1">pid/1</a></li>
+<li title="recv-2">
+<a href="../../man/ssl.html#recv-2">recv/2</a></li>
+<li title="recv-3">
+<a href="../../man/ssl.html#recv-3">recv/3</a></li>
+<li title="seed-1">
+<a href="../../man/ssl.html#seed-1">seed/1</a></li>
+<li title="send-2">
+<a href="../../man/ssl.html#send-2">send/2</a></li>
+<li title="setopts-2">
+<a href="../../man/ssl.html#setopts-2">setopts/2</a></li>
+<li title="ssl_accept-1">
+<a href="../../man/ssl.html#ssl_accept-1">ssl_accept/1</a></li>
+<li title="ssl_accept-2">
+<a href="../../man/ssl.html#ssl_accept-2">ssl_accept/2</a></li>
+<li title="sockname-1">
+<a href="../../man/ssl.html#sockname-1">sockname/1</a></li>
+<li title="transport_accept-1">
+<a href="../../man/ssl.html#transport_accept-1">transport_accept/1</a></li>
+<li title="transport_accept-2">
+<a href="../../man/ssl.html#transport_accept-2">transport_accept/2</a></li>
+<li title="version-0">
+<a href="../../man/ssl.html#version-0">version/0</a></li>
+</ul>
+</li>
+<li title="new_ssl " expanded="false">new_ssl<ul>
+<li>
+<a href="../../man/new_ssl.html">
+                  Top of manual page
+                </a></li>
+<li title="cipher_suites-0">
+<a href="../../man/new_ssl.html#cipher_suites-0">cipher_suites/0</a></li>
+<li title="cipher_suites-1">
+<a href="../../man/new_ssl.html#cipher_suites-1">cipher_suites/1</a></li>
+<li title="connect-2">
+<a href="../../man/new_ssl.html#connect-2">connect/2</a></li>
+<li title="connect-3">
+<a href="../../man/new_ssl.html#connect-3">connect/3</a></li>
+<li title="connect-3">
+<a href="../../man/new_ssl.html#connect-3">connect/3</a></li>
+<li title="connect-4">
+<a href="../../man/new_ssl.html#connect-4">connect/4</a></li>
+<li title="close-1">
+<a href="../../man/new_ssl.html#close-1">close/1</a></li>
+<li title="controlling_process-2">
+<a href="../../man/new_ssl.html#controlling_process-2">controlling_process/2</a></li>
+<li title="connection_info-1">
+<a href="../../man/new_ssl.html#connection_info-1">connection_info/1</a></li>
+<li title="getopts-1">
+<a href="../../man/new_ssl.html#getopts-1">getopts/1</a></li>
+<li title="getopts-2">
+<a href="../../man/new_ssl.html#getopts-2">getopts/2</a></li>
+<li title="listen-2">
+<a href="../../man/new_ssl.html#listen-2">listen/2</a></li>
+<li title="peercert-1">
+<a href="../../man/new_ssl.html#peercert-1">peercert/1</a></li>
+<li title="peercert-2">
+<a href="../../man/new_ssl.html#peercert-2">peercert/2</a></li>
+<li title="peername-1">
+<a href="../../man/new_ssl.html#peername-1">peername/1</a></li>
+<li title="recv-2">
+<a href="../../man/new_ssl.html#recv-2">recv/2</a></li>
+<li title="recv-3">
+<a href="../../man/new_ssl.html#recv-3">recv/3</a></li>
+<li title="send-2">
+<a href="../../man/new_ssl.html#send-2">send/2</a></li>
+<li title="setopts-2">
+<a href="../../man/new_ssl.html#setopts-2">setopts/2</a></li>
+<li title="shutdown-2">
+<a href="../../man/new_ssl.html#shutdown-2">shutdown/2</a></li>
+<li title="ssl_accept-1">
+<a href="../../man/new_ssl.html#ssl_accept-1">ssl_accept/1</a></li>
+<li title="ssl_accept-2">
+<a href="../../man/new_ssl.html#ssl_accept-2">ssl_accept/2</a></li>
+<li title="ssl_accept-2">
+<a href="../../man/new_ssl.html#ssl_accept-2">ssl_accept/2</a></li>
+<li title="ssl_accept-3">
+<a href="../../man/new_ssl.html#ssl_accept-3">ssl_accept/3</a></li>
+<li title="sockname-1">
+<a href="../../man/new_ssl.html#sockname-1">sockname/1</a></li>
+<li title="start-0">
+<a href="../../man/new_ssl.html#start-0">start/0</a></li>
+<li title="start-1">
+<a href="../../man/new_ssl.html#start-1">start/1</a></li>
+<li title="stop-0">
+<a href="../../man/new_ssl.html#stop-0">stop/0</a></li>
+<li title="transport_accept-1">
+<a href="../../man/new_ssl.html#transport_accept-1">transport_accept/1</a></li>
+<li title="transport_accept-2">
+<a href="../../man/new_ssl.html#transport_accept-2">transport_accept/2</a></li>
+<li title="versions-0">
+<a href="../../man/new_ssl.html#versions-0">versions/0</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<div class="frontpage"></div>
+<center><h1>Secure Socket Layer  Reference Manual</h1></center>
+<center><h4>Version 3.10.7</h4></center>
+<center><h4>November 23 2009</h4></center>
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

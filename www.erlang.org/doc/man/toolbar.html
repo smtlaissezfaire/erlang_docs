@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- toolbar</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/toolbar/users_guide.html">User's Guide</a><br>
+<a href="../apps/toolbar/index.html">Reference Manual</a><br>
+<a href="../apps/toolbar/release_notes.html">Release Notes</a><br>
+<a href="../apps/toolbar/toolbar.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Toolbar</strong><br><strong>Reference Manual</strong><br><small>Version 1.4.1</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu"><li title="toolbar " expanded="true">toolbar<ul>
+<li>
+<a href="toolbar.html">
+                  Top of manual page
+                </a></li>
+<li title="start-0">
+<a href="toolbar.html#start-0">start/0</a></li>
+<li title="version-0">
+<a href="toolbar.html#version-0">version/0</a></li>
+<li title="update-0">
+<a href="toolbar.html#update-0">update/0</a></li>
+<li title="quit-0">
+<a href="toolbar.html#quit-0">quit/0</a></li>
+<li title="create_tool_file-0">
+<a href="toolbar.html#create_tool_file-0">create_tool_file/0</a></li>
+<li title="add_gs_contribs-0">
+<a href="toolbar.html#add_gs_contribs-0">add_gs_contribs/0</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>toolbar</h1></center>
+  
+  <h3>MODULE</h3>
+<div class="REFBODY">toolbar</div>
+  <h3>MODULE SUMMARY</h3>
+<div class="REFBODY">GUI for Starting Tools and User Contributions</div>
+  <h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+    <p>Toolbar makes it easier to use
+      the different Erlang tools - and the user contributions - which are provided.
+      It has a graphical user interface with an icon for each tool.
+      Clicking the icon activates the corresponding tool.
+      </p>
+    <p>All tools to be included on Toolbar must
+      have a configuration file containing information about the tool,
+      for example its start function and help information location.
+      Configuration files must have the <span class="code">.tool</span> suffix.
+      </p>
+    <p>When started, Toolbar automatically checks for <span class="code">*.tool</span>
+      files in the current path and adds the corresponding tools. For
+      each <span class="code">ebin</span> directory found in the path, it will also look
+      in a <span class="code">priv</span> directory next to it. This is a feature of the Erlang
+      file structure.</p>
+  </p></div>
+  <h3>EXPORTS</h3>
+    <p><a name="start-0"><span class="bold_code">start() -&gt; ok | already_started</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Creates a window containing tool icons.</p>
+      </p></div>
+    <p><a name="version-0"><span class="bold_code">version() -&gt; string()</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Returns the current version number of Toolbar.</p>
+      </p></div>
+    <p><a name="update-0"><span class="bold_code">update() -&gt; ok | {error,not_started}</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Makes a search for new tool files in the current path and
+          adds the corresponding tools to Toolbar window.</p>
+      </p></div>
+    <p><a name="quit-0"><span class="bold_code">quit() -&gt; ok | {error,not_started}</span></a><br></p>
+    <p><a name="create_tool_file-0"><span class="bold_code">create_tool_file() -&gt; ok | {error,not_started}</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Starts the GUI used for creating and editing tool files.</p>
+      </p></div>
+    <p><a name="add_gs_contribs-0"><span class="bold_code">add_gs_contribs() -&gt; ok | {error,not_started}</span></a><br></p>
+<div class="REFBODY"><p>
+        <p>Adds the path to the directory where the GS contributions are
+          situated and add the tools found there, if any.</p>
+      </p></div>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1997-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

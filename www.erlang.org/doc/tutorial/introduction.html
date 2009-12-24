@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- Introduction</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="../pdf/otp-system-documentation.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Interoperability Tutorial</strong><br><strong>User's Guide</strong><br><small>Version 5.7.4</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../js/flipmenu">
+<li title="Introduction" expanded="true">Introduction<ul>
+<li>
+<a href="introduction.html">
+              Top of chapter
+            </a></li>
+<li title="Purpose">
+<a href="introduction.html#id2252543">Purpose</a></li>
+<li title="Prerequisites">
+<a href="introduction.html#id2258530">Prerequisites</a></li>
+</ul>
+</li>
+<li title="Overview" expanded="false">Overview<ul>
+<li>
+<a href="overview.html">
+              Top of chapter
+            </a></li>
+<li title="Built-In Mechanisms">
+<a href="overview.html#id2251991">Built-In Mechanisms</a></li>
+<li title="C and Java Libraries">
+<a href="overview.html#id2256781">C and Java Libraries</a></li>
+<li title="Standard Protocols">
+<a href="overview.html#id2259423">Standard Protocols</a></li>
+<li title="IC">
+<a href="overview.html#id2259327">IC</a></li>
+<li title="Old Applications">
+<a href="overview.html#id2259341">Old Applications</a></li>
+</ul>
+</li>
+<li title="Problem Example" expanded="false">Problem Example<ul>
+<li>
+<a href="example.html">
+              Top of chapter
+            </a></li>
+<li title="Description">
+<a href="example.html#id2259214">Description</a></li>
+</ul>
+</li>
+<li title="Ports" expanded="false">Ports<ul>
+<li>
+<a href="c_port.html">
+              Top of chapter
+            </a></li>
+<li title="Erlang Program">
+<a href="c_port.html#id2259487">Erlang Program</a></li>
+<li title="C Program">
+<a href="c_port.html#id2258633">C Program</a></li>
+<li title="Running the Example">
+<a href="c_port.html#id2258047">Running the Example</a></li>
+</ul>
+</li>
+<li title="Erl_Interface" expanded="false">Erl_Interface<ul>
+<li>
+<a href="erl_interface.html">
+              Top of chapter
+            </a></li>
+<li title="Erlang Program">
+<a href="erl_interface.html#id2251879">Erlang Program</a></li>
+<li title="C Program">
+<a href="erl_interface.html#id2258425">C Program</a></li>
+<li title="Running the Example">
+<a href="erl_interface.html#id2259981">Running the Example</a></li>
+</ul>
+</li>
+<li title="Port drivers" expanded="false">Port drivers<ul>
+<li>
+<a href="c_portdriver.html">
+              Top of chapter
+            </a></li>
+<li title="Port Drivers">
+<a href="c_portdriver.html#id2260388">Port Drivers</a></li>
+<li title="Erlang Program">
+<a href="c_portdriver.html#id2260414">Erlang Program</a></li>
+<li title="C Driver">
+<a href="c_portdriver.html#id2260564">C Driver</a></li>
+<li title="Running the Example">
+<a href="c_portdriver.html#id2260669">Running the Example</a></li>
+</ul>
+</li>
+<li title="C Nodes" expanded="false">C Nodes<ul>
+<li>
+<a href="cnode.html">
+              Top of chapter
+            </a></li>
+<li title="Erlang Program">
+<a href="cnode.html#id2260802">Erlang Program</a></li>
+<li title="C Program">
+<a href="cnode.html#id2250979">C Program</a></li>
+<li title="Running the Example">
+<a href="cnode.html#id2251401">Running the Example</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Introduction</h1>
+  
+  <h3><a name="id2252543">1.1 
+        Purpose</a></h3>
+    
+    <p>The purpose of this tutorial is to give the reader an orientation of the different interoperability mechanisms that can be used when integrating a program written in Erlang with a program written in another programming language, from the Erlang programmer's point of view.</p>
+  
+  <h3><a name="id2258530">1.2 
+        Prerequisites</a></h3>
+    
+    <p>It is assumed that the reader is a skilled Erlang programmer, familiar with concepts such as Erlang data types, processes, messages and error handling.</p>
+    <p>To illustrate the interoperability principles C programs running in a UNIX environment have been used. It is assumed that the reader has enough knowledge to be able to apply these principles to the relevant programming languages and platforms.</p>
+    <div class="note">
+<div class="label">Note</div>
+<div class="content"><p>
+      <p>For the sake of readability, the example code has been kept as simple as possible. It does not include functionality such as error handling, which might be vital in a real-life system.</p>
+    </p></div>
+</div>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2000-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

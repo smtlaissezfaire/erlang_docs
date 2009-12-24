@@ -1,0 +1,1031 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Running Test Suites</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="common_test.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Common Test</strong><br><strong>User's Guide</strong><br><small>Version 1.4.6</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="Common Test Basics" expanded="false">Common Test Basics<ul>
+<li>
+<a href="basics_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="basics_chapter.html#id2259966">Introduction</a></li>
+<li title="Test Suite Organisation">
+<a href="basics_chapter.html#id2253168">Test Suite Organisation</a></li>
+<li title="Support Libraries">
+<a href="basics_chapter.html#id2252019">Support Libraries</a></li>
+<li title="Suites and Test Cases">
+<a href="basics_chapter.html#id2252025">Suites and Test Cases</a></li>
+<li title="External Interfaces">
+<a href="basics_chapter.html#id2253081">External Interfaces</a></li>
+</ul>
+</li>
+<li title="Installation" expanded="false">Installation<ul>
+<li>
+<a href="install_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General information">
+<a href="install_chapter.html#id2260114">General information</a></li>
+<li title="Unix/Linux">
+<a href="install_chapter.html#id2253924">Unix/Linux</a></li>
+<li title="Windows">
+<a href="install_chapter.html#id2257012">Windows</a></li>
+</ul>
+</li>
+<li title="Writing Test Suites" expanded="false">Writing Test Suites<ul>
+<li>
+<a href="write_test_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Support for test suite authors">
+<a href="write_test_chapter.html#id2260181">Support for test suite authors</a></li>
+<li title="Test suites">
+<a href="write_test_chapter.html#id2260124">Test suites</a></li>
+<li title="Init and end per suite">
+<a href="write_test_chapter.html#id2259307">Init and end per suite</a></li>
+<li title="Init and end per test case">
+<a href="write_test_chapter.html#id2253645">Init and end per test case</a></li>
+<li title="Test cases">
+<a href="write_test_chapter.html#id2262666">Test cases</a></li>
+<li title="Test case info function">
+<a href="write_test_chapter.html#id2258139">Test case info function</a></li>
+<li title="Test suite info function">
+<a href="write_test_chapter.html#id2263742">Test suite info function</a></li>
+<li title="Test case groups">
+<a href="write_test_chapter.html#id2263834">Test case groups</a></li>
+<li title="The parallel property and nested groups">
+<a href="write_test_chapter.html#id2264105">The parallel property and nested groups</a></li>
+<li title="Repeated groups">
+<a href="write_test_chapter.html#id2264149">Repeated groups</a></li>
+<li title="Shuffled test case order">
+<a href="write_test_chapter.html#id2264310">Shuffled test case order</a></li>
+<li title="Data and Private Directories">
+<a href="write_test_chapter.html#id2264379">Data and Private Directories</a></li>
+<li title="Execution environment">
+<a href="write_test_chapter.html#id2264458">Execution environment</a></li>
+<li title="Illegal dependencies">
+<a href="write_test_chapter.html#id2264508">Illegal dependencies</a></li>
+</ul>
+</li>
+<li title="Test Structure" expanded="false">Test Structure<ul>
+<li>
+<a href="test_structure_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Test structure">
+<a href="test_structure_chapter.html#id2264726">Test structure</a></li>
+<li title="Skipping test cases">
+<a href="test_structure_chapter.html#id2264743">Skipping test cases</a></li>
+<li title="Definition of terms">
+<a href="test_structure_chapter.html#id2264827">Definition of terms</a></li>
+</ul>
+</li>
+<li title="Examples and Templates" expanded="false">Examples and Templates<ul>
+<li>
+<a href="example_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Test suite example">
+<a href="example_chapter.html#id2265696">Test suite example</a></li>
+<li title="Test suite templates">
+<a href="example_chapter.html#id2265783">Test suite templates</a></li>
+</ul>
+</li>
+<li title="Running Test Suites" expanded="true">Running Test Suites<ul>
+<li>
+<a href="run_test_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Using the Common Test Framework">
+<a href="run_test_chapter.html#id2266081">Using the Common Test Framework</a></li>
+<li title="Automatic compilation of test suites and help modules">
+<a href="run_test_chapter.html#id2266125">Automatic compilation of test suites and help modules</a></li>
+<li title="Running tests from the UNIX command line">
+<a href="run_test_chapter.html#id2266259">Running tests from the UNIX command line</a></li>
+<li title="Running tests from the Web based GUI">
+<a href="run_test_chapter.html#id2266575">Running tests from the Web based GUI</a></li>
+<li title="Running tests from the Erlang shell or from an Erlang program">
+<a href="run_test_chapter.html#id2266661">Running tests from the Erlang shell or from an Erlang program</a></li>
+<li title="Running the interactive shell mode">
+<a href="run_test_chapter.html#id2266717">Running the interactive shell mode</a></li>
+<li title="Step by step execution of test cases with the Erlang Debugger">
+<a href="run_test_chapter.html#id2266894">Step by step execution of test cases with the Erlang Debugger</a></li>
+<li title="Using test specifications">
+<a href="run_test_chapter.html#id2266995">Using test specifications</a></li>
+<li title="Log files">
+<a href="run_test_chapter.html#id2267233">Log files</a></li>
+<li title="HTML Style Sheets">
+<a href="run_test_chapter.html#id2267439">HTML Style Sheets</a></li>
+<li title="Repeating tests">
+<a href="run_test_chapter.html#id2267626">Repeating tests</a></li>
+<li title="Silent Connections">
+<a href="run_test_chapter.html#id2267872">Silent Connections</a></li>
+</ul>
+</li>
+<li title="Config Files" expanded="false">Config Files<ul>
+<li>
+<a href="config_file_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General">
+<a href="config_file_chapter.html#id2268112">General</a></li>
+<li title="Syntax">
+<a href="config_file_chapter.html#id2268151">Syntax</a></li>
+<li title="Requiring and reading configuration data">
+<a href="config_file_chapter.html#id2268175">Requiring and reading configuration data</a></li>
+<li title="Using configuration variables defined in multiple files">
+<a href="config_file_chapter.html#id2268325">Using configuration variables defined in multiple files</a></li>
+<li title="Encrypted configuration files">
+<a href="config_file_chapter.html#id2268357">Encrypted configuration files</a></li>
+<li title="Opening connections by using configuration data">
+<a href="config_file_chapter.html#id2268422">Opening connections by using configuration data</a></li>
+<li title="Examples">
+<a href="config_file_chapter.html#id2268496">Examples</a></li>
+</ul>
+</li>
+<li title="Code Coverage Analysis" expanded="false">Code Coverage Analysis<ul>
+<li>
+<a href="cover_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General">
+<a href="cover_chapter.html#id2268615">General</a></li>
+<li title="Usage">
+<a href="cover_chapter.html#id2268641">Usage</a></li>
+<li title="The cover specification file">
+<a href="cover_chapter.html#id2268768">The cover specification file</a></li>
+<li title="Logging">
+<a href="cover_chapter.html#id2268835">Logging</a></li>
+</ul>
+</li>
+<li title="Using Common Test for Large Scale Testing" expanded="false">Using Common Test for Large Scale Testing<ul>
+<li>
+<a href="ct_master_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General">
+<a href="ct_master_chapter.html#id2268911">General</a></li>
+<li title="Usage">
+<a href="ct_master_chapter.html#id2268954">Usage</a></li>
+<li title="Test Specifications">
+<a href="ct_master_chapter.html#id2269112">Test Specifications</a></li>
+</ul>
+</li>
+<li title="Event Handling" expanded="false">Event Handling<ul>
+<li>
+<a href="event_handler_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General">
+<a href="event_handler_chapter.html#id2269384">General</a></li>
+<li title="Usage">
+<a href="event_handler_chapter.html#id2269429">Usage</a></li>
+</ul>
+</li>
+<li title="Dependencies between Test Cases and Suites" expanded="false">Dependencies between Test Cases and Suites<ul>
+<li>
+<a href="dependencies_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General">
+<a href="dependencies_chapter.html#id2270363">General</a></li>
+<li title="Saving configuration data">
+<a href="dependencies_chapter.html#id2270526">Saving configuration data</a></li>
+<li title="Sequences">
+<a href="dependencies_chapter.html#id2270719">Sequences</a></li>
+</ul>
+</li>
+<li title="Some thoughts about testing" expanded="false">Some thoughts about testing<ul>
+<li>
+<a href="why_test_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Goals">
+<a href="why_test_chapter.html#id2270931">Goals</a></li>
+<li title="What to test?">
+<a href="why_test_chapter.html#id2270956">What to test?</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>6 Running Test Suites</h1>
+  
+  <h3><a name="id2266081">6.1 
+        Using the Common Test Framework</a></h3>
+    
+    <p>The Common Test Framework provides a high level
+    operator interface for testing. It adds the following features to
+    the Erlang/OTP Test Server:</p>
+    <ul>
+	<li>Automatic compilation of test suites (and help modules).</li>
+	<li>Creation of additional HTML pages for better overview.</li>
+	<li>Single command interface for running all available tests.</li>
+	<li>Handling of configuration files specifying data related to
+	  the System Under Test (and any other variable data).</li>
+	<li>Mode for running multiple independent test sessions in parallel with
+	  central control and configuration.</li>	
+      </ul>
+  
+  <h3><a name="id2266125">6.2 
+        Automatic compilation of test suites and help modules</a></h3>
+    
+    <p>When Common Test starts, it will automatically attempt to compile any
+      suites included in the specified tests. If particular
+      suites have been specified, only those suites will be compiled. If a
+      particular test object directory has been specified (meaning all suites
+      in this directory should be part of the test), Common Test runs
+      make:all/1 in the directory to compile the suites.</p>
+    <p>If compilation should fail for one or more suites, the compilation errors
+      are printed to tty and the operator is asked if the test run should proceed
+      without the missing suites, or be aborted. If the operator chooses to proceed, 
+      it is noted in the HTML log which tests have missing suites.</p>
+    <p>Any help module (i.e. regular Erlang module with name not ending with
+      "_SUITE") that resides in the same test object directory as a suite 
+      which is part of the test, will also be automatically compiled. A help
+      module will not be mistaken for a test suite (unless it has a "_SUITE"
+      name of course). All help modules in a particular test object directory
+      are compiled no matter if all or only particular suites in the directory 
+      are part of the test.</p>
+    <p>If test suites or help modules include header files stored in other
+      locations than the test directory, you may specify these include directories
+      by means of the <span class="code">-include</span> flag with <span class="code">run_test</span>, 
+      or the <span class="code">include</span> option with <span class="code">ct:run_test/1</span>.
+      In addition to this, an include path may be specified with an OS
+      environment variable; <span class="code">CT_INCLUDE_PATH</span>. Example (bash):</p>
+    <p><span class="code">$ export CT_INCLUDE_PATH=~testuser/common_suite_files/include:~testuser/common_lib_files/include</span></p>
+    <p>Common Test will pass all include directories (specified either with the
+      <span class="code">include</span> flag/option, or the <span class="code">CT_INCLUDE_PATH</span>
+      variable, or both) to the compiler.</p>
+    <p>It is also possible to specify include directories in test specifications 
+      (see below).</p>
+    <p>If the user wants to run all test suites for a test object (or OTP application)
+      by specifying only the top directory (e.g. with the <span class="code">dir</span> start flag/option),
+      Common Test will primarily look for test suite modules in a subdirectory named 
+      <span class="code">test</span>. If this subdirectory doesn't exist, the specified top directory
+      is assumed to be the actual test directory, and test suites will be read from
+      there instead.</p>
+    <p>It is possible to disable the automatic compilation feature by using the
+      <span class="code">-no_auto_compile</span> flag with <span class="code">run_test</span>, or
+      the <span class="code">{auto_compile,false}</span> option with 
+      <span class="code">ct:run_test/1</span>. With automatic compilation
+      disabled, the user is responsible for compiling the test suite modules 
+      (and any help modules) before the test run. Common Test will only verify 
+      that the specified test suites exist before starting the tests.</p> 
+  
+  <h3><a name="id2266259">6.3 
+        Running tests from the UNIX command line</a></h3>
+    
+    
+    <p>The script <span class="code">run_test</span> can be used for running tests from
+      the Unix/Linux command line, e.g.
+    </p>
+    <ul>
+      <li><span class="code">run_test -config &lt;configfilenames&gt; -dir &lt;dirs&gt;</span></li>
+      <li>
+<span class="code">run_test -config &lt;configfilenames&gt; -suite &lt;suiteswithfullpath&gt;</span>
+      </li>
+      <li><span class="code">run_test -config &lt;configfilenames&gt; -suite &lt;suitewithfullpath&gt;
+	      -group &lt;groupnames&gt; -case &lt;casenames&gt;</span></li>
+    </ul>
+    <p>Examples:</p>
+    <p><span class="code">$ run_test -config $CFGS/sys1.cfg $CFGS/sys2.cfg -dir $SYS1_TEST $SYS2_TEST</span></p>
+    <p><span class="code">$ run_test -suite $SYS1_TEST/setup_SUITE $SYS2_TEST/config_SUITE</span></p>
+    <p><span class="code">$ run_test -suite $SYS1_TEST/setup_SUITE -case start stop</span></p>
+    <p><span class="code">$ run_test -suite $SYS1_TEST/setup_SUITE -group installation -case start stop</span></p>
+    
+    <p>Other flags that may be used with <span class="code">run_test</span>:</p>
+    <ul>
+      <li>
+<span class="code">-logdir &lt;dir&gt;</span>, specifies where the HTML log files are to be written.</li>
+      <li>
+<span class="code">-refresh_logs</span>, refreshes the top level HTML index files.</li>
+      <li>
+<span class="code">-vts</span>, start web based GUI (see below).</li>
+      <li>
+<span class="code">-shell</span>, start interactive shell mode (see below).</li>
+      <li>
+<span class="code">-step [step_opts]</span>, step through test cases using the Erlang Debugger (see below).</li>
+      <li>
+<span class="code">-spec &lt;testspecs&gt;</span>, use test specification as input (see below).</li>
+      <li>
+<span class="code">-allow_user_terms</span>, allows user specific terms in a test specification (see below).</li>
+      <li>
+<span class="code">-silent_connections [conn_types]</span>, tells Common Test to suppress printouts for
+        specified connections (see below).</li>
+      <li>
+<span class="code">-stylesheet &lt;css_file&gt;</span>, points out a user HTML style sheet (see below).</li>
+      <li>
+<span class="code">-cover &lt;cover_cfg_file&gt;</span>, to perform code coverage test (see 
+	<span class="bold_code">
+<a href="cover_chapter.html#cover">Code Coverage Analysis</a></span>).</li>
+      <li>
+<span class="code">-event_handler &lt;event_handlers&gt;</span>, to install 
+        <span class="bold_code">
+<a href="event_handler_chapter.html#event_handling">event handlers</a></span>.</li>
+      <li>
+<span class="code">-include</span>, specifies include directories (see above).</li>
+      <li>
+<span class="code">-no_auto_compile</span>, disables the automatic test suite compilation feature (see above).</li>
+      <li>
+<span class="code">-repeat &lt;n&gt;</span>, tells Common Test to repeat the tests n times (see below).</li> 
+      <li>
+<span class="code">-duration &lt;time&gt;</span>, tells Common Test to repeat the tests for duration of time (see below).</li> 
+      <li>
+<span class="code">-until &lt;stop_time&gt;</span>, tells Common Test to repeat the tests until stop_time (see below).</li> 
+      <li>
+<span class="code">-force_stop</span>, on timeout, the test run will be aborted when current test job is finished (see below).</li>
+      <li>
+<span class="code">-decrypt_key &lt;key&gt;</span>, provides a decryption key for 
+        <span class="bold_code">
+<a href="config_file_chapter.html#encrypted_config_files">encrypted configuration files</a></span>.</li>
+      <li>
+<span class="code">-decrypt_file &lt;key_file&gt;</span>, points out a file containing a decryption key for 
+        <span class="bold_code">
+<a href="config_file_chapter.html#encrypted_config_files">encrypted configuration files</a></span>.</li>
+      <li>
+<span class="code">-basic_html</span>, switches off html enhancements that might not be compatible with older browsers.</li>
+    </ul>
+    <div class="note">
+<div class="label">Note</div>
+<div class="content"><p><p>Directories passed to Common Test may have either relative or absolute paths.</p></p></div>
+</div>
+    <div class="note">
+<div class="label">Note</div>
+<div class="content"><p><p>Arbitrary start flags to the Erlang Runtime System may also be passed as
+             parameters to <span class="code">run_test</span>. It is, for example, useful to be able to
+	     pass directories that should be added to the Erlang code server search path
+	     with the <span class="code">-pa</span> or <span class="code">-pz</span> flag. If you have common help- or library 
+	     modules for test suites (separately compiled), stored in other directories 
+	     than the test suite directories, these help/lib directories are preferrably
+	     added to the code path this way. Example:</p>
+	  <p><span class="code">$ run_test -dir ./chat_server -logdir ./chat_server/testlogs -pa $PWD/chat_server/ebin</span></p>
+	  <p>Note how in this example, the absolute path of the <span class="code">chat_server/ebin</span>
+	     directory is passed to the code server. This is essential since relative
+	     paths are stored by the code server as relative, and Common Test changes 
+	     the current working directory of the Erlang Runtime System during the test run!</p>
+    </p></div>
+</div>
+    
+    <p>For details on how to generate the <span class="code">run_test</span> script, see the 
+      <span class="bold_code">
+<a href="install_chapter.html#general">Installation</a></span> chapter.
+    </p>
+  
+  
+  <h3><a name="id2266575">6.4 
+        Running tests from the Web based GUI</a></h3>
+    
+    
+    <p>The web based GUI, VTS, is started with the <span class="code">run_test</span>
+      script. From the GUI you can load config files, and select
+      directories, suites and cases to run. You can also state the
+      config files, directories, suites and cases on the command line
+      when starting the web based GUI.
+    </p>
+    
+    <ul>
+      <li><span class="code">run_test -vts</span></li>
+      <li><span class="code">run_test -vts -config &lt;configfilename&gt;</span></li>
+      <li><span class="code">run_test -vts -config &lt;configfilename&gt; -suite &lt;suitewithfullpath&gt;
+	      -case &lt;casename&gt;</span></li>
+    </ul>
+    
+    <p>From the GUI you can run tests and view the result and the logs.
+    </p>
+    
+    <p>Note that <span class="code">run_test -vts</span> will try to open the Common Test start
+      page in an existing web browser window or start the browser if it is
+      not running. Which browser should be started may be specified with
+      the browser start command option:</p>
+      <p><span class="code">run_test -vts -browser &lt;browser_start_cmd&gt;</span></p>
+      <p>Example:</p>
+      <p><span class="code">$ run_test -vts -browser 'firefox&amp;'</span></p>
+      <p>Note that the browser must run as a separate OS process or VTS will hang!</p>
+      <p>If no specific browser start command is specified, netscape will
+        be the default browser on Unix platforms and Internet Explorer on Windows.
+	If Common Test fails to start a browser automatically, start your 
+	favourite browser manually instead and type in the URL that Common Test
+	displays in the shell.</p>    
+  
+  
+  <h3><a name="id2266661">6.5 
+        Running tests from the Erlang shell or from an Erlang program</a></h3>
+    
+    
+    <p>Common Test provides an Erlang API for running tests. The main (and most
+      flexible) function for specifying and executing tests is called
+      <span class="code">ct:run_test/1</span>. This function takes the same start parameters as
+      the <span class="code">run_test</span> script described above, only the flags are instead
+      given as options in a list of key-value tuples. E.g. a test specified 
+      with <span class="code">run_test</span> like:</p>
+      <p><span class="code">$ run_test -suite ./my_SUITE -logdir ./results</span></p> 
+      <p>is with <span class="code">ct:run_test/1</span> specified as:</p> 
+      <p><span class="code">1&gt; ct:run_test([{suite,"./my_SUITE"},{logdir,"./results"}]).</span></p>
+      <p>For detailed documentation, please see the <span class="code">ct</span> manual page.</p>    
+  
+  
+  <h3><a name="id2266717">6.6 
+        Running the interactive shell mode</a></h3>
+    
+    
+    <p>You can start Common Test in an interactive shell mode where no
+      automatic testing is performed. Instead, in this mode, Common Test
+      starts its utility processes, installs configuration data (if any),
+      and waits for the user to call functions (typically test case support
+      functions) from the Erlang shell.</p>
+    <p>The shell mode is useful e.g. for debugging test suites, for analysing
+      and debugging the SUT during "simulated" test case execution, and 
+      for trying out various operations during test suite development.</p>
+    <p>To invoke the interactive shell mode, you can start an Erlang shell 
+      manually and call <span class="code">ct:install/1</span> to install any configuration
+      data you might need (use <span class="code">[]</span> as argument otherwise), then
+      call <span class="code">ct:start_interactive/0</span> to start Common Test. If you use
+      the <span class="code">run_test</span> script, you may start the Erlang shell and Common Test
+      in the same go by using the <span class="code">-shell</span> and, optionally, the <span class="code">-config</span>
+      flag:
+    </p>
+    <ul>
+      <li><span class="code">run_test -shell</span></li>
+      <li><span class="code">run_test -shell -config &lt;configfilename&gt;</span></li>
+    </ul>
+    
+    <p>If no config file is given with the <span class="code">run_test</span> command,
+      a warning will be displayed. If Common Test has been run from the same
+      directory earlier, the same config file(s) will be used
+      again. If Common Test has not been run from this directory before, no
+      config files will be available.</p>
+    
+    <p>If any functions using "required config data" (e.g. ct_telnet or
+      ct_ftp functions) are to be called from the erlang shell, config
+      data must first be required with <span class="code">ct:require/[1,2]</span>. This is
+      equivalent to a <span class="code">require</span> statement in the <span class="bold_code">
+<a href="write_test_chapter.html#suite">Test Suite Info 
+	Function</a></span> or in the <span class="bold_code">
+<a href="write_test_chapter.html#info_function">Test Case Info
+	Function</a></span>.</p>
+    
+    <p>Example:</p>
+    <div class="example"><pre> 
+       1&gt; ct:require(unix_telnet, unix).
+       ok
+       2&gt; ct_telnet:open(unix_telnet).
+       {ok,&lt;0.105.0&gt;}
+       4&gt; ct_telnet:cmd(unix_telnet, "ls .").
+       {ok,["ls .","file1  ...",...]}</pre></div>
+    
+    <p>Everything that Common Test normally prints in the test case logs,
+      will in the interactive mode be written to a log named
+      <span class="code">ctlog.html</span> in the <span class="code">ct_run.&lt;timestamp&gt;</span>
+      directory. A link to this file will be available in the file
+      named <span class="code">last_interactive.html</span> in the directory from which
+      you executed <span class="code">run_test</span>. Currently, specifying a different
+      root directory for the logs than the current working directory,
+      is not supported.</p>
+    
+    <p>If you wish to exit the interactive mode (e.g. to start an
+      automated test run with <span class="code">ct:run_test/1</span>), call the function 
+      <span class="code">ct:stop_interactive/0</span>. This shuts down the
+      running <span class="code">ct</span> application. Associations between
+      configuration names and data created with <span class="code">require</span> are 
+      consequently deleted. <span class="code">ct:start_interactive/0</span> will get you 
+      back into interactive mode, but the previous state is not restored.</p>
+  
+  <h3><a name="id2266894">6.7 
+        Step by step execution of test cases with the Erlang Debugger</a></h3>
+    
+   
+    <p>By means of <span class="code">run_test -step [opts]</span>, or by passing the 
+       <span class="code">{step,Opts}</span> option to <span class="code">ct:run_test/1</span>, it is possible
+       to get the Erlang Debugger started automatically and use its
+       graphical interface to investigate the state of the current test 
+       case and to execute it step by step and/or set execution breakpoints.</p>
+    <p>If no extra options are given with the <span class="code">step</span> flag/option,
+       breakpoints will be set automatically on the test cases that
+       are to be executed by Common Test, and those functions only. If
+       the step option <span class="code">config</span> is specified, breakpoints will 
+       also be initially set on the configuration functions in the suite, i.e.
+       <span class="code">init_per_suite/1</span>, <span class="code">end_per_suite/1</span>, <span class="code">init_per_testcase/2</span> 
+       and <span class="code">end_per_testcase/2</span>.</p>
+    <p>Common Test enables the Debugger auto attach feature, which means
+       that for every new interpreted test case function that starts to execute, 
+       a new trace window will automatically pop up. (This is because each test 
+       case executes on a dedicated Erlang process). Whenever a new test case starts,
+       Common Test will attempt to close the inactive trace window of the previous 
+       test case. However, if you prefer that Common Test leaves inactive trace 
+       windows, use the <span class="code">keep_inactive</span> option.</p>
+    <p>The step functionality can be used together with the <span class="code">suite</span> and 
+       the <span class="code">suite</span> + <span class="code">case/testcase</span> flag/option, but not together 
+       with <span class="code">dir</span>.</p>       
+  
+  <h3><a name="id2266995">6.8 
+        Using test specifications</a></h3>
+    <a name="test_specifications"></a>
+    
+    
+    <p>The most expressive way to specify what to test is to use a so 
+      called test specification. A test specification is a sequence of 
+      Erlang terms. The terms may be declared in a text file or passed 
+      to the test server at runtime as a list (see <span class="code">run_testspec/1</span>
+      in the manual page for <span class="code">ct</span>). There are two general types 
+      of terms: configuration terms and test specification terms.</p>
+    <p>With configuration terms it is possible to import configuration 
+      data (similar to <span class="code">run_test -config</span>), specify HTML log 
+      directories (similar to <span class="code">run_test -logdir</span>), give aliases 
+      to test nodes and test directories (to make a specification
+      easier to read and maintain), enable code coverage analysis
+      (see the <span class="bold_code">
+<a href="cover_chapter.html#cover">Code Coverage 
+       Analysis</a></span> chapter) and specify event_handler plugins 
+      (see the <span class="bold_code">
+<a href="event_handler_chapter.html#event_handling">
+       Event Handling</a></span> chapter). There is also a term
+       for specifying include directories that should be passed on
+       to the compiler when automatic compilation is performed 
+       (similar to <span class="code">run_test -include</span>, see above).</p>
+    <p>With test specification terms it is possible to state exactly which
+      tests should run and in which order. A test term specifies either
+      one or more suites or one or more test cases. An arbitrary number of test 
+      terms may be declared in sequence. A test term can also specify one or 
+      more test suites or test cases to be skipped. Skipped suites and cases 
+      are not executed and show up in the HTML test log as SKIPPED.</p>
+    <div class="note">
+<div class="label">Note</div>
+<div class="content"><p><p>It is not yet possible to specify test case groups in
+      test specifications. This will be supported in a soon upcoming 
+      release.</p></p></div>
+</div>
+    <p>Below is the test specification syntax. Test specifications can
+      be used to run tests both in a single test host environment and in 
+      a distributed Common Test environment. Node parameters are only relevant in the 
+      latter (see the chapter about running Common Test in distributed mode for information). 
+      For details on the event_handler term, see the 
+      <span class="bold_code">
+<a href="event_handler_chapter.html#event_handling">Event Handling</a></span>
+      chapter.</p>
+      <p>Config terms:</p>
+    <div class="example"><pre>
+      {node, NodeAlias, Node}.
+ 
+      {cover, CoverSpecFile}.
+      {cover, NodeRef, CoverSpecFile}.
+      
+      {include, IncludeDirs}.
+      {include, NodeRefs, IncludeDirs}.
+      {config, ConfigFiles}.
+      {config, NodeRefs, ConfigFiles}.
+      
+      {alias, DirAlias, Dir}.
+      
+      {logdir, LogDir}.                                        
+      {logdir, NodeRefs, LogDir}.
+      
+      {event_handler, EventHandlers}.
+      {event_handler, NodeRefs, EventHandlers}.
+      {event_handler, EventHandlers, InitArgs}.
+      {event_handler, NodeRefs, EventHandlers, InitArgs}.
+    </pre></div>
+      <p>Test terms:</p>
+    <div class="example"><pre>
+      {suites, DirRef, Suites}.                                
+      {suites, NodeRefs, DirRef, Suites}.
+      
+      {cases, DirRef, Suite, Cases}.                           
+      {cases, NodeRefs, DirRef, Suite, Cases}.
+      {skip_suites, DirRef, Suites, Comment}.
+      {skip_suites, NodeRefs, DirRef, Suites, Comment}.
+      
+      {skip_cases, DirRef, Suite, Cases, Comment}.
+      {skip_cases, NodeRefs, DirRef, Suite, Cases, Comment}.
+    </pre></div>
+      <p>Types:</p>
+    <div class="example"><pre>
+      NodeAlias     = atom()
+      Node          = node()
+      NodeRef       = NodeAlias | Node | master
+      NodeRefs      = all_nodes | [NodeRef] | NodeRef
+      CoverSpecFile = string()
+      IncludeDirs   = string() | [string()]
+      ConfigFiles   = string() | [string()]
+      DirAlias      = atom()
+      Dir           = string()
+      LogDir        = string()
+      EventHandlers = atom() | [atom()]
+      InitArgs      = [term()]
+      DirRef        = DirAlias | Dir
+      Suites        = atom() | [atom()] | all
+      Cases         = atom() | [atom()] | all
+      Comment       = string() | ""
+    </pre></div>
+    <p>Example:</p>
+    <div class="example"><pre>
+      {logdir, "/home/test/logs"}.
+      
+      {config, "/home/test/t1/cfg/config.cfg"}.
+      {config, "/home/test/t2/cfg/config.cfg"}.
+      {config, "/home/test/t3/cfg/config.cfg"}.
+      
+      {alias, t1, "/home/test/t1"}.
+      {alias, t2, "/home/test/t2"}.
+      {alias, t3, "/home/test/t3"}.
+      
+      {suites, t1, all}.
+      {skip_suites, t1, [t1B_SUITE,t1D_SUITE], "Not implemented"}.
+      {skip_cases, t1, t1A_SUITE, [test3,test4], "Irrelevant"}.
+      {skip_cases, t1, t1C_SUITE, [test1], "Ignore"}.
+      
+      {suites, t2, [t2B_SUITE,t2C_SUITE]}.
+      {cases, t2, t2A_SUITE, [test4,test1,test7]}.
+      
+      {skip_suites, t3, all, "Not implemented"}.
+    </pre></div>
+    <p>The example specifies the following:</p>
+    <ul>
+      <li>The specified logdir directory will be used for storing 
+	the HTML log files (in subdirectories tagged with node name, 
+	date and time).</li>
+      <li>The variables in the specified test system config files will be 
+	imported for the test.</li>
+      <li>Aliases are given for three test system directories. The suites in
+	this example are stored in "/home/test/tX/test".</li>
+      <li>The first test to run includes all suites for system t1. Excluded from
+	the test are however the t1B and t1D suites. Also test cases test3 and
+	test4 in t1A as well as the test1 case in t1C are excluded from
+	the test.</li>
+      <li>Secondly, the test for system t2 should run. The included suites are
+	t2B and t2C. Included are also test cases test4, test1 and test7 in suite
+	t2A. Note that the test cases will be executed in the specified order.</li>
+      <li>Lastly, all suites for systems t3 are to be completely skipped and this 
+	should be explicitly noted in the log files.</li>
+    </ul>
+    <p>It is possible for the user to provide a test specification that
+      includes (for Common Test) unrecognizable terms. If this is desired,
+      the <span class="code">-allow_user_terms</span> flag should be used when starting tests with
+      <span class="code">run_test</span>. This forces Common Test to ignore unrecognizable terms.
+      Note that in this mode, Common Test is not able to check the specification 
+      for errors as efficiently as if the scanner runs in default mode. 
+      If <span class="code">ct:run_test/1</span> is used for starting the tests, the relaxed scanner 
+      mode is enabled by means of the tuple: <span class="code">{allow_user_terms,true}</span></p>
+  
+  
+  <h3><a name="id2267233">6.9 
+        Log files</a></h3>
+    
+    
+    <p>As the execution of the test suites proceed, events are logged in
+      four different ways:</p>
+      
+      <ul>
+	<li>Text to the operator's console.</li>
+	<li>Suite related information is sent to the major log file.</li>
+	<li>Case related information is sent to the minor log file.</li>
+	<li>The HTML overview log file gets updated with test results.</li>
+	<li>A link to all runs executed from a certain directory is written in
+	  the log named "all_runs.html" and direct links to all tests (the
+	  latest results) are written to the top level "index.html".</li>
+      </ul>
+      
+      <p>Typically the operator, who may run hundreds or thousands of
+	test cases, doesn't want to fill the console with details
+	about, or printouts from, the specific test cases. By default, the 
+	operator will only see:</p>
+      
+      <ul>
+	<li>A confirmation that the test has started and information about how 
+	  many test cases will be executed totally.</li>
+	<li>A small note about each failed test case.</li>
+	<li>A summary of all the run test cases.</li>
+	<li>A confirmation that the test run is complete.</li>
+	<li>Some special information like error reports and progress
+	  reports, printouts written with erlang:display/1, or io:format/3
+	  specifically addressed to a receiver other than <span class="code">standard_io</span>
+	  (e.g. the default group leader process 'user').</li>
+      </ul>
+      <p>If/when the operator wants to dig deeper into the general results, or
+        the result of a specific test case, he should do so by
+	following the links in the HTML presentation and take a look in the
+	major or minor log files. The "all_runs.html" page is a practical
+	starting point usually. It's located in <span class="code">logdir</span> and contains
+	a link to each test run including a quick overview (date and time,
+	node name, number of tests, test names and test result totals).</p>
+	
+      <p>An "index.html" page is written for each test run (i.e. stored in
+	the "ct_run" directory tagged with node name, date and time). This
+	file gives a short overview of all individual tests performed in the 
+	same test run. The test names follow this convention:</p>
+      <ul>
+	<li>
+<strong>TopLevelDir.TestDir</strong> (all suites in TestDir executed)</li>
+	<li>
+<strong>TopLevelDir.TestDir:suites</strong> (specific suites were executed)</li>
+	<li>
+<strong>TopLevelDir.TestDir.Suite</strong> (all cases in Suite executed)</li>
+	<li>
+<strong>TopLevelDir.TestDir.Suite:cases</strong> (specific test cases were executed)</li>
+	<li>
+<strong>TopLevelDir.TestDir.Suite.Case</strong> (only Case was executed)</li>
+      </ul>
+      
+      <p>On the test run index page there is a link to the Common Test
+	Framework log file in which information about imported
+	configuration data and general test progress is written. This
+	log file is useful to get snapshot information about the test
+	run during execution. It can also be very helpful when
+	analyzing test results or debugging test suites.</p>
+      <p>On the test run index page it is noted if a test has missing
+        suites (i.e. suites that Common Test has failed to
+        compile). Names of the missing suites can be found in the
+        Common Test Framework log file.</p>
+      <p>The major logfile shows a detailed report of the test run. It
+        includes test suite and test case names, execution time, the 
+	exact reason for failures etc. The information is available in both
+	a file with textual and with HTML representation. The HTML file shows a 
+	summary which gives a good overview of the test run. It also has links 
+	to each individual test case log file for quick viewing with an HTML 
+	browser.</p>
+      
+      <p>The minor log file contain full details of every single test
+	case, each one in a separate file. This way the files should
+	be easy to compare with previous test runs, even if the set of
+	test cases change.</p>
+      
+      <p>Which information goes where is user configurable via the
+	test server controller. Three threshold values determine what
+	comes out on screen, and in the major or minor log files. See
+	the OTP Test Server manual for information. The	contents that 
+	goes to the HTML log file is fixed however and cannot be altered.</p>
+      <p>The log files are written continously during a test run and links are
+	always created initially when a test starts. This makes it possible
+	to follow test progress simply by refreshing pages in the HTML browser.
+	Statistics totals are not presented until a test is complete however.</p>
+      
+  
+      <h3><a name="id2267439">6.10 
+        HTML Style Sheets</a></h3>
+	<a name="html_stylesheet"></a>
+	
+	<p>Common Test includes the <strong>optional</strong> feature to use
+	  HTML style sheets (CSS) for customizing user printouts. The
+	  functions in <span class="code">ct</span> that print to a test case HTML log
+	  file (<span class="code">log/3</span> and <span class="code">pal/3</span>) accept <span class="code">Category</span>
+	  as first argument. With this argument it's possible to
+	  specify a category that can be mapped to a selector in a CSS
+	  definition. This is useful especially for coloring text
+	  differently depending on the type of (or reason for) the
+	  printout. Say you want one color for test system
+	  configuration information, a different one for test system
+	  state information and finally one for errors detected by the
+	  test case functions. The corresponding style sheet may
+	  look like this:</p>
+	<div class="example"><pre>
+&lt;style&gt;
+  div.ct_internal { background:lightgrey; color:black }
+  div.default     { background:lightgreen; color:black }
+  div.sys_config  { background:blue; color:white }
+  div.sys_state   { background:yellow; color:black }
+  div.error       { background:red; color:white }
+&lt;/style&gt;
+	</pre></div>
+	<p>To install the CSS file (Common Test inlines the definition in the 
+	  HTML code), the name may be provided when executing <span class="code">run_test</span>.
+	  Example:</p>
+	<div class="example"><pre>
+	  $ run_test -dir $TEST/prog -stylesheet $TEST/styles/test_categories.css
+	</pre></div>
+	  <p>Categories in a CSS file installed with the <span class="code">-stylesheet</span> flag
+	    are on a global test level in the sense that they can be used in any 
+	    suite which is part of the test run.</p>
+	  <p>It is also possible to install style sheets on a per suite and
+	  per test case basis. Example:</p>
+	<div class="example"><pre>
+	  -module(my_SUITE).
+	  ...
+	  suite() -&gt; [..., {stylesheet,"suite_categories.css"}, ...].
+	  ...
+	  my_testcase(_) -&gt;
+	      ...
+	      ct:log(sys_config, "Test node version: ~p", [VersionInfo]),
+	      ...
+	      ct:log(sys_state, "Connections: ~p", [ConnectionInfo]),
+	      ...
+	      ct:pal(error, "Error ~p detected! Info: ~p", [SomeFault,ErrorInfo]),
+	      ct:fail(SomeFault).
+	  </pre></div>
+	<p>If the style sheet is installed as in this example, the categories are 
+	  private to the suite in question. They can be used by all test cases in the 
+	  suite, but can not be used by other suites. A suite private style sheet, 
+	  if specified, will be used in favour of a global style sheet (one specified 
+	  with the <span class="code">-stylesheet</span> flag). A stylesheet tuple (as returned by <span class="code">suite/0</span> 
+	  above) can also be returned from a test case info function. In this case the 
+	  categories specified in the style sheet can only be used in that particular 
+	  test case. A test case private style sheet is used in favour of a suite or 
+	  global level style sheet.
+	</p>
+	<p>In a tuple <span class="code">{stylesheet,CSSFile}</span>, if <span class="code">CSSFile</span> is specified
+	  with a path, e.g. <span class="code">"$TEST/styles/categories.css"</span>, this full
+	  name will be used to locate the file. If only the file name is specified
+	  however, e.g. "categories.css", then the CSS file is assumed to be located
+	  in the data directory, <span class="code">data_dir</span>, of the suite. The latter usage is
+	  recommended since it is portable compared to hard coding path names in the 
+	  suite!</p>
+	<p>The <span class="code">Category</span> argument in the example above may have the
+	  value (atom) <span class="code">sys_config</span> (white on blue), <span class="code">sys_state</span>
+	  (black on yellow) or <span class="code">error</span> (white on red).</p>
+	<p>If the <span class="code">Category</span> argument is not specified, Common Test will
+	  use the CSS selector <span class="code">div.default</span> for the
+	  printout. For this reason a user supplied style sheet must
+	  include this selector. Also the selector
+	  <span class="code">div.ct_internal</span> must be included. Hence a minimal
+	  user style sheet should look like this (which is also the
+	  default style sheet Common Test uses if no user CSS file is
+	  provided):</p>
+	<div class="example"><pre>
+	  &lt;style&gt;
+	  div.ct_internal { background:lightgrey; color:black }
+	  div.default     { background:lightgreen; color:black }
+	  &lt;/style&gt;
+	</pre></div>	  
+  
+  <h3><a name="id2267626">6.11 
+        Repeating tests</a></h3>
+    <a name="repeating_tests"></a>
+        
+    <p>You can order Common Test to repeat the tests you specify. You can choose
+       to repeat tests a certain number of times, repeat tests for a specific period of time, 
+       or repeat tests until a particular stop time is reached. If repetition is controlled by
+       means of time, it is also possible to specify what action Common Test should 
+       take upon timeout. Either Common Test performs all tests in the current run before stopping, 
+       or it stops as soon as the current test job is finished. Repetition can be activated by
+       means of <span class="code">run_test</span> start flags, or tuples in the <span class="code">ct:run:test/1</span>
+       option list argument. The flags (options in parenthesis) are:</p>
+       <ul>
+       <li>
+<span class="code">-repeat N ({repeat,N})</span>, where <span class="code">N</span> is a positive integer.</li>
+       <li>
+<span class="code">-duration DurTime ({duration,DurTime})</span>, where <span class="code">DurTime</span> is the duration, see below.</li>
+       <li>
+<span class="code">-until StopTime ({until,StopTime})</span>, where <span class="code">StopTime</span> is finish time, see below.</li>
+       <li><span class="code">-force_stop ({force_stop,true})</span></li>
+       </ul>
+       <p>The duration time, <span class="code">DurTime</span>, is specified as <span class="code">HHMMSS</span>. Example: 
+          <span class="code">-duration 012030</span> or <span class="code">{duration,"012030"}</span>, means the tests will 
+	  be executed and (if time allows) repeated, until timeout occurs after 1 h, 20 min 
+	  and 30 secs. 
+	  <span class="code">StopTime</span> can be specified as <span class="code">HHMMSS</span> and is then interpreted as a time today 
+	  (or possibly tomorrow). <span class="code">StopTime</span> can also be specified as <span class="code">YYMoMoDDHHMMSS</span>. 
+	  Example: <span class="code">-until 071001120000</span> or <span class="code">{until,"071001120000"}</span>, which means the tests
+	  will be executed and (if time allows) repeated, until 12 o'clock on the 1st of Oct 2007.</p>
+       <p>When timeout occurs, Common Test will never abort the test run immediately, since 
+          this might leave the system under test in an undefined, and possibly bad, state.
+	  Instead Common Test will finish the current test job, or the complete test 
+	  run, before stopping. The latter is the default behaviour. The <span class="code">force_stop</span> 
+	  flag/option tells Common Test to stop as soon as the current test job is finished.
+	  Note that since Common Test always finishes off the current test job or test session,
+	  the time specified with <span class="code">duration</span> or <span class="code">until</span> is never definitive!</p>
+       <p>Log files from every single repeated test run is saved in normal Common Test fashion (see above). 
+          Common Test may later support an optional feature to only store the last (and possibly 
+	  the first) set of logs of repeated test runs, but for now the user must be careful not 
+	  to run out of disk space if tests are repeated during long periods of time.</p>
+       <p>Note that for each test run that is part of a repeated session, information about the
+          particular test run is printed in the Common Test Framework Log. There you can read
+	  the repetition number, remaining time, etc.</p>
+       <p>Example 1:</p>
+       <div class="example"><pre>
+          $ run_test -dir $TEST_ROOT/to1 $TEST_ROOT/to2 -duration 001000 -force_stop</pre></div>
+       <p>Here the suites in test directory to1, followed by the suites in to2, will be executed 
+          in one test run. A timeout event will occur after 10 minutes. As long as there is time 
+	  left, Common Test will repeat the test run (i.e. starting over with the to1 test). 
+	  When the timeout occurs, Common Test will stop as soon as the current job is finished
+	  (because of the <span class="code">force_stop</span> flag). As a result, the specified test run might be 
+	  aborted after the to1 test and before the to2 test.</p>
+       <p>Example 2:</p>
+       <div class="example"><pre>
+          $ date
+	  Fri Sep 28 15:00:00 MEST 2007
+          $ run_test -dir $TEST_ROOT/to1 $TEST_ROOT/to2 -until 160000</pre></div>
+       <p>Here the same test run as in the example above will be executed (and possibly repeated). 
+          In this example, however, the timeout will occur after 1 hour and when that happens,
+	  Common Test will finish the entire test run before stopping (i.e. the to1 and to2 test
+	  will always both be executed in the same test run).</p>
+       
+       <p>Example 3:</p>
+       <div class="example"><pre>
+          $ run_test -dir $TEST_ROOT/to1 $TEST_ROOT/to2 -repeat 5</pre></div>
+       <p>Here the test run, including both the to1 and the to2 test, will be repeated 5 times.</p>
+       <div class="note">
+<div class="label">Note</div>
+<div class="content"><p><p>This feature should not be confused with the <span class="code">repeat</span> property of a test
+          case group. The options described here are used to repeat execution of entire test runs,
+	  while the <span class="code">repeat</span> property of a test case group makes it possible to repeat
+	  execution of sets of test cases within a suite. For more information about the latter,
+	  see the <span class="bold_code">
+<a href="write_test_chapter.html#test_case_groups">Writing Test Suites</a></span>
+	  chapter.</p></p></div>
+</div>
+  
+  <h3><a name="id2267872">6.12 
+        Silent Connections</a></h3>
+    <a name="silent_connections"></a>
+      
+      <p>The protocol handling processes in Common Test, implemented by ct_telnet, ct_ftp etc,
+	do verbose printing to the test case logs. This can be switched off by means
+	of the <span class="code">-silent_connections</span> flag:</p>
+      
+      <div class="example"><pre>
+	run_test -silent_connections [conn_types]
+      </pre></div>
+      
+      <p>where <span class="code">conn_types</span> specifies <span class="code">telnet, ftp, rpc</span> and/or <span class="code">snmp</span>.</p>
+      
+      <p>Example:</p>
+      
+      <div class="example"><pre>
+	run_test ... -silent_connections telnet ftp</pre></div>
+      <p>switches off logging for telnet and ftp connections.</p>
+      
+      <div class="example"><pre>
+	run_test ... -silent_connections</pre></div>
+      <p>switches off logging for all connection types.</p>
+      
+      
+      <p>Basic and important information such as opening and closing a connection,
+	fatal communication error and reconnection attempts will always be printed even 
+	if logging has been suppressed for the connection type in question. However, operations
+	such as sending and receiving data may be performed silently.</p>
+      
+      <p>It is possible to also specify <span class="code">silent_connections</span> in a test suite. This is
+	accomplished by returning a tuple, <span class="code">{silent_connections,ConnTypes}</span>, in the
+	<span class="code">suite/0</span> or test case info list. If <span class="code">ConnTypes</span> is a list of atoms 
+	(<span class="code">telnet, ftp, rpc</span> and/or <span class="code">snmp</span>), output for any corresponding connections 
+	will be suppressed. Full logging is per default enabled for any connection of type not 
+	specified in <span class="code">ConnTypes</span>. Hence, if <span class="code">ConnTypes</span> is the empty list, logging 
+	is enabled for all connections.</p>
+      
+      <p>The <span class="code">silent_connections</span> setting returned from a test case info function overrides,
+	for the test case in question, any setting made with <span class="code">suite/0</span> (which is the setting 
+	used for all cases in the suite). Example:</p>
+      
+      <div class="example"><pre>
+	
+	-module(my_SUITE).
+	...
+	suite() -&gt; [..., {silent_connections,[telnet,ftp]}, ...].
+	...
+	my_testcase1() -&gt;
+	[{silent_connections,[ftp]}].
+	my_testcase1(_) -&gt;
+	...
+	my_testcase2(_) -&gt;
+	...
+      </pre></div>
+      
+      <p>In this example, <span class="code">suite/0</span> tells Common Test to suppress
+	printouts from telnet and ftp connections. This is valid for
+	all test cases. However, <span class="code">my_testcase1/0</span> specifies that
+	for this test case, only ftp should be silent. The result is
+	that <span class="code">my_testcase1</span> will get telnet info (if any) printed
+	in the log, but not ftp info. <span class="code">my_testcase2</span> will get no
+	info from either connection printed.</p>
+      
+      <p>The <span class="code">-silent_connections</span> tag (or
+	<span class="code">silent_connections</span> tagged tuple in the call to
+	<span class="code">ct:run_test/1</span>) overrides any settings in the test
+	suite.</p>
+      
+      <p>Note that in the current Common Test version, the
+	<span class="code">silent_connections</span> feature only works for telnet
+	connections. Support for other connection types will be added
+	in future Common Test versions.</p>
+      
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2003-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

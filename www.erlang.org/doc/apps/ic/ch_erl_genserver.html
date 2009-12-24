@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Using the Erlang Generic Server Back-end</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="ic.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>ic</strong><br><strong>User's Guide</strong><br><small>Version 4.2.23</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="Using the IC Compiler" expanded="false">Using the IC Compiler<ul>
+<li>
+<a href="ch_introduction.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ch_introduction.html#id2267464">Introduction</a></li>
+<li title="Compilation of IDL Files">
+<a href="ch_introduction.html#id2253166">Compilation of IDL Files</a></li>
+</ul>
+</li>
+<li title="OMG IDL" expanded="false">OMG IDL<ul>
+<li>
+<a href="ch_basic_idl.html">
+              Top of chapter
+            </a></li>
+<li title="OMG IDL - Overview">
+<a href="ch_basic_idl.html#id2259128">OMG IDL - Overview</a></li>
+</ul>
+</li>
+<li title="IC Protocol" expanded="false">IC Protocol<ul>
+<li>
+<a href="ch_ic_protocol.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ch_ic_protocol.html#id2254750">Introduction</a></li>
+<li title="Language mappings and IDL operations">
+<a href="ch_ic_protocol.html#id2254789">Language mappings and IDL operations</a></li>
+<li title="IC Protocol">
+<a href="ch_ic_protocol.html#id2258003">IC Protocol</a></li>
+<li title="Gen_server Protocol">
+<a href="ch_ic_protocol.html#id2256777">Gen_server Protocol</a></li>
+<li title="Erlang Distribution Protocol">
+<a href="ch_ic_protocol.html#id2256829">Erlang Distribution Protocol</a></li>
+</ul>
+</li>
+<li title="Using the Plain Erlang Back-end" expanded="false">Using the Plain Erlang Back-end<ul>
+<li>
+<a href="ch_erl_plain.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ch_erl_plain.html#id2251458">Introduction</a></li>
+<li title="Compiling the Code">
+<a href="ch_erl_plain.html#id2251475">Compiling the Code</a></li>
+<li title="Writing the Implementation File">
+<a href="ch_erl_plain.html#id2261466">Writing the Implementation File</a></li>
+<li title="An Example">
+<a href="ch_erl_plain.html#id2261528">An Example</a></li>
+</ul>
+</li>
+<li title="Using the Erlang Generic Server Back-end" expanded="true">Using the Erlang Generic Server Back-end<ul>
+<li>
+<a href="ch_erl_genserver.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ch_erl_genserver.html#id2266308">Introduction</a></li>
+<li title="Compiling the Code">
+<a href="ch_erl_genserver.html#id2266329">Compiling the Code</a></li>
+<li title="Writing the Implementation File">
+<a href="ch_erl_genserver.html#id2266354">Writing the Implementation File</a></li>
+<li title="An Example">
+<a href="ch_erl_genserver.html#id2266416">An Example</a></li>
+</ul>
+</li>
+<li title="IDL to C mapping" expanded="false">IDL to C mapping<ul>
+<li>
+<a href="ch_c_mapping.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ch_c_mapping.html#id2265932">Introduction</a></li>
+<li title="C Mapping Characteristics">
+<a href="ch_c_mapping.html#id2266041">C Mapping Characteristics</a></li>
+<li title="Basic OMG IDL Types">
+<a href="ch_c_mapping.html#id2266218">Basic OMG IDL Types</a></li>
+<li title="Constructed OMG IDL Types">
+<a href="ch_c_mapping.html#id2267098">Constructed OMG IDL Types</a></li>
+<li title="OMG IDL Constants">
+<a href="ch_c_mapping.html#id2267325">OMG IDL Constants</a></li>
+<li title="OMG IDL Operations">
+<a href="ch_c_mapping.html#id2267359">OMG IDL Operations</a></li>
+<li title="Exceptions">
+<a href="ch_c_mapping.html#id2268046">Exceptions</a></li>
+<li title="Access to Attributes">
+<a href="ch_c_mapping.html#id2268060">Access to Attributes</a></li>
+<li title="Summary of Argument/Result Passing for the C-client">
+<a href="ch_c_mapping.html#id2268072">Summary of Argument/Result Passing for the C-client</a></li>
+<li title="Supported Memory Allocation Functions">
+<a href="ch_c_mapping.html#id2269698">Supported Memory Allocation Functions</a></li>
+<li title="Special Memory Deallocation Functions">
+<a href="ch_c_mapping.html#id2269833">Special Memory Deallocation Functions</a></li>
+<li title="Exception Access Functions">
+<a href="ch_c_mapping.html#id2269875">Exception Access Functions</a></li>
+<li title="Special Types">
+<a href="ch_c_mapping.html#id2269916">Special Types</a></li>
+<li title="A Mapping Example">
+<a href="ch_c_mapping.html#id2270050">A Mapping Example</a></li>
+</ul>
+</li>
+<li title="The C Client Back-end" expanded="false">The C Client Back-end<ul>
+<li>
+<a href="ch_c_client.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ch_c_client.html#id2270205">Introduction</a></li>
+<li title="Generated Stub Files">
+<a href="ch_c_client.html#id2270234">Generated Stub Files</a></li>
+<li title="C Interface Functions">
+<a href="ch_c_client.html#id2270289">C Interface Functions</a></li>
+<li title="Generating, Compiling and Linking">
+<a href="ch_c_client.html#id2270371">Generating, Compiling and Linking</a></li>
+<li title="An Example">
+<a href="ch_c_client.html#id2270441">An Example</a></li>
+</ul>
+</li>
+<li title="The C Server Back-end" expanded="false">The C Server Back-end<ul>
+<li>
+<a href="ch_c_server.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ch_c_server.html#id2270581">Introduction</a></li>
+<li title="Generated Stub Files">
+<a href="ch_c_server.html#id2270612">Generated Stub Files</a></li>
+<li title="C Skeleton Functions">
+<a href="ch_c_server.html#id2270667">C Skeleton Functions</a></li>
+<li title="The Server Loop">
+<a href="ch_c_server.html#id2270733">The Server Loop</a></li>
+<li title="Generating, Compiling and Linking">
+<a href="ch_c_server.html#id2270764">Generating, Compiling and Linking</a></li>
+<li title="An Example">
+<a href="ch_c_server.html#id2270833">An Example</a></li>
+</ul>
+</li>
+<li title="CORBA_Environment C Structure" expanded="false">CORBA_Environment C Structure<ul>
+<li>
+<a href="ch_c_corba_env.html">
+              Top of chapter
+            </a></li>
+<li title="C Structure">
+<a href="ch_c_corba_env.html#id2270979">C Structure</a></li>
+<li title="The CORBA Compatibility Part">
+<a href="ch_c_corba_env.html#id2271075">The CORBA Compatibility Part</a></li>
+<li title="The External Part">
+<a href="ch_c_corba_env.html#id2271133">The External Part</a></li>
+<li title="The Internal Part">
+<a href="ch_c_corba_env.html#id2271282">The Internal Part</a></li>
+<li title="Creating and Initiating the CORBA_Environment Structure">
+<a href="ch_c_corba_env.html#id2271413">Creating and Initiating the CORBA_Environment Structure</a></li>
+<li title="Setting System Exceptions">
+<a href="ch_c_corba_env.html#id2271742">Setting System Exceptions</a></li>
+</ul>
+</li>
+<li title="IDL to Java language Mapping" expanded="false">IDL to Java language Mapping<ul>
+<li>
+<a href="ch_java.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ch_java.html#id2271876">Introduction</a></li>
+<li title="Specialties in the Mapping">
+<a href="ch_java.html#id2271941">Specialties in the Mapping</a></li>
+<li title="Basic OMG IDL Types">
+<a href="ch_java.html#id2271969">Basic OMG IDL Types</a></li>
+<li title="Constructed OMG IDL Types">
+<a href="ch_java.html#id2272378">Constructed OMG IDL Types</a></li>
+<li title="Mapping for Constants">
+<a href="ch_java.html#id2272448">Mapping for Constants</a></li>
+<li title="Invocations of Operations">
+<a href="ch_java.html#id2272460">Invocations of Operations</a></li>
+<li title="Exceptions">
+<a href="ch_java.html#id2272514">Exceptions</a></li>
+<li title="Access to Attributes">
+<a href="ch_java.html#id2272528">Access to Attributes</a></li>
+<li title="Summary of Argument/Result Passing for Java">
+<a href="ch_java.html#id2272541">Summary of Argument/Result Passing for Java</a></li>
+<li title="Communication Toolbox">
+<a href="ch_java.html#id2272603">Communication Toolbox</a></li>
+<li title="The Package com.ericsson.otp.ic">
+<a href="ch_java.html#id2272924">The Package com.ericsson.otp.ic</a></li>
+<li title="The Term Class">
+<a href="ch_java.html#id2273349">The Term Class</a></li>
+<li title="Stub File Types">
+<a href="ch_java.html#id2273636">Stub File Types</a></li>
+<li title="Client Stub Initialization, Methods Exported">
+<a href="ch_java.html#id2273703">Client Stub Initialization, Methods Exported</a></li>
+<li title="Server Skeleton Initialization, Server Stub Implementation, Methods Exported">
+<a href="ch_java.html#id2273897">Server Skeleton Initialization, Server Stub Implementation, Methods Exported</a></li>
+<li title="A Mapping Example">
+<a href="ch_java.html#id2274041">A Mapping Example</a></li>
+<li title="Running the Compiled Code">
+<a href="ch_java.html#id2274137">Running the Compiled Code</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>5 Using the Erlang Generic Server Back-end</h1>
+  
+  <h3><a name="id2266308">5.1 
+        Introduction</a></h3>
+    
+    <p>The mapping of OMG IDL to the Erlang programming language when Erlang 
+      generic server is the back-end of choice is similar to the one used in
+      the chapter 'OMG IDL Mapping'.
+      The only difference is in the generated code, a client stub and
+      server skeleton to an Erlang <span class="code">gen_server</span>. Orber's User's Guide
+      contain a more detailed description of IDL to Erlang mapping.</p>
+  
+  <h3><a name="id2266329">5.2 
+        Compiling the Code</a></h3>
+    
+    <p>The <span class="code">ic:gen/2</span> function can be called from the command 
+      line as follows:</p>
+    <p></p>
+    <div class="example"><pre>
+shell&gt; erlc "+{be, erl_genserv}" MyFile.idl
+    </pre></div>
+  
+  <h3><a name="id2266354">5.3 
+        Writing the Implementation File</a></h3>
+    
+    <p>For each IDL interface <span class="code">&lt;interface name&gt;</span> defined in the IDL file :</p>
+    <ul>
+      <li>Create the corresponding Erlang file that will hold the
+       Erlang implementation of the IDL definitions.  </li>
+      <li>Call the implementation file after the scope of the IDL interface, 
+       followed by the suffix <span class="code">_impl</span>.</li>
+      <li>Export the implementation functions.</li>
+    </ul>
+    <p>For each function defined in the IDL interface :</p>
+    <ul>
+      <li>Implement an Erlang function that uses as arguments in the same
+       order, as the input arguments described in the IDL file, and returns 
+       the value described in the interface.</li>
+      <li>When using the function, follow the mapping described in chapter 2.</li>
+    </ul>
+  
+  <h3><a name="id2266416">5.4 
+        An Example</a></h3>
+    
+    <p>In this example, a file <span class="code">random.idl</span> generates code for the Erlang
+      gen_server back-end:</p>
+    <div class="example"><pre>
+// Filename random.idl  
+module rmod {
+ 
+  interface random {
+    // Generate a new random number 
+    double produce();
+    // Initialize random generator
+    oneway void init(in long seed1, in long seed2, in long seed3);
+ 
+  };
+};
+    </pre></div>
+    <p>When the file "random.idl" is compiled (e.g., <span class="code">shell&gt; erlc "+{be, erl_genserv}" random.idl</span>)
+      five files are produced; two for the top scope, two for the interface scope,
+      and one for the module scope. The header files for top scope and interface
+      are empty and not shown here. In this case, the stub/skeleton file  
+      <span class="code">rmod_random.erl</span> is the most important. This module exports two kinds of
+      operations:</p>
+    <ul>
+      <li>
+<strong>Administrative</strong> - used when, for example, creating and
+       terminating the server.</li>
+      <li>
+<strong>IDL dependent</strong> - operations defined in the IDL 
+       specification. In this case, <span class="code">produce</span> and <span class="code">init</span>.</li>
+    </ul>
+    <h4>Administrative Operations</h4>
+      
+      <p>To create a new server instance, one of the following functions should
+        be used:</p>
+      <ul>
+        <li>
+<strong>oe_create/0/1/2</strong> - create a new instance of the object.
+         Accepts <span class="code">Env</span> and <span class="code">RegName</span>, in that order, as parameters.
+         The former is passed uninterpreted to the initialization operation
+         of the call-back module, while the latter must be as the
+        <span class="code">gen_server</span> parameter <span class="code">ServerName</span>. If <span class="code">Env</span> is
+         left out, an empty list will be passed.</li>
+        <li>
+<strong>oe_create_link/0/1/2</strong> - similar to <span class="code">oe_create/0/1/2</span>, 
+         but create a linked server.</li>
+        <li>
+<strong>typeID/0</strong> - returns the scooped id compliant with the
+         OMG standard. In this case the string 
+        <span class="code">"IDL:rmod/random:1.0"</span>.</li>
+        <li>
+<strong>stop/1</strong> - asynchronously terminate the server. The required
+         argument is the return value from any of the start functions.</li>
+      </ul>
+    
+    <h4>IDL Dependent Operations</h4>
+      
+      <p>Operations can either be synchronous or asynchronous 
+        (i.e., <span class="code">oneway</span>). These are, respectively, mapped to 
+        <span class="code">gen_server:call/2/3</span> and <span class="code">gen_server:cast/2</span>. 
+        Consult the <span class="code">gen_server</span> documentation for valid return values.</p>
+      <p>The IDL dependent operations in this example are listed below. 
+        The first argument must be the whatever the create operation returned.</p>
+      <ul>
+        <li>
+<strong>init(ServerReference, Seed1, Seed2, Seed3)</strong> - initialize 
+         the random number generator.</li>
+        <li>
+<strong>produce(ServerReference)</strong> - generate a new random number.</li>
+      </ul>
+    
+    <p>If the compile option <span class="code">timeout</span> is used a timeout must be added 
+      (e.g., <span class="code">produce(ServerReference, 5000)</span>). For more information, see
+      the <span class="code">gen_server</span> documentation.</p>
+    <h4>Implementation Module</h4>
+      
+      <p>The implementation module shall, unless the compile option
+        <span class="code">impl</span> is used, be named <span class="code">rmod_random_impl.erl</span>.
+        and could look like this:</p>
+      <div class="example"><pre>
+-module('rmod_random_impl').
+%% Mandatory gen_server operations
+-export([init/1, terminate/2, code_change/3]).
+%% Add if 'handle_info' compile option used
+-export([handle_info/2]).
+%% API defined in IDL specification
+-export([produce/1,init/4]).
+%% Mandatory operations
+init(Env) -&gt;
+    {ok, []}.
+terminate(From, Reason) -&gt;
+    ok.
+code_change(OldVsn, State, Extra) -&gt;
+    {ok, State}.
+%% Optional
+handle_info(Info, State) -&gt;
+    {noreply, NewState}.
+%% IDL specification
+produce(State)  -&gt;
+    case catch random:uniform() of
+\\011{'EXIT',_} -&gt;
+\\011    {stop, normal, "random:uniform/0 - EXIT", State};
+\\011RUnif -&gt;
+            {reply, RUnif, State}
+     end.
+init(State, S1, S2, S3)  -&gt;
+    case catch random:seed(S1, S2, S3) of
+\\011{'EXIT',_} -&gt;
+\\011    {stop, normal, State};
+\\011_ -&gt;
+            {noreply, State}
+    end.
+      </pre></div>
+      <p>Compile the code and run the example:</p>
+      <div class="example"><pre>
+1&gt; make:all().
+Recompile: rmod_random
+Recompile: oe_random
+Recompile: rmod_random_impl
+up_to_date
+2&gt; {ok,R} = rmod_random:oe_create().
+{ok,&lt;0.30.0&gt;}
+3&gt; rmod_random:init(R, 1, 2, 3).
+ok
+4&gt; rmod_random:produce(R).
+1.97963e-4
+5&gt; 
+      </pre></div>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1998-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- runtime_tools</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/runtime_tools/index.html">Reference Manual</a><br>
+<a href="../apps/runtime_tools/release_notes.html">Release Notes</a><br>
+<a href="../apps/runtime_tools/runtime_tools.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Runtime_Tools</strong><br><strong>Reference Manual</strong><br><small>Version 1.8.2</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="runtime_tools (App)">
+<a href="runtime_tools_app.html">runtime_tools (App)
+                </a></li>
+<li title="dbg " expanded="false">dbg<ul>
+<li>
+<a href="dbg.html">
+                  Top of manual page
+                </a></li>
+<li title="fun2ms-1">
+<a href="dbg.html#fun2ms-1">fun2ms/1</a></li>
+<li title="h-0">
+<a href="dbg.html#h-0">h/0</a></li>
+<li title="h-1">
+<a href="dbg.html#h-1">h/1</a></li>
+<li title="p-1">
+<a href="dbg.html#p-1">p/1</a></li>
+<li title="p-2">
+<a href="dbg.html#p-2">p/2</a></li>
+<li title="c-3">
+<a href="dbg.html#c-3">c/3</a></li>
+<li title="c-4">
+<a href="dbg.html#c-4">c/4</a></li>
+<li title="i-0">
+<a href="dbg.html#i-0">i/0</a></li>
+<li title="tp-2">
+<a href="dbg.html#tp-2">tp/2</a></li>
+<li title="tp-3">
+<a href="dbg.html#tp-3">tp/3</a></li>
+<li title="tp-4">
+<a href="dbg.html#tp-4">tp/4</a></li>
+<li title="tp-4">
+<a href="dbg.html#tp-4">tp/4</a></li>
+<li title="tpl-2">
+<a href="dbg.html#tpl-2">tpl/2</a></li>
+<li title="tpl-3">
+<a href="dbg.html#tpl-3">tpl/3</a></li>
+<li title="tpl-4">
+<a href="dbg.html#tpl-4">tpl/4</a></li>
+<li title="tpl-4">
+<a href="dbg.html#tpl-4">tpl/4</a></li>
+<li title="ctp-0">
+<a href="dbg.html#ctp-0">ctp/0</a></li>
+<li title="ctp-1">
+<a href="dbg.html#ctp-1">ctp/1</a></li>
+<li title="ctp-2">
+<a href="dbg.html#ctp-2">ctp/2</a></li>
+<li title="ctp-3">
+<a href="dbg.html#ctp-3">ctp/3</a></li>
+<li title="ctp-3">
+<a href="dbg.html#ctp-3">ctp/3</a></li>
+<li title="ctpl-0">
+<a href="dbg.html#ctpl-0">ctpl/0</a></li>
+<li title="ctpl-1">
+<a href="dbg.html#ctpl-1">ctpl/1</a></li>
+<li title="ctpl-2">
+<a href="dbg.html#ctpl-2">ctpl/2</a></li>
+<li title="ctpl-3">
+<a href="dbg.html#ctpl-3">ctpl/3</a></li>
+<li title="ctpl-3">
+<a href="dbg.html#ctpl-3">ctpl/3</a></li>
+<li title="ctpg-0">
+<a href="dbg.html#ctpg-0">ctpg/0</a></li>
+<li title="ctpg-1">
+<a href="dbg.html#ctpg-1">ctpg/1</a></li>
+<li title="ctpg-2">
+<a href="dbg.html#ctpg-2">ctpg/2</a></li>
+<li title="ctpg-3">
+<a href="dbg.html#ctpg-3">ctpg/3</a></li>
+<li title="ctpg-3">
+<a href="dbg.html#ctpg-3">ctpg/3</a></li>
+<li title="ltp-0">
+<a href="dbg.html#ltp-0">ltp/0</a></li>
+<li title="dtp-0">
+<a href="dbg.html#dtp-0">dtp/0</a></li>
+<li title="dtp-1">
+<a href="dbg.html#dtp-1">dtp/1</a></li>
+<li title="wtp-1">
+<a href="dbg.html#wtp-1">wtp/1</a></li>
+<li title="rtp-1">
+<a href="dbg.html#rtp-1">rtp/1</a></li>
+<li title="n-1">
+<a href="dbg.html#n-1">n/1</a></li>
+<li title="cn-1">
+<a href="dbg.html#cn-1">cn/1</a></li>
+<li title="ln-0">
+<a href="dbg.html#ln-0">ln/0</a></li>
+<li title="tracer-0">
+<a href="dbg.html#tracer-0">tracer/0</a></li>
+<li title="tracer-2">
+<a href="dbg.html#tracer-2">tracer/2</a></li>
+<li title="tracer-3">
+<a href="dbg.html#tracer-3">tracer/3</a></li>
+<li title="trace_port-2">
+<a href="dbg.html#trace_port-2">trace_port/2</a></li>
+<li title="flush_trace_port-0">
+<a href="dbg.html#flush_trace_port-0">flush_trace_port/0</a></li>
+<li title="flush_trace_port-1">
+<a href="dbg.html#flush_trace_port-1">flush_trace_port/1</a></li>
+<li title="trace_port_control-1">
+<a href="dbg.html#trace_port_control-1">trace_port_control/1</a></li>
+<li title="trace_port_control-2">
+<a href="dbg.html#trace_port_control-2">trace_port_control/2</a></li>
+<li title="trace_client-2">
+<a href="dbg.html#trace_client-2">trace_client/2</a></li>
+<li title="trace_client-3">
+<a href="dbg.html#trace_client-3">trace_client/3</a></li>
+<li title="stop_trace_client-1">
+<a href="dbg.html#stop_trace_client-1">stop_trace_client/1</a></li>
+<li title="get_tracer-0">
+<a href="dbg.html#get_tracer-0">get_tracer/0</a></li>
+<li title="get_tracer-1">
+<a href="dbg.html#get_tracer-1">get_tracer/1</a></li>
+<li title="stop-0">
+<a href="dbg.html#stop-0">stop/0</a></li>
+<li title="stop_clear-0">
+<a href="dbg.html#stop_clear-0">stop_clear/0</a></li>
+</ul>
+</li>
+<li title="erts_alloc_config " expanded="false">erts_alloc_config<ul>
+<li>
+<a href="erts_alloc_config.html">
+                  Top of manual page
+                </a></li>
+<li title="save_scenario-0">
+<a href="erts_alloc_config.html#save_scenario-0">save_scenario/0</a></li>
+<li title="make_config-0">
+<a href="erts_alloc_config.html#make_config-0">make_config/0</a></li>
+<li title="make_config-1">
+<a href="erts_alloc_config.html#make_config-1">make_config/1</a></li>
+<li title="stop-0">
+<a href="erts_alloc_config.html#stop-0">stop/0</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>runtime_tools</h1></center>
+  
+  <h3>APPLICATION</h3>
+<div class="REFBODY">runtime_tools</div>
+  <h3>APPLICATION SUMMARY</h3>
+<div class="REFBODY">The Runtime tools Application</div>
+  <h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+    <p>This chapter describes the Runtime_Tools application in OTP,
+      which provides low footprint tracing/debugging tools suitable
+      for inclusion in a production system.</p>
+  </p></div>
+  <h3><a name="id2252525">Configuration</a></h3>
+<div class="REFBODY">
+    
+    <p>There are currently no configuration parameters available for
+      this application.
+      </p>
+  </div>
+  <h3><a name="id2259085">SEE ALSO</a></h3>
+<div class="REFBODY">
+    
+    <p>application(3)</p>
+  </div>
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1999-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

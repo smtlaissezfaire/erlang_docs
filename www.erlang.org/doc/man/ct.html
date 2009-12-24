@@ -1,0 +1,1351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../otp_doc.css" type="text/css">
+<title>Erlang -- ct</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../erlang-logo.png"><br><small>
+<a href="../apps/common_test/users_guide.html">User's Guide</a><br>
+<a href="../apps/common_test/index.html">Reference Manual</a><br>
+<a href="../apps/common_test/release_notes.html">Release Notes</a><br>
+<a href="../apps/common_test/common_test.pdf">PDF</a><br>
+<a href="../index.html">Top</a></small><p><strong>Common Test</strong><br><strong>Reference Manual</strong><br><small>Version 1.4.6</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Table of Contents</strong></small></p>
+<ul class="flipMenu">
+<li title="common_test " expanded="false">common_test<ul>
+<li>
+<a href="common_test.html">
+                  Top of manual page
+                </a></li>
+<li title="Module:all-0">
+<a href="common_test.html#Module:all-0">Module:all/0</a></li>
+<li title="Module:groups-0">
+<a href="common_test.html#Module:groups-0">Module:groups/0</a></li>
+<li title="Module:suite-0">
+<a href="common_test.html#Module:suite-0">Module:suite/0</a></li>
+<li title="Module:init_per_suite-1">
+<a href="common_test.html#Module:init_per_suite-1">Module:init_per_suite/1</a></li>
+<li title="Module:end_per_suite-1">
+<a href="common_test.html#Module:end_per_suite-1">Module:end_per_suite/1</a></li>
+<li title="Module:init_per_group-2">
+<a href="common_test.html#Module:init_per_group-2">Module:init_per_group/2</a></li>
+<li title="Module:end_per_group-2">
+<a href="common_test.html#Module:end_per_group-2">Module:end_per_group/2</a></li>
+<li title="Module:init_per_testcase-2">
+<a href="common_test.html#Module:init_per_testcase-2">Module:init_per_testcase/2</a></li>
+<li title="Module:end_per_testcase-2">
+<a href="common_test.html#Module:end_per_testcase-2">Module:end_per_testcase/2</a></li>
+<li title="Module:testcase-0">
+<a href="common_test.html#Module:testcase-0">Module:testcase/0</a></li>
+<li title="Module:testcase-1">
+<a href="common_test.html#Module:testcase-1">Module:testcase/1</a></li>
+</ul>
+</li>
+<li title="run_test">
+<a href="run_test.html">run_test</a></li>
+<li title="ct " expanded="true">ct<ul>
+<li>
+<a href="ct.html">
+                  Top of manual page
+                </a></li>
+<li title="abort_current_testcase-1">
+<a href="ct.html#abort_current_testcase-1">abort_current_testcase/1</a></li>
+<li title="comment-1">
+<a href="ct.html#comment-1">comment/1</a></li>
+<li title="decrypt_config_file-2">
+<a href="ct.html#decrypt_config_file-2">decrypt_config_file/2</a></li>
+<li title="decrypt_config_file-3">
+<a href="ct.html#decrypt_config_file-3">decrypt_config_file/3</a></li>
+<li title="encrypt_config_file-2">
+<a href="ct.html#encrypt_config_file-2">encrypt_config_file/2</a></li>
+<li title="encrypt_config_file-3">
+<a href="ct.html#encrypt_config_file-3">encrypt_config_file/3</a></li>
+<li title="fail-1">
+<a href="ct.html#fail-1">fail/1</a></li>
+<li title="get_config-1">
+<a href="ct.html#get_config-1">get_config/1</a></li>
+<li title="get_config-2">
+<a href="ct.html#get_config-2">get_config/2</a></li>
+<li title="get_config-3">
+<a href="ct.html#get_config-3">get_config/3</a></li>
+<li title="get_status-0">
+<a href="ct.html#get_status-0">get_status/0</a></li>
+<li title="get_target_name-1">
+<a href="ct.html#get_target_name-1">get_target_name/1</a></li>
+<li title="install-1">
+<a href="ct.html#install-1">install/1</a></li>
+<li title="listenv-1">
+<a href="ct.html#listenv-1">listenv/1</a></li>
+<li title="log-1">
+<a href="ct.html#log-1">log/1</a></li>
+<li title="log-2">
+<a href="ct.html#log-2">log/2</a></li>
+<li title="log-3">
+<a href="ct.html#log-3">log/3</a></li>
+<li title="pal-1">
+<a href="ct.html#pal-1">pal/1</a></li>
+<li title="pal-2">
+<a href="ct.html#pal-2">pal/2</a></li>
+<li title="pal-3">
+<a href="ct.html#pal-3">pal/3</a></li>
+<li title="parse_table-1">
+<a href="ct.html#parse_table-1">parse_table/1</a></li>
+<li title="print-1">
+<a href="ct.html#print-1">print/1</a></li>
+<li title="print-2">
+<a href="ct.html#print-2">print/2</a></li>
+<li title="print-3">
+<a href="ct.html#print-3">print/3</a></li>
+<li title="require-1">
+<a href="ct.html#require-1">require/1</a></li>
+<li title="require-2">
+<a href="ct.html#require-2">require/2</a></li>
+<li title="run-1">
+<a href="ct.html#run-1">run/1</a></li>
+<li title="run-2">
+<a href="ct.html#run-2">run/2</a></li>
+<li title="run-3">
+<a href="ct.html#run-3">run/3</a></li>
+<li title="run_test-1">
+<a href="ct.html#run_test-1">run_test/1</a></li>
+<li title="run_testspec-1">
+<a href="ct.html#run_testspec-1">run_testspec/1</a></li>
+<li title="start_interactive-0">
+<a href="ct.html#start_interactive-0">start_interactive/0</a></li>
+<li title="step-3">
+<a href="ct.html#step-3">step/3</a></li>
+<li title="step-4">
+<a href="ct.html#step-4">step/4</a></li>
+<li title="stop_interactive-0">
+<a href="ct.html#stop_interactive-0">stop_interactive/0</a></li>
+<li title="testcases-2">
+<a href="ct.html#testcases-2">testcases/2</a></li>
+<li title="userdata-2">
+<a href="ct.html#userdata-2">userdata/2</a></li>
+<li title="userdata-3">
+<a href="ct.html#userdata-3">userdata/3</a></li>
+</ul>
+</li>
+<li title="ct_master " expanded="false">ct_master<ul>
+<li>
+<a href="ct_master.html">
+                  Top of manual page
+                </a></li>
+<li title="abort-0">
+<a href="ct_master.html#abort-0">abort/0</a></li>
+<li title="abort-1">
+<a href="ct_master.html#abort-1">abort/1</a></li>
+<li title="progress-0">
+<a href="ct_master.html#progress-0">progress/0</a></li>
+<li title="run-1">
+<a href="ct_master.html#run-1">run/1</a></li>
+<li title="run-3">
+<a href="ct_master.html#run-3">run/3</a></li>
+<li title="run-4">
+<a href="ct_master.html#run-4">run/4</a></li>
+<li title="run_on_node-2">
+<a href="ct_master.html#run_on_node-2">run_on_node/2</a></li>
+<li title="run_on_node-3">
+<a href="ct_master.html#run_on_node-3">run_on_node/3</a></li>
+<li title="run_test-2">
+<a href="ct_master.html#run_test-2">run_test/2</a></li>
+</ul>
+</li>
+<li title="ct_cover " expanded="false">ct_cover<ul>
+<li>
+<a href="ct_cover.html">
+                  Top of manual page
+                </a></li>
+<li title="add_nodes-1">
+<a href="ct_cover.html#add_nodes-1">add_nodes/1</a></li>
+<li title="remove_nodes-1">
+<a href="ct_cover.html#remove_nodes-1">remove_nodes/1</a></li>
+</ul>
+</li>
+<li title="ct_ftp " expanded="false">ct_ftp<ul>
+<li>
+<a href="ct_ftp.html">
+                  Top of manual page
+                </a></li>
+<li title="cd-2">
+<a href="ct_ftp.html#cd-2">cd/2</a></li>
+<li title="close-1">
+<a href="ct_ftp.html#close-1">close/1</a></li>
+<li title="delete-2">
+<a href="ct_ftp.html#delete-2">delete/2</a></li>
+<li title="get-3">
+<a href="ct_ftp.html#get-3">get/3</a></li>
+<li title="ls-2">
+<a href="ct_ftp.html#ls-2">ls/2</a></li>
+<li title="open-1">
+<a href="ct_ftp.html#open-1">open/1</a></li>
+<li title="put-3">
+<a href="ct_ftp.html#put-3">put/3</a></li>
+<li title="recv-2">
+<a href="ct_ftp.html#recv-2">recv/2</a></li>
+<li title="recv-3">
+<a href="ct_ftp.html#recv-3">recv/3</a></li>
+<li title="send-2">
+<a href="ct_ftp.html#send-2">send/2</a></li>
+<li title="send-3">
+<a href="ct_ftp.html#send-3">send/3</a></li>
+<li title="type-2">
+<a href="ct_ftp.html#type-2">type/2</a></li>
+</ul>
+</li>
+<li title="ct_ssh " expanded="false">ct_ssh<ul>
+<li>
+<a href="ct_ssh.html">
+                  Top of manual page
+                </a></li>
+<li title="apread-4">
+<a href="ct_ssh.html#apread-4">apread/4</a></li>
+<li title="apread-5">
+<a href="ct_ssh.html#apread-5">apread/5</a></li>
+<li title="apwrite-4">
+<a href="ct_ssh.html#apwrite-4">apwrite/4</a></li>
+<li title="apwrite-5">
+<a href="ct_ssh.html#apwrite-5">apwrite/5</a></li>
+<li title="aread-3">
+<a href="ct_ssh.html#aread-3">aread/3</a></li>
+<li title="aread-4">
+<a href="ct_ssh.html#aread-4">aread/4</a></li>
+<li title="awrite-3">
+<a href="ct_ssh.html#awrite-3">awrite/3</a></li>
+<li title="awrite-4">
+<a href="ct_ssh.html#awrite-4">awrite/4</a></li>
+<li title="close-2">
+<a href="ct_ssh.html#close-2">close/2</a></li>
+<li title="close-3">
+<a href="ct_ssh.html#close-3">close/3</a></li>
+<li title="connect-1">
+<a href="ct_ssh.html#connect-1">connect/1</a></li>
+<li title="connect-2">
+<a href="ct_ssh.html#connect-2">connect/2</a></li>
+<li title="connect-3">
+<a href="ct_ssh.html#connect-3">connect/3</a></li>
+<li title="del_dir-2">
+<a href="ct_ssh.html#del_dir-2">del_dir/2</a></li>
+<li title="del_dir-3">
+<a href="ct_ssh.html#del_dir-3">del_dir/3</a></li>
+<li title="delete-2">
+<a href="ct_ssh.html#delete-2">delete/2</a></li>
+<li title="delete-3">
+<a href="ct_ssh.html#delete-3">delete/3</a></li>
+<li title="disconnect-1">
+<a href="ct_ssh.html#disconnect-1">disconnect/1</a></li>
+<li title="exec-2">
+<a href="ct_ssh.html#exec-2">exec/2</a></li>
+<li title="exec-3">
+<a href="ct_ssh.html#exec-3">exec/3</a></li>
+<li title="exec-4">
+<a href="ct_ssh.html#exec-4">exec/4</a></li>
+<li title="get_file_info-2">
+<a href="ct_ssh.html#get_file_info-2">get_file_info/2</a></li>
+<li title="get_file_info-3">
+<a href="ct_ssh.html#get_file_info-3">get_file_info/3</a></li>
+<li title="list_dir-2">
+<a href="ct_ssh.html#list_dir-2">list_dir/2</a></li>
+<li title="list_dir-3">
+<a href="ct_ssh.html#list_dir-3">list_dir/3</a></li>
+<li title="make_dir-2">
+<a href="ct_ssh.html#make_dir-2">make_dir/2</a></li>
+<li title="make_dir-3">
+<a href="ct_ssh.html#make_dir-3">make_dir/3</a></li>
+<li title="make_symlink-3">
+<a href="ct_ssh.html#make_symlink-3">make_symlink/3</a></li>
+<li title="make_symlink-4">
+<a href="ct_ssh.html#make_symlink-4">make_symlink/4</a></li>
+<li title="open-3">
+<a href="ct_ssh.html#open-3">open/3</a></li>
+<li title="open-4">
+<a href="ct_ssh.html#open-4">open/4</a></li>
+<li title="opendir-2">
+<a href="ct_ssh.html#opendir-2">opendir/2</a></li>
+<li title="opendir-3">
+<a href="ct_ssh.html#opendir-3">opendir/3</a></li>
+<li title="position-3">
+<a href="ct_ssh.html#position-3">position/3</a></li>
+<li title="position-4">
+<a href="ct_ssh.html#position-4">position/4</a></li>
+<li title="pread-4">
+<a href="ct_ssh.html#pread-4">pread/4</a></li>
+<li title="pread-5">
+<a href="ct_ssh.html#pread-5">pread/5</a></li>
+<li title="pwrite-4">
+<a href="ct_ssh.html#pwrite-4">pwrite/4</a></li>
+<li title="pwrite-5">
+<a href="ct_ssh.html#pwrite-5">pwrite/5</a></li>
+<li title="read-3">
+<a href="ct_ssh.html#read-3">read/3</a></li>
+<li title="read-4">
+<a href="ct_ssh.html#read-4">read/4</a></li>
+<li title="read_file-2">
+<a href="ct_ssh.html#read_file-2">read_file/2</a></li>
+<li title="read_file-3">
+<a href="ct_ssh.html#read_file-3">read_file/3</a></li>
+<li title="read_file_info-2">
+<a href="ct_ssh.html#read_file_info-2">read_file_info/2</a></li>
+<li title="read_file_info-3">
+<a href="ct_ssh.html#read_file_info-3">read_file_info/3</a></li>
+<li title="read_link-2">
+<a href="ct_ssh.html#read_link-2">read_link/2</a></li>
+<li title="read_link-3">
+<a href="ct_ssh.html#read_link-3">read_link/3</a></li>
+<li title="read_link_info-2">
+<a href="ct_ssh.html#read_link_info-2">read_link_info/2</a></li>
+<li title="read_link_info-3">
+<a href="ct_ssh.html#read_link_info-3">read_link_info/3</a></li>
+<li title="receive_response-2">
+<a href="ct_ssh.html#receive_response-2">receive_response/2</a></li>
+<li title="receive_response-3">
+<a href="ct_ssh.html#receive_response-3">receive_response/3</a></li>
+<li title="receive_response-4">
+<a href="ct_ssh.html#receive_response-4">receive_response/4</a></li>
+<li title="rename-3">
+<a href="ct_ssh.html#rename-3">rename/3</a></li>
+<li title="rename-4">
+<a href="ct_ssh.html#rename-4">rename/4</a></li>
+<li title="send-3">
+<a href="ct_ssh.html#send-3">send/3</a></li>
+<li title="send-4">
+<a href="ct_ssh.html#send-4">send/4</a></li>
+<li title="send-5">
+<a href="ct_ssh.html#send-5">send/5</a></li>
+<li title="send_and_receive-3">
+<a href="ct_ssh.html#send_and_receive-3">send_and_receive/3</a></li>
+<li title="send_and_receive-4">
+<a href="ct_ssh.html#send_and_receive-4">send_and_receive/4</a></li>
+<li title="send_and_receive-5">
+<a href="ct_ssh.html#send_and_receive-5">send_and_receive/5</a></li>
+<li title="send_and_receive-6">
+<a href="ct_ssh.html#send_and_receive-6">send_and_receive/6</a></li>
+<li title="session_close-2">
+<a href="ct_ssh.html#session_close-2">session_close/2</a></li>
+<li title="session_open-1">
+<a href="ct_ssh.html#session_open-1">session_open/1</a></li>
+<li title="session_open-2">
+<a href="ct_ssh.html#session_open-2">session_open/2</a></li>
+<li title="sftp_connect-1">
+<a href="ct_ssh.html#sftp_connect-1">sftp_connect/1</a></li>
+<li title="subsystem-3">
+<a href="ct_ssh.html#subsystem-3">subsystem/3</a></li>
+<li title="subsystem-4">
+<a href="ct_ssh.html#subsystem-4">subsystem/4</a></li>
+<li title="write-3">
+<a href="ct_ssh.html#write-3">write/3</a></li>
+<li title="write-4">
+<a href="ct_ssh.html#write-4">write/4</a></li>
+<li title="write_file-3">
+<a href="ct_ssh.html#write_file-3">write_file/3</a></li>
+<li title="write_file-4">
+<a href="ct_ssh.html#write_file-4">write_file/4</a></li>
+<li title="write_file_info-3">
+<a href="ct_ssh.html#write_file_info-3">write_file_info/3</a></li>
+<li title="write_file_info-4">
+<a href="ct_ssh.html#write_file_info-4">write_file_info/4</a></li>
+</ul>
+</li>
+<li title="ct_rpc " expanded="false">ct_rpc<ul>
+<li>
+<a href="ct_rpc.html">
+                  Top of manual page
+                </a></li>
+<li title="app_node-2">
+<a href="ct_rpc.html#app_node-2">app_node/2</a></li>
+<li title="app_node-3">
+<a href="ct_rpc.html#app_node-3">app_node/3</a></li>
+<li title="app_node-4">
+<a href="ct_rpc.html#app_node-4">app_node/4</a></li>
+<li title="call-4">
+<a href="ct_rpc.html#call-4">call/4</a></li>
+<li title="call-5">
+<a href="ct_rpc.html#call-5">call/5</a></li>
+<li title="call-6">
+<a href="ct_rpc.html#call-6">call/6</a></li>
+<li title="cast-4">
+<a href="ct_rpc.html#cast-4">cast/4</a></li>
+<li title="cast-5">
+<a href="ct_rpc.html#cast-5">cast/5</a></li>
+</ul>
+</li>
+<li title="ct_snmp " expanded="false">ct_snmp<ul>
+<li>
+<a href="ct_snmp.html">
+                  Top of manual page
+                </a></li>
+<li title="get_next_values-3">
+<a href="ct_snmp.html#get_next_values-3">get_next_values/3</a></li>
+<li title="get_values-3">
+<a href="ct_snmp.html#get_values-3">get_values/3</a></li>
+<li title="load_mibs-1">
+<a href="ct_snmp.html#load_mibs-1">load_mibs/1</a></li>
+<li title="register_agents-2">
+<a href="ct_snmp.html#register_agents-2">register_agents/2</a></li>
+<li title="register_users-2">
+<a href="ct_snmp.html#register_users-2">register_users/2</a></li>
+<li title="register_usm_users-2">
+<a href="ct_snmp.html#register_usm_users-2">register_usm_users/2</a></li>
+<li title="set_info-1">
+<a href="ct_snmp.html#set_info-1">set_info/1</a></li>
+<li title="set_values-4">
+<a href="ct_snmp.html#set_values-4">set_values/4</a></li>
+<li title="start-2">
+<a href="ct_snmp.html#start-2">start/2</a></li>
+<li title="start-3">
+<a href="ct_snmp.html#start-3">start/3</a></li>
+<li title="stop-1">
+<a href="ct_snmp.html#stop-1">stop/1</a></li>
+<li title="unregister_agents-1">
+<a href="ct_snmp.html#unregister_agents-1">unregister_agents/1</a></li>
+<li title="unregister_users-1">
+<a href="ct_snmp.html#unregister_users-1">unregister_users/1</a></li>
+<li title="update_usm_users-2">
+<a href="ct_snmp.html#update_usm_users-2">update_usm_users/2</a></li>
+</ul>
+</li>
+<li title="ct_telnet " expanded="false">ct_telnet<ul>
+<li>
+<a href="ct_telnet.html">
+                  Top of manual page
+                </a></li>
+<li title="close-1">
+<a href="ct_telnet.html#close-1">close/1</a></li>
+<li title="cmd-2">
+<a href="ct_telnet.html#cmd-2">cmd/2</a></li>
+<li title="cmd-3">
+<a href="ct_telnet.html#cmd-3">cmd/3</a></li>
+<li title="cmdf-3">
+<a href="ct_telnet.html#cmdf-3">cmdf/3</a></li>
+<li title="cmdf-4">
+<a href="ct_telnet.html#cmdf-4">cmdf/4</a></li>
+<li title="cont_log-2">
+<a href="ct_telnet.html#cont_log-2">cont_log/2</a></li>
+<li title="end_log-0">
+<a href="ct_telnet.html#end_log-0">end_log/0</a></li>
+<li title="expect-2">
+<a href="ct_telnet.html#expect-2">expect/2</a></li>
+<li title="expect-3">
+<a href="ct_telnet.html#expect-3">expect/3</a></li>
+<li title="get_data-1">
+<a href="ct_telnet.html#get_data-1">get_data/1</a></li>
+<li title="open-1">
+<a href="ct_telnet.html#open-1">open/1</a></li>
+<li title="open-2">
+<a href="ct_telnet.html#open-2">open/2</a></li>
+<li title="open-3">
+<a href="ct_telnet.html#open-3">open/3</a></li>
+<li title="open-4">
+<a href="ct_telnet.html#open-4">open/4</a></li>
+<li title="send-2">
+<a href="ct_telnet.html#send-2">send/2</a></li>
+<li title="sendf-3">
+<a href="ct_telnet.html#sendf-3">sendf/3</a></li>
+</ul>
+</li>
+<li title="unix_telnet">
+<a href="unix_telnet.html">unix_telnet</a></li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<!-- refpage --><center><h1>ct</h1></center>
+<h3>MODULE</h3>
+<div class="REFBODY">ct</div>
+<h3>MODULE SUMMARY</h3>
+<div class="REFBODY">Main user interface for the Common Test framework.</div>
+<h3>DESCRIPTION</h3>
+<div class="REFBODY"><p>
+<p>Main user interface for the Common Test framework.</p>
+  
+   <p> This module implements the command line interface for running
+   tests and some basic functions for common test case issues
+   such as configuration and logging. </p>
+  
+   <p><strong>Test Suite Support Macros</strong></p>
+  
+   <p>The <span class="code">config</span> macro is defined in <span class="code">ct.hrl</span>. This
+   macro should be used to retrieve information from the
+   <span class="code">Config</span> variable sent to all test cases. It is used with two
+   arguments, where the first is the name of the configuration
+   variable you wish to retrieve, and the second is the <span class="code">Config</span>
+   variable supplied to the test case.</p>
+  
+   <p>Possible configuration variables include:</p>
+   <ul>
+     <li><p><span class="code">data_dir</span>  - Data file directory.</p></li>
+     <li><p><span class="code">priv_dir</span>  - Scratch file directory.</p></li>
+     <li><p>Whatever added by <span class="code">init_per_suite/1</span> or
+     <span class="code">init_per_testcase/2</span> in the test suite.</p></li>
+   </ul></p></div>
+<h3><a name="id2272310">DATA TYPES</a></h3>
+<div class="REFBODY">
+<a name="types"></a>
+<dl>
+<dt><strong><span class="code">handle() = handle() (see module ct_gen_conn) | term()</span></strong></dt>
+<dd>
+<a name="type-handle"></a>
+<p>The identity of a
+   specific connection.</p>
+</dd>
+<dt><strong><span class="code">target_name() = var_name()</span></strong></dt>
+<dd>
+<a name="type-target_name"></a>
+<p>The name of a target.
+  </p>
+</dd>
+<dt><strong><span class="code">var_name() = atom()</span></strong></dt>
+<dd>
+<a name="type-var_name"></a>
+<p>A variable name which is specified when
+   <span class="code">ct:require/2</span> is called,
+   e.g. <span class="code">ct:require(mynodename,{node,[telnet]})</span>
+  </p>
+</dd>
+</dl>
+</div>
+<h3>EXPORTS</h3>
+<p><a name="abort_current_testcase-1"><span class="bold_code">abort_current_testcase(Reason) -&gt; ok | {error, no_testcase_running}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="abort_current_testcase-1"></a>
+<p>When calling this function, the currently executing test case will be aborted.
+        It is the user's responsibility to know for sure which test case is currently
+  	 executing. The function is therefore only safe to call from a function which
+  	 has been called (or synchronously invoked) by the test case.</p>
+  
+        <p><span class="code">Reason</span>, the reason for aborting the test case, is printed
+        in the test case log.</p>
+</p></div>
+<p><a name="comment-1"><span class="bold_code">comment(Comment) -&gt; void()</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Comment = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="comment-1"></a>
+<p>Print the given <span class="code">Comment</span> in the comment field of   
+the table on the test suite result page.</p>
+  
+   <p>If called several times, only the last comment is printed.
+   <span class="code">comment/1</span> is also overwritten by the return value
+   <span class="code">{comment,Comment}</span> or by the function
+   <span class="code">fail/1</span> (which prints <span class="code">Reason</span> as a
+   comment).</p>
+</p></div>
+<p><a name="decrypt_config_file-2"><span class="bold_code">decrypt_config_file(EncryptFileName, TargetFileName) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">EncryptFileName = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">TargetFileName = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="decrypt_config_file-2"></a>
+<p>This function decrypts <span class="code">EncryptFileName</span>, previously
+        generated with <span class="code">encrypt_config_file/2/3</span>. The original
+        file contents is saved in the target file. The encryption key, a
+        string, must be available in a text file named
+        <span class="code">.ct_config.crypt</span> in the current directory, or the
+        home directory of the user (it is searched for in that order).</p>
+</p></div>
+<p><a name="decrypt_config_file-3"><span class="bold_code">decrypt_config_file(EncryptFileName, TargetFileName, KeyOrFile) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">EncryptFileName = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">TargetFileName = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">KeyOrFile = {key, string()} | {file, string()}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="decrypt_config_file-3"></a>
+<p>This function decrypts <span class="code">EncryptFileName</span>, previously
+        generated with <span class="code">encrypt_config_file/2/3</span>. The original
+        file contents is saved in the target file. The key must have the
+        the same value as that used for encryption.</p>
+</p></div>
+<p><a name="encrypt_config_file-2"><span class="bold_code">encrypt_config_file(SrcFileName, EncryptFileName) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">SrcFileName = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">EncryptFileName = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="encrypt_config_file-2"></a>
+<p>This function encrypts the source config file with DES3 and
+        saves the result in file <span class="code">EncryptFileName</span>. The key,
+        a string, must be available in a text file named
+        <span class="code">.ct_config.crypt</span> in the current directory, or the
+        home directory of the user (it is searched for in that order).</p>
+        <p>See the Common Test User's Guide for information about using
+        encrypted config files when running tests.</p>
+        <p>See the <span class="code">crypto</span> application for details on DES3
+        encryption/decryption.</p>
+</p></div>
+<p><a name="encrypt_config_file-3"><span class="bold_code">encrypt_config_file(SrcFileName, EncryptFileName, KeyOrFile) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">SrcFileName = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">EncryptFileName = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">KeyOrFile = {key, string()} | {file, string()}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="encrypt_config_file-3"></a>
+<p>This function encrypts the source config file with DES3 and
+        saves the result in the target file <span class="code">EncryptFileName</span>.
+        The encryption key to use is either the value in
+        <span class="code">{key,Key}</span> or the value stored in the file specified
+        by <span class="code">{file,File}</span>.</p>
+        <p>See the Common Test User's Guide for information about using
+        encrypted config files when running tests.</p>
+        <p>See the <span class="code">crypto</span> application for details on DES3
+        encryption/decryption.</p>
+</p></div>
+<p><a name="fail-1"><span class="bold_code">fail(Reason) -&gt; void()</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="fail-1"></a>
+<p>Terminate a test case with the given error
+   <span class="code">Reason</span>.</p>
+</p></div>
+<p><a name="get_config-1"><span class="bold_code">get_config(Required) -&gt; Value</span></a><br></p>
+<div class="REFBODY"><p><a name="get_config-1"></a>
+<p>Equivalent to <span class="bold_code">
+<a href="#get_config-3">get_config(Required, undefined, [])</a></span>.</p>
+</p></div>
+<p><a name="get_config-2"><span class="bold_code">get_config(Required, Default) -&gt; Value</span></a><br></p>
+<div class="REFBODY"><p><a name="get_config-2"></a>
+<p>Equivalent to <span class="bold_code">
+<a href="#get_config-3">get_config(Required, Default, [])</a></span>.</p>
+</p></div>
+<p><a name="get_config-3"><span class="bold_code">get_config(Required, Default, Opts) -&gt; ValueOrElement</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Required = KeyOrName | {KeyOrName, SubKey}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">KeyOrName = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">SubKey = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Default = term()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Opts = [Opt] | []</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Opt = element | all</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">ValueOrElement = term() | Default</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="get_config-3"></a>
+<p>Read config data values.</p>
+  
+   <p>This function returns the matching value(s) or config element(s),
+   given a config variable key or its associated name
+   (if one has been specified with <span class="code">require/2</span> or a
+   require statement).</p>
+  
+   <p>Example, given the following config file:</p>
+   <div class="example"><pre>
+   {unix,[{telnet,IpAddr},
+          {username,Username},
+          {password,Password}]}.</pre></div>
+   <p><span class="code">get_config(unix,Default) -&gt;
+                            [{telnet,IpAddr},
+                             {username,Username},
+                             {password,Password}]</span><br>
+   <span class="code">get_config({unix,telnet},Default) -&gt; IpAddr</span><br>
+   <span class="code">get_config({unix,ftp},Default) -&gt; Default</span><br>
+   <span class="code">get_config(unknownkey,Default) -&gt; Default</span></p>
+  
+   <p>If a config variable key has been associated with a name (by
+   means of <span class="code">require/2</span> or a require statement), the name
+   may be used instead of the key to read the value:</p>
+  
+   <p><span class="code">require(myhost,unix) -&gt; ok</span><br>
+   <span class="code">get_config(myhost,Default) -&gt;
+                            [{telnet,IpAddr},
+                             {username,Username},
+                             {password,Password}]</span></p>
+  
+   <p>If a config variable is defined in multiple files and you want to
+   access all possible values, use the <span class="code">all</span> option. The
+   values will be returned in a list and the order of the elements
+   corresponds to the order that the config files were specified at
+   startup.</p>
+  
+   <p>If you want config elements (key-value tuples) returned as result
+   instead of values, use the <span class="code">element</span> option.
+   The returned elements will then be on the form <span class="code">{KeyOrName,Value}</span>,
+   or (in case a subkey has been specified)
+   <span class="code">{{KeyOrName,SubKey},Value}</span></p>
+  
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="#get_config-1">get_config/1</a></span>, <span class="bold_code">
+<a href="#get_config-2">get_config/2</a></span>, <span class="bold_code">
+<a href="#require-1">require/1</a></span>, <span class="bold_code">
+<a href="#require-2">require/2</a></span>.</p>
+</p></div>
+<p><a name="get_status-0"><span class="bold_code">get_status() -&gt; TestStatus | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">TestStatus = [StatusElem]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">StatusElem = {current, {Suite, TestCase}} | {successful, Successful} | {failed, Failed} | {skipped, Skipped} | {total, Total}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Suite = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">TestCase = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Successful = integer()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Failed = integer()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Skipped = {UserSkipped, AutoSkipped}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">UserSkipped = integer()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">AutoSkipped = integer()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Total = integer()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="get_status-0"></a>
+<p>Returns status of ongoing test. The returned list contains info about
+        which test case is currently executing, as well as counters for
+        successful, failed, skipped, and total test cases so far.</p>
+</p></div>
+<p><a name="get_target_name-1"><span class="bold_code">get_target_name(Handle) -&gt; {ok, TargetName} | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Handle = handle()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">TargetName = target_name()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="get_target_name-1"></a>
+<p>Return the name of the target that the given connection
+   belongs to.</p>
+</p></div>
+<p><a name="install-1"><span class="bold_code">install(Opts) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Opts = [Opt]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Opt = {config, ConfigFiles} | {event_handler, Modules} | {decrypt, KeyOrFile}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">ConfigFiles = [ConfigFile]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">ConfigFile = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Modules = [atom()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">KeyOrFile = {key, Key} | {file, KeyFile}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Key = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">KeyFile = string()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="install-1"></a>
+<p>Install config files and event handlers.</p>
+  
+   <p>Run this function once before first test.</p>
+  
+   <p>Example:<br>
+   <span class="code">install([{config,["config_node.ctc","config_user.ctc"]}])</span>.</p>
+  
+   <p>Note that this function is automatically run by the
+   <span class="code">run_test</span> script.</p>
+</p></div>
+<p><a name="listenv-1"><span class="bold_code">listenv(Telnet) -&gt; [Env]</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Telnet = term()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Env = {Key, Value}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Key = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Value = string()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="listenv-1"></a>
+<p>Performs the listenv command on the given telnet connection
+   and returns the result as a list of Key-Value pairs.</p>
+</p></div>
+<p><a name="log-1"><span class="bold_code">log(Format) -&gt; ok</span></a><br></p>
+<div class="REFBODY"><p><a name="log-1"></a>
+<p>Equivalent to <span class="bold_code">
+<a href="#log-3">log(default, Format, [])</a></span>.</p>
+</p></div>
+<p><a name="log-2"><span class="bold_code">log(X1, X2) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">X1 = Category | Format</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">X2 = Format | Args</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="log-2"></a>
+<p>Equivalent to <span class="bold_code">
+<a href="#log-3">log(Category, Format, Args)</a></span>.</p>
+</p></div>
+<p><a name="log-3"><span class="bold_code">log(Category, Format, Args) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Category = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Format = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Args = list()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="log-3"></a>
+<p>Printout from a testcase to the log.</p>
+  
+   <p>This function is meant for printing stuff directly from a
+   testcase (i.e. not from within the CT framework) in the test
+   log.</p>
+  
+   <p>Default <span class="code">Category</span> is <span class="code">default</span> and
+   default <span class="code">Args</span> is <span class="code">[]</span>.</p>
+</p></div>
+<p><a name="pal-1"><span class="bold_code">pal(Format) -&gt; ok</span></a><br></p>
+<div class="REFBODY"><p><a name="pal-1"></a>
+<p>Equivalent to <span class="bold_code">
+<a href="#pal-3">pal(default, Format, [])</a></span>.</p>
+</p></div>
+<p><a name="pal-2"><span class="bold_code">pal(X1, X2) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">X1 = Category | Format</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">X2 = Format | Args</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="pal-2"></a>
+<p>Equivalent to <span class="bold_code">
+<a href="#pal-3">pal(Category, Format, Args)</a></span>.</p>
+</p></div>
+<p><a name="pal-3"><span class="bold_code">pal(Category, Format, Args) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Category = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Format = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Args = list()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="pal-3"></a>
+<p>Print and log from a testcase.</p>
+  
+   <p>This function is meant for printing stuff from a testcase both
+   in the log and on the console.</p>
+  
+   <p>Default <span class="code">Category</span> is <span class="code">default</span> and
+   default <span class="code">Args</span> is <span class="code">[]</span>.</p>
+</p></div>
+<p><a name="parse_table-1"><span class="bold_code">parse_table(Data) -&gt; {Heading, Table}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Data = [string()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Heading = tuple()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Table = [tuple()]</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="parse_table-1"></a>
+<p>Parse the printout from an SQL table and return a list of tuples.</p>
+  
+   <p>The printout to parse would typically be the result of a
+   <span class="code">select</span> command in SQL. The returned
+   <span class="code">Table</span> is a list of tuples, where each tuple is a row
+   in the table.</p>
+  
+   <p><span class="code">Heading</span> is a tuple of strings representing the
+   headings of each column in the table.</p>
+</p></div>
+<p><a name="print-1"><span class="bold_code">print(Format) -&gt; ok</span></a><br></p>
+<div class="REFBODY"><p><a name="print-1"></a>
+<p>Equivalent to <span class="bold_code">
+<a href="#print-3">print(default, Format, [])</a></span>.</p>
+</p></div>
+<p><a name="print-2"><span class="bold_code">print(X1, X2) -&gt; term()
+</span></a><br></p>
+<div class="REFBODY"><p><a name="print-2"></a>
+<p>Equivalent to <span class="bold_code">
+<a href="#print-3">print(Category, Format, Args)</a></span>.</p>
+</p></div>
+<p><a name="print-3"><span class="bold_code">print(Category, Format, Args) -&gt; ok</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Category = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Format = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Args = list()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="print-3"></a>
+<p>Printout from a testcase to the console.</p>
+  
+   <p>This function is meant for printing stuff from a testcase on
+   the console.</p>
+  
+   <p>Default <span class="code">Category</span> is <span class="code">default</span> and
+   default <span class="code">Args</span> is <span class="code">[]</span>.</p>
+</p></div>
+<p><a name="require-1"><span class="bold_code">require(Required) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Required = Key | {Key, SubKeys}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Key = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">SubKeys = SubKey | [SubKey]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">SubKey = atom()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="require-1"></a>
+<p>Check if the required configuration is available.</p>
+  
+   <p>Example: require the variable <span class="code">myvar</span>:<br>
+   <span class="code">ok = ct:require(myvar)</span></p>
+  
+   <p>In this case the config file must at least contain:</p>
+   <div class="example"><pre>
+   {myvar,Value}.</pre></div>
+  
+   <p>Example: require the variable <span class="code">myvar</span> with
+   subvariable <span class="code">sub1</span>:<br>
+   <span class="code">ok = ct:require({myvar,sub1})</span></p>
+  
+   <p>In this case the config file must at least contain:</p>
+   <div class="example"><pre>
+   {myvar,[{sub1,Value}]}.</pre></div>
+  
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="#get_config-1">get_config/1</a></span>, <span class="bold_code">
+<a href="#get_config-2">get_config/2</a></span>, <span class="bold_code">
+<a href="#get_config-3">get_config/3</a></span>, <span class="bold_code">
+<a href="#require-2">require/2</a></span>.</p>
+</p></div>
+<p><a name="require-2"><span class="bold_code">require(Name, Required) -&gt; ok | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Name = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Required = Key | {Key, SubKeys}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Key = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">SubKeys = SubKey | [SubKey]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">SubKey = atom()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="require-2"></a>
+<p>Check if the required configuration is available, and give it   
+a name.</p>
+  
+   <p>If the requested data is available, the main entry will be
+   associated with <span class="code">Name</span> so that the value of the element
+   can be read with <span class="code">get_config/1,2</span> provided
+   <span class="code">Name</span> instead of the <span class="code">Key</span>.</p>
+  
+   <p>Example: Require one node with a telnet connection and an
+   ftp connection. Name the node <span class="code">a</span>:<br> <span class="code">ok =
+   ct:require(a,{node,[telnet,ftp]}).</span><br> All references
+   to this node may then use the node name. E.g. you can fetch a
+   file over ftp like this:<br>
+   <span class="code">ok = ct:ftp_get(a,RemoteFile,LocalFile).</span></p>
+  
+   <p>For this to work, the config file must at least contain:</p>
+   <div class="example"><pre>
+   {node,[{telnet,IpAddr},
+          {ftp,IpAddr}]}.</pre></div>
+  
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="#get_config-1">get_config/1</a></span>, <span class="bold_code">
+<a href="#get_config-2">get_config/2</a></span>, <span class="bold_code">
+<a href="#get_config-3">get_config/3</a></span>, <span class="bold_code">
+<a href="#require-1">require/1</a></span>.</p>
+</p></div>
+<p><a name="run-1"><span class="bold_code">run(TestDirs) -&gt; Result</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">TestDirs = TestDir | [TestDir]</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="run-1"></a>
+<p>Run all testcases in all suites in the given directories.</p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="#run-3">run/3</a></span>.</p>
+</p></div>
+<p><a name="run-2"><span class="bold_code">run(TestDir, Suite) -&gt; Result</span></a><br></p>
+<div class="REFBODY"><p><a name="run-2"></a>
+<p>Run all testcases in the given suite.</p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="#run-3">run/3</a></span>.</p>
+</p></div>
+<p><a name="run-3"><span class="bold_code">run(TestDir, Suite, Cases) -&gt; Result</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">TestDir = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Suite = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Cases = atom() | [atom()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Result = [TestResult] | {error, Reason}</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="run-3"></a>
+<p>Run the given testcase(s).</p>
+  
+   <p>Requires that <span class="code">ct:install/1</span> has been run first.</p>
+  
+   <p>Suites (*_SUITE.erl) files must be stored in
+   <span class="code">TestDir</span> or <span class="code">TestDir/test</span>.  All suites
+   will be compiled when test is run.</p>
+</p></div>
+<p><a name="run_test-1"><span class="bold_code">run_test(Opts) -&gt; Result</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Opts = [OptTuples]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">OptTuples = {config, CfgFiles} | {dir, TestDirs} | {suite, Suites} | {testcase, Cases} | {group, Groups} | {'spec', TestSpecs} | {allow_user_terms, Bool} | {logdir, LogDir} | {silent_connections, Conns} | {cover, CoverSpecFile} | {step, StepOpts} | {event_handler, EventHandlers} | {include, InclDirs} | {auto_compile, Bool} | {repeat, N} | {duration, DurTime} | {until, StopTime} | {force_stop, Bool} | {decrypt, DecryptKeyOrFile} | {refresh_logs, LogDir} | {basic_html, Bool}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">CfgFiles = [string()] | string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">TestDirs = [string()] | string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Suites = [string()] | string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Cases = [atom()] | atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Groups = [atom()] | atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">TestSpecs = [string()] | string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">LogDir = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Conns = all | [atom()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">CoverSpecFile = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">StepOpts = [StepOpt] | []</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">StepOpt = config | keep_inactive</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">EventHandlers = EH | [EH]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">EH = atom() | {atom(), InitArgs} | {[atom()], InitArgs}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">InitArgs = [term()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">InclDirs = [string()] | string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">N = integer()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">DurTime = string(HHMMSS)</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">StopTime = string(YYMoMoDDHHMMSS) | string(HHMMSS)</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">DecryptKeyOrFile = {key, DecryptKey} | {file, DecryptFile}</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">DecryptKey = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">DecryptFile = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Result = [TestResult] | {error, Reason}</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="run_test-1"></a>
+<p>Run tests as specified by the combination of options in <span class="code">Opts</span>.
+   The options are the same as those used with the <span class="code">run_test</span> script.
+   Note that here a <span class="code">TestDir</span> can be used to point out the path to
+   a <span class="code">Suite</span>. Note also that the option <span class="code">testcase</span>
+   corresponds to the <span class="code">-case</span> option in the <span class="code">run_test</span>
+   script. Configuration files specified in <span class="code">Opts</span> will be
+   installed automatically at startup.</p>
+</p></div>
+<p><a name="run_testspec-1"><span class="bold_code">run_testspec(TestSpec) -&gt; Result</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">TestSpec = [term()]</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="run_testspec-1"></a>
+<p>Run test specified by <span class="code">TestSpec</span>. The terms are
+   the same as those used in test specification files.</p>
+</p></div>
+<p><a name="start_interactive-0"><span class="bold_code">start_interactive() -&gt; ok</span></a><br></p>
+<div class="REFBODY"><p><a name="start_interactive-0"></a>
+<p>Start CT in interactive mode.</p>
+  
+   <p>From this mode all test case support functions can be executed
+   directly from the erlang shell. The interactive mode can also be
+   started from the unix command line with <span class="code">run_test -shell
+   [-config File...]</span>.</p>
+  
+   <p>If any functions using "required config data" (e.g. telnet or
+   ftp functions) are to be called from the erlang shell, config data
+   must first be required with <span class="code">ct:require/2</span>.</p>
+  
+   <p>Example:<br>
+   <span class="code">&gt; ct:require(unix_telnet, unix).</span><br>
+   <span class="code">ok</span><br>
+   <span class="code">&gt; ct_telnet:open(unix_telnet).</span><br>
+   <span class="code">{ok,&lt;0.105.0&gt;}</span><br>
+   <span class="code">&gt; ct_telnet:cmd(unix_telnet, "ls .").</span><br>
+   <span class="code">{ok,["ls","file1  ...",...]}</span></p>
+</p></div>
+<p><a name="step-3"><span class="bold_code">step(TestDir, Suite, Case) -&gt; Result</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Case = atom()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="step-3"></a>
+<p>Step through a test case with the debugger.</p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="#run-3">run/3</a></span>.</p>
+</p></div>
+<p><a name="step-4"><span class="bold_code">step(TestDir, Suite, Case, Opts) -&gt; Result</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">Case = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Opts = [Opt] | []</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Opt = config | keep_inactive</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="step-4"></a>
+<p>Step through a test case with the debugger. If the
+   <span class="code">config</span> option has been given, breakpoints will
+   be set also on the configuration functions in <span class="code">Suite</span>.</p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="#run-3">run/3</a></span>.</p>
+</p></div>
+<p><a name="stop_interactive-0"><span class="bold_code">stop_interactive() -&gt; ok</span></a><br></p>
+<div class="REFBODY"><p><a name="stop_interactive-0"></a>
+<p>Exit the interactive mode.</p>
+<p><strong>See also:</strong> <span class="bold_code">
+<a href="#start_interactive-0">start_interactive/0</a></span>.</p>
+</p></div>
+<p><a name="testcases-2"><span class="bold_code">testcases(TestDir, Suite) -&gt; Testcases | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">TestDir = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Suite = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Testcases = list()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="testcases-2"></a>
+<p>Returns all testcases in the specified suite.</p>
+</p></div>
+<p><a name="userdata-2"><span class="bold_code">userdata(TestDir, Suite) -&gt; SuiteUserData | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">TestDir = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Suite = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">SuiteUserData = [term()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="userdata-2"></a>
+<p>Returns any data specified with the tag <span class="code">userdata</span>
+   in the list of tuples returned from <span class="code">Suite:suite/0</span>.</p>
+</p></div>
+<p><a name="userdata-3"><span class="bold_code">userdata(TestDir, Suite, Case) -&gt; TCUserData | {error, Reason}</span></a><br></p>
+<div class="REFBODY">
+<p>Types:</p>
+<div class="REFTYPES">
+<span class="bold_code">TestDir = string()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Suite = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Case = atom()</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">TCUserData = [term()]</span><br>
+</div>
+<div class="REFTYPES">
+<span class="bold_code">Reason = term()</span><br>
+</div>
+</div>
+<div class="REFBODY"><p><a name="userdata-3"></a>
+<p>Returns any data specified with the tag <span class="code">userdata</span>
+   in the list of tuples returned from <span class="code">Suite:Case/0</span>.</p>
+</p></div>
+ 
+ </div>
+<div class="footer">
+<hr>
+<p>Copyright © 2003-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

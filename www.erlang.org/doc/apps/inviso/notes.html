@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Inviso Release Notes</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="inviso.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Inviso</strong><br><strong>Release Notes</strong><br><small>Version 0.6.1</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu"><li title="Inviso Release Notes" expanded="true">Inviso Release Notes<ul>
+<li>
+<a href="notes.html">
+              Top of chapter
+            </a></li>
+<li title="Inviso 0.6.1">
+<a href="notes.html#id2254916">Inviso 0.6.1</a></li>
+<li title="Inviso 0.6">
+<a href="notes.html#id2251757">Inviso 0.6</a></li>
+<li title="Inviso 0.5">
+<a href="notes.html#id2261799">Inviso 0.5</a></li>
+<li title="Inviso 0.4">
+<a href="notes.html#id2261865">Inviso 0.4</a></li>
+<li title="Inviso 0.3">
+<a href="notes.html#id2262429">Inviso 0.3</a></li>
+<li title="Inviso 0.2.1">
+<a href="notes.html#id2262462">Inviso 0.2.1</a></li>
+<li title="Inviso 0.2">
+<a href="notes.html#id2262492">Inviso 0.2</a></li>
+<li title="Inviso 0.1">
+<a href="notes.html#id2256380">Inviso 0.1</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Inviso Release Notes</h1>
+  
+  <p>This document describes the changes made to the Inviso application.</p>
+  <h3><a name="id2254916">1.1 
+        Inviso 0.6.1</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    The documentation is now built with open source tools
+	    (xsltproc and fop) that exists on most platforms. One
+	    visible change is that the frames are removed.</p>
+          <p>
+	    Own Id: OTP-8201</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2251757">1.2 
+        Inviso 0.6</a></h3>
+      <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            In this release the following has been fixed and
+            enhanced: Autostart: It is now possible to configure
+            modules that shall be loaded by the autostart mechanism.
+            This because it is not certain that all application
+            systems make use of the OTP boot script to set up paths
+            to all Erlang modules. Runtime_tools/Inviso: A bug in the
+            fetch_log functionality has been fixed. Further a bug
+            that was (supposedly) fixed in a previous patch
+            concerning meta-tracer write_ti has been fixed (again) in
+            this patch. A bug in inviso_as_lib making remote
+            autostart config file updates fail has been fixed.
+            Inviso: inviso_tool has been given a flush API.</p>
+          <p>
+            Own Id: OTP-6918</p>
+        </li>
+      </ul>
+   
+  
+<h3><a name="id2261799">1.3 
+        Inviso 0.5</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            The following bugs/improvements have been done: Internal
+            interworking between inviso_rt and inviso_rt_meta. The
+            call function used by inviso_rt to call inviso_rt_meta is
+            now protected with a monitor. Inviso_rt_meta now includes
+            the timestamp of the incoming meta trace message when
+            calling the call-callback. (Makes it possible to add a
+            "better" timestamp to the ti-file.) Bug in inviso_tool
+            making it not remove trace patterns when terminating. Bug
+            in internal function h_start_session making inviso_tool
+            crash if there were no active nodes to start the session
+            on. The user-inviso_tool and inviso API-inviso control
+            component request/response gen_server protocols had
+            default time-out. Since many trace operations can be time
+            consuming, a longer time-out is necessary. Improved
+            overload protection. It is now possible to let the
+            overload protection renew itself (e.g after an exit from
+            an external overload protector). Inviso_rt_meta now fully
+            uses the exception_trace match spec action term. Run
+            Trace Case API (as in contrast to activate and deactivate
+            trace case APIs) in inviso_tool. Flush trace-port API
+            added to inviso. Get_session_data API added to
+            inviso_tool. Improved inviso_tool:stop making it possible
+            to name nodes which shall not have their trace patterns
+            removed when inviso_tool terminates. Bug in handling of
+            writing multiple ti-entries if returned from a
+            call/return_from call-back in inviso_rt_meta Process
+            trace flags are no longer explicitly removed by the
+            inviso_tool when it terminates. Not necessary.
+            Inviso_tool get_autostart_data adopted to standard
+            autostarter.</p>
+          <p>
+            *** INCOMPATIBILITY with Meta trace call-backs are called
+            with different arguments now. ***</p>
+          <p>
+            Own Id: OTP-6881</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2261865">1.4 
+        Inviso 0.4</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+	    A bug in inviso_rt_meta caused an ETS table containing
+	    information on initiated (init_tpm) functions to be lost
+	    when suspending tracing. Further an enhancement to
+	    inviso_rt has been introduced making it possible to
+	    activate process trace flags based on globally registered
+	    names. It is then not an error to activate a global name
+	    on a node where the name does not reside. The process
+	    count in the return value will simply be set to zero
+	    (hence exactly one node in the NodeResult part of the
+	    return value will indicate one matching process found). A
+	    bug was found in fetch_log API. At the same time the
+	    fetch_log functionality was enhanced to also offer flow
+	    control making fetcher processes send chunks of
+	    transferred file data at a slower pace.</p>
+          <p>
+	    Own Id: OTP-6703</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+	    Minor Makefile changes.</p>
+          <p>
+	    Own Id: OTP-6689 Aux Id: OTP-6742 </p>
+        </li>
+      </ul>
+    
+<h3><a name="id2262429">1.5 
+        Inviso 0.3</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            In this release the first working version of the
+            inviso_tool is included. Updates and small bugfixes in
+            the inviso application.</p>
+          <p>
+            Own Id: OTP-6677</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2262462">1.6 
+        Inviso 0.2.1</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            Misc improvements.</p>
+          <p>
+            Own Id: OTP-6576</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2262492">1.7 
+        Inviso 0.2</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            This ticket includes several improvements and bugfixes to
+            both runtime_tools and inviso. The overload mechanism can
+            now also react to incoming messages. This is useful if
+            an external overload watch-dog is used. Some improvements
+            of variable bindings has been done to the default
+            autostart mechanism - inviso_autostart_server. Autostart
+            "jobs" can now be done in parallel, allowing for some
+            jobs to hang waiting for some parts of the traced system
+            to become ready before proceeding. Previously when using
+            named meta-match-specs (tpm_ms) ending up with zero
+            match-specs still kept the meta trace pattern active.
+            This caused zero match-specs to be equal to unlimited
+            meta tracing on that particular function. If the internal
+            database becomes empty of meta match specs, meta trace
+            pattern is removed for that function. Standard public
+            loop data in the inviso runtime meta tracer process is
+            now extended to a 2-tuple. The functions ctp/1 and ctpl/1
+            are added making it possible to remove trace patterns for
+            a list of functions rather than one by one.
+            Inviso_rt_meta will now accept a list of binaries to be
+            output into the trace information file, in additions to a
+            single binary. Further it is also possible to make own
+            output to the trace information file using the write_ti/1
+            function. An error was discovered in inviso_rt making the
+            inviso_rt_meta remain rather than terminate if the
+            inviso_rt terminated due to "running alone" (not allowed
+            to run without a control component). A new tool,
+            inviso_tool, has been added to the inviso application.</p>
+          <p>
+            Own Id: OTP-6426</p>
+        </li>
+      </ul>
+    
+    
+  <h3><a name="id2256380">1.8 
+        Inviso 0.1</a></h3>
+    
+    <p>First version.</p>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2006-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

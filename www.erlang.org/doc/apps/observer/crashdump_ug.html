@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Crashdump Viewer</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="observer.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Observer</strong><br><strong>User's Guide</strong><br><small>Version 0.9.8.1</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="Trace Tool Builder" expanded="false">Trace Tool Builder<ul>
+<li>
+<a href="ttb_ug.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="ttb_ug.html#id2258666">Introduction</a></li>
+<li title="Getting Started">
+<a href="ttb_ug.html#id2256769">Getting Started</a></li>
+<li title="Running the Trace Tool Builder against a remote node">
+<a href="ttb_ug.html#id2256924">Running the Trace Tool Builder against a remote node</a></li>
+<li title="Trace Information and the .ti File">
+<a href="ttb_ug.html#id2252381">Trace Information and the .ti File</a></li>
+<li title="Wrap Logs">
+<a href="ttb_ug.html#id2258832">Wrap Logs</a></li>
+<li title="Formatting">
+<a href="ttb_ug.html#id2252294">Formatting</a></li>
+<li title="Automatically collect and format logs from all nodes">
+<a href="ttb_ug.html#id2258657">Automatically collect and format logs from all nodes</a></li>
+<li title="History and Configuration Files">
+<a href="ttb_ug.html#id2251618">History and Configuration Files</a></li>
+<li title="Sequential Tracing">
+<a href="ttb_ug.html#id2259029">Sequential Tracing</a></li>
+<li title="Example: Multipurpose trace tool">
+<a href="ttb_ug.html#id2251327">Example: Multipurpose trace tool</a></li>
+</ul>
+</li>
+<li title="Erlang Top" expanded="false">Erlang Top<ul>
+<li>
+<a href="etop_ug.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="etop_ug.html#id2258008">Introduction</a></li>
+<li title="Output">
+<a href="etop_ug.html#id2258029">Output</a></li>
+<li title="Start">
+<a href="etop_ug.html#id2258197">Start</a></li>
+<li title="Configuration">
+<a href="etop_ug.html#id2258236">Configuration</a></li>
+<li title="Print to file">
+<a href="etop_ug.html#id2259177">Print to file</a></li>
+<li title="Stop">
+<a href="etop_ug.html#id2259205">Stop</a></li>
+</ul>
+</li>
+<li title="Crashdump Viewer" expanded="true">Crashdump Viewer<ul>
+<li>
+<a href="crashdump_ug.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="crashdump_ug.html#id2259290">Introduction</a></li>
+<li title="Getting Started">
+<a href="crashdump_ug.html#id2259303">Getting Started</a></li>
+<li title="Navigating">
+<a href="crashdump_ug.html#id2259375">Navigating</a></li>
+<li title="Help">
+<a href="crashdump_ug.html#id2259413">Help</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>3 Crashdump Viewer</h1>
+  
+  <h3><a name="id2259290">3.1 
+        Introduction</a></h3>
+    
+    <p>The Crashdump Viewer is an HTML based tool for browsing Erlang
+      crashdumps. Crashdump Viewer runs under the WebTool application.
+      </p>
+  
+  <h3><a name="id2259303">3.2 
+        Getting Started</a></h3>
+    
+    <p>From an erlang node, start Crashdump Viewer by calling
+      <span class="code">crashdump_viewer:start()</span>. This will automatically start
+      WebTool and display the web address where WebTool can be
+      found. See the documentation for the WebTool application for
+      further information about how to use WebTool.
+      </p>
+    <p>Point your web browser to the address displayed, and you should
+      now see the start page of WebTool. At the top of the page, you
+      will see a link to "CrashDumpViewer". Click this link to get to
+      the start page for Crashdump Viewer. (Note that if webtool is on
+      localhost, you must configure your web browser to have direct
+      connection to the internet, or you must set no proxy for
+      localhost.)
+      </p>
+    <p>You can also start WebTool, Crashdump Viewer and a browser in
+      one go by running the <span class="code">start_webtool</span> script found in the
+      <span class="code">priv</span> directory of the WebTool application, e.g.
+            <br>
+<span class="code">&gt;start_webtool crashdump_viewer</span></p>
+    <p>From the start page of Crashdump Viewer, push the "Load
+      Crashdump" button to load a crashdump into the tool. Then enter
+      the filename of the crashdump in the entry field and push the "Ok"
+      button.
+      </p>
+    <p>Crashdumps generated by OTP R9C and later are loaded directly
+      into the Crashdump Viewer, while dumps from earlier releases first
+      are translated by the Crashdump Translater. The Crashdump
+      Translater creates a new file with the same name as the original
+      crashdump, but with the extension <span class="code">.translated</span>. If there is
+      no write access to the directory of the original file, you will be
+      asked to enter a new path and filename for the translated file.
+      </p>
+  
+  <h3><a name="id2259375">3.3 
+        Navigating</a></h3>
+    
+    <p>The lefthand frame contains a menu. Menu folders can be
+      expanded and collapsed by clicking the folder picture. When a menu
+      item is clicked, the item information is shown in the big
+      information frame. 
+      </p>
+    <p>The filename frame above the information frame shows the full
+      name of the currently viewed Erlang crashdump.
+      </p>
+    <p>To load a new crashdump, click the "Load New Crashdump" button
+      in the menu frame.
+      </p>
+    <p>The various information shown in the information frame will
+      contain links to process identifiers (PIDs) and port
+      identifiers. Clicking one of these links will take you to the
+      detailed information page for the process or port in question. Use
+      the "Back" button in your browser to get back to the
+      startingpoint. If the process or port resided on a remote node,
+      there will be no information available. Clicking the link will
+      then take you to the information about the remote node.
+      </p>
+  
+  <h3><a name="id2259413">3.4 
+        Help</a></h3>
+    
+    <p>Further help on how to use the Crashdump Viewer tool can be
+      found in the tool's menu under 'Documentation':
+      </p>
+    <p>'Crashdump Viewer help' is a short document describing each
+      information page and any additional information that might occur,
+      compared to the raw dump described in 'How to interpret Erlang
+      crashdumps'.
+      </p>
+    <p>'How to interpret Erlang crashdumps' is a document from the
+      Erlang runtime system describing details in the raw
+      crashdumps. Here you will also find information about each single
+      field in the different information pages. This document can also
+      be found directly in the OTP online documentation, via the Erlang
+      runtime system user's guide.
+      </p>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2002-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

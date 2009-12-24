@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Common Test User's Guide</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="common_test.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Common Test</strong><br><strong>User's Guide</strong><br><small>Version 1.4.6</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="Common Test Basics" expanded="false">Common Test Basics<ul>
+<li>
+<a href="basics_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Introduction">
+<a href="basics_chapter.html#id2259966">Introduction</a></li>
+<li title="Test Suite Organisation">
+<a href="basics_chapter.html#id2253168">Test Suite Organisation</a></li>
+<li title="Support Libraries">
+<a href="basics_chapter.html#id2252019">Support Libraries</a></li>
+<li title="Suites and Test Cases">
+<a href="basics_chapter.html#id2252025">Suites and Test Cases</a></li>
+<li title="External Interfaces">
+<a href="basics_chapter.html#id2253081">External Interfaces</a></li>
+</ul>
+</li>
+<li title="Installation" expanded="false">Installation<ul>
+<li>
+<a href="install_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General information">
+<a href="install_chapter.html#id2260114">General information</a></li>
+<li title="Unix/Linux">
+<a href="install_chapter.html#id2253924">Unix/Linux</a></li>
+<li title="Windows">
+<a href="install_chapter.html#id2257012">Windows</a></li>
+</ul>
+</li>
+<li title="Writing Test Suites" expanded="false">Writing Test Suites<ul>
+<li>
+<a href="write_test_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Support for test suite authors">
+<a href="write_test_chapter.html#id2260181">Support for test suite authors</a></li>
+<li title="Test suites">
+<a href="write_test_chapter.html#id2260124">Test suites</a></li>
+<li title="Init and end per suite">
+<a href="write_test_chapter.html#id2259307">Init and end per suite</a></li>
+<li title="Init and end per test case">
+<a href="write_test_chapter.html#id2253645">Init and end per test case</a></li>
+<li title="Test cases">
+<a href="write_test_chapter.html#id2262666">Test cases</a></li>
+<li title="Test case info function">
+<a href="write_test_chapter.html#id2258139">Test case info function</a></li>
+<li title="Test suite info function">
+<a href="write_test_chapter.html#id2263742">Test suite info function</a></li>
+<li title="Test case groups">
+<a href="write_test_chapter.html#id2263834">Test case groups</a></li>
+<li title="The parallel property and nested groups">
+<a href="write_test_chapter.html#id2264105">The parallel property and nested groups</a></li>
+<li title="Repeated groups">
+<a href="write_test_chapter.html#id2264149">Repeated groups</a></li>
+<li title="Shuffled test case order">
+<a href="write_test_chapter.html#id2264310">Shuffled test case order</a></li>
+<li title="Data and Private Directories">
+<a href="write_test_chapter.html#id2264379">Data and Private Directories</a></li>
+<li title="Execution environment">
+<a href="write_test_chapter.html#id2264458">Execution environment</a></li>
+<li title="Illegal dependencies">
+<a href="write_test_chapter.html#id2264508">Illegal dependencies</a></li>
+</ul>
+</li>
+<li title="Test Structure" expanded="false">Test Structure<ul>
+<li>
+<a href="test_structure_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Test structure">
+<a href="test_structure_chapter.html#id2264726">Test structure</a></li>
+<li title="Skipping test cases">
+<a href="test_structure_chapter.html#id2264743">Skipping test cases</a></li>
+<li title="Definition of terms">
+<a href="test_structure_chapter.html#id2264827">Definition of terms</a></li>
+</ul>
+</li>
+<li title="Examples and Templates" expanded="false">Examples and Templates<ul>
+<li>
+<a href="example_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Test suite example">
+<a href="example_chapter.html#id2265696">Test suite example</a></li>
+<li title="Test suite templates">
+<a href="example_chapter.html#id2265783">Test suite templates</a></li>
+</ul>
+</li>
+<li title="Running Test Suites" expanded="false">Running Test Suites<ul>
+<li>
+<a href="run_test_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Using the Common Test Framework">
+<a href="run_test_chapter.html#id2266081">Using the Common Test Framework</a></li>
+<li title="Automatic compilation of test suites and help modules">
+<a href="run_test_chapter.html#id2266125">Automatic compilation of test suites and help modules</a></li>
+<li title="Running tests from the UNIX command line">
+<a href="run_test_chapter.html#id2266259">Running tests from the UNIX command line</a></li>
+<li title="Running tests from the Web based GUI">
+<a href="run_test_chapter.html#id2266575">Running tests from the Web based GUI</a></li>
+<li title="Running tests from the Erlang shell or from an Erlang program">
+<a href="run_test_chapter.html#id2266661">Running tests from the Erlang shell or from an Erlang program</a></li>
+<li title="Running the interactive shell mode">
+<a href="run_test_chapter.html#id2266717">Running the interactive shell mode</a></li>
+<li title="Step by step execution of test cases with the Erlang Debugger">
+<a href="run_test_chapter.html#id2266894">Step by step execution of test cases with the Erlang Debugger</a></li>
+<li title="Using test specifications">
+<a href="run_test_chapter.html#id2266995">Using test specifications</a></li>
+<li title="Log files">
+<a href="run_test_chapter.html#id2267233">Log files</a></li>
+<li title="HTML Style Sheets">
+<a href="run_test_chapter.html#id2267439">HTML Style Sheets</a></li>
+<li title="Repeating tests">
+<a href="run_test_chapter.html#id2267626">Repeating tests</a></li>
+<li title="Silent Connections">
+<a href="run_test_chapter.html#id2267872">Silent Connections</a></li>
+</ul>
+</li>
+<li title="Config Files" expanded="false">Config Files<ul>
+<li>
+<a href="config_file_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General">
+<a href="config_file_chapter.html#id2268112">General</a></li>
+<li title="Syntax">
+<a href="config_file_chapter.html#id2268151">Syntax</a></li>
+<li title="Requiring and reading configuration data">
+<a href="config_file_chapter.html#id2268175">Requiring and reading configuration data</a></li>
+<li title="Using configuration variables defined in multiple files">
+<a href="config_file_chapter.html#id2268325">Using configuration variables defined in multiple files</a></li>
+<li title="Encrypted configuration files">
+<a href="config_file_chapter.html#id2268357">Encrypted configuration files</a></li>
+<li title="Opening connections by using configuration data">
+<a href="config_file_chapter.html#id2268422">Opening connections by using configuration data</a></li>
+<li title="Examples">
+<a href="config_file_chapter.html#id2268496">Examples</a></li>
+</ul>
+</li>
+<li title="Code Coverage Analysis" expanded="false">Code Coverage Analysis<ul>
+<li>
+<a href="cover_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General">
+<a href="cover_chapter.html#id2268615">General</a></li>
+<li title="Usage">
+<a href="cover_chapter.html#id2268641">Usage</a></li>
+<li title="The cover specification file">
+<a href="cover_chapter.html#id2268768">The cover specification file</a></li>
+<li title="Logging">
+<a href="cover_chapter.html#id2268835">Logging</a></li>
+</ul>
+</li>
+<li title="Using Common Test for Large Scale Testing" expanded="false">Using Common Test for Large Scale Testing<ul>
+<li>
+<a href="ct_master_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General">
+<a href="ct_master_chapter.html#id2268911">General</a></li>
+<li title="Usage">
+<a href="ct_master_chapter.html#id2268954">Usage</a></li>
+<li title="Test Specifications">
+<a href="ct_master_chapter.html#id2269112">Test Specifications</a></li>
+</ul>
+</li>
+<li title="Event Handling" expanded="false">Event Handling<ul>
+<li>
+<a href="event_handler_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General">
+<a href="event_handler_chapter.html#id2269384">General</a></li>
+<li title="Usage">
+<a href="event_handler_chapter.html#id2269429">Usage</a></li>
+</ul>
+</li>
+<li title="Dependencies between Test Cases and Suites" expanded="false">Dependencies between Test Cases and Suites<ul>
+<li>
+<a href="dependencies_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="General">
+<a href="dependencies_chapter.html#id2270363">General</a></li>
+<li title="Saving configuration data">
+<a href="dependencies_chapter.html#id2270526">Saving configuration data</a></li>
+<li title="Sequences">
+<a href="dependencies_chapter.html#id2270719">Sequences</a></li>
+</ul>
+</li>
+<li title="Some thoughts about testing" expanded="false">Some thoughts about testing<ul>
+<li>
+<a href="why_test_chapter.html">
+              Top of chapter
+            </a></li>
+<li title="Goals">
+<a href="why_test_chapter.html#id2270931">Goals</a></li>
+<li title="What to test?">
+<a href="why_test_chapter.html#id2270956">What to test?</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<div class="frontpage"></div>
+<center><h1>Common Test User's Guide</h1></center>
+<center><h4>Version 1.4.6</h4></center>
+<center><h4>November 23 2009</h4></center>
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2003-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

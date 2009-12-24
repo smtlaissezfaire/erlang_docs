@@ -1,0 +1,839 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- SNMP Release Notes</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="snmp.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Simple Network Management Protocol (SNMP)</strong><br><strong>Release Notes</strong><br><small>Version 4.15</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu"><li title="SNMP Release Notes" expanded="true">SNMP Release Notes<ul>
+<li>
+<a href="notes.html">
+              Top of chapter
+            </a></li>
+<li title="SNMP Development Toolkit 4.15">
+<a href="notes.html#id2265394">SNMP Development Toolkit 4.15</a></li>
+<li title="SNMP Development Toolkit 4.14">
+<a href="notes.html#id2257539">SNMP Development Toolkit 4.14</a></li>
+<li title="SNMP Development Toolkit 4.13.5">
+<a href="notes.html#id2259710">SNMP Development Toolkit 4.13.5</a></li>
+<li title="SNMP Development Toolkit 4.13.4">
+<a href="notes.html#id2261448">SNMP Development Toolkit 4.13.4</a></li>
+<li title="SNMP Development Toolkit 4.13.3">
+<a href="notes.html#id2286405">SNMP Development Toolkit 4.13.3</a></li>
+<li title="SNMP Development Toolkit 4.13.2">
+<a href="notes.html#id2298057">SNMP Development Toolkit 4.13.2</a></li>
+<li title="SNMP Development Toolkit 4.13.1">
+<a href="notes.html#id2289326">SNMP Development Toolkit 4.13.1</a></li>
+<li title="SNMP Development Toolkit 4.13">
+<a href="notes.html#id2259062">SNMP Development Toolkit 4.13</a></li>
+<li title="SNMP Development Toolkit 4.12.2">
+<a href="notes.html#id2268401">SNMP Development Toolkit 4.12.2</a></li>
+<li title="SNMP Development Toolkit 4.12.1">
+<a href="notes.html#id2268483">SNMP Development Toolkit 4.12.1</a></li>
+<li title="SNMP Development Toolkit 4.12">
+<a href="notes.html#id2257371">SNMP Development Toolkit 4.12</a></li>
+<li title="SNMP Development Toolkit 4.11.2">
+<a href="notes.html#id2261597">SNMP Development Toolkit 4.11.2</a></li>
+<li title="SNMP Development Toolkit 4.11.1">
+<a href="notes.html#id2261707">SNMP Development Toolkit 4.11.1</a></li>
+<li title="SNMP Development Toolkit 4.11">
+<a href="notes.html#id2251681">SNMP Development Toolkit 4.11</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 SNMP Release Notes</h1>
+  
+  <h3><a name="id2265394">1.1 
+        SNMP Development Toolkit 4.15</a></h3>
+    
+    <p>Version 4.15 supports code replacement in runtime from/to
+      version 4.14 and 4.13.5.</p>
+    <h4>Improvements and new features</h4>
+      
+      
+      <ul>
+        <li>
+          <p>The documentation is now built with open source tools 
+            (<strong>xsltproc</strong> and <strong>fop</strong>) that exists on most 
+            platforms. One visible change is that the frames are removed.</p>
+          <p>Own Id: OTP-8249</p>
+        </li>
+      </ul>
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[manager] When information from an unknown agent is received,
+            it was previously delivered to the default user via calls to all
+            the functions of the callback API depending on the info type
+            (<span class="code">pdu</span>, <span class="code">trap</span>, <span class="code">report</span> or <span class="code">inform</span>). 
+            The problem was that the <span class="code">TargetName</span> argument was useless 
+            in this case (only an already known agent has a known/valid 
+            <span class="code">TargetName</span>, but the <span class="code">TargetName</span> used in these calls
+            was generated "on the fly"). </p>
+          <p>This has now been changed so that when a message is received 
+            from an unknown agent, then only 
+            <span class="bold_code">
+<a href="../../man/snmpm_user.html#handle_agent">handle_agent</a></span>
+            (for the default user) is called, but now this call also has a 
+            <span class="code">Type</span> argument, which is 
+            <span class="code">pdu | trap | report | inform</span>, depending on what kind of 
+            message was actually received, thus making it possible for the 
+            user to properly analyze the data received. </p>
+	  <p>To handle this, the 
+            <span class="bold_code">
+<a href="../../man/snmpm_user.html">snmpm_user</a></span> behaviour has 
+            been updated. </p>
+	  <p>*** POTENTIAL INCOMPATIBILITY ***</p>
+          <p>Own Id: OTP-8229</p>
+	  
+        </li>
+      </ul>
+    
+   
+  <h3><a name="id2257539">1.2 
+        SNMP Development Toolkit 4.14</a></h3>
+    
+    <p>Version 4.14 supports code replacement in runtime from/to
+      version 4.13.5, 4.13.4, 4.13.3, 4.13.2, 4.13.1 and 4.13.</p>
+    <h4>Improvements and new features</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[compiler] Include object- and notification groups in the 
+            compiled mib.
+            This will make it possible to import groups from other mibs. </p>
+          <p>Also the SNMPv2-MIB-file has been updated to a more
+            up-to-date version. </p>
+          <p>Own Id: OTP-8223</p>
+	  
+        </li>
+        <li>
+          <p>[manager] Added support for message filtering in the
+            network interface module provided with the application.
+            The component that actually make the filter decisions
+            is the network interface filter module. This module
+            must implement the 
+            <span class="bold_code">
+<a href="../../man/snmpm_network_interface_filter.html">network interface filter behaviour</a></span>
+            for message filtering.
+            See also the Configuring chapter of
+            the User's Guide to see how to configure this feature. </p>
+          <p>See the 
+            <span class="bold_code">
+<a href="../../man/snmp_app.html#configuration_params">configuration</a></span> 
+            chapter for more info about the filter options.</p>
+          <p>Own Id: OTP-8228</p>
+	  <p>Aux Id: Seq 11411</p>
+        </li>
+        <li>
+          <p>The MIBs delivered as part of the application is now
+            also available as man pages, section 7. </p>
+          <p>Own Id: OTP-8237</p>
+	  
+        </li>
+      </ul>
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      <p>-</p>
+      
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2259710">1.3 
+        SNMP Development Toolkit 4.13.5</a></h3>
+    
+    <p>Version 4.13.5 supports code replacement in runtime from/to
+      version 4.13.4, 4.13.3, 4.13.2, 4.13.1 and 4.13.</p>
+    <h4>Improvements and new features</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[agent] Improved the cache handling of the mib server. </p>
+          <p>A number of new functions and config options for the mib server
+            cache has been added. </p>
+          <p>See 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#invalidate_mibs_cache">invalidate_mibs_cache/0,1</a></span>, 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#enable_mibs_cache">enable_mibs_cache/0,1</a></span>, 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#disable_mibs_cache">disable_mibs_cache/0,1</a></span>, 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#gc_mibs_cache">gc_mibs_cache/0,1,2,3</a></span>, 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#enable_mibs_cache_autogc">enable_mibs_cache_autogc/0,1</a></span>, 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#disable_mibs_cache_autogc">disable_mibs_cache_autogc/0,1</a></span>, 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#update_mibs_cache_age">update_mibs_cache_age/1,2</a></span> and 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#update_mibs_cache_gclimit">update_mibs_cache_gclimit/1,2</a></span> for more info. </p>
+          <p>See also the 
+            <span class="bold_code">
+<a href="../../man/snmp_app.html#configuration_params">configuration</a></span> 
+            chapter for more info about the mib server cache options.</p>
+          <p>Own Id: OTP-8182</p>
+	  <p>Aux Id: Seq 11383</p>
+        </li>
+        <li>
+          <p>[agent] A manager could no longer use the SNMPv3 user "initial" 
+            as this was interpretated as the first step of the discovery. </p>
+          <p>Introduced a new terminating option, <span class="code">trigger_username</span> to
+            make it possible to configure the username the agent reacts to. 
+            Default is <span class="code">""</span>. </p>
+          <p>See the 
+            <span class="bold_code">
+<a href="../../man/snmp_app.html#configuration_params">configuration</a></span> 
+            chapter for more info about the discovery options.</p>
+          <p>Own Id: OTP-8120</p>
+	  <p>Aux Id: Seq 11361</p>
+        </li>
+      </ul>
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[agent] The main agent type header file contained some miss-information 
+            regarding the type of the entrytype field of the me-record, causing 
+            unneccessary confusion.</p>
+          <p>Own Id: OTP-8116</p>
+	  <p>Aux Id: Seq 11312</p>
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2261448">1.4 
+        SNMP Development Toolkit 4.13.4</a></h3>
+    
+    <p>Version 4.13.4 supports code replacement in runtime from/to
+      version 4.13.3, 4.13.2, 4.13.1 and 4.13.</p>
+    <h4>Improvements and new features</h4>
+      
+      <p>-</p> 
+      
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[agent] Originating discovery problems. </p>
+          <p>Invalid state variable update during second stage of 
+            discovery causes master agent crash. </p>
+          <p>Also the net_if process failed to activate socket 
+            ({active, once}) after first discovery response was sent. </p>
+          <p>Own Id: OTP-8044</p>
+	  <p>Aux Id: Seq 11295</p>
+        </li>
+        <li>
+          <p>[agent] Terminating discovery problem. </p>
+          <p>The reply to the second stage request should include a 
+            varbind with <span class="code">usmStatsNotInTimeWindows</span>.</p>
+          <p>Own Id: OTP-8062</p>
+	  <p>Aux Id: Seq 11318</p>
+        </li>
+        <li>
+          <p>[agent] Originating discovery improvement. </p>
+          <p>Added the ExtraInfo argument to the 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#discovery">discovery</a></span> function. 
+            This argument will be passed on to the stage1_finish callback
+            function. Also, the 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#discovery">discovery</a></span> function 
+            will now always return <span class="code">{ok, ManagerEngineID}</span> on successful 
+            discovery. </p>
+          <p>The <span class="bold_code">
+<a href="../../man/snmpa_discovery_handler.html">discovery handler</a></span> 
+            behaviour updated accordingly. </p>
+          <p>Own Id: OTP-8098</p>
+	  <p>Aux Id: Seq 11346</p>
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2286405">1.5 
+        SNMP Development Toolkit 4.13.3</a></h3>
+    
+    <p>Version 4.13.3 supports code replacement in runtime from/to
+      version 4.13.2, 4.13.1 and 4.13.</p>
+    <h4>Improvements and new features</h4>
+      
+      <p>-</p> 
+      
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[manager] A request for an oid of type BITS was actually
+            returned as OCTET STRING. </p>
+          <p>Values of type BITS are encoded as OCTET STRING,
+            which makes it impossible for the decoder to know that 
+            they should really be of type BITS. 
+            Instead, this has to be done higher up in the stack, where 
+            there is knowledge of the MIB (assuming that the mib has 
+            been loaded, there is info about the type of the mibentry). </p>
+          <p>This problem has now been fixed, but requires that the MIB 
+            defining this mib-entry is loaded! </p>
+          <p>The utility function 
+            <span class="bold_code">
+<a href="../../man/snmpm.html#oid_to_type">oid_to_type</a></span>
+            has been added, for debug purpose. </p>
+          <p>The utility function(s)  
+            <span class="bold_code">
+<a href="../../man/snmp.html#octet_string_to_bits">octet_string_to_bits</a></span>
+            and 
+            <span class="bold_code">
+<a href="../../man/snmp.html#bits_to_octet_string">bits_to_octet_string</a></span>
+            has also been added. These can be used if the user prefers to 
+            handle the conversion on their own. </p>
+          <p>Own Id: OTP-8015</p>
+	  <p>Aux Id: Seq 11285</p>
+        </li>
+        <li>
+          <p>[agent] Fixed some issues with the discovery handling. </p>
+          <p>Changed the API of the 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#discovery">discovery</a></span>
+            function to solve some 
+            of these problems. </p>
+          <p>Introduced various options for controlling the discovery
+            process. See the 
+            <span class="bold_code">
+<a href="../../man/snmp_app.html#configuration_params">configuration</a></span> 
+            chapter for more info about the discovery options.</p>
+          <p>Own Id: OTP-8020</p>
+	  <p>Aux Id: Seq 11295</p>
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2298057">1.6 
+        SNMP Development Toolkit 4.13.2</a></h3>
+    
+    <p>Version 4.13.2 supports code replacement in runtime from/to
+      version 4.13.1 and 4.13.</p>
+    <h4>Improvements and new features</h4>
+      
+      <p>-</p> 
+      
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[manager] Failure during downed user cleanup.
+            As part of the cleanup after a crashed user,
+            the manager attempts to unregister the agents
+            registered by this user. This however failed,
+            causing a server crash. </p>
+          <p>Own Id: OTP-7961</p>
+	  <p>Aux Id: Seq 11275</p>
+        </li>
+        <li>
+          <p>[manager] Incorrectly documented value type for 
+            IpAddress (ip). The value type for IpAddress is
+            documented as ip but is actually ia. The value type
+            ip has been added. The old (not documented) value
+            type ia still works. </p>
+          <p>Own Id: OTP-7977</p>
+	  <p>Aux Id: Seq 11279</p>
+        </li>
+        <li>
+          <p>[manager] EngineId lookup fails when using version-3. </p>
+          <p>Own Id: OTP-7983</p>
+	  <p>Aux Id: Seq 11275</p>
+        </li>
+        <li>
+          <p>[agent] As of version 4.13 the possible return values
+            of the function 
+            <span class="bold_code">
+<a href="../../man/snmpa_mpd.html#process_packet">snmpa_mpd:process_packet/4</a></span> 
+            changed, but this was not documented. </p>
+          <p>Own Id: OTP-7989</p>
+	  <p>Aux Id: Seq 11275</p>
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2289326">1.7 
+        SNMP Development Toolkit 4.13.1</a></h3>
+    
+    <p>Version 4.13.1 supports code replacement in runtime from/to
+      version 4.13.</p>
+    <h4>Improvements and new features</h4>
+      
+      <p>-</p> 
+      
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[manager] Registration of users had some issues. </p>
+          <p>Not all of the registration functions where actually exported
+            (<span class="bold_code">
+<a href="../../man/snmpm.html#register_user">register_user/4</a></span> 
+            and
+            <span class="bold_code">
+<a href="../../man/snmpm.html#register_user_monitor">register_user_monitor/4</a></span>). 
+            This has now been fixed. </p>
+          <p>Also, the registration did not succeed unless
+            user implemented the *new* behaviour. This has now
+            also been fixed (registration succeeds if the user
+            implements either the new (i.e. updated 
+            <span class="bold_code">
+<a href="../../man/snmpm_user.html">snmpm_user</a></span>) 
+            or the old user behaviour (<span class="code">snmpm_user_old</span>)). </p>
+          <p>Own Id: OTP-7902</p>
+	  <p>Aux Id: Seq 11240</p>
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2259062">1.8 
+        SNMP Development Toolkit 4.13</a></h3>
+    
+    <h4>Improvements and new features</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[agent] Support for the discovery process. </p>
+          <p>The agent can both initiate discovery itself (see the
+            <span class="bold_code">
+<a href="snmp_agent_funct_descr.html#discovery">discovery</a></span> chapter
+            for more info) and respond to discovery initiated by a manager.</p>
+          <p>Own Id: OTP-7571</p>
+	  <p>Aux Id: Seq 11053</p>
+        </li>
+      </ul>
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[agent] Unnecessary use of math:pow/2 could cause problems
+            on systems without floating point support. </p>
+          <p>Per Hedeland</p>
+          <p>Own Id: OTP-7735</p>
+	  
+        </li>
+        <li>
+          <p>[manager] A major flaw was discovered with the agent handling. </p>
+          <p>First, <span class="code">TargetName</span> was never used as intended, as a unique
+            identifier for the target (agent in this case). </p>
+          <p>Second, <span class="code">TargetName</span> had a <strong>default value</strong>, which meant 
+            that several agents could have the same <span class="code">TargetName</span>, causing
+            unpredictable behaviour in the manager. </p>
+          <p>Third, <span class="code">EngineID</span> was not a mandatory config option and had
+            furthermore also a <strong>default value</strong>. </p>
+          <p>These problems has been solved in the following way: </p>
+          <p>First, a new set of api functions has been introduced (and documented):
+            <span class="bold_code">
+<a href="../../man/snmpm.html#register_user">register_user/4</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#register_user_monitor">register_user_monitor/4</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#register_agent">register_agent/3</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#unregister_agent">unregister_agent/2</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#agent_info">agent_info/2</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#update_agent_info">update_agent_info/4</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#sync_get">sync_get/3,4,5,6</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#async_get">async_get/3,4,5,6</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#sync_get_next">sync_get_next/3,4,5,6</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#async_get_next">async_get_next/3,4,5,6</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#sync_set">sync_set/3,4,5,6</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#async_set">async_set/3,4,5,6</a></span>,
+            <span class="bold_code">
+<a href="../../man/snmpm.html#sync_get_bulk">sync_get_bulk/5,6,7,8</a></span> and
+            <span class="bold_code">
+<a href="../../man/snmpm.html#async_get_bulk">async_get_bulk/5,6,7,8</a></span> 
+            that all use <span class="code">TargetName</span> (and not, as previously, <span class="code">Addr</span>
+            and <span class="code">Port</span>) to identify the agent (also the return value of 
+            <span class="bold_code">
+<a href="../../man/snmpm.html#which_agents">which_agents</a></span> has 
+            been changed). </p> 
+          <p>Second, for backward compatibility, the old functions still 
+            exist, but are no longer documented and are now wrappers for the 
+            new functions, including erroneous default value for EngineID and 
+            all. The TargetName is however generated from the provided 
+            <span class="code">Addr</span>, <span class="code">Port</span> and <span class="code">Version</span> config options. </p>
+           <p>Third, the behaviour of the 
+             <span class="bold_code">
+<a href="../../man/snmpm_user.html">SNMP manager user</a></span> has
+             been changed to reflect this, i.e. 
+             <span class="bold_code">
+<a href="../../man/snmpm_user.html#handle_pdu">handle_pdu/4</a></span>,
+             <span class="bold_code">
+<a href="../../man/snmpm_user.html#handle_trap">handle_trap/3</a></span>,
+             <span class="bold_code">
+<a href="../../man/snmpm_user.html#handle_inform">handle_inform/3</a></span>, 
+             <span class="bold_code">
+<a href="../../man/snmpm_user.html#handle_report">handle_report/3</a></span> 
+             and the return-value of 
+             <span class="bold_code">
+<a href="../../man/snmpm_user.html#handle_agent">handle_agent/4</a></span>.
+             The old (non-documented) callback-functions (using Addr and Port) 
+             will still be called if the agent was registered using the old 
+             registration functions. </p>
+          
+          <p>Own Id: OTP-7836</p>
+	  
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2268401">1.9 
+        SNMP Development Toolkit 4.12.2</a></h3>
+    
+    <p>Version 4.12.2 supports code replacement in runtime from/to
+      version 4.12.1, 4.12, 4.11.2, 4.11.1 and 4.11.</p>
+    <h4>Improvements and new features</h4>
+      
+      <p>-</p> 
+      
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[agent] Bad session cache (usm+camv-info) invalidation 
+            could cause user crash, through call(s) to (a number of) 
+            MIB API function(s) (undefined function). </p>
+          <p>Own Id: OTP-7868</p>
+	  
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2268483">1.10 
+        SNMP Development Toolkit 4.12.1</a></h3>
+    
+    <p>Version 4.12.1 supports code replacement in runtime from/to
+      version 4.12, 4.11.2, 4.11.1 and 4.11.</p>
+    <h4>Improvements and new features</h4>
+      
+      <p>-</p> 
+      
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>Logging of messages with the GetBulk-request PDU
+            incorrectly produced an erroneous entry in the
+            log: "An error occurred". </p>
+          <p>The reason for this was that the PDU-fields
+            error_status and error_index is re-used for
+            Non-repeaters and Max-repetitions for
+            GetBulk-request PDUs, but this was not handled
+            by the logging code. </p>
+          <p>Own Id: OTP-7695</p>
+	  <p>Aux Id: Seq 11124</p>
+        </li>
+        <li>
+          <p>[agent] An attempt to set the row status to active for an 
+            notReady table row, could result in an "inconsistentValue" 
+            error. </p>
+          <p>The same problem existed when attempting to set row status 
+            to notInService for a row in notReady. </p>
+          <p>Serge Aleynikov</p>
+          <p>Own Id: OTP-7698</p>
+	  
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2257371">1.11 
+        SNMP Development Toolkit 4.12</a></h3>
+    
+    <p>Version 4.12 supports code replacement in runtime from/to
+      version 4.11.2, 4.11.1 and 4.11.</p>
+    <h4>Improvements and new features</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[agent] A simple lookup cache has been added to improve 
+            the mib server lookup performance. </p>
+          <p>This can be disabled with the mib_server 
+            <span class="bold_code">
+<a href="../../man/snmp_app.html">cache</a></span> option. </p> 
+          <p>Own Id: OTP-7346</p>
+        </li>
+        <li>
+          <p>[agent] Improvement of the inform reporting.
+            It was previously not certain how many acks an
+            application received, 0, 1 or 2. This has now been
+            fixed, so that only 1 (one) ack is issued. </p> 
+          <p>Per Hedeland</p>
+          <p>Own Id: OTP-7525</p>
+        </li>
+      </ul>
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      <p>-</p>
+      
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2261597">1.12 
+        SNMP Development Toolkit 4.11.2</a></h3>
+    
+    <p>Version 4.11.2 supports code replacement in runtime from/to
+      version 4.11.1 and 4.11. </p>
+    <h4>Improvements and new features</h4>
+      
+      <p>-</p> 
+      
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[manager] Erroneous engine-id check when receiving version 3 
+            informs. </p>
+          <p>Own Id: OTP-7570</p>
+	  <p>Aux Id: Seq 11060</p>
+        </li>
+        <li>
+	  <p>Receiving an snmp message with a very large version
+            number could cause the erlang node to run out of
+            memory and consequently crash. </p>
+          <p>The standard specifies the snmp version as an
+            (unlimited) INTEGER, but today only
+            0 (version 1), 1 (version 2) and 3 (version 3) is
+            actually used. So, when decoding a message, a limit
+            has been put on the snmp version integer in order
+            to not allow this kind of a problem. </p>
+	  <p>Own Id: OTP-7575</p>
+	  <p>Aux Id: Seq 11064</p>
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2261707">1.13 
+        SNMP Development Toolkit 4.11.1</a></h3>
+    
+    <p>Version 4.11.1 supports code replacement in runtime from/to
+      version 4.11.</p>
+    <h4>Improvements and new features</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[compiler] The MIB compiler did not retrieve the REFERENCE part
+            of a SNMP MIB definition. </p>
+          <p>This problem has been partly solved. For SNMP tables, 
+            the assocList field of the tables mib-entry record now contains 
+            this info (as <span class="code">{reference, string()}</span>), <strong>if</strong> the 
+            MIB was compiled with the compiler option <strong>+reference</strong>. </p>
+          <p>This solution is temporary, until such time as a permanent
+            solution (and probably not backward compatible) is devised, which
+            retrieves and stores all REFERENCE part(s) of a MIB. </p>
+          <p>See the 
+            <span class="bold_code">
+<a href="../../man/snmpc.html#compiler_opts">compiler options</a></span> 
+            for more info. </p> 
+          <p>Serge Aleynikov</p>
+          <p>Own Id: OTP-7426</p>
+        </li>
+        <li>
+	  <p>Added utility functions for transforming DateAndTime
+            as [int()] to strings; 
+            <span class="bold_code">
+<a href="../../man/snmp.html#dat2s">date_and_time_to_string/2</a></span>
+            and  
+            <span class="bold_code">
+<a href="../../man/snmp.html#dat2s2">date_and_time_to_string2/1</a></span>. </p>
+          <p>Also added new validation function 
+            <span class="bold_code">
+<a href="../../man/snmp.html#vdat">validate_date_and_time/2</a></span>. </p>
+	  <p>Own Id: OTP-7412</p>
+	  <p>Aux Id: Seq 10987</p>
+        </li>
+      </ul>
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[manager] Encryption error when attempting to send
+            version 3 inform-requests. </p>
+          <p>Own Id: OTP-7432</p>
+	  <p>Aux Id: Seq 10966</p>
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  <h3><a name="id2251681">1.14 
+        SNMP Development Toolkit 4.11</a></h3>
+    
+    <p>Version 4.11 supports code replacement in runtime from/to
+      version 4.10.3, 4.10.2, 4.10.1 and 4.10.</p>
+    <h4>Improvements and new features</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[agent] Performance improvements in the case when an SNMP 
+            manager performs an snmpwalk. </p>
+          <p>Martin Björklund</p>
+          <p>Own Id: OTP-7201</p>
+        </li>
+        <li>
+          <p>The API for sending inform(s) has been improved. Also
+            the documentation has been corrected and updated. See 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#send_notification">snmpa:send_notification</a></span> and 
+            <span class="bold_code">
+<a href="../../man/snmpa_notification_delivery_info_receiver.html">snmpa_notification_delivery_info_receiver</a></span> 
+            for more info.</p>
+          <p>Own Id: OTP-7287</p>
+          <p>Aux Id: Seq 10926</p>
+        </li>
+        <li>
+	  <p>[agent] Performance of the internal database (local-db) 
+           has been improved.</p>
+	  <p>Own Id: OTP-7319</p>
+	  <p>Aux Id: Seq 10942</p>
+        </li>
+        <li>
+	  <p>[agent] Added utility functions,
+            <span class="bold_code">
+<a href="../../man/snmpa.html#restart_worker">snmpa:restart_worker/0,1</a></span> and 
+            <span class="bold_code">
+<a href="../../man/snmpa.html#restart_set_worker">snmpa:restart_set_worker/0,1</a></span>, 
+            for restarting the agent worker processes (in case the agent is
+            multi-threaded).</p>
+	  <p>Own Id: OTP-7369</p>
+        </li>
+        <li>
+	  <p>Add utility function to 
+            <span class="bold_code">
+<a href="../../man/snmp.html#read_mib">read</a></span> 
+            a compiled mib. </p>
+	  <p>Own Id: OTP-7371</p>
+        </li>
+      </ul>
+    
+    <h4>Reported Fixed Bugs and Malfunctions</h4>
+      
+      
+      <ul>
+        <li>
+          <p>[manager] Encryption error when attempting to send
+            version 3 inform-requests. </p>
+          <p>Own Id: OTP-7377</p>
+	  <p>Aux Id: Seq 10966</p>
+        </li>
+      </ul>
+    
+    <h4>Incompatibilities</h4>
+      
+      <p>-</p>
+    
+   
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 1997-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Introduction</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="megaco.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>Megaco/H.248</strong><br><strong>User's Guide</strong><br><small>Version 3.13</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu">
+<li title="Introduction" expanded="true">Introduction<ul>
+<li>
+<a href="megaco_intro.html">
+              Top of chapter
+            </a></li>
+<li title="Scope and Purpose">
+<a href="megaco_intro.html#id2252285">Scope and Purpose</a></li>
+<li title="Prerequisites">
+<a href="megaco_intro.html#id2252384">Prerequisites</a></li>
+<li title="About This Manual">
+<a href="megaco_intro.html#id2259343">About This Manual</a></li>
+<li title="Where to Find More Information">
+<a href="megaco_intro.html#id2258561">Where to Find More Information</a></li>
+</ul>
+</li>
+<li title="Architecture" expanded="false">Architecture<ul>
+<li>
+<a href="megaco_architecture.html">
+              Top of chapter
+            </a></li>
+<li title="Network view">
+<a href="megaco_architecture.html#id2258383">Network view</a></li>
+<li title="General">
+<a href="megaco_architecture.html#id2256798">General</a></li>
+<li title="Single node config">
+<a href="megaco_architecture.html#id2259275">Single node config</a></li>
+<li title="Distributed config">
+<a href="megaco_architecture.html#id2258001">Distributed config</a></li>
+<li title="Message round-trip call flow">
+<a href="megaco_architecture.html#id2258082">Message round-trip call flow</a></li>
+</ul>
+</li>
+<li title="Running the stack" expanded="false">Running the stack<ul>
+<li>
+<a href="megaco_run.html">
+              Top of chapter
+            </a></li>
+<li title="Starting">
+<a href="megaco_run.html#id2258813">Starting</a></li>
+<li title="MGC startup call flow">
+<a href="megaco_run.html#id2262209">MGC startup call flow</a></li>
+<li title="MG startup call flow">
+<a href="megaco_run.html#id2252359">MG startup call flow</a></li>
+<li title="Configuring the Megaco stack">
+<a href="megaco_run.html#id2251401">Configuring the Megaco stack</a></li>
+<li title="Initial configuration">
+<a href="megaco_run.html#id2252174">Initial configuration</a></li>
+<li title="Changing the configuration">
+<a href="megaco_run.html#id2260287">Changing the configuration</a></li>
+<li title="The transaction sender">
+<a href="megaco_run.html#id2260316">The transaction sender</a></li>
+<li title="Segmentation of transaction replies">
+<a href="megaco_run.html#id2262153">Segmentation of transaction replies</a></li>
+</ul>
+</li>
+<li title="Internal form and its encodings" expanded="false">Internal form and its encodings<ul>
+<li>
+<a href="megaco_encode.html">
+              Top of chapter
+            </a></li>
+<li title="Internal form of messages">
+<a href="megaco_encode.html#id2262028">Internal form of messages</a></li>
+<li title="The different encodings">
+<a href="megaco_encode.html#id2262724">The different encodings</a></li>
+<li title="Configuration of Erlang distribution encoding module">
+<a href="megaco_encode.html#id2260688">Configuration of Erlang distribution encoding module</a></li>
+<li title="Configuration of text encoding module(s)">
+<a href="megaco_encode.html#id2260778">Configuration of text encoding module(s)</a></li>
+<li title="Configuration of binary encoding module(s)">
+<a href="megaco_encode.html#id2261011">Configuration of binary encoding module(s)</a></li>
+<li title="Handling megaco versions">
+<a href="megaco_encode.html#id2261129">Handling megaco versions</a></li>
+<li title="Encoder callback functions">
+<a href="megaco_encode.html#id2261398">Encoder callback functions</a></li>
+</ul>
+</li>
+<li title="Transport mechanisms" expanded="false">Transport mechanisms<ul>
+<li>
+<a href="megaco_transport_mechanisms.html">
+              Top of chapter
+            </a></li>
+<li title="Callback interface">
+<a href="megaco_transport_mechanisms.html#id2261492">Callback interface</a></li>
+<li title="Examples">
+<a href="megaco_transport_mechanisms.html#id2261564">Examples</a></li>
+</ul>
+</li>
+<li title="Implementation examples" expanded="false">Implementation examples<ul>
+<li>
+<a href="megaco_examples.html">
+              Top of chapter
+            </a></li>
+<li title="A simple Media Gateway Controller">
+<a href="megaco_examples.html#id2261661">A simple Media Gateway Controller</a></li>
+<li title="A simple Media Gateway">
+<a href="megaco_examples.html#id2261721">A simple Media Gateway</a></li>
+</ul>
+</li>
+<li title="Megaco mib" expanded="false">Megaco mib<ul>
+<li>
+<a href="megaco_mib.html">
+              Top of chapter
+            </a></li>
+<li title="Intro">
+<a href="megaco_mib.html#id2261859">Intro</a></li>
+<li title="Statistics counters">
+<a href="megaco_mib.html#id2261888">Statistics counters</a></li>
+<li title="Distribution">
+<a href="megaco_mib.html#id2263004">Distribution</a></li>
+</ul>
+</li>
+<li title="Performance comparison" expanded="false">Performance comparison<ul>
+<li>
+<a href="megaco_performance.html">
+              Top of chapter
+            </a></li>
+<li title="Comparison of encoder/decoders">
+<a href="megaco_performance.html#id2263091">Comparison of encoder/decoders</a></li>
+<li title="System performance characteristics">
+<a href="megaco_performance.html#id2263930">System performance characteristics</a></li>
+<li title="Description of encoders/decoders">
+<a href="megaco_performance.html#id2263973">Description of encoders/decoders</a></li>
+<li title="Setup">
+<a href="megaco_performance.html#id2264102">Setup</a></li>
+<li title="Summary">
+<a href="megaco_performance.html#id2264118">Summary</a></li>
+</ul>
+</li>
+<li title="Testing and tools" expanded="false">Testing and tools<ul>
+<li>
+<a href="megaco_debug.html">
+              Top of chapter
+            </a></li>
+<li title="Tracing">
+<a href="megaco_debug.html#id2264267">Tracing</a></li>
+<li title="Measurement and transformation">
+<a href="megaco_debug.html#id2264318">Measurement and transformation</a></li>
+</ul>
+</li>
+</ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Introduction</h1>
+  
+  <p>Megaco/H.248 is a protocol for control of elements in a
+    physically decomposed multimedia gateway, enabling separation of
+    call control from media conversion. A Media Gateway Controller
+    (MGC) controls one or more Media Gateways (MG).</p>
+  <p>This version of the stack supports version 1, 2 and 3 as 
+    defined by:</p>
+  <ul>
+    <li>
+      <p>version 1 - RFC 3525 and H.248-IG (v10-v13)</p>
+    </li>
+    <li>
+      <p>version 2 - draft-ietf-megaco-h248v2-04 &amp; H.248.1 
+        v2 Corrigendum 1 (03/2004)</p>
+    </li>
+    <li>
+      <p>version 3: </p>
+      <ul>
+        <li>
+          <p>prev3a - as defined by TD-33 (except segments)</p>
+        </li>
+        <li>
+          <p>prev3b - TD-33 updated to be backward compatible with v2 
+            (except segments)</p>
+        </li>
+        <li>
+          <p>prev3c - As defined by ITU H.248.1 (09/2005) 
+            (except segments)</p>
+        </li>
+        <li>
+          <p>v3 - Full version 3 as defined by ITU H.248.1 (09/2005) 
+            (including segments)</p>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <p>The semantics of the protocol has jointly been defined by two
+    standardization bodies:</p>
+  <ul>
+    <li>
+      <p>IETF - which calls the protocol Megaco</p>
+    </li>
+    <li>
+      <p>ITU  - which calls the protocol H.248</p>
+    </li>
+  </ul>
+  <h3><a name="id2252285">1.1 
+        Scope and Purpose</a></h3>
+    
+    <p>This manual describes the Megaco application, as a component
+      of the Erlang/Open Telecom Platform development environment. It
+      is assumed that the reader is familiar with the Erlang
+      Development Environment, which is described in a separate User's
+      Guide.</p>
+  
+  <h3><a name="id2252384">1.2 
+        Prerequisites</a></h3>
+    
+    <p>The following prerequisites is required for understanding the
+      material in the Megaco User's Guide:</p>
+    <ul>
+      <li>
+        <p>the basics of the Megaco/H.248 protocol</p>
+      </li>
+      <li>
+        <p>the basics of the Abstract Syntax Notation One (ASN.1)</p>
+      </li>
+      <li>
+        <p>familiarity with the Erlang system and Erlang programming</p>
+      </li>
+    </ul>
+    <p>The application requires Erlang/OTP release R10B or later.</p>
+  
+  <h3><a name="id2259343">1.3 
+        About This Manual</a></h3>
+    
+    <p>In addition to this introductory chapter, the Megaco User's
+      Guide contains the following chapters:</p>
+    <ul>
+      <li>
+        <p>Chapter 2: "Architecture" describes the architecture
+          and typical usage of the application.</p>
+      </li>
+      <li>
+        <p>Chapter 3: "Internal form and its encodings" describes
+          the internal form of Megaco/H.248 messages and its various
+          encodings.</p>
+      </li>
+      <li>
+        <p>Chapter 4: "Transport mechanisms" describes how
+          different mechanisms can be used to transport the
+          Megaco/H.248 messages.</p>
+      </li>
+      <li>
+        <p>Chapter 5: "Debugging" describes tracing and debugging.</p>
+      </li>
+    </ul>
+  
+  <h3><a name="id2258561">1.4 
+        Where to Find More Information</a></h3>
+    
+    <p>Refer to the following documentation for more information about
+      Megaco/H.248 and about the Erlang/OTP development system:</p>
+    <ul>
+      <li>
+        <p><span class="bold_code">
+<a href="http://www.erlang.org/project/megaco/standard/rfc3525.txt">version 1, RFC 3525</a></span></p>
+      </li>
+      <li>
+        <p><span class="bold_code">
+<a href="http://www.ietf.org/rfc/rfc3015.txt">old version 1, RFC 3015</a></span></p>
+      </li>
+      <li>
+        <p><span class="bold_code">
+<a href="http://www.erlang.org/project/megaco/standard/H.248.1-Corr1-200403.doc">Version 2 Corrigendum 1</a></span></p>
+      </li>
+      <li>
+        <p><span class="bold_code">
+<a href="http://www.erlang.org/project/megaco/standard/draft-ietf-megaco-h248v2-04.txt">version 2, draft-ietf-megaco-h248v2-04</a></span></p>
+      </li>
+      <li>
+        <p><span class="bold_code">
+<a href="http://www.itu.int/">TD-33 (Draft H.248.1 version 3)</a></span></p>
+      </li>
+      <li>
+        <p><span class="bold_code">
+<a href="http://www.itu.int/">H.248.1 version 3</a></span></p>
+      </li>
+      <li>
+        <p>the ASN.1 application User's Guide</p>
+      </li>
+      <li>
+        <p>the Megaco application Reference Manual</p>
+      </li>
+      <li>
+        <p>Concurrent Programming in Erlang, 2nd Edition (1996),
+          Prentice-Hall, ISBN 0-13-508301-X.</p>
+      </li>
+    </ul>
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2000-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>

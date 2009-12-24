@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../otp_doc.css" type="text/css">
+<title>Erlang -- Xmerl Release Notes</title>
+</head>
+<body bgcolor="white" text="#000000" link="#0000ff" vlink="#ff00ff" alink="#ff0000"><div id="container">
+<script id="js" type="text/javascript" language="JavaScript" src="../../js/flipmenu/flipmenu.js"></script><script id="js2" type="text/javascript" src="../../../../doc/js/erlresolvelinks.js"></script><div id="leftnav"><div class="innertube">
+<img alt="Erlang logo" src="../../erlang-logo.png"><br><small>
+<a href="users_guide.html">User's Guide</a><br>
+<a href="index.html">Reference Manual</a><br>
+<a href="release_notes.html">Release Notes</a><br>
+<a href="xmerl.pdf">PDF</a><br>
+<a href="../../index.html">Top</a></small><p><strong>xmerl</strong><br><strong>Release Notes</strong><br><small>Version 1.2.3</small></p>
+<br>
+<a href="javascript:openAllFlips()">Expand All</a><br>
+<a href="javascript:closeAllFlips()">Contract All</a><p><small><strong>Chapters</strong></small></p>
+<ul class="flipMenu" imagepath="../../../../doc/js/flipmenu"><li title="Xmerl Release Notes" expanded="true">Xmerl Release Notes<ul>
+<li>
+<a href="notes.html">
+              Top of chapter
+            </a></li>
+<li title="Xmerl 1.2.3">
+<a href="notes.html#id2252929">Xmerl 1.2.3</a></li>
+<li title="Xmerl 1.2.2">
+<a href="notes.html#id2253010">Xmerl 1.2.2</a></li>
+<li title="Xmerl 1.2.1">
+<a href="notes.html#id2260750">Xmerl 1.2.1</a></li>
+<li title="Xmerl 1.2">
+<a href="notes.html#id2260873">Xmerl 1.2</a></li>
+<li title="Xmerl 1.1.12">
+<a href="notes.html#id2256809">Xmerl 1.1.12</a></li>
+<li title="Xmerl 1.1.11">
+<a href="notes.html#id2256840">Xmerl 1.1.11</a></li>
+<li title="Xmerl 1.1.10">
+<a href="notes.html#id2256872">Xmerl 1.1.10</a></li>
+<li title="Xmerl 1.1.9">
+<a href="notes.html#id2257016">Xmerl 1.1.9</a></li>
+<li title="Xmerl 1.1.8">
+<a href="notes.html#id2253434">Xmerl 1.1.8</a></li>
+<li title="Xmerl 1.1.7">
+<a href="notes.html#id2253482">Xmerl 1.1.7</a></li>
+<li title="Xmerl 1.1.6">
+<a href="notes.html#id2253513">Xmerl 1.1.6</a></li>
+<li title="Xmerl 1.1.5">
+<a href="notes.html#id2253575">Xmerl 1.1.5</a></li>
+<li title="Xmerl 1.1.4">
+<a href="notes.html#id2253638">Xmerl 1.1.4</a></li>
+<li title="Xmerl 1.1.3">
+<a href="notes.html#id2251661">Xmerl 1.1.3</a></li>
+<li title="Xmerl 1.1.2">
+<a href="notes.html#id2251698">Xmerl 1.1.2</a></li>
+<li title="Xmerl 1.1.1">
+<a href="notes.html#id2251760">Xmerl 1.1.1</a></li>
+<li title="Xmerl 1.1">
+<a href="notes.html#id2251794">Xmerl 1.1</a></li>
+<li title="xmerl 1.0.5">
+<a href="notes.html#id2251873">xmerl 1.0.5</a></li>
+<li title="xmerl 1.0.4">
+<a href="notes.html#id2251902">xmerl 1.0.4</a></li>
+<li title="Xmerl 1.0.3">
+<a href="notes.html#id2253869">Xmerl 1.0.3</a></li>
+<li title="Xmerl 1.0.2">
+<a href="notes.html#id2253903">Xmerl 1.0.2</a></li>
+<li title="Xmerl 1.0.1">
+<a href="notes.html#id2253960">Xmerl 1.0.1</a></li>
+<li title="Xmerl 1.0">
+<a href="notes.html#id2254011">Xmerl 1.0</a></li>
+</ul>
+</li></ul>
+</div></div>
+<div id="content">
+<div class="innertube">
+<h1>1 Xmerl Release Notes</h1>
+  
+  <p>This document describes the changes made to the Xmerl application.</p>
+<h3><a name="id2252929">1.1 
+        Xmerl 1.2.3</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            A continuation clause of <span class="code">parse_reference/3</span> had
+            it's parameters in wrong order.</p>
+          <p>
+            Own Id: OTP-8251 Aux Id: seq11429 </p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            A new option to turn off the parsing of an external DTD
+            is added to <span class="code">xmerl_sax_parser:file/2</span> and
+            <span class="code">xmerl_sax_parser:stream/2</span>
+            (<span class="code">skip_external_dtd</span>).</p>
+          <p>
+            Own Id: OTP-8252 Aux Id: seq11432 </p>
+        </li>
+        <li>
+          <p>
+            The documentation is now built with open source tools
+            (xsltproc and fop) that exists on most platforms. One
+            visible change is that the frames are removed.</p>
+          <p>
+            Own Id: OTP-8253</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2253010">1.2 
+        Xmerl 1.2.2</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            <span class="code">xmerl_sax_parse:stream/2</span> failed with
+            <span class="code">{fatal_error,_, "Continuation function undefined, and
+            more data needed",_,_}</span> when no continuation function
+            was defined even though it was a complete document as
+            input.</p>
+          <p>
+            Own Id: OTP-8213</p>
+        </li>
+        <li>
+          <p>
+            The namespace URI supplied on unprefixed attributes in
+            startElement tuples is the same as the URI for the
+            default namespace. According to the standard the
+            namespace for an unprefixed attribute should always has
+            no value.</p>
+          <p>
+            Own Id: OTP-8214</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2260750">1.3 
+        Xmerl 1.2.1</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            <span class="code">xmerl/include/xmerl.hrl</span> contained internal debug
+            macros (<span class="code">dbg/2</span> and <span class="code">DBG/0</span>) which now is moved
+            to <span class="code">xmerl_internal.hrl</span>.
+          </p>
+          <p>
+            Own Id: OTP-8084
+          </p>
+        </li>
+        <li>
+          <p>
+            The function <span class="code">xmerl_uri:parse/1</span> couldn't handle FTP
+            URIs containing username and password. The default FTP
+            port constant was also wrong. (Thanks to Steve Vinoski)
+          </p>
+          <p>
+            Own Id: OTP-8156
+          </p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            The SAX parser couldn't handle consecutive documents on
+            the same stream. The return values are now changed so
+            they return a rest value instead of giving an error about
+            "erranous information after the end tag". 
+          </p>
+          <p>
+            This means that
+            the functions <span class="code">file/2</span> and <span class="code">stream/2</span> now
+            returns <span class="code">{ok, EventState, Rest}</span> when the parsing is
+            correct. The rest can then be used as input to a new call
+            to <span class="code">xmerl_sax_parse:stream/2</span>. If one know that it's
+            just one document the rest value in the result tuple can
+            be matched against <span class="code">&lt;&lt;&gt;&gt;</span> or <span class="code">[]</span>
+            depending on if the input is in binary form or not.
+          </p>
+          <p>
+            Own Id: OTP-8153 Aux Id: seq11388 
+          </p>
+        </li>
+      </ul>
+    
+<h3><a name="id2260873">1.4 
+        Xmerl 1.2</a></h3>
+    <h4>Improvements and New Features</h4>
+	<p>
+        In xmerl-1.2 we have added the first Beta version of the new 
+        SAX parser (module: xmerl_sax_parser), it supports XML 1.0. 
+        We call it Beta due to that the validation part is not ready yet and that the 
+        parser still has some known limitations (mostly in the DTD area).
+        </p>
+	<p>
+	Known limitations: 
+        </p>
+        <ul>
+          <li>the external DTD in the DOCTYPE declaration is handled but other external entities are not supported.</li>
+          <li>the general entity values are just checked in the structure after replacement.</li>
+          <li>
+             parsed entities are supported on markup declaration level (e.g. partly replacement of markup 
+             declaration with PEReference is not supported).
+          </li>
+          <li>conditionalSect in external DTD's are not supported.</li>
+          <li>recursive loops in entity declarations are not detected.</li>
+        </ul>
+	<p>	
+	 The version is increased from 1.1.12 to 1.2 is due to that the new parser
+         is dependent on the Unicode support that was added in OTP R13B. The old xmerl 
+         functionality is not changed.
+	</p>
+        <p>
+            Own Id: OTP-6635
+        </p>
+    
+<h3><a name="id2256809">1.5 
+        Xmerl 1.1.12</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            Updated copyright notice in source files</p>
+          <p>
+            Own Id: OTP-7847</p>
+        </li>
+      </ul>
+    
+ 
+<h3><a name="id2256840">1.6 
+        Xmerl 1.1.11</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            An empty element with a complexType and simpleContent was
+            not properly validated. This error is now corrected.</p>
+          <p>
+            Own Id: OTP-7736</p>
+        </li>
+      </ul>
+    
+ 
+<h3><a name="id2256872">1.7 
+        Xmerl 1.1.10</a></h3>
+ 
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+           Changed the examples in Customization Functions Tutorial
+           to correct Erlang code.
+          </p>
+          <p>
+            Own Id: OTP-6053
+          </p>
+        </li>
+        <li>
+          <p>
+            Some XPath errors solved, typo in compare function '!=',
+            error in <span class="code">id()</span> function.</p>
+          <p>
+            Own Id: OTP-6792 Aux Id: seq10570 </p>
+        </li>
+        <li>
+          <p>
+            The XPath function <span class="code">contains()</span> now implemented. See
+            XPath 1.0 section 4.2.</p>
+          <p>
+            Own Id: OTP-6873</p>
+        </li>
+        <li>
+          <p>
+           Fixed that xmerl_xsd:process_schema/2 with {xsdbase, Dirname} failed with enoent 
+           and a number of inor documentation bugs in xmerl_xsd reference manual.
+          </p>
+          <p>
+            Own Id: OTP-7165
+          </p>
+        </li>
+        <li>
+          <p>
+            Fixed xmerl_scan's problem with numeric character references 
+            followed by UTF-8 characters in the contents.
+          </p>
+          <p>
+            Own Id: OTP-7430
+          </p>
+        </li>
+        <li>
+          <p>
+           Fixed an incorrect guard for xmerl_scan:to_ucs/2.
+          </p>
+          <p>
+            Own Id: OTP-7473
+          </p>
+        </li>
+        <li>
+          <p>
+            Some bug corrections of xmerl XPath implementation, most
+            provided by Matthew Dempsky.</p>
+          <p>
+            Own Id: OTP-7496</p>
+        </li>
+        <li>
+          <p>
+            Now with <span class="code">string()</span> and <span class="code">name()</span> all XPath
+            functions are implemented. The string representation of
+            QName by <span class="code">name()</span> is "{Namespace URI}local-name".</p>
+          <p>
+            Own Id: OTP-7510</p>
+        </li>
+      </ul>
+    
+ 
+<h3><a name="id2257016">1.8 
+        Xmerl 1.1.9</a></h3>
+ 
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            A number of minor scanner faults have got more clear error messages. 
+          </p>
+          <p>
+            Own Id: OTP-5998, Aux Id: seq9803
+          </p>
+        </li>
+        <li>
+          <p>
+           An example error in the Xmerl Users Guide is corrected.
+          </p>
+          <p>
+            Own Id: OTP-6947
+          </p>
+        </li>
+        <li>
+          <p>
+           When xmerl_xsd:validate was executed the schema table in the state 
+           was deleted and next execution would fail. This is now corrected.
+          </p>
+          <p>
+            Own Id: OTP-7288
+          </p>
+        </li>
+      </ul>
+    
+ 
+<h3><a name="id2253434">1.9 
+        Xmerl 1.1.8</a></h3>
+ 
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            A Kleene Closure child in a sequence consumed all
+            following children. This problem has been fixed.</p>
+          <p>
+            Own Id: OTP-7211</p>
+        </li>
+        <li>
+          <p>
+            Now validating xhtml1-transitional.dtd. A certain
+            contentspec with a succeeding choice, that didn't match
+            all content, followed by other child elements caused a
+            failure. This is now corrected.</p>
+          <p>
+            Own Id: OTP-7214</p>
+        </li>
+      </ul>
+    
+ 
+<h3><a name="id2253482">1.10 
+        Xmerl 1.1.7</a></h3>
+    <h4>Improvements and New Features</h4>
+      <ul>
+        <li>
+          <p>
+            xmerl's schema validation now takes default facets into
+            account</p>
+          <p>
+            Own Id: OTP-7190</p>
+        </li>
+      </ul>
+    
+<h3><a name="id2253513">1.11 
+        Xmerl 1.1.6</a></h3>
+    <h4>Fixed Bugs and Malfunctions</h4>
+      <ul>
+        <li>
+          <p>
+            Parsing XML with option <span class="code">{validation,schema}</span> is now
+            corrected.</p>
+          <p>
+            Own Id: OTP-6773</p>
+        </li>
+        <li>
+          <p>
+            union type is now supported</p>
+          <p>
+            Own Id: OTP-6877 Aux Id: seq10755 </p>
+        </li>
+        <li>
+          <p>
+            Now xmerl validates as expected when a sequence has a
+            present group member and a following element.</p>
+          <p>
+            Own Id: OTP-6910</p>
+        </li>
+      </ul>
+    
+  <h3><a name="id2253575">1.12 
+        Xmerl 1.1.5</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>The head of a substitutionGroup may have type anyType and
+            thus allow members of any type. This was an oversight, but is
+            now corrected.</p>
+          <p>Own Id: OTP-6720</p>
+        </li>
+        <li>
+          <p>A recursive group reference in a redefine refers to the
+            definition in the redefined schema. See 4.2.2 in
+            XMLSchema part1 "Schema Representation Constraint:
+            Individual Component Redefinition" bullet 2.</p>
+          <p>Own Id: OTP-6739</p>
+        </li>
+        <li>
+          <p>Solved some content model problems, for instance in some
+            cases failed when more than one choice.</p>
+          <p>Own Id: OTP-6752</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2253638">1.13 
+        Xmerl 1.1.4</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>An additional format is possible for the simple syntax:
+            <span class="code">{Fun, State}</span>. The fun should retrieve the
+            replacement in simple syntax format. The semantics of
+            fun: <span class="code">fun(State) -&gt; code that creates replacement, then returns {SimpleSyntax,NewState} | done </span></p>
+          <p>Own Id: OTP-6679</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251661">1.14 
+        Xmerl 1.1.3</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Memory consumption decreased: moved transforming from
+            utf-8 to unicode from an extra pass of the document to
+            the occasion when a character is parsed. Removed use of
+            lists:subtract. Those changes also speeds up parsing in
+            some scenarios.</p>
+          <p>Own Id: OTP-6599 Aux Id: seq10552 </p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251698">1.15 
+        Xmerl 1.1.2</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Schema processor reprocessed schemas that already were
+            processed, using process_schemas on a system of schemas
+            with circular dependencies.</p>
+          <p>Own Id: OTP-6460 Aux Id: seq10564 </p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>Dialyzer warnings now removed, i.e. dead code have been
+            removed.</p>
+          <p>Own Id: OTP-6507</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251760">1.16 
+        Xmerl 1.1.1</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Bug in xmerl removed so that simple syntax element
+            content is exported correctly.</p>
+          <p>Own Id: OTP-6402 Aux Id: OTP-6099</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251794">1.17 
+        Xmerl 1.1</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Xmerl failed to parse and export with the sax_file
+            front-end. Therefore hook function calls were added in the
+            parser and handling of text content were changed.</p>
+          <p>Own Id: OTP-6043</p>
+        </li>
+        <li>
+          <p>Bug in xmerl removed so that simple syntax element
+            content is exported correctly.</p>
+          <p>Own Id: OTP-6099</p>
+        </li>
+      </ul>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>xmerl now supports XMLSchema validation. Documentation in
+            reference manual for xmerl. The release of XMLSchema
+            validation should be considered as a beta release. The
+            user interface may still be adjusted in a coming
+            release. Opinions and evaluations are welcome.</p>
+          <p>Own Id: OTP-6401</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251873">1.18 
+        xmerl 1.0.5</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Code that caused compiler warnings has been reviewed.</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2251902">1.19 
+        xmerl 1.0.4</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>xmerl behaved strange parsing a XML-document with a
+            copyright sign in a comment.</p>
+          <p>Own Id: OTP-5599</p>
+        </li>
+        <li>
+          <p>Line count for error messages in DTD improved, still
+            problem because of ENTITY expansions. Didn't delete
+            digraphs after recursion test. Now correctly parsing of
+            declaration separators [28a-b].</p>
+          <p>Own Id: OTP-5718</p>
+        </li>
+        <li>
+          <p>Failed to validate a XML file with a content spec that
+            had a choice of which one element was a sequence with
+            optional elements, and all elements of that sequence were
+            missing</p>
+          <p>Own Id: OTP-5734</p>
+        </li>
+        <li>
+          <p>Location paths for document root and attributes is now
+            working as expected.</p>
+          <p>Own Id: OTP-5895</p>
+        </li>
+        <li>
+          <p>Now has the last() predicate in the XPATH modules the
+            properties specified in ch 2.4 in the XPATH spec, i.e. if
+            last() evaluates to a number other than the context
+            position it is false, otherwise true.</p>
+          <p>Own Id: OTP-5902</p>
+        </li>
+        <li>
+          <p>The location path of a single wildcard now only selects
+            element nodes.</p>
+          <p>Own Id: OTP-5905</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2253869">1.20 
+        Xmerl 1.0.3</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Removed call of undefined function in xmerl_lib.</p>
+          <p>Own Id: OTP-5587</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2253903">1.21 
+        Xmerl 1.0.2</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Better identification of errors in xml code.</p>
+          <p>Own Id: OTP-5498 Aux Id: seq9803 </p>
+        </li>
+        <li>
+          <p>Some minor bugs fixed.</p>
+          <p>Own Id: OTP-5500</p>
+        </li>
+        <li>
+          <p>Parser failed on PE reference as EnumeratedType AttType,
+            now corrected.</p>
+          <p>Own Id: OTP-5531</p>
+        </li>
+      </ul>
+    
+  
+  <h3><a name="id2253960">1.22 
+        Xmerl 1.0.1</a></h3>
+    
+    <h4>Fixed Bugs and Malfunctions</h4>
+      
+      <ul>
+        <li>
+          <p>Fixed bug in xmerl_xpath. Xpath expressions that select
+            nodes of type text() didn't work, like "context/text()",
+            "child::text()", "descendant::text()".</p>
+          <p>Own Id: OTP-5268 Aux Id: seq9656 </p>
+        </li>
+        <li>
+          <p>Minor bugs fixed.</p>
+          <p>Own Id: OTP-5301</p>
+        </li>
+      </ul>
+    
+    
+  
+  <h3><a name="id2254011">1.23 
+        Xmerl 1.0</a></h3>
+    
+    <h4>Improvements and New Features</h4>
+      
+      <ul>
+        <li>
+          <p>The OTP release of xmerl 1.0 is mainly the same as
+            xmerl-0.20 of http://sowap.sourceforge.net/. It is
+            capable of parsing XML 1.0. There have only been minor
+            improvements: Some bugs that caused an unexpected crash
+            when parsing bad XML. Failure report that also tells
+            which file that caused an error.</p>
+          <p>Own Id: OTP-5174</p>
+        </li>
+      </ul>
+    
+  
+</div>
+<div class="footer">
+<hr>
+<p>Copyright © 2004-2009 Ericsson AB. All Rights Reserved.</p>
+</div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3045895-1";
+urchinTracker();
+</script> 
+</body>
+</html>
